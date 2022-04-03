@@ -20,5 +20,9 @@ public class Weapon extends Item {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void remove(Monster monster) {
+		//TODO
+	}
 
 }

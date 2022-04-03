@@ -1,5 +1,7 @@
 package items;
 
+import monsters.*;
+
 public abstract class Item {
 	private String itemName;
 	
@@ -12,6 +14,8 @@ public abstract class Item {
 	}
 	
 	public String getitemName() {
-		return name;
+		return itemName;
 	}
+	
+	public abstract void use(Monster monster);
 }
