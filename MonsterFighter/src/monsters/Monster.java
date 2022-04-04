@@ -72,6 +72,15 @@ public abstract class Monster {
 		return speed;
 	}
 	
+	public boolean getStunnedStatus() {
+		return isStunned;
+	}
+	
+	public void setStunnedStatus(boolean status) {
+		isStunned = status;
+	}
+	
+	
 	public void sleep() {
 		addHealth(healAmount);
 		
@@ -107,6 +116,7 @@ public abstract class Monster {
 	public boolean addArmour(Armour armour) {
 		if (hasArmour) {
 			return false;
+			
 		} else {
 			armourSlot = armour;
 			hasArmour = true;
