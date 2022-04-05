@@ -1,9 +1,18 @@
+package random_event;
+import java.util.Random;
+
+import inventory.Inventory;
 
 public class MonsterLeaves extends RandomEvent {
-	
-	
+
+	Random random = new Random();
+
 	public MonsterLeaves() {
-		System.out.println("testing");
+		removeMonster();
+	}
+	
+	public void removeMonster() {
+		Inventory.team.remove(random.nextInt(Inventory.team.size()));
 	}
 	
 

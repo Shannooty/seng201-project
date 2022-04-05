@@ -1,12 +1,14 @@
+package inventory;
 import java.util.ArrayList;
-
-
+import items.*;
+import monsters.*;
 //needs classes Item and Monster
 
 public class Inventory {
 	
-	public ArrayList<Item> ownedItems = new ArrayList<Items>;
-	public ArrayList<Monster> team = new ArrayList<Monster>;
+	private static ArrayList<Item> ownedItems = new ArrayList<Item>();
+	public static ArrayList<Monster> team = new ArrayList<Monster>();
+	
 	
 	public void removeItem(Item item) {
 		ownedItems.remove(item);
