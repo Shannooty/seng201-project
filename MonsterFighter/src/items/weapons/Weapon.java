@@ -1,5 +1,6 @@
-package items;
+package items.weapons;
 
+import items.Item;
 import monsters.Monster;
 
 public class Weapon extends Item {

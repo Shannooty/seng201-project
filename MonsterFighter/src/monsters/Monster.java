@@ -1,7 +1,7 @@
 package monsters;
 
-import items.Armour;
-import items.Weapon;
+import items.armours.Armour;
+import items.weapons.Weapon;
 
 public class Monster {
 	

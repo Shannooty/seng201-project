@@ -1,5 +1,6 @@
-package items;
+package items.armours;
 
+import items.Item;
 import monsters.Monster;
 
 public class Armour extends Item {
