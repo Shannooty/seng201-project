@@ -57,6 +57,14 @@ public class Monster {
 		return maxHealth;
 	}
 	
+	public void setHealAmount(int healAmount) {
+		this.healAmount = healAmount; 
+	}
+	
+	public int getHealAmount() {
+		return healAmount;
+	}
+	
 	public void addArmour(int armourIncrease) {
 		armourAmount = getArmour() + armourIncrease;
 	}
@@ -91,7 +99,7 @@ public class Monster {
 	
 	
 	public void sleep() {
-		addHealth(healAmount);
+		addHealth(getHealAmount());
 		
 	}
 	
