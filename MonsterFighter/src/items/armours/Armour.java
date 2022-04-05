@@ -24,7 +24,9 @@ public class Armour extends Item {
 	
 	@Override
 	public void use(Monster monster) {
-		// TODO Auto-generated method stub
+		boolean successful;
+		successful = monster.addArmour(this);
+		// do something useful if monster already has an armor piece equipped
 
 	}
 

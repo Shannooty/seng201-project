@@ -18,12 +18,11 @@ public class Weapon extends Item {
 	
 	@Override
 	public void use(Monster monster) {
-		// TODO Auto-generated method stub
+		boolean successful;
+		successful = monster.addWeapon(this);
+		// do something useful if weapon isn't equiped
 
 	}
 	
-	public void remove(Monster monster) {
-		//TODO
-	}
 
 }
