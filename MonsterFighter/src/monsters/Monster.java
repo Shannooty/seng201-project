@@ -1,9 +1,10 @@
 package monsters;
 
 import items.armors.Armor;
+import interfaces.Purchasable;
 import items.weapons.Weapon;
 
-public class Monster {
+public class Monster implements Purchasable {
 	
 	private String name;
 	private int health;
@@ -149,5 +150,55 @@ public class Monster {
 		maxHealth = maxHealth - armor.getHealthIncrease();
 		return armor;
 	}
+
+	@Override
+	public void buy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sell() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public double getPurchasePrice() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getSellPrice() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getDescription() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setDescription(String description) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPurchasePrice(double price) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSellBackPrice(double price) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 	
 }
