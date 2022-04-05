@@ -1,6 +1,6 @@
 package monsters;
 
-import items.armours.Armour;
+import items.armors.Armor;
 import items.weapons.Weapon;
 
 public class Monster {
@@ -14,9 +14,9 @@ public class Monster {
 	private int speed;
 	private boolean isStunned = false;
 	private boolean hasWeapon = false;
-	private boolean hasArmour = false;
+	private boolean hasArmor = false;
 	private Weapon weaponSlot = null;
-	private Armour armourSlot = null;
+	private Armor armorSlot = null;
 	
 	
 	public Monster(String name, int maxHealth, int attackAmount, int speed) {
@@ -130,24 +130,24 @@ public class Monster {
 		return weapon;
 	}
 	
-	public boolean addArmour(Armour armour) {
-		if (hasArmour) {
+	public boolean addArmor(Armor armor) {
+		if (hasArmor) {
 			return false;
 			
 		} else {
-			armourSlot = armour;
-			hasArmour = true;
-			maxHealth = maxHealth + armour.getHealthIncrease();
+			armorSlot = armor;
+			hasArmor = true;
+			maxHealth = maxHealth + armor.getHealthIncrease();
 			return true;
 		}
 	}
 	
-	public Armour removeArmour() {
-		Armour armour = armourSlot;
-		armourSlot = null;
-		hasArmour = false;
-		maxHealth = maxHealth - armour.getHealthIncrease();
-		return armour;
+	public Armor removeArmor() {
+		Armor armor = armorSlot;
+		armorSlot = null;
+		hasArmor = false;
+		maxHealth = maxHealth - armor.getHealthIncrease();
+		return armor;
 	}
 	
 }

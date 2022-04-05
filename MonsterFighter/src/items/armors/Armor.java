@@ -1,14 +1,14 @@
-package items.armours;
+package items.armors;
 
 import items.Item;
 import monsters.Monster;
 
-public class Armour extends Item {
+public class Armor extends Item {
 	
 	private int maxHealthIncrease;
 	private int damageDecrease;
 	
-	public Armour(String name, int healthIncrease, int damageReduction) {
+	public Armor(String name, int healthIncrease, int damageReduction) {
 		super(name);
 		maxHealthIncrease = healthIncrease;
 		damageDecrease = damageReduction;
@@ -25,7 +25,7 @@ public class Armour extends Item {
 	@Override
 	public void use(Monster monster) {
 		boolean successful;
-		successful = monster.addArmour(this);
+		successful = monster.addArmor(this);
 		// do something useful if monster already has an armor piece equipped
 
 	}
