@@ -3,7 +3,7 @@ package monsters;
 import items.Armour;
 import items.Weapon;
 
-public abstract class Monster {
+public class Monster {
 	
 	private String name;
 	private int health;
@@ -46,6 +46,15 @@ public abstract class Monster {
 	
 	public int getHealth() {
 		return health;
+	}
+	
+	
+	public void addMaxHealth(int healthIncrease) {
+		health = getMaxHealth() - healthIncrease;
+	}
+	
+	public int getMaxHealth() {
+		return maxHealth;
 	}
 	
 	public void addArmour(int armourIncrease) {
