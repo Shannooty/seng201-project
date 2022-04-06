@@ -9,13 +9,12 @@ public class Monster implements Purchasable {
 	private String name;
 	private int health;
 	private int maxHealth;
-	private int armourAmount = 0;
+	private int armorAmount = 0;
 	private int healAmount;
 	private int attackAmount;
 	private int speed;
 	private boolean isStunned = false;
 	private boolean hasWeapon = false;
-	private boolean hasArmor = false;
 	private Weapon weaponSlot = null;
 	private Armor armorSlot = null;
 	
@@ -51,7 +50,11 @@ public class Monster implements Purchasable {
 	
 	
 	public void addMaxHealth(int healthIncrease) {
-		health = getMaxHealth() - healthIncrease;
+		maxHealth = getMaxHealth() + healthIncrease;
+	}
+	
+	public void removeMaxHealth(int healthDecrease) {
+		maxHealth = getMaxHealth() - healthDecrease;
 	}
 	
 	public int getMaxHealth() {
@@ -66,16 +69,16 @@ public class Monster implements Purchasable {
 		return healAmount;
 	}
 	
-	public void addArmour(int armourIncrease) {
-		armourAmount = getArmour() + armourIncrease;
+	public void addArmorAmount(int armourIncrease) {
+		armorAmount = getArmorAmount() + armourIncrease;
 	}
 	
-	public void removeArmour(int armourDecrease) {
-		armourAmount = getArmour() - armourDecrease;
+	public void removeArmorAmount(int armourDecrease) {
+		armorAmount = getArmorAmount() - armourDecrease;
 	}
 	
-	public int getArmour() {
-		return armourAmount;
+	public int getArmorAmount() {
+		return armorAmount;
 	}
 	
 	public void addSpeed(int speedIncrease) {
@@ -133,8 +136,8 @@ public class Monster implements Purchasable {
 	public Armor addArmor(Armor armor) {
 		Armor oldArmor = removeArmor();
 		armorSlot = armor;
-		hasArmor = true;
-		maxHealth = maxHealth + armor.getHealthIncrease();
+		addMaxHealth(armor.getHealthIncrease());
+		addArmorAmount(armor.getArmorIncrease());
 		
 		return oldArmor;
 	}
@@ -142,8 +145,8 @@ public class Monster implements Purchasable {
 	public Armor removeArmor() {
 		Armor armor = armorSlot;
 		armorSlot = null;
-		hasArmor = false;
-		maxHealth = maxHealth - armor.getHealthIncrease();
+		removeMaxHealth(armor.getHealthIncrease());
+		removeArmorAmount(armor.getArmorIncrease());
 		
 		return armor;
 	}
