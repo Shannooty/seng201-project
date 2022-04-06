@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import exceptions.InsufficientGoldException;
+import exceptions.NegativeValueException;
 import inventory.Inventory;
 import player.Player;
 
@@ -30,7 +31,10 @@ class PlayerTest {
 		assertEquals(1000, testPlayer.getGoldAmount());
 		
 		//Testing negative values, should be no change
-		testPlayer.addGold(-100);
+		NegativeValueException negativeValueException = assertThrows(NegativeValueException.class, 
+				() -> testPlayer.addGold(-100));
+
+		assertEquals("Cannot add negative gold", negativeValueException.getMessage());
 		assertEquals(1000, testPlayer.getGoldAmount());
 		
 		//Testing 0 value
@@ -46,14 +50,17 @@ class PlayerTest {
 		assertEquals(500, testPlayer.getGoldAmount());
 		
 		//Removing more gold than what's available
-		InsufficientGoldException exception = assertThrows(InsufficientGoldException.class,
+		InsufficientGoldException insufficientGoldException = assertThrows(InsufficientGoldException.class,
 				() -> testPlayer.removeGold(1000));
 		
-		assertEquals("Insufficient Gold", exception.getMessage());
+		assertEquals("Insufficient Gold", insufficientGoldException.getMessage());
 		assertEquals(500, testPlayer.getGoldAmount());
 		
 		//Testing removing negative gold
-		testPlayer.removeGold(-300);
+		NegativeValueException negativeValueException = assertThrows(NegativeValueException.class, 
+				() -> testPlayer.removeGold(-300));
+		
+		assertEquals("Cannot remove negative gold", negativeValueException.getMessage());
 		assertEquals(500, testPlayer.getGoldAmount());
 		
 	}
