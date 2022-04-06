@@ -17,5 +17,5 @@ public abstract class Item {
 		return itemName;
 	}
 	
-	public abstract void use(Monster monster);
+	public abstract Item use(Monster monster);
 }
