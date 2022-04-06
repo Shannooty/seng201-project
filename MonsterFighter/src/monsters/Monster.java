@@ -108,13 +108,7 @@ public class Monster implements Purchasable {
 	}
 	
 	public int getAttackAmount() {
-		int weaponDamage = 0;
-		
-		if (hasWeapon) {
-			weaponDamage = weaponSlot.getDamage();
-		}
-		
-		return attackAmount + weaponDamage;
+		return attackAmount;
 	}
 	
 	public Weapon addWeapon(Weapon weapon) {
