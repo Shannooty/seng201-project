@@ -23,10 +23,10 @@ public class Armor extends Item {
 	}
 	
 	@Override
-	public void use(Monster monster) {
-		boolean successful;
-		successful = monster.addArmor(this);
-		// do something useful if monster already has an armor piece equipped
+	public Item use(Monster monster) {
+		
+		Armor oldArmor = monster.addArmor(this);
+		return oldArmor;
 
 	}
 
