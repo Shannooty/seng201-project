@@ -17,10 +17,10 @@ public class Weapon extends Item {
 	}
 	
 	@Override
-	public void use(Monster monster) {
-		boolean successful;
-		successful = monster.addWeapon(this);
-		// do something useful if weapon isn't equiped
+	public Weapon use(Monster monster) {
+		
+		Weapon oldWeapon = monster.addWeapon(this);
+		return oldWeapon;
 
 	}
 	
