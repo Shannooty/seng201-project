@@ -6,20 +6,20 @@ import monsters.Monster;
 public class Armor extends Item {
 	
 	private int maxHealthIncrease;
-	private int damageDecrease;
+	private int armorIncrease;
 	
-	public Armor(String name, int healthIncrease, int damageReduction) {
+	public Armor(String name, int healthIncrease, int armorAmount) {
 		super(name);
 		maxHealthIncrease = healthIncrease;
-		damageDecrease = damageReduction;
+		this.armorIncrease = armorAmount;
 	}
 	
 	public int getHealthIncrease() {
 		return maxHealthIncrease;
 	}
 	
-	public int getDamageDecrease() {
-		return damageDecrease;
+	public int getArmorIncrease() {
+		return armorIncrease;
 	}
 	
 	@Override
