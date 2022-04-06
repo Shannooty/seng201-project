@@ -1,14 +1,22 @@
 package player;
 
+import inventory.Inventory;
+import monsters.Monster;
+
 public class Player {
 	
 	
 	private String name;
 	private double goldAmount = 0;
 	private int currentPoints = 0;
-//	private Inventory inventory;
+	private Inventory inventory;
 //	private Team team;
 	
+	
+	public Player(String name, Monster startingMonster) {
+		setName(name);
+		setInventory(new Inventory(startingMonster));
+	}
 	
 	
 	public String getName() {
@@ -38,6 +46,16 @@ public class Player {
 	
 	private void addPoints(int points) {
 		currentPoints += points;
+	}
+
+
+	public Inventory getInventory() {
+		return inventory;
+	}
+
+
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
 	}
 	
 
