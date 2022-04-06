@@ -114,33 +114,29 @@ public class Monster implements Purchasable {
 		return attackAmount + weaponDamage;
 	}
 	
-	public boolean addWeapon(Weapon weapon) {
-		if (hasWeapon) {
-			return false;
-		} else {
-			hasWeapon = true;
-			weaponSlot = weapon;
-			return true;
-		}
+	public Weapon addWeapon(Weapon weapon) {
+		Weapon oldWeapon = removeWeapon();
+		weaponSlot = weapon;
+		hasWeapon = true;
+		
+		return oldWeapon;
 	}
 	
 	public Weapon removeWeapon() {
 		Weapon weapon = weaponSlot;
 		weaponSlot = null;
 		hasWeapon = false;
+		
 		return weapon;
 	}
 	
-	public boolean addArmor(Armor armor) {
-		if (hasArmor) {
-			return false;
-			
-		} else {
-			armorSlot = armor;
-			hasArmor = true;
-			maxHealth = maxHealth + armor.getHealthIncrease();
-			return true;
-		}
+	public Armor addArmor(Armor armor) {
+		Armor oldArmor = removeArmor();
+		armorSlot = armor;
+		hasArmor = true;
+		maxHealth = maxHealth + armor.getHealthIncrease();
+		
+		return oldArmor;
 	}
 	
 	public Armor removeArmor() {
@@ -148,6 +144,7 @@ public class Monster implements Purchasable {
 		armorSlot = null;
 		hasArmor = false;
 		maxHealth = maxHealth - armor.getHealthIncrease();
+		
 		return armor;
 	}
 
