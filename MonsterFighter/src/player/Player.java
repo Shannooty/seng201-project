@@ -1,5 +1,6 @@
 package player;
 
+import exceptions.InsufficientGoldException;
 import inventory.Inventory;
 import monsters.Monster;
 
@@ -37,7 +38,12 @@ public class Player {
 	}
 	
 	public void removeGold(double gold) {
-		goldAmount -= gold;
+		
+		if (getGoldAmount() < gold) {
+			throw new InsufficientGoldException("Insufficient Gold");
+		} else {
+			goldAmount -= gold;
+		}
 	}
 	
 	public int getPoints() {
