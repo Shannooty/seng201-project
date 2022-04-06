@@ -25,5 +25,12 @@ public class Inventory {
 	public void addMonster(Monster monster) {
 		team.add(monster);
 	}
-
+	
+	public ArrayList<Item> getItems(){
+		return ownedItems;
+	}
+	
+	public ArrayList<Monster> getTeam(){
+		return team;
+	}
 }
