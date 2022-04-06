@@ -14,7 +14,6 @@ public class Monster implements Purchasable {
 	private int attackAmount;
 	private int speed;
 	private boolean isStunned = false;
-	private boolean hasWeapon = false;
 	private Weapon weaponSlot = null;
 	private Armor armorSlot = null;
 	
