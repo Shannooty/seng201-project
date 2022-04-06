@@ -28,23 +28,23 @@ public class Player {
 		name = newName;
 	}
 	
-	private double getGoldAmount() {
+	public double getGoldAmount() {
 		return goldAmount;
 	}
 	
-	private void addGold(double gold) {
+	public void addGold(double gold) {
 		goldAmount += gold;
 	}
 	
-	private void removeGold(double gold) {
+	public void removeGold(double gold) {
 		goldAmount -= gold;
 	}
 	
-	private int getPoints() {
+	public int getPoints() {
 		return currentPoints;
 	}
 	
-	private void addPoints(int points) {
+	public void addPoints(int points) {
 		currentPoints += points;
 	}
 
