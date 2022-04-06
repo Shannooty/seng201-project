@@ -10,6 +10,7 @@ public class Day {
 	public void viewShop() {
 //		create instance of Shop
 //		open shop window
+//		testing
 	}
 	
 	public void sleep() {
