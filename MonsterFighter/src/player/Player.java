@@ -1,6 +1,7 @@
 package player;
 
 import exceptions.InsufficientGoldException;
+import exceptions.NegativeValueException;
 import inventory.Inventory;
 import monsters.Monster;
 
@@ -34,13 +35,19 @@ public class Player {
 	}
 	
 	public void addGold(double gold) {
-		goldAmount += gold;
+		if (gold < 0) {
+			throw new NegativeValueException("Cannot add negative gold");
+		} else {
+			goldAmount += gold;
+		}
 	}
 	
 	public void removeGold(double gold) {
 		
 		if (getGoldAmount() < gold) {
 			throw new InsufficientGoldException("Insufficient Gold");
+		} else if (gold < 0) {
+			throw new NegativeValueException("Cannot remove negative gold");
 		} else {
 			goldAmount -= gold;
 		}
