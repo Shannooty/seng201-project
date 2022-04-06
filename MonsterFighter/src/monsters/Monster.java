@@ -93,6 +93,18 @@ public class Monster implements Purchasable {
 		return speed;
 	}
 	
+	public void addAttackAmount(int attackIncrease) {
+		attackAmount += attackIncrease;
+	}
+	
+	public void removeAttackAmount(int attackDecrease) {
+		attackAmount -= attackDecrease;
+	}
+	
+	public int getAttackAmount() {
+		return attackAmount;
+	}
+	
 	public boolean getStunnedStatus() {
 		return isStunned;
 	}
@@ -101,20 +113,15 @@ public class Monster implements Purchasable {
 		isStunned = status;
 	}
 	
-	
 	public void sleep() {
 		addHealth(getHealAmount());
 		
 	}
 	
-	public int getAttackAmount() {
-		return attackAmount;
-	}
-	
 	public Weapon addWeapon(Weapon weapon) {
 		Weapon oldWeapon = removeWeapon();
 		weaponSlot = weapon;
-		hasWeapon = true;
+		addAttackAmount(weapon.getDamage());
 		
 		return oldWeapon;
 	}
@@ -122,7 +129,7 @@ public class Monster implements Purchasable {
 	public Weapon removeWeapon() {
 		Weapon weapon = weaponSlot;
 		weaponSlot = null;
-		hasWeapon = false;
+		removeAttackAmount(weapon.getDamage());
 		
 		return weapon;
 	}
