@@ -1,22 +1,21 @@
 package monsters;
 
-import items.Armour;
-import items.Weapon;
+import items.armors.Armor;
+import interfaces.Purchasable;
+import items.weapons.Weapon;
 
-public class Monster {
+public class Monster implements Purchasable {
 	
 	private String name;
 	private int health;
 	private int maxHealth;
-	private int armourAmount = 0;
+	private int armorAmount = 0;
 	private int healAmount;
 	private int attackAmount;
 	private int speed;
 	private boolean isStunned = false;
-	private boolean hasWeapon = false;
-	private boolean hasArmour = false;
 	private Weapon weaponSlot = null;
-	private Armour armourSlot = null;
+	private Armor armorSlot = null;
 	
 	
 	public Monster(String name, int maxHealth, int attackAmount, int speed) {
@@ -50,23 +49,35 @@ public class Monster {
 	
 	
 	public void addMaxHealth(int healthIncrease) {
-		health = getMaxHealth() - healthIncrease;
+		maxHealth = getMaxHealth() + healthIncrease;
+	}
+	
+	public void removeMaxHealth(int healthDecrease) {
+		maxHealth = getMaxHealth() - healthDecrease;
 	}
 	
 	public int getMaxHealth() {
 		return maxHealth;
 	}
 	
-	public void addArmour(int armourIncrease) {
-		armourAmount = getArmour() + armourIncrease;
+	public void setHealAmount(int healAmount) {
+		this.healAmount = healAmount; 
 	}
 	
-	public void removeArmour(int armourDecrease) {
-		armourAmount = getArmour() - armourDecrease;
+	public int getHealAmount() {
+		return healAmount;
 	}
 	
-	public int getArmour() {
-		return armourAmount;
+	public void addArmorAmount(int armourIncrease) {
+		armorAmount = getArmorAmount() + armourIncrease;
+	}
+	
+	public void removeArmorAmount(int armourDecrease) {
+		armorAmount = getArmorAmount() - armourDecrease;
+	}
+	
+	public int getArmorAmount() {
+		return armorAmount;
 	}
 	
 	public void addSpeed(int speedIncrease) {
@@ -81,6 +92,18 @@ public class Monster {
 		return speed;
 	}
 	
+	public void addAttackAmount(int attackIncrease) {
+		attackAmount += attackIncrease;
+	}
+	
+	public void removeAttackAmount(int attackDecrease) {
+		attackAmount -= attackDecrease;
+	}
+	
+	public int getAttackAmount() {
+		return attackAmount;
+	}
+	
 	public boolean getStunnedStatus() {
 		return isStunned;
 	}
@@ -89,57 +112,93 @@ public class Monster {
 		isStunned = status;
 	}
 	
-	
 	public void sleep() {
-		addHealth(healAmount);
+		addHealth(getHealAmount());
 		
 	}
 	
-	public int getAttackAmount() {
-		int weaponDamage = 0;
+	public Weapon addWeapon(Weapon weapon) {
+		Weapon oldWeapon = removeWeapon();
+		weaponSlot = weapon;
+		addAttackAmount(weapon.getDamage());
 		
-		if (hasWeapon) {
-			weaponDamage = weaponSlot.getDamage();
-		}
-		
-		return attackAmount + weaponDamage;
-	}
-	
-	public boolean addWeapon(Weapon weapon) {
-		if (hasWeapon) {
-			return false;
-		} else {
-			hasWeapon = true;
-			weaponSlot = weapon;
-			return true;
-		}
+		return oldWeapon;
 	}
 	
 	public Weapon removeWeapon() {
 		Weapon weapon = weaponSlot;
 		weaponSlot = null;
-		hasWeapon = false;
+		removeAttackAmount(weapon.getDamage());
+		
 		return weapon;
 	}
 	
-	public boolean addArmour(Armour armour) {
-		if (hasArmour) {
-			return false;
-			
-		} else {
-			armourSlot = armour;
-			hasArmour = true;
-			maxHealth = maxHealth + armour.getHealthIncrease();
-			return true;
-		}
+	public Armor addArmor(Armor armor) {
+		Armor oldArmor = removeArmor();
+		armorSlot = armor;
+		addMaxHealth(armor.getHealthIncrease());
+		addArmorAmount(armor.getArmorIncrease());
+		
+		return oldArmor;
 	}
 	
-	public Armour removeArmour() {
-		Armour armour = armourSlot;
-		armourSlot = null;
-		hasArmour = false;
-		maxHealth = maxHealth - armour.getHealthIncrease();
-		return armour;
+	public Armor removeArmor() {
+		Armor armor = armorSlot;
+		armorSlot = null;
+		removeMaxHealth(armor.getHealthIncrease());
+		removeArmorAmount(armor.getArmorIncrease());
+		
+		return armor;
 	}
+
+	@Override
+	public void buy() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void sell() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public double getPurchasePrice() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getSellPrice() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getDescription() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setDescription(String description) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setPurchasePrice(double price) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setSellBackPrice(double price) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
 	
 }

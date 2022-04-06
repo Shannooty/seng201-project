@@ -1,5 +1,6 @@
-package items;
+package items.weapons;
 
+import items.Item;
 import monsters.Monster;
 
 public class Weapon extends Item {
@@ -16,13 +17,12 @@ public class Weapon extends Item {
 	}
 	
 	@Override
-	public void use(Monster monster) {
-		// TODO Auto-generated method stub
+	public Weapon use(Monster monster) {
+		
+		Weapon oldWeapon = monster.addWeapon(this);
+		return oldWeapon;
 
 	}
 	
-	public void remove(Monster monster) {
-		//TODO
-	}
 
 }
