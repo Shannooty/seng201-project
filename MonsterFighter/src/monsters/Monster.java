@@ -6,7 +6,7 @@ import items.weapons.Weapon;
 
 
 
-public class Monster implements Purchasable {
+public abstract class Monster implements Purchasable {
 	
 	private String name;
 	private int health;

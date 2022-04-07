@@ -23,7 +23,6 @@ public class NewMonsterJoins extends RandomEvent {
 		
 		Monster newMonster;
 		newMonster = getNewMonster(monsterType);
-				
 		addMonster(newMonster);
 		
 	}
