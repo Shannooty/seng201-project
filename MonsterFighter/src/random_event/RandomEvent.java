@@ -4,12 +4,15 @@ import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+import monsters.Monster;
+
 public class RandomEvent {
 	
 	
 //	private ArrayList<String> randomEvents;
 	private String[] randomEvents = {"MonsterLeaves", "NewMonsterJoins", "MonsterLevelsUp"};
 	private Random randomItem;
+	private ArrayList<Monster> playerTeam;
 	
 	
 	public String getRandomEvent() {
@@ -26,6 +29,14 @@ public class RandomEvent {
 			MonsterLevelsUp levelsUp = new MonsterLevelsUp();
 		}		
 		
+	}
+
+	public ArrayList<Monster> getPlayerTeam() {
+		return playerTeam;
+	}
+
+	public void setPlayerTeam(ArrayList<Monster> playerTeam) {
+		this.playerTeam = playerTeam;
 	}
 	
 	

@@ -4,6 +4,8 @@ import items.armors.Armor;
 import interfaces.Purchasable;
 import items.weapons.Weapon;
 
+
+
 public class Monster implements Purchasable {
 	
 	private String name;
