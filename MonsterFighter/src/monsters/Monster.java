@@ -21,8 +21,8 @@ public abstract class Monster implements Purchasable {
 	private boolean isStunned = false;
 	private Weapon weaponSlot = null;
 	private Armor armorSlot = null;
-	private static String imgPath;
-	private static ImageIcon img = new ImageIcon(Monster.class.getResource(Monster.imgPath));
+	private String imgPath;
+	private ImageIcon img;
 	
 	
 	public Monster(String name, int maxHealth, int attackAmount, int speed) {
@@ -206,12 +206,16 @@ public abstract class Monster implements Purchasable {
 		
 	}
 
-	public static ImageIcon getImg() {
+	public ImageIcon getImg() {
 		return img;
 	}
-
-	public static void setImgPath(String imgPath) {
-		Monster.imgPath = imgPath;
+	
+	public void setImg() {
+		this.img = new ImageIcon(Monster.class.getResource(imgPath));
+	}
+	
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 	
 	
