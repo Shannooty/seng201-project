@@ -2,7 +2,6 @@ package inventory;
 import java.util.ArrayList;
 import items.*;
 import monsters.*;
-//needs classes Item and Monster
 
 public class Inventory {
 	
