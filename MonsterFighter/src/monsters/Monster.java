@@ -1,10 +1,15 @@
 package monsters;
 
 import items.armors.Armor;
+
+import javax.swing.ImageIcon;
+
 import interfaces.Purchasable;
 import items.weapons.Weapon;
 
-public class Monster implements Purchasable {
+
+
+public abstract class Monster implements Purchasable {
 	
 	private String name;
 	private int health;
@@ -16,6 +21,8 @@ public class Monster implements Purchasable {
 	private boolean isStunned = false;
 	private Weapon weaponSlot = null;
 	private Armor armorSlot = null;
+	private String imgPath;
+	private ImageIcon img;
 	
 	
 	public Monster(String name, int maxHealth, int attackAmount, int speed) {
@@ -197,6 +204,18 @@ public class Monster implements Purchasable {
 	public void setSellBackPrice(double price) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public ImageIcon getImg() {
+		return img;
+	}
+	
+	public void setImg() {
+		this.img = new ImageIcon(Monster.class.getResource(imgPath));
+	}
+	
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 	
 	
