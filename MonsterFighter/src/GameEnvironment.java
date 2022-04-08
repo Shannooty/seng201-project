@@ -54,6 +54,6 @@ public class GameEnvironment {
 	
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
-		launchSetUpScreen();
+		game.launchSetUpScreen();
 	}
 }
