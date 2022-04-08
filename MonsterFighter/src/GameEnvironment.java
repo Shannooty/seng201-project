@@ -8,7 +8,7 @@ public class GameEnvironment {
 	private int gameLength;
 	private String difficulty;
 	private Player player;
-	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>(4);
+	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
 	
 	
 	public GameEnvironment() {
