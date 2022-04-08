@@ -124,7 +124,7 @@ public class GameEnvironment {
 		frmSetup = new JFrame();
 		frmSetup.setBackground(Color.WHITE);
 		frmSetup.setTitle("SetUp");
-		frmSetup.setBounds(100, 100, 750, 550);
+		frmSetup.setBounds(100, 100, 850, 570);
 		frmSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetup.getContentPane().setLayout(null);
 		
@@ -137,16 +137,18 @@ public class GameEnvironment {
 		
 		
 		JLabel lblUsername = new JLabel("Please choose a username:");
-		lblUsername.setBounds(267, 12, 203, 26);
+		lblUsername.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblUsername.setBounds(315, 14, 218, 26);
 		frmSetup.getContentPane().add(lblUsername);
 		
 		username = new JTextField();
-		username.setBounds(315, 50, 114, 19);
+		username.setBounds(328, 50, 162, 21);
 		frmSetup.getContentPane().add(username);
 		username.setColumns(10);
 		
 		JLabel lblHowManyDays = new JLabel("How many days do you want to play?");
-		lblHowManyDays.setBounds(249, 81, 282, 15);
+		lblHowManyDays.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblHowManyDays.setBounds(307, 83, 226, 15);
 		frmSetup.getContentPane().add(lblHowManyDays);
 		
 		
