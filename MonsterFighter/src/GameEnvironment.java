@@ -30,7 +30,7 @@ import javax.swing.JList;
 import javax.swing.JSpinner;
 
 
-
+//testing
 public class GameEnvironment {
 
 	private JFrame frmSetup;
