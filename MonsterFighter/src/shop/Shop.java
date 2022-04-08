@@ -25,7 +25,7 @@ public class Shop {
 	
 	private void addItems() {
 		for (int i = 0; i < getNumItems(); i++) {
-			Item newItem = ItemGenerator.getMonster();
+			Item newItem = ItemGenerator.getItem();
 			avalibleItems.add(newItem);
 		}
 	}
