@@ -69,42 +69,6 @@ public class SetupScreen {
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
-	
-	
-	private void setStartingMonsters() {
-		startingMonsters.add(new Slime());
-		startingMonsters.add(new Zombie());
-		startingMonsters.add(new UndeadGuard());
-		startingMonsters.add(new Skeleton());
-	}
-	
-	public void launchSetUpScreen(){
-		//TODO create setupscreen class and pass the game through
-	}
-	
-	
-//	
-//	public static void main(String[] args) {
-//		SetupScreen game = new SetupScreen();
-//		game.launchSetUpScreen();
-//	}
-	
-	
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SetupScreen window = new SetupScreen();
-					window.frmSetup.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
 	/**
 	 * Create the application.
@@ -112,6 +76,7 @@ public class SetupScreen {
 	public SetupScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
 		initialize();
+		frmSetup.setVisible(true);
 	}
 
 	/**
@@ -124,13 +89,6 @@ public class SetupScreen {
 		frmSetup.setBounds(100, 100, 850, 570);
 		frmSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetup.getContentPane().setLayout(null);
-		
-		
-		
-		
-
-		
-		
 		
 		
 		JLabel lblUsername = new JLabel("Please choose a username:");
