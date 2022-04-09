@@ -36,14 +36,14 @@ public class SetupScreen {
 
 	private JFrame frmSetup;
 
-
+	private GameEnvironment gameEnvironment;
 	private Player player;
 	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
 	private int gameLength;
 	private String difficulty;
 	private JTextField username;
 	
-
+	
 	
 	public int getgameLength() {
 		return gameLength;
@@ -109,7 +109,8 @@ public class SetupScreen {
 	/**
 	 * Create the application.
 	 */
-	public SetupScreen() {
+	public SetupScreen(GameEnvironment gameManager) {
+		gameEnvironment = gameManager;
 		initialize();
 	}
 

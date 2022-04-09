@@ -1,8 +1,6 @@
-import java.awt.EventQueue;
+package gui;
 
 import java.util.ArrayList;
-
-import gui.SetupScreen;
 import monsters.*;
 import player.Player;
 
