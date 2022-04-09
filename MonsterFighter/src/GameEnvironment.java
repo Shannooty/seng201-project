@@ -2,6 +2,7 @@ import java.awt.EventQueue;
 
 import java.util.ArrayList;
 
+import gui.SetupScreen;
 import monsters.*;
 import player.Player;
 
@@ -12,7 +13,11 @@ class  GameEnvironment {
 	private Player player;
 	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
 
-
+	
+	public GameEnvironment() {
+		setStartingMonsters();
+	}
+	
 	public int getgameLength() {
 		return gameLength;
 	}
@@ -47,12 +52,12 @@ class  GameEnvironment {
 	}
 	
 	public void launchSetUpScreen(){
-		//TODO create setupscreen class and pass the game through
+		SetupScreen setupScreen = new SetupScreen(this);
 	}
 
 	
 	public static void main(String[] args) {
-		SetupScreen game = new SetupScreen();
+		GameEnvironment game = new GameEnvironment();
 		game.launchSetUpScreen();
 	}
 	
