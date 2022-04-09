@@ -52,7 +52,7 @@ class  GameEnvironment {
 	public void launchSetUpScreen(){
 		SetupScreen setupScreen = new SetupScreen(this);
 	}
-
+	
 	
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
