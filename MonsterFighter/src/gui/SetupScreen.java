@@ -38,7 +38,6 @@ public class SetupScreen {
 
 	private GameEnvironment gameEnvironment;
 	private Player player;
-	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
 	private int gameLength;
 	private String difficulty;
 	private JTextField username;
