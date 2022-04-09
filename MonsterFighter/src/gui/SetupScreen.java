@@ -78,7 +78,15 @@ public class SetupScreen {
 		initialize();
 		frmSetup.setVisible(true);
 	}
-
+	
+	public void closeWindow() {
+		frmSetup.dispose();
+	}
+	
+	public void finishedWindow() {
+		gameEnvironment.closeSetupScreen(this);
+	}
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
