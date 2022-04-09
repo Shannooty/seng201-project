@@ -49,14 +49,17 @@ class  GameEnvironment {
 		startingMonsters.add(new Skeleton());
 	}
 	
-	public void launchSetUpScreen(){
+	public void launchSetupScreen(){
 		SetupScreen setupScreen = new SetupScreen(this);
 	}
 	
+	public void closeSetupScreen(SetupScreen setupWindow) {
+		setupWindow.closeWindow();
+	}
 	
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
-		game.launchSetUpScreen();
+		game.launchSetupScreen();
 	}
 	
 	
