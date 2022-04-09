@@ -41,6 +41,9 @@ class  GameEnvironment {
 		this.player = player;
 	}
 	
+	public ArrayList<Monster> getStartingMonsters(){
+		return startingMonsters;
+	}
 	
 	private void setStartingMonsters() {
 		startingMonsters.add(new Slime());
