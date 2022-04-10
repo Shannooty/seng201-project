@@ -2,7 +2,6 @@ package gui;
 import java.awt.EventQueue;
 
 import java.util.ArrayList;
-
 import monsters.*;
 import player.Player;
 
@@ -32,7 +31,7 @@ import javax.swing.JSpinner;
 
 
 //testing
-public class SetupScreen {
+public class SetupScreen extends JFrame {
 
 	private JFrame frmSetup;
 
@@ -96,7 +95,10 @@ public class SetupScreen {
 		frmSetup.setBounds(100, 100, 850, 570);
 		frmSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetup.getContentPane().setLayout(null);
-		
+		ImageCarousel images = new ImageCarousel();
+		images.setSize(290, 185);
+		images.setLocation(287, 205);
+		frmSetup.getContentPane().add(images);
 		
 		JLabel lblUsername = new JLabel("Please choose a username:");
 		lblUsername.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -114,7 +116,6 @@ public class SetupScreen {
 		frmSetup.getContentPane().add(lblHowManyDays);
 		
 		
-		
 		JSlider gameLengthSlider = new JSlider(JSlider.HORIZONTAL, 3, 15, 9);
 		gameLengthSlider.setBounds(287, 108, 200, 43);
 		gameLengthSlider.setMajorTickSpacing(3);
@@ -124,33 +125,6 @@ public class SetupScreen {
 		frmSetup.getContentPane().add(gameLengthSlider);
 
 
-		
-		
-		
-//		https://www.youtube.com/watch?v=3c0QZit2ObY
-		
-//		String images[] = {"C:/Users/cal135/Desktop/index.png", "C:/Users/cal135/Desktop/inde1x.png"};
-//
-//		JLabel pic = new JLabel();
-//        pic.setBounds(40, 30, 700, 300);
-//		
-//		JPanel monsterPanel = new JPanel();
-//		monsterPanel.setBounds(287, 190, 183, 184);
-//		frmSetup.getContentPane().add(monsterPanel);
-//		JButton forward = new JButton(">");
-//		JButton back = new JButton("<");
-//		monsterPanel.add(forward);
-//		monsterPanel.add(back);
-		
-//		images[0] = new ImageIcon("https://itstabletoptime.fandom.com/wiki/Berri_Bobbins?file=Default.jpg");
-//	    JLabel l = new JLabel("",JLabel.CENTER); 
-//	    l.setIcon(images[0]);
-	
-		
-
-		
-		
-		
 		JButton btnNext = new JButton("Next");
 		btnNext.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
