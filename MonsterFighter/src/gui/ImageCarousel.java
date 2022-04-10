@@ -20,6 +20,21 @@ class ImageCarousel extends JPanel implements ActionListener {
 //	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	   
 	   JPanel panel = new JPanel();
+	   images = new ImageIcon[3]; 
+	   images[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"));
+	   images[1] = new ImageIcon(ImageCarousel.class.getResource("/images/index2.jpeg"));
+	   images[2] = new ImageIcon(ImageCarousel.class.getResource("/images/index1.png"));
+	   imageSpace = new JLabel("",JLabel.CENTER); 
+	   add(imageSpace,BorderLayout.CENTER);
+	   
+	   
+	   
+	   ImageIcon imageIcon = (images[0]); // load the image to a imageIcon
+	   Image image = imageIcon.getImage(); // transform it 
+	   Image scaledImg = image.getScaledInstance(210, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+	   imageIcon = new ImageIcon(scaledImg);  // transform it back
+	   imageSpace.setIcon(imageIcon);
+	   
 	   backwards=new JButton("<<");
 	   forwards=new JButton(">>");
 	   panel.add(backwards);
@@ -27,13 +42,6 @@ class ImageCarousel extends JPanel implements ActionListener {
 	   add(panel,BorderLayout.SOUTH);
 	   backwards.addActionListener(this);
 	   forwards.addActionListener(this);
-	   images = new ImageIcon[3]; 
-	   images[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"));
-	   images[1] = new ImageIcon(ImageCarousel.class.getResource("/images/index2.jpeg"));
-	   images[2] = new ImageIcon(ImageCarousel.class.getResource("/images/index1.png"));
-	   imageSpace = new JLabel("",JLabel.CENTER); 
-	   add(imageSpace,BorderLayout.CENTER);
-	   imageSpace.setIcon(images[0]);
 	   setVisible(true);
 	   
 //	   imageSpace.setIcon(new ImageIcon(images[1]));
@@ -67,7 +75,15 @@ class ImageCarousel extends JPanel implements ActionListener {
 	       }
 	   }
 //	   imageSpace.setIcon(new ImageIcon(images[index]));
-	   imageSpace.setIcon(images[index]);
+	   
+	   ImageIcon imageIcon = (images[index]); // load the image to a imageIcon
+	   Image image = imageIcon.getImage(); // transform it 
+	   Image scaledImg = image.getScaledInstance(210, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
+	   imageIcon = new ImageIcon(scaledImg);  // transform it back
+	   
+	   
+	   imageSpace.setIcon(imageIcon);
+	   
 	}
 	
 

@@ -96,7 +96,7 @@ public class SetupScreen extends JFrame {
 		frmSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetup.getContentPane().setLayout(null);
 		ImageCarousel images = new ImageCarousel();
-		images.setSize(290, 185);
+		images.setSize(290, 195);
 		images.setLocation(287, 205);
 		frmSetup.getContentPane().add(images);
 		
