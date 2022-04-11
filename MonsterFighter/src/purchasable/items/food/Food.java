@@ -3,7 +3,7 @@ package purchasable.items.food;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
 
-public class Food extends Item {
+public abstract class Food extends Item {
 	
 	private int healAmount;
 	
