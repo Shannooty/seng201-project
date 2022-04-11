@@ -23,6 +23,7 @@ public abstract class Monster implements Purchasable {
 	private Armor armorSlot = null;
 	private String imgPath;
 	private ImageIcon img;
+	private String monsterType;
 	
 	
 	public Monster(String name, int maxHealth, int attackAmount, int speed) {
@@ -97,6 +98,14 @@ public abstract class Monster implements Purchasable {
 	
 	public int getSpeed() {
 		return speed;
+	}
+	
+	public void setMonsterType(String type) {
+		monsterType = type;
+	}
+	
+	public String getMonsterType() {
+		return monsterType;
 	}
 	
 	public void addAttackAmount(int attackIncrease) {
