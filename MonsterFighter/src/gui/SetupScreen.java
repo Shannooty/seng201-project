@@ -197,7 +197,7 @@ public class SetupScreen {
 		});
 		btnNext.setBounds(637, 472, 117, 25);
 		frmSetup.getContentPane().add(btnNext);
-		
+		 
 	}
 }
 
