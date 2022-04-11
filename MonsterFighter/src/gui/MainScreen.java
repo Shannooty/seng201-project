@@ -4,9 +4,14 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -72,16 +77,16 @@ public class MainScreen {
 			
 			switch ((team.get(i)).getMonsterType()) {
 			  case "skeleton":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton1.png"), "skeleton");
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton1.png"), "skeleton:" + (team.get(i)).getName());
 			    break;
 			  case "slime":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime1.png"), "slime");
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime1.png"), "slime:" + (team.get(i)).getName());
 			    break;
 			  case "zombie":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie1.png"), "zombie");
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie1.png"), "zombie:" + (team.get(i)).getName());
 			    break;
 			  case "undeadGuard":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard1.png"), "undeadGuard");
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard1.png"), "undeadGuard:" + (team.get(i)).getName());
 			    break;
 			}
 			
@@ -175,6 +180,24 @@ public class MainScreen {
 		lblWelcomeUser.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblWelcomeUser.setBounds(10, 10, 180, 20);
 		frmMainscreen.getContentPane().add(lblWelcomeUser);
+		
+		
+		
+		JButton btnChangeMonsterName = new JButton("Change Monster Name");
+		btnChangeMonsterName.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				String monsterDescription = images.getImg();
+				String oldMonster = monsterDescription.substring(monsterDescription.indexOf(":") + 1);
+				String newMonsterName = JOptionPane.showInputDialog(frmMainscreen,"Enter a new name:", null);
+				
+				List<Monster> listOfMonsters = team.stream().filter(s -> oldMonster.equals(s.getName())).collect(Collectors.toList());
+				(listOfMonsters.get(0)).setName(newMonsterName);
+			}
+		});
+		btnChangeMonsterName.setBounds(341, 81, 222, 29);
+		frmMainscreen.getContentPane().add(btnChangeMonsterName);
+		
 	}
 	
 	
