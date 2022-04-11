@@ -179,5 +179,11 @@ public abstract class Monster extends Purchasable {
 	}
 	
 	
+	public String toString() {
+		String type = getMonsterType().replaceAll("([A-Z])", " $1");
+		type = type.substring(0, 1).toUpperCase() + type.substring(1);
+		return type + ": " + getName();
+	}
+	
 	
 }
