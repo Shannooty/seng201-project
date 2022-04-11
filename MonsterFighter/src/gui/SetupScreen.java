@@ -33,7 +33,6 @@ import javax.swing.SwingConstants;
 import javax.swing.JList;
 import javax.swing.JSpinner;
 
-
 //testing
 public class SetupScreen {
 
