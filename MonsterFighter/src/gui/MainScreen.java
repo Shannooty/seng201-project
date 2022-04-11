@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
@@ -22,6 +23,7 @@ public class MainScreen {
 	private ImageIcon imagesToUse[];
 	private ArrayList<Monster> team = Inventory.getTeam();
 	private GameEnvironment gameEnvironment;
+	private JLabel lblMonsterTotal;
 
 	/**
 	 * Create the application.
@@ -69,16 +71,16 @@ public class MainScreen {
 		for (int i = 0; i < team.size(); i++) {
 			
 			switch ((team.get(i)).getMonsterType()) {
-			  case "Skeleton":
+			  case "skeleton":
 				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton1.png"), "skeleton");
 			    break;
-			  case "Slime":
+			  case "slime":
 				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime1.png"), "slime");
 			    break;
-			  case "Zombie":
+			  case "zombie":
 				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie1.png"), "zombie");
 			    break;
-			  case "Undead Guard":
+			  case "undeadGuard":
 				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard1.png"), "undeadGuard");
 			    break;
 			}
@@ -89,13 +91,15 @@ public class MainScreen {
 		images.setSize(290, 195);
 		images.setLocation(72, 166);
 		frmMainscreen.getContentPane().add(images);
+//		ImageCarousel.backwards.addActionListener(images);
+//		ImageCarousel.forwards.addActionListener(images);
 		
 		
 		
 		JLabel lblGoldAmount = new JLabel("Amount of gold:");
 		lblGoldAmount.setText("Amount of gold: " + Double.toString(Player.getGoldAmount()));
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblGoldAmount.setBounds(10, 10, 180, 20);
+		lblGoldAmount.setBounds(10, 38, 180, 20);
 		frmMainscreen.getContentPane().add(lblGoldAmount);
 		
 //		JLabel lblGoldAmount = new JLabel();
@@ -108,7 +112,7 @@ public class MainScreen {
 		JLabel lblDayNumber = new JLabel();
 		lblDayNumber.setText("Day Number: " + Integer.toString(GameEnvironment.getDayNumber()));
 		lblDayNumber.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblDayNumber.setBounds(10, 40, 152, 20);
+		lblDayNumber.setBounds(10, 68, 152, 20);
 		frmMainscreen.getContentPane().add(lblDayNumber);
 		
 		JButton btnBattleSelect = new JButton("Select Battle");
@@ -128,7 +132,7 @@ public class MainScreen {
 		
 		JTextPane textPaneMonsterDescription = new JTextPane();
 		textPaneMonsterDescription.setFont(new Font("Tahoma", Font.BOLD, 16));
-		textPaneMonsterDescription.setText("Monster Description:\r\n\r\n\r\nHealth:\r\n\r\nDamage:\r\n\r\nItem(s):");
+		textPaneMonsterDescription.setText("Monster Description:\r\n\r\n\r\nName:\r\n\r\nHealth:\r\n\r\nDamage:\r\n\r\nItem(s):");
 		textPaneMonsterDescription.setBounds(480, 148, 281, 271);
 		frmMainscreen.getContentPane().add(textPaneMonsterDescription);
 		
@@ -165,5 +169,24 @@ public class MainScreen {
 		lblFwdSlsh.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblFwdSlsh.setBounds(238, 371, 5, 20);
 		frmMainscreen.getContentPane().add(lblFwdSlsh);
+		
+		JLabel lblWelcomeUser = new JLabel();
+		lblWelcomeUser.setText("Welcome, " + Player.getName());
+		lblWelcomeUser.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblWelcomeUser.setBounds(10, 10, 180, 20);
+		frmMainscreen.getContentPane().add(lblWelcomeUser);
 	}
+	
+	
+//	public void actionPerformed(ActionEvent e) {
+//		
+//		   if (e.getSource() == ImageCarousel.backwards) {
+//			   System.out.println("hello");
+//			   lblMonsterTotal.setText("hello" +Integer.toString(team.size()));
+//		       
+//		   } else if (e.getSource() == ImageCarousel.forwards) {
+//			   System.out.println("bye");
+//			   lblMonsterTotal.setText("bye" +Integer.toString(team.size()));
+//		   }
+//	}
 }

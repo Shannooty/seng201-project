@@ -8,7 +8,7 @@ import monsters.Monster;
 public class Player {
 	
 	
-	private String name;
+	private static String name;
 	private static double goldAmount = 0;
 	private int currentPoints = 0;
 	private Inventory inventory;
@@ -21,7 +21,7 @@ public class Player {
 	}
 	
 	
-	public String getName() {
+	public static String getName() {
 		return name;
 	}
 	

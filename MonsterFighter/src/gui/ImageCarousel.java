@@ -9,7 +9,8 @@ class ImageCarousel extends JPanel implements ActionListener {
 
 	private ImageIcon images[];
 	private JLabel imageSpace;
-	private JButton backwards,forwards;
+	static JButton backwards;
+	static JButton forwards;
 	private int index;
 	private JPanel panel;
 	private String curDescription;
