@@ -2,6 +2,8 @@ package shop;
 
 import java.util.ArrayList;
 
+import generators.ItemGenerator;
+import generators.MonsterGenerator;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
 
@@ -13,6 +15,8 @@ public class Shop {
 	private int numItems;
 	
 	public Shop(int numMonsters, int numItems) {
+		setNumMonsters(numMonsters);
+		setNumItems(numItems);
 		addMonsters();
 		addItems();
 	}
