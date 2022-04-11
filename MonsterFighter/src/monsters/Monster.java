@@ -25,16 +25,14 @@ public abstract class Monster implements Purchasable {
 	private ImageIcon img;
 	
 	
-//	If the monster class is abstract, we shouldn't need the constructor, because the class cannot be instantiated?
-	
-//	public Monster(String name, int maxHealth, int attackAmount, int speed) {
-//		setName(name);
-//		this.attackAmount = attackAmount;
-//		this.maxHealth = maxHealth;
-//		health = maxHealth;
-//		this.speed = speed;
-//		
-//	}
+	public Monster(String name, int maxHealth, int attackAmount, int speed) {
+		setName(name);
+		this.attackAmount = attackAmount;
+		this.maxHealth = maxHealth;
+		health = maxHealth;
+		this.speed = speed;
+		
+	}
 	
 	public void setName(String name) {
 		this.name = name;
