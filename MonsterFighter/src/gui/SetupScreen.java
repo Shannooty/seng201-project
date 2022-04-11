@@ -2,8 +2,11 @@ package gui;
 import java.awt.EventQueue;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Dictionary;
+
 import monsters.*;
-import player.Player;
+import player.*;
 
 import javax.swing.JFrame;
 import java.awt.FlowLayout;
@@ -24,6 +27,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.Hashtable;
+import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.JList;
@@ -40,24 +44,24 @@ public class SetupScreen extends JFrame {
 	private int gameLength;
 	private String difficulty;
 	private JTextField username;
+	private List<String> stringDifficulty = Arrays.asList("Easy", "Medium", "Hard");
 	
-	
-	
-	public int getgameLength() {
-		return gameLength;
-	}
-	
-	public void setGameLength(int game) {
-		gameLength = game;
-	}
-	
-	public String getGameDifficulty() {
-		return difficulty;
-	}
-	
-	public void setGameDifficulty(String gameDifficulty) {
-		difficulty = gameDifficulty;
-	}
+//	
+//	public int getgameLength() {
+//		return gameLength;
+//	}
+//	
+//	public void setGameLength(int game) {
+//		gameLength = game;
+//	}
+//	
+//	public String getGameDifficulty() {
+//		return difficulty;
+//	}
+//	
+//	public void setGameDifficulty(String gameDifficulty) {
+//		difficulty = gameDifficulty;
+//	}
 	
 	public Player getPlayer() {
 		return player;
@@ -97,27 +101,27 @@ public class SetupScreen extends JFrame {
 		frmSetup.getContentPane().setLayout(null);
 		ImageCarousel images = new ImageCarousel();
 		images.setSize(290, 195);
-		images.setLocation(287, 205);
+		images.setLocation(266, 195);
 		frmSetup.getContentPane().add(images);
 		
 		JLabel lblUsername = new JLabel("Please choose a username:");
 		lblUsername.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblUsername.setBounds(315, 14, 218, 26);
+		lblUsername.setBounds(297, 14, 218, 26);
 		frmSetup.getContentPane().add(lblUsername);
 		
 		username = new JTextField();
-		username.setBounds(328, 50, 162, 21);
+		username.setBounds(317, 50, 162, 21);
 		frmSetup.getContentPane().add(username);
 		username.setColumns(10);
 		
 		JLabel lblHowManyDays = new JLabel("How many days do you want to play?");
 		lblHowManyDays.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblHowManyDays.setBounds(307, 83, 226, 15);
+		lblHowManyDays.setBounds(289, 81, 226, 15);
 		frmSetup.getContentPane().add(lblHowManyDays);
 		
 		
 		JSlider gameLengthSlider = new JSlider(JSlider.HORIZONTAL, 3, 15, 9);
-		gameLengthSlider.setBounds(287, 108, 200, 43);
+		gameLengthSlider.setBounds(297, 106, 200, 43);
 		gameLengthSlider.setMajorTickSpacing(3);
 		gameLengthSlider.setMinorTickSpacing(1);
 		gameLengthSlider.setPaintTicks(true);
@@ -125,23 +129,49 @@ public class SetupScreen extends JFrame {
 		frmSetup.getContentPane().add(gameLengthSlider);
 
 
-		JButton btnNext = new JButton("Next");
-		btnNext.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setGameLength(gameLengthSlider.getValue());
-			}
-		});
-		btnNext.setBounds(595, 465, 117, 25);
-		frmSetup.getContentPane().add(btnNext);
 		
 		JLabel lblSelectMonster = new JLabel("Please select a monster:");
-		lblSelectMonster.setBounds(287, 170, 200, 15);
+		lblSelectMonster.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblSelectMonster.setBounds(315, 170, 200, 15);
 		frmSetup.getContentPane().add(lblSelectMonster);
 		
 		JLabel lblChooseDifficulty = new JLabel("Choose difficulty:");
+		lblChooseDifficulty.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblChooseDifficulty.setBounds(328, 400, 142, 19);
 		frmSetup.getContentPane().add(lblChooseDifficulty);
 		
+		JSlider gameDifficultySlider = new JSlider(SwingConstants.HORIZONTAL, 1, 3, 2);
+		gameDifficultySlider.setPaintTicks(true);
+		
+		Hashtable<Integer, JLabel> difficultyLabels = new Hashtable<>();
+		difficultyLabels.put(1, new JLabel("Easy"));
+		difficultyLabels.put(2, new JLabel("Medium"));
+		difficultyLabels.put(3, new JLabel("Hard"));
+        gameDifficultySlider.setLabelTable(difficultyLabels);
+		
+		gameDifficultySlider.setPaintLabels(true);
+		gameDifficultySlider.setMinorTickSpacing(1);
+		gameDifficultySlider.setMajorTickSpacing(1);
+		gameDifficultySlider.setBounds(297, 429, 200, 43);
+		frmSetup.getContentPane().add(gameDifficultySlider);
+
+		
+
+		JButton btnNext = new JButton("Next");
+		btnNext.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				GameEnvironment.setGameLength(gameLengthSlider.getValue());
+				GameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()));
+				
+				Skeleton sjeleton = new Skeleton();
+				
+				Player player = new Player(username.getText(), sjeleton);
+				Player.setName(username.getText());
+				System.out.println(images.getImg());
+			}
+		});
+		btnNext.setBounds(637, 472, 117, 25);
+		frmSetup.getContentPane().add(btnNext);
 		
 	}
 }

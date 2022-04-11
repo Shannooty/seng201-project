@@ -6,8 +6,8 @@ import player.Player;
 
 class  GameEnvironment {
 
-	private int gameLength;
-	private String difficulty;
+	private static int gameLength;
+	private static String difficulty;
 	private Player player;
 	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
 
@@ -20,7 +20,7 @@ class  GameEnvironment {
 		return gameLength;
 	}
 	
-	public void setGameLength(int game) {
+	public static void setGameLength(int game) {
 		gameLength = game;
 	}
 	
@@ -28,7 +28,7 @@ class  GameEnvironment {
 		return difficulty;
 	}
 	
-	public void setGameDifficulty(String gameDifficulty) {
+	public static void setGameDifficulty(String gameDifficulty) {
 		difficulty = gameDifficulty;
 	}
 	

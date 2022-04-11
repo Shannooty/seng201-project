@@ -12,6 +12,7 @@ class ImageCarousel extends JPanel implements ActionListener {
 	private JButton backwards,forwards;
 	private int index;
 	private JPanel panel;
+	private String curDescription;
 	
 	
 	public ImageCarousel() {
@@ -21,9 +22,9 @@ class ImageCarousel extends JPanel implements ActionListener {
 	   
 	   JPanel panel = new JPanel();
 	   images = new ImageIcon[3]; 
-	   images[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"));
-	   images[1] = new ImageIcon(ImageCarousel.class.getResource("/images/index2.jpeg"));
-	   images[2] = new ImageIcon(ImageCarousel.class.getResource("/images/index1.png"));
+	   images[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
+	   images[1] = new ImageIcon(ImageCarousel.class.getResource("/images/index2.jpeg"), "index2");
+	   images[2] = new ImageIcon(ImageCarousel.class.getResource("/images/index1.png"), "index1");
 	   imageSpace = new JLabel("",JLabel.CENTER); 
 	   add(imageSpace,BorderLayout.CENTER);
 	   
@@ -74,10 +75,16 @@ class ImageCarousel extends JPanel implements ActionListener {
 	    	   index = index+1;
 	       }
 	   }
+	   curDescription = images[index].getDescription();
+	   
 //	   imageSpace.setIcon(new ImageIcon(images[index]));
 	   
 	   ImageIcon imageIcon = (images[index]); // load the image to a imageIcon
 	   Image image = imageIcon.getImage(); // transform it 
+	   String thing = (imageIcon.toString());
+//	   thing = thing.substring(thing.indexOf("images/") + 7);
+//	   
+//	   System.out.println(thing);
 	   Image scaledImg = image.getScaledInstance(210, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 	   imageIcon = new ImageIcon(scaledImg);  // transform it back
 	   
@@ -85,6 +92,16 @@ class ImageCarousel extends JPanel implements ActionListener {
 	   imageSpace.setIcon(imageIcon);
 	   
 	}
+	
+	public String getImg() {
+		return curDescription;
+	}
+
+//	
+//	public static void main(String[] args) {
+//		ImageCarousel obj = new ImageCarousel();
+//	}
+
 	
 
 }

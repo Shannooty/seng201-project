@@ -8,7 +8,7 @@ import monsters.Monster;
 public class Player {
 	
 	
-	private String name;
+	private static String name;
 	private double goldAmount = 0;
 	private int currentPoints = 0;
 	private Inventory inventory;
@@ -26,7 +26,7 @@ public class Player {
 	}
 	
 	
-	private void setName(String newName) {
+	public static void setName(String newName) {
 		name = newName;
 	}
 	
