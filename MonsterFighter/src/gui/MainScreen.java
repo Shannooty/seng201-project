@@ -149,6 +149,13 @@ public class MainScreen {
 
 		
 		JButton btnSleep = new JButton("Sleep");
+		btnSleep.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				GameEnvironment.increaseDayNumber();
+				gameEnvironment.launchSleepScreen();
+				finishedWindow();
+			}
+		});
 		btnSleep.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnSleep.setBounds(741, 483, 85, 26);
 		frmMainscreen.getContentPane().add(btnSleep);
