@@ -38,7 +38,7 @@ import javax.swing.JSpinner;
 public class SetupScreen extends JFrame {
 
 	private JFrame frmSetup;
-
+	Monster startingMonster;
 	private GameEnvironment gameEnvironment;
 	private Player player;
 	private int gameLength;
@@ -163,11 +163,22 @@ public class SetupScreen extends JFrame {
 				GameEnvironment.setGameLength(gameLengthSlider.getValue());
 				GameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()));
 				
-				Skeleton sjeleton = new Skeleton();
+				switch (images.getImg()) {
+				  case "skeleton":
+					startingMonster = new Skeleton();
+				    break;
+				  case "slime":
+					startingMonster = new Slime();
+				    break;
+				  case "zombie":
+					startingMonster = new Zombie();
+				    break;
+				  case "undeadGuard":
+					startingMonster = new UndeadGuard();
+				    break;
+				}
 				
-				Player player = new Player(username.getText(), sjeleton);
-				Player.setName(username.getText());
-				System.out.println(images.getImg());
+				Player player = new Player(username.getText(), startingMonster);
 			}
 		});
 		btnNext.setBounds(637, 472, 117, 25);
