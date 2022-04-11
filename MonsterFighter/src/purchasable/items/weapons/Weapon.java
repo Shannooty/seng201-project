@@ -3,7 +3,7 @@ package purchasable.items.weapons;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
 
-public class Weapon extends Item {
+public abstract class Weapon extends Item {
 	
 	private int attackIncrease;
 	

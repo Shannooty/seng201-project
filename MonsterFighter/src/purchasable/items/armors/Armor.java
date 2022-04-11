@@ -3,7 +3,7 @@ package purchasable.items.armors;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
 
-public class Armor extends Item {
+public abstract class Armor extends Item {
 	
 	private int maxHealthIncrease;
 	private int armorIncrease;
