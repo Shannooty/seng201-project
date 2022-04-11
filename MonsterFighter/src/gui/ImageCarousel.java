@@ -13,7 +13,7 @@ class ImageCarousel extends JPanel implements ActionListener {
 	static JButton forwards;
 	private int index;
 	private JPanel panel;
-	private String curDescription;
+	private String currDescription;
 	
 	
 	public ImageCarousel(ImageIcon[] givenImages) {
@@ -40,7 +40,7 @@ class ImageCarousel extends JPanel implements ActionListener {
 	   Image scaledImg = image.getScaledInstance(210, 150,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way  
 	   imageIcon = new ImageIcon(scaledImg);  // transform it back
 	   imageSpace.setIcon(imageIcon);
-	   curDescription = images[0].getDescription();
+	   currDescription = images[0].getDescription();
 	   
 	   backwards=new JButton("<<");
 	   forwards=new JButton(">>");
@@ -81,7 +81,7 @@ class ImageCarousel extends JPanel implements ActionListener {
 	    	   index = index+1;
 	       }
 	   }
-	   curDescription = images[index].getDescription();
+	   currDescription = images[index].getDescription();
 	   
 //	   imageSpace.setIcon(new ImageIcon(images[index]));
 	   
@@ -100,7 +100,7 @@ class ImageCarousel extends JPanel implements ActionListener {
 	}
 	
 	public String getImg() {
-		return curDescription;
+		return currDescription;
 	}
 
 //	
