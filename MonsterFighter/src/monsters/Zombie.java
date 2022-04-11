@@ -7,6 +7,7 @@ public class Zombie extends Monster {
 		setImgPath("/images/zombie.png");
 		setImg();
 		setHealAmount(300);
+		setMonsterType("Zombie");
 	}
 	
 }

@@ -9,6 +9,7 @@ public class Skeleton extends Monster {
 		setImgPath("/images/skeleton.png");
 		setImg();
 		setHealAmount(200);
+		setMonsterType("Skeleton");
 	}
 	
 }

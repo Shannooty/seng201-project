@@ -8,6 +8,7 @@ public class UndeadGuard extends Monster {
 		setImg();
 		setHealAmount(400);
 		addArmorAmount(100);
+		setMonsterType("Undead Guard");
 	}
 	
 }

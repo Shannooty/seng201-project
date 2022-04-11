@@ -7,5 +7,6 @@ public class Slime extends Monster {
 		setImgPath("/images/slime.png");
 		setImg();
 		setHealAmount(300);
+		setMonsterType("Slime");
 	}
 }
