@@ -9,6 +9,7 @@ class  GameEnvironment {
 	private static int gameLength;
 	private static String difficulty;
 	private Player player;
+	private static int dayNumber = 1;
 	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
 
 	
@@ -30,6 +31,14 @@ class  GameEnvironment {
 	
 	public static void setGameDifficulty(String gameDifficulty) {
 		difficulty = gameDifficulty;
+	}
+	
+	public static int getDayNumber() {
+		return dayNumber;
+	}
+	
+	public void increaseDayNumber() {
+		dayNumber += 1;
 	}
 	
 	public Player getPlayer() {

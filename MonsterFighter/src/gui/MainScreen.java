@@ -13,6 +13,7 @@ import javax.swing.JTextPane;
 
 import inventory.Inventory;
 import monsters.*;
+import player.*;
 import javax.swing.JEditorPane;
 
 public class MainScreen {
@@ -42,9 +43,7 @@ public class MainScreen {
 	/**
 	 * Create the application.
 	 */
-	public MainScreen() {
-		initialize();
-	}
+
 
 	/**
 	 * Initialize the contents of the frame.
@@ -71,16 +70,16 @@ public class MainScreen {
 			
 			switch ((team.get(i)).getMonsterType()) {
 			  case "Skeleton":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton1.png"), "skeleton");
 			    break;
 			  case "Slime":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime.png"), "slime");
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime1.png"), "slime");
 			    break;
 			  case "Zombie":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), "zombie");
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie1.png"), "zombie");
 			    break;
 			  case "Undead Guard":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undeadGuard.png"), "undeadGuard");
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard1.png"), "undeadGuard");
 			    break;
 			}
 			
@@ -93,15 +92,24 @@ public class MainScreen {
 		
 		
 		
-		JLabel lblGoldAmountText = new JLabel("Amount of gold:");
-		lblGoldAmountText.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblGoldAmountText.setBounds(10, 10, 154, 20);
-		frmMainscreen.getContentPane().add(lblGoldAmountText);
+		JLabel lblGoldAmount = new JLabel("Amount of gold:");
+		lblGoldAmount.setText("Amount of gold: " + Double.toString(Player.getGoldAmount()));
+		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblGoldAmount.setBounds(10, 10, 180, 20);
+		frmMainscreen.getContentPane().add(lblGoldAmount);
 		
-		JLabel lblDayNumberText = new JLabel("Day number:");
-		lblDayNumberText.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblDayNumberText.setBounds(10, 40, 105, 20);
-		frmMainscreen.getContentPane().add(lblDayNumberText);
+//		JLabel lblGoldAmount = new JLabel();
+//		lblGoldAmount.setText(Double.toString(Player.getGoldAmount()));
+//		lblGoldAmount.setFont(new Font("Tahoma", Font.ITALIC, 16));
+//		lblGoldAmount.setBounds(145, 10, 45, 20);
+//		frmMainscreen.getContentPane().add(lblGoldAmount);
+		
+		
+		JLabel lblDayNumber = new JLabel();
+		lblDayNumber.setText("Day Number: " + Integer.toString(GameEnvironment.getDayNumber()));
+		lblDayNumber.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblDayNumber.setBounds(10, 40, 152, 20);
+		frmMainscreen.getContentPane().add(lblDayNumber);
 		
 		JButton btnBattleSelect = new JButton("Select Battle");
 		btnBattleSelect.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -124,15 +132,12 @@ public class MainScreen {
 		textPaneMonsterDescription.setBounds(480, 148, 281, 271);
 		frmMainscreen.getContentPane().add(textPaneMonsterDescription);
 		
-		JLabel lblDayNumber = new JLabel("N/A");
-		lblDayNumber.setFont(new Font("Tahoma", Font.ITALIC, 16));
-		lblDayNumber.setBounds(119, 40, 45, 20);
-		frmMainscreen.getContentPane().add(lblDayNumber);
+//		JLabel lblDayNumber = new JLabel("N/A");
+//		lblDayNumber.setFont(new Font("Tahoma", Font.ITALIC, 16));
+//		lblDayNumber.setBounds(119, 40, 45, 20);
+//		frmMainscreen.getContentPane().add(lblDayNumber);
 		
-		JLabel lblGoldAmount = new JLabel("N/A");
-		lblGoldAmount.setFont(new Font("Tahoma", Font.ITALIC, 16));
-		lblGoldAmount.setBounds(145, 10, 45, 20);
-		frmMainscreen.getContentPane().add(lblGoldAmount);
+
 		
 		JButton btnSleep = new JButton("Sleep");
 		btnSleep.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -144,7 +149,7 @@ public class MainScreen {
 		lblCarouselCounter.setBounds(136, 371, 54, 20);
 		frmMainscreen.getContentPane().add(lblCarouselCounter);
 		
-		JLabel lblMonsterNum = new JLabel("N/A");
+		JLabel lblMonsterNum = new JLabel();
 		lblMonsterNum.setText(images.getImg());
 		lblMonsterNum.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblMonsterNum.setBounds(188, 371, 40, 20);

@@ -9,7 +9,7 @@ public class Player {
 	
 	
 	private String name;
-	private double goldAmount = 0;
+	private static double goldAmount = 0;
 	private int currentPoints = 0;
 	private Inventory inventory;
 //	private Team team;
@@ -30,7 +30,7 @@ public class Player {
 		name = newName;
 	}
 	
-	public double getGoldAmount() {
+	public static double getGoldAmount() {
 		return goldAmount;
 	}
 	
