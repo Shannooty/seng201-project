@@ -13,6 +13,7 @@ import javax.swing.JTextPane;
 
 import inventory.Inventory;
 import monsters.*;
+import javax.swing.JEditorPane;
 
 public class MainScreen {
 
@@ -53,21 +54,40 @@ public class MainScreen {
 		frmMainscreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainscreen.getContentPane().setLayout(null);
 		
+		
+//		For initial testing:
+//		------------------------------------------------------------
 		Skeleton startingMonster = new Skeleton();
 		Slime mobster = new Slime();
 		Inventory.addMonster(startingMonster);
 		Inventory.addMonster(mobster);
+//		------------------------------------------------------------
+		
+		imagesToUse = new ImageIcon[team.size()]; 
+		
 		for (int i = 0; i < team.size(); i++) {
 			
+			switch ((team.get(i)).getMonsterType()) {
+			  case "Skeleton":
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
+			    break;
+			  case "Slime":
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime.png"), "slime");
+			    break;
+			  case "Zombie":
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), "zombie");
+			    break;
+			  case "Undead Guard":
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undeadGuard.png"), "undeadGuard");
+			    break;
+			}
 			
-			System.out.println(team.get(i));
-			System.out.println((team.get(i)).getClass());
 		}
 		
-//		ImageCarousel images = new ImageCarousel();
-//		images.setSize(290, 195);
-//		images.setLocation(266, 195);
-//		frmMainscreen.getContentPane().add(images);
+		ImageCarousel images = new ImageCarousel(imagesToUse);
+		images.setSize(290, 195);
+		images.setLocation(72, 166);
+		frmMainscreen.getContentPane().add(images);
 		
 		
 		
@@ -111,5 +131,32 @@ public class MainScreen {
 		lblGoldAmount.setFont(new Font("Tahoma", Font.ITALIC, 16));
 		lblGoldAmount.setBounds(145, 10, 45, 20);
 		frmMainscreen.getContentPane().add(lblGoldAmount);
+		
+		JButton btnSleep = new JButton("Sleep");
+		btnSleep.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnSleep.setBounds(741, 483, 85, 26);
+		frmMainscreen.getContentPane().add(btnSleep);
+		
+		JLabel lblCarouselCounter = new JLabel("Monster: ");
+		lblCarouselCounter.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblCarouselCounter.setBounds(136, 371, 54, 20);
+		frmMainscreen.getContentPane().add(lblCarouselCounter);
+		
+		JLabel lblMonsterNum = new JLabel("N/A");
+		lblMonsterNum.setText(images.getImg());
+		lblMonsterNum.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblMonsterNum.setBounds(188, 371, 40, 20);
+		frmMainscreen.getContentPane().add(lblMonsterNum);
+		
+		JLabel lblMonsterTotal = new JLabel();
+		lblMonsterTotal.setText(Integer.toString(team.size()));
+		lblMonsterTotal.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblMonsterTotal.setBounds(253, 371, 22, 20);
+		frmMainscreen.getContentPane().add(lblMonsterTotal);
+		
+		JLabel lblFwdSlsh = new JLabel("/");
+		lblFwdSlsh.setFont(new Font("Tahoma", Font.PLAIN, 13));
+		lblFwdSlsh.setBounds(238, 371, 5, 20);
+		frmMainscreen.getContentPane().add(lblFwdSlsh);
 	}
 }
