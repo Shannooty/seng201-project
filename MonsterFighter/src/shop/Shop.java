@@ -21,14 +21,14 @@ public class Shop {
 		addItems();
 	}
 	
-	private void addMonsters() {
+	public void addMonsters() {
 		for (int i = 0; i < getNumMonsters(); i++) {
 			Monster newMonster = MonsterGenerator.newMonster();
 			avalibleMonsters.add(newMonster);
 		}
 	}
 	
-	private void addItems() {
+	public void addItems() {
 		for (int i = 0; i < getNumItems(); i++) {
 			Item newItem = ItemGenerator.newItem();
 			avalibleItems.add(newItem);
