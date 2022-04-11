@@ -87,7 +87,7 @@ class ImageCarousel extends JPanel implements ActionListener {
 	   
 	   ImageIcon imageIcon = (images[index]); // load the image to a imageIcon
 	   Image image = imageIcon.getImage(); // transform it 
-	   String thing = (imageIcon.toString());
+//	   String thing = (imageIcon.toString());
 //	   thing = thing.substring(thing.indexOf("images/") + 7);
 //	   
 //	   System.out.println(thing);

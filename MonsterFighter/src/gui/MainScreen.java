@@ -195,7 +195,7 @@ public class MainScreen {
 				(listOfMonsters.get(0)).setName(newMonsterName);
 			}
 		});
-		btnChangeMonsterName.setBounds(341, 81, 222, 29);
+		btnChangeMonsterName.setBounds(100, 390, 222, 29);
 		frmMainscreen.getContentPane().add(btnChangeMonsterName);
 		
 	}
