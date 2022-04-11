@@ -1,8 +1,9 @@
 package shop;
 
 import java.util.ArrayList;
-import items.Item;
-import monsters.Monster;
+
+import purchasable.items.Item;
+import purchasable.monsters.Monster;
 
 public class Shop {
 	

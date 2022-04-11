@@ -1,8 +1,9 @@
-package items;
+package purchasable.items;
 
-import monsters.*;
+import purchasable.Purchasable;
+import purchasable.monsters.*;
 
-public abstract class Item {
+public abstract class Item extends Purchasable {
 	private String itemName;
 	
 	public Item(String name) {

@@ -4,7 +4,7 @@ import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Random;
 
-import monsters.Monster;
+import purchasable.monsters.Monster;
 
 public class RandomEvent {
 	

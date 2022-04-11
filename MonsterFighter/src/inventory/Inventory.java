@@ -1,7 +1,8 @@
 package inventory;
 import java.util.ArrayList;
-import items.*;
-import monsters.*;
+
+import purchasable.items.*;
+import purchasable.monsters.*;
 
 public class Inventory {
 	

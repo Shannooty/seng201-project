@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Dictionary;
 
-import monsters.*;
 import player.*;
+import purchasable.monsters.*;
 
 import javax.swing.JFrame;
 import java.awt.FlowLayout;

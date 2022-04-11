@@ -3,7 +3,7 @@ package player;
 import exceptions.InsufficientGoldException;
 import exceptions.NegativeValueException;
 import inventory.Inventory;
-import monsters.Monster;
+import purchasable.monsters.Monster;
 
 public class Player {
 	

@@ -1,4 +1,4 @@
-package monsters;
+package purchasable.monsters;
 
 public class UndeadGuard extends Monster {
 	

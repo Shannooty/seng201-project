@@ -1,8 +1,9 @@
 package gui;
 
 import java.util.ArrayList;
-import monsters.*;
+
 import player.Player;
+import purchasable.monsters.*;
 
 class  GameEnvironment {
 

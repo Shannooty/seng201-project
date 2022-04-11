@@ -18,8 +18,9 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 
 import inventory.Inventory;
-import monsters.*;
 import player.*;
+import purchasable.monsters.*;
+
 import javax.swing.JEditorPane;
 
 public class MainScreen {

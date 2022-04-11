@@ -1,7 +1,7 @@
-package items.weapons;
+package purchasable.items.weapons;
 
-import items.Item;
-import monsters.Monster;
+import purchasable.items.Item;
+import purchasable.monsters.Monster;
 
 public class Weapon extends Item {
 	

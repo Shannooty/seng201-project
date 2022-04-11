@@ -1,15 +1,14 @@
-package monsters;
-
-import items.armors.Armor;
+package purchasable.monsters;
 
 import javax.swing.ImageIcon;
 
-import interfaces.Purchasable;
-import items.weapons.Weapon;
+import purchasable.Purchasable;
+import purchasable.items.armors.Armor;
+import purchasable.items.weapons.Weapon;
 
 
 
-public abstract class Monster implements Purchasable {
+public abstract class Monster extends Purchasable {
 	
 	private String name;
 	private int health;
@@ -165,54 +164,6 @@ public abstract class Monster implements Purchasable {
 		removeArmorAmount(armor.getArmorIncrease());
 		
 		return armor;
-	}
-
-	@Override
-	public void buy() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void sell() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public double getPurchasePrice() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getSellPrice() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double getDescription() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setDescription(String description) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setPurchasePrice(double price) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void setSellBackPrice(double price) {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public ImageIcon getImg() {
