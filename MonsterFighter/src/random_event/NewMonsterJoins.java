@@ -1,9 +1,7 @@
 package random_event;
 import java.util.Random;
-import monsters.AvalibleMonsters;
-import monsters.Monster;
-import monsters.Skeleton;
-import monsters.*;
+
+import purchasable.monsters.*;
 
 
 

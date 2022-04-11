@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Random;
 import inventory.Inventory;
 
-import monsters.Monster;
+import purchasable.monsters.Monster;
 
 public class RandomEvent {
 	

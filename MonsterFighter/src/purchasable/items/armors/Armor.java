@@ -1,7 +1,7 @@
-package items.armors;
+package purchasable.items.armors;
 
-import items.Item;
-import monsters.Monster;
+import purchasable.items.Item;
+import purchasable.monsters.Monster;
 
 public class Armor extends Item {
 	
