@@ -24,7 +24,7 @@ public class Inventory {
 		team.remove(monster);
 	}
 	
-	public void addMonster(Monster monster) {
+	public static void addMonster(Monster monster) {
 		team.add(monster);
 	}
 	
@@ -32,7 +32,7 @@ public class Inventory {
 		return ownedItems;
 	}
 	
-	public ArrayList<Monster> getTeam(){
+	public static ArrayList<Monster> getTeam(){
 		return team;
 	}
 }

@@ -35,7 +35,7 @@ import javax.swing.JSpinner;
 
 
 //testing
-public class SetupScreen extends JFrame {
+public class SetupScreen {
 
 	private JFrame frmSetup;
 	Monster startingMonster;
@@ -44,6 +44,7 @@ public class SetupScreen extends JFrame {
 	private int gameLength;
 	private String difficulty;
 	private JTextField username;
+	private ImageIcon imagesToUse[];
 	private List<String> stringDifficulty = Arrays.asList("Easy", "Medium", "Hard");
 	
 //	
@@ -99,7 +100,16 @@ public class SetupScreen extends JFrame {
 		frmSetup.setBounds(100, 100, 850, 570);
 		frmSetup.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSetup.getContentPane().setLayout(null);
-		ImageCarousel images = new ImageCarousel();
+		
+		
+		imagesToUse = new ImageIcon[4]; 
+		imagesToUse[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
+		imagesToUse[1] = new ImageIcon(ImageCarousel.class.getResource("/images/index2.jpeg"), "slime");
+		imagesToUse[2] = new ImageIcon(ImageCarousel.class.getResource("/images/index1.png"), "zombie");
+		imagesToUse[3] = new ImageIcon(ImageCarousel.class.getResource("/images/index1.png"), "undeadGuards");
+		
+		
+		ImageCarousel images = new ImageCarousel(imagesToUse);
 		images.setSize(290, 195);
 		images.setLocation(266, 195);
 		frmSetup.getContentPane().add(images);

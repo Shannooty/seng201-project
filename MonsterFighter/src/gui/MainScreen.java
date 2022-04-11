@@ -5,12 +5,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
+import java.util.ArrayList;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
+
+import inventory.Inventory;
+import monsters.*;
 
 public class MainScreen {
 
 	private JFrame frmMainscreen;
+	private ImageIcon imagesToUse[];
+	private ArrayList<Monster> team = Inventory.getTeam();
 
 	/**
 	 * Launch the application.
@@ -45,10 +53,21 @@ public class MainScreen {
 		frmMainscreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainscreen.getContentPane().setLayout(null);
 		
-		ImageCarousel images = new ImageCarousel();
-		images.setSize(290, 195);
-		images.setLocation(266, 195);
-		frmMainscreen.getContentPane().add(images);
+		Skeleton startingMonster = new Skeleton();
+		Slime mobster = new Slime();
+		Inventory.addMonster(startingMonster);
+		Inventory.addMonster(mobster);
+		for (int i = 0; i < team.size(); i++) {
+			
+			
+			System.out.println(team.get(i));
+			System.out.println((team.get(i)).getClass());
+		}
+		
+//		ImageCarousel images = new ImageCarousel();
+//		images.setSize(290, 195);
+//		images.setLocation(266, 195);
+//		frmMainscreen.getContentPane().add(images);
 		
 		
 		

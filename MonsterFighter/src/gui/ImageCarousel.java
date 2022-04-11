@@ -15,17 +15,20 @@ class ImageCarousel extends JPanel implements ActionListener {
 	private String curDescription;
 	
 	
-	public ImageCarousel() {
+	public ImageCarousel(ImageIcon[] givenImages) {
 //	   setLayout(new BorderLayout( ));
 //	   setSize(800, 700);
 //	   setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	   
 	   JPanel panel = new JPanel();
-	   images = new ImageIcon[4]; 
-	   images[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
-	   images[1] = new ImageIcon(ImageCarousel.class.getResource("/images/index2.jpeg"), "slime");
-	   images[2] = new ImageIcon(ImageCarousel.class.getResource("/images/index1.png"), "zombie");
-	   images[3] = new ImageIcon(ImageCarousel.class.getResource("/images/index1.png"), "undeadGuards");
+//	   images = new ImageIcon[4]; 
+//	   images[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
+//	   images[1] = new ImageIcon(ImageCarousel.class.getResource("/images/index2.jpeg"), "slime");
+//	   images[2] = new ImageIcon(ImageCarousel.class.getResource("/images/index1.png"), "zombie");
+//	   images[3] = new ImageIcon(ImageCarousel.class.getResource("/images/index1.png"), "undeadGuards");
+	   
+	   
+	   images = givenImages;
 	   imageSpace = new JLabel("",JLabel.CENTER); 
 	   add(imageSpace,BorderLayout.CENTER);
 	   
