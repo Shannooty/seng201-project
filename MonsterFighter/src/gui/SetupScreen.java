@@ -189,6 +189,11 @@ public class SetupScreen {
 				}
 				
 				Player player = new Player(username.getText(), startingMonster);
+				
+				gameEnvironment.launchMainScreen();
+				finishedWindow();
+				
+				
 			}
 		});
 		btnNext.setBounds(637, 472, 117, 25);

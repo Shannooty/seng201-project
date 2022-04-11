@@ -60,6 +60,15 @@ class  GameEnvironment {
 		setupWindow.closeWindow();
 	}
 	
+	public void launchMainScreen(){
+		MainScreen mainScreen = new MainScreen(this);
+	}
+	
+	public void closeMainScreen(MainScreen mainWindow) {
+		mainWindow.closeWindow();
+	}
+	
+	
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
 		game.launchSetupScreen();

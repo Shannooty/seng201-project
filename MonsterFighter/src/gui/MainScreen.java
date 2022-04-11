@@ -20,21 +20,23 @@ public class MainScreen {
 	private JFrame frmMainscreen;
 	private ImageIcon imagesToUse[];
 	private ArrayList<Monster> team = Inventory.getTeam();
+	private GameEnvironment gameEnvironment;
 
 	/**
-	 * Launch the application.
+	 * Create the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainScreen window = new MainScreen();
-					window.frmMainscreen.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
+	public MainScreen(GameEnvironment gameManager) {
+		gameEnvironment = gameManager;
+		initialize();
+		frmMainscreen.setVisible(true);
+	}
+	
+	public void closeWindow() {
+		frmMainscreen.dispose();
+	}
+	
+	public void finishedWindow() {
+		gameEnvironment.closeMainScreen(this);
 	}
 
 	/**
