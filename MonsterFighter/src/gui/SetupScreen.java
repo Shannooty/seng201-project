@@ -33,7 +33,6 @@ import javax.swing.SwingConstants;
 import javax.swing.JList;
 import javax.swing.JSpinner;
 
-
 //testing
 public class SetupScreen {
 
@@ -198,7 +197,7 @@ public class SetupScreen {
 		});
 		btnNext.setBounds(637, 472, 117, 25);
 		frmSetup.getContentPane().add(btnNext);
-		
+		 
 	}
 }
 

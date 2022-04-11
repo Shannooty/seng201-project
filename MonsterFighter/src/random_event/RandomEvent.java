@@ -3,6 +3,7 @@ package random_event;
 import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Random;
+import inventory.Inventory;
 
 import purchasable.monsters.Monster;
 
@@ -10,16 +11,17 @@ public class RandomEvent {
 	
 	
 //	private ArrayList<String> randomEvents;
-	private String[] randomEvents = {"MonsterLeaves", "NewMonsterJoins", "MonsterLevelsUp"};
-	private Random randomItem;
-	private ArrayList<Monster> playerTeam;
+	private static String[] randomEvents = {"MonsterLeaves", "NewMonsterJoins", "MonsterLevelsUp"};
+	private static Random randomItem = new Random();
+//	private static Random randomItem;
+	private ArrayList<Monster> playerTeam = Inventory.getTeam();
 	
 	
-	public String getRandomEvent() {
+	public static String getRandomEvent() {		
 		return randomEvents[(randomItem.nextInt(randomEvents.length))];
 	}
 
-	public void runRandomEvent() {
+	public static void runRandomEvent() {
 		String randomEvent = getRandomEvent();
 		if (randomEvent == "MonsterLeaves") {
 			MonsterLeaves leaves = new MonsterLeaves();
