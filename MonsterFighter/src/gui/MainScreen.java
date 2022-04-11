@@ -58,7 +58,7 @@ public class MainScreen {
 		
 //		For initial testing:
 //		------------------------------------------------------------
-		Skeleton startingMonster = new Skeleton();
+		Zombie startingMonster = new Zombie();
 		Slime mobster = new Slime();
 		Inventory.addMonster(startingMonster);
 		Inventory.addMonster(mobster);
