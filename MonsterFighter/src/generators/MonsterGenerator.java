@@ -1,5 +1,6 @@
 package generators;
 
+import generators.registries.AvalibleMonsters;
 import purchasable.monsters.*;
 
 public class MonsterGenerator extends Generator {

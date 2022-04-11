@@ -1,5 +1,9 @@
 package generators;
 
+import generators.registries.AvalibleArmors;
+import generators.registries.AvalibleFoods;
+import generators.registries.AvalibleItemTypes;
+import generators.registries.AvalibleWeapons;
 import purchasable.items.*;
 import purchasable.items.armors.*;
 import purchasable.items.weapons.*;

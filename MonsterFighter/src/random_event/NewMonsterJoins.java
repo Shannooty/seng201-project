@@ -1,7 +1,7 @@
 package random_event;
 import java.util.Random;
 
-import generators.AvalibleMonsters;
+import generators.registries.AvalibleMonsters;
 import purchasable.monsters.*;
 
 

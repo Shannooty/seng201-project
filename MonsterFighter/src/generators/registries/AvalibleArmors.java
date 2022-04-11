@@ -1,4 +1,4 @@
-package generators;
+package generators.registries;
 
 import java.util.Random;
 
