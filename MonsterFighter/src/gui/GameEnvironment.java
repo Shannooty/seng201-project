@@ -10,7 +10,7 @@ class  GameEnvironment {
 	private static int gameLength;
 	private static String difficulty;
 	private Player player;
-	private static int dayNumber = 1;
+	private static int dayNumber = 0;
 	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
 
 	
@@ -18,7 +18,7 @@ class  GameEnvironment {
 		setStartingMonsters();
 	}
 	
-	public int getgameLength() {
+	public static int getgameLength() {
 		return gameLength;
 	}
 	
@@ -38,7 +38,7 @@ class  GameEnvironment {
 		return dayNumber;
 	}
 	
-	public void increaseDayNumber() {
+	public static void increaseDayNumber() {
 		dayNumber += 1;
 	}
 	
@@ -77,6 +77,16 @@ class  GameEnvironment {
 	public void closeMainScreen(MainScreen mainWindow) {
 		mainWindow.closeWindow();
 	}
+	
+	
+	public void launchSleepScreen(){
+		Sleep sleepScreen = new Sleep(this);
+	}
+	
+	public void closeSleep(Sleep sleepWindow) {
+		sleepWindow.closeWindow();
+	}
+	
 	
 	
 	public static void main(String[] args) {
