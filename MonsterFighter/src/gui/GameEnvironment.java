@@ -2,6 +2,7 @@ package gui;
 
 import java.util.ArrayList;
 
+import day.Day;
 import player.Player;
 import purchasable.monsters.*;
 
@@ -12,6 +13,7 @@ class  GameEnvironment {
 	private Player player;
 	private static int dayNumber = 0;
 	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
+	private static Day today;
 
 	
 	public GameEnvironment() {
@@ -41,6 +43,15 @@ class  GameEnvironment {
 	public static void increaseDayNumber() {
 		dayNumber += 1;
 	}
+	
+	public Day getToday() {
+		return today;
+	}
+	
+	public static void setToday(Day day) {
+		today = day;
+	}
+	
 	
 	public Player getPlayer() {
 		return player;

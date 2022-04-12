@@ -30,6 +30,9 @@ import java.util.Hashtable;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+
+import day.Day;
+
 import javax.swing.JList;
 import javax.swing.JSpinner;
 
@@ -171,6 +174,7 @@ public class SetupScreen {
 			public void actionPerformed(ActionEvent arg0) {
 				GameEnvironment.setGameLength(gameLengthSlider.getValue());
 				GameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()));
+				GameEnvironment.setToday(new Day(0));
 				
 				switch (images.getImg()) {
 				  case "skeleton":
