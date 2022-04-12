@@ -22,7 +22,9 @@ import javax.swing.ListSelectionModel;
 
 import player.Player;
 import shop.Shop;
+import purchasable.items.Item;
 import purchasable.monsters.*;
+import javax.swing.ListModel;
 
 
 
@@ -32,7 +34,7 @@ public class ShopBuy extends Shop {
 
 	private JFrame frmShopbuy;
 //	private ArrayList<String> monsters;
-	private static JTextArea txtrDescription = new JTextArea("");
+	private static JTextArea txtDescription = new JTextArea("");
 	private double gold = Player.getGoldAmount();
 	
 	
@@ -71,7 +73,8 @@ public class ShopBuy extends Shop {
 		frmShopbuy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmShopbuy.getContentPane().setLayout(null);
 		
-		JLabel lblGoldAmount = new JLabel("Amount of gold:");
+		JLabel lblGoldAmount = new JLabel();
+		lblGoldAmount.setText("Amount of gold: "+gold);
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblGoldAmount.setBounds(10, 10, 177, 20);
 		frmShopbuy.getContentPane().add(lblGoldAmount);
@@ -82,10 +85,10 @@ public class ShopBuy extends Shop {
 		frmShopbuy.getContentPane().add(btnShopSell);
 		
 //		JTextArea txtrDescription = new JTextArea();
-		txtrDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
-		txtrDescription.setText("Description:\r\n\r\nPrice:\r\n\r\netc");
-		txtrDescription.setBounds(539, 145, 194, 258);
-		frmShopbuy.getContentPane().add(txtrDescription);
+		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
+		txtDescription.setText("Description: Not Selected\r\n\r\n");
+		txtDescription.setBounds(457, 88, 302, 233);
+		frmShopbuy.getContentPane().add(txtDescription);
 		
 		
 //		Shop shop = new Shop(2, 2);
@@ -94,21 +97,34 @@ public class ShopBuy extends Shop {
 //		shop.addMonsters();
 //		shop.addMonsters();
 		
-		
-		ArrayList<Monster> monsterDescription = super.getAvalibleMonsters();
-		DefaultListModel<String> monsterStrings = new DefaultListModel<>();
-		for(Monster val : monsterDescription)monsterStrings.addElement(val.getDescription());
+		DefaultListModel<String> shopStrings = new DefaultListModel<>();
+		DefaultListModel<String> shopInfo = new DefaultListModel<>();
 
-		
 		ArrayList<Monster> monsterInfo = super.getAvalibleMonsters();
-		DefaultListModel<Monster> monsterListModel = new DefaultListModel<>();
-		monsterListModel.addAll(monsterInfo);
+		ArrayList<Item> itemInfo = super.getAvalibleItems();
+		
+		for(Monster val : monsterInfo) {
+			shopStrings.addElement(val.getDescription());
+			shopInfo.addElement(val.toString());
+		}
+		shopStrings.addElement(null);
+		shopInfo.addElement(null);
+
+		for(Item val : itemInfo) {
+			shopStrings.addElement(val.getitemName());
+			shopInfo.addElement(val.getitemName());
+		}
+		
+		
+//		shopStrings.addAll(monsterStrings);
+//		shopStrings.addAll(monsterStrings);
 				
 		// Create the actual JList, notice that we put the astronautListModel in as an argument to new JList		
-		JList<String> availableMonsters = new JList<>(monsterStrings);
-		availableMonsters.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		availableMonsters.setBounds(110, 152, 217, 198);
-		frmShopbuy.getContentPane().add(availableMonsters);
+		JList<String> availablePurchasables = new JList<>(shopStrings);
+		availablePurchasables.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		availablePurchasables.setBounds(49, 88, 341, 233);
+		frmShopbuy.getContentPane().add(availablePurchasables);
+		
 		
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
@@ -126,12 +142,14 @@ public class ShopBuy extends Shop {
 			}
 		});
 		btnBuy.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnBuy.setBounds(629, 463, 85, 21);
+		btnBuy.setBounds(617, 331, 142, 21);
 		frmShopbuy.getContentPane().add(btnBuy);
 		
+		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
+		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo));
+		
 
-		ListSelectionModel listSelectionModel = availableMonsters.getSelectionModel();
-	    listSelectionModel.addListSelectionListener(new SharedListSelectionHandler(monsterListModel));	
+
 	    
 //	    
 //		JButton btnShowDetailsButton = new JButton("Show Selected Details");
@@ -149,9 +167,8 @@ public class ShopBuy extends Shop {
 	
 	
 	public static void setTxtrDescription(String text) {
-		txtrDescription.setText(text);
+		txtDescription.setText(text);
 
 	    // or if a JTextPane by inserting text into its Document here
 	}
-	
 }

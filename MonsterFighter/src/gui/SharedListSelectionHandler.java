@@ -5,17 +5,20 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import purchasable.items.Item;
 import purchasable.monsters.Monster;
 import gui.ShopBuy;
 
 public class SharedListSelectionHandler implements ListSelectionListener {
 
 	
-	private DefaultListModel<Monster> monstersArray;
+	private DefaultListModel<String> shopArray;
 	
-	public SharedListSelectionHandler(DefaultListModel<Monster> monsters) {
-		monstersArray = monsters;
+	
+	public SharedListSelectionHandler(DefaultListModel<String> monsters) {
+		shopArray = monsters;
 	}
+	
 	
 	@Override
 	public void valueChanged(ListSelectionEvent e) {
@@ -30,7 +33,7 @@ public class SharedListSelectionHandler implements ListSelectionListener {
             int maxIndex = lsm.getMaxSelectionIndex();
             for (int i = minIndex; i <= maxIndex; i++) {
                 if (lsm.isSelectedIndex(i)) {
-                    output += (monstersArray.get(i));
+                    output += (shopArray.get(i));
                 }
             }
         }
