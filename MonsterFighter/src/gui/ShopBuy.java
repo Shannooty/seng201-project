@@ -81,6 +81,12 @@ public class ShopBuy extends Shop {
 		frmShopbuy.getContentPane().add(lblGoldAmount);
 		
 		JButton btnShopSell = new JButton("Sell");
+		btnShopSell.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.launchShopSellScreen();
+				finishedWindow();
+			}
+		});
 		btnShopSell.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnShopSell.setBounds(741, 10, 85, 21);
 		frmShopbuy.getContentPane().add(btnShopSell);
@@ -123,7 +129,8 @@ public class ShopBuy extends Shop {
 		availablePurchasables.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		availablePurchasables.setBounds(49, 88, 341, 233);
 		frmShopbuy.getContentPane().add(availablePurchasables);
-		
+		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
+		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopBuy"));
 		
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
@@ -132,6 +139,7 @@ public class ShopBuy extends Shop {
 				if (choice == JOptionPane.YES_OPTION) {
 					Player.removeGold(selectedCost);
 					lblGoldAmount.setText("Amount of gold: "+Player.getGoldAmount());	
+//					STILL NEED TO ADD MONSTER/ITEM TO INVENTORY
 				}
 			}
 		});
@@ -150,8 +158,7 @@ public class ShopBuy extends Shop {
 		btnReturnHome.setBounds(684, 41, 142, 20);
 		frmShopbuy.getContentPane().add(btnReturnHome);
 		
-		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
-		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo));
+
 		
 
 

@@ -29,7 +29,7 @@ public class Inventory {
 		team.add(monster);
 	}
 	
-	public ArrayList<Item> getItems(){
+	public static ArrayList<Item> getItems(){
 		return ownedItems;
 	}
 	

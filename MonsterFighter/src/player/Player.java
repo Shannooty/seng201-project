@@ -34,7 +34,7 @@ public class Player {
 		return goldAmount;
 	}
 	
-	public void addGold(double gold) {
+	public static void addGold(double gold) {
 		if (gold < 0) {
 			throw new NegativeValueException("Cannot add negative gold");
 		} else {
