@@ -23,6 +23,12 @@ import purchasable.monsters.*;
 
 import javax.swing.JEditorPane;
 
+
+/**
+ * 
+ * @author 
+ *
+ */
 public class MainScreen {
 
 	/**
@@ -61,7 +67,7 @@ public class MainScreen {
 	
 	
 	/**
-	 * Closes the frame.
+	 * Closes the frame frmMainScreen.
 	 */
 	public void closeWindow() {
 		frmMainscreen.dispose();
@@ -163,6 +169,10 @@ public class MainScreen {
 		
 		JButton btnSleep = new JButton("Sleep");
 		btnSleep.addActionListener(new ActionListener() {
+			/**
+			 * Increases the day number, launches the SleepScreen, and calls finishedWindow on MainScreen.
+			 * @param e the action that was performed, type ActionEvent
+			 */
 			public void actionPerformed(ActionEvent e) {
 				GameEnvironment.increaseDayNumber();
 				gameEnvironment.launchSleepScreen();

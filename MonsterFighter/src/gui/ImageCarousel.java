@@ -114,7 +114,7 @@ class ImageCarousel extends JPanel implements ActionListener {
 
 	/**
 	 * Takes an ImageIcon, transforms it to type Image, scales it, and transforms it back to type ImageIcon and returns it.
-	 * @param imageToScale
+	 * @param imageToScale type ImageIcon, the image that needs to be scaled.
 	 * @return type ImageIcon, the scaled image to display.
 	 */
 	public ImageIcon scaleImage(ImageIcon imageToScale) {
