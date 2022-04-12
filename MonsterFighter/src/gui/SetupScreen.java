@@ -106,8 +106,11 @@ public class SetupScreen {
 		this.player = player;
 	}
 
+	
+	
+	
 	/**
-	 * Constructor for the class SetupScreen. Sets the private gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
+	 * Constructor for the class SetupScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
 	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
 	public SetupScreen(GameEnvironment gameManager) {

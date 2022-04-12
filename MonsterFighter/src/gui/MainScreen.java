@@ -56,7 +56,7 @@ public class MainScreen {
 
 	
 	/**
-	 * Constructor for the class MainScreen. Sets the private gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
+	 * Constructor for the class MainScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
 	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
 	public MainScreen(GameEnvironment gameManager) {
