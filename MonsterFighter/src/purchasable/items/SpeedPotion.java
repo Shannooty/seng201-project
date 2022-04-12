@@ -8,6 +8,7 @@ public class SpeedPotion extends Item {
 	
 	public SpeedPotion() {
 		super("Speed Potion");
+		setPurchasePrice(13);
 	}
 	
 	public int getSpeedIncrease() {

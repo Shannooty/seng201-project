@@ -14,9 +14,14 @@ public abstract class Item extends Purchasable {
 		itemName = name;
 	}
 	
-	public String getitemName() {
+	public String getItemName() {
 		return itemName;
 	}
 	
 	public abstract Item use(Monster monster);
+	
+	
+	public String toString() {
+		return "Type: "+ getClass()+"\nName: " + getItemName()+"\n\nPrice: "+getPurchasePrice();
+	}
 }

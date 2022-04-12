@@ -8,6 +8,7 @@ public class Zombie extends Monster {
 		setImg();
 		setHealAmount(300);
 		setMonsterType("zombie");
+		setPurchasePrice(75);
 	}
 	
 }

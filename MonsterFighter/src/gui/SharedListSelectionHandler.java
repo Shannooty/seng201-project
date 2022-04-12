@@ -38,6 +38,7 @@ public class SharedListSelectionHandler implements ListSelectionListener {
             }
         }
         ShopBuy.setTxtrDescription(output);
+        ShopBuy.setSelectedCost(Double.parseDouble(output.substring(output.indexOf("Price") + 7)));
 		
 
 		

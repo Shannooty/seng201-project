@@ -9,6 +9,7 @@ public class UndeadGuard extends Monster {
 		setHealAmount(400);
 		addArmorAmount(100);
 		setMonsterType("undeadGuard");
+		setPurchasePrice(70);
 	}
 	
 }

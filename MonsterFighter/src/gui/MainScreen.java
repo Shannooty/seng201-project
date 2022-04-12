@@ -105,7 +105,7 @@ public class MainScreen {
 		JLabel lblGoldAmount = new JLabel("Amount of gold:");
 		lblGoldAmount.setText("Amount of gold: " + Double.toString(Player.getGoldAmount()));
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblGoldAmount.setBounds(10, 38, 180, 20);
+		lblGoldAmount.setBounds(10, 38, 203, 20);
 		frmMainscreen.getContentPane().add(lblGoldAmount);
 		
 //		JLabel lblGoldAmount = new JLabel();
@@ -132,6 +132,12 @@ public class MainScreen {
 		frmMainscreen.getContentPane().add(btnInventory);
 		
 		JButton btnShop = new JButton("Shop");
+		btnShop.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.launchShopBuyScreen();
+				finishedWindow();
+			}
+		});
 		btnShop.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnShop.setBounds(741, 65, 85, 26);
 		frmMainscreen.getContentPane().add(btnShop);

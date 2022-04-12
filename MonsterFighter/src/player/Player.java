@@ -9,7 +9,7 @@ public class Player {
 	
 	
 	private static String name;
-	private static double goldAmount = 0;
+	private static double goldAmount = 100;
 	private int currentPoints = 0;
 	private Inventory inventory;
 //	private Team team;
@@ -42,7 +42,7 @@ public class Player {
 		}
 	}
 	
-	public void removeGold(double gold) {
+	public static void removeGold(double gold) {
 		
 		if (getGoldAmount() < gold) {
 			throw new InsufficientGoldException("Insufficient Gold");
