@@ -136,7 +136,7 @@ public class SetupScreen {
 	
 	
 	/**
-	 * Initialize the contents of the frame. Creates an instance of the class ImageCarousel to create a slideshow of images to display for the user.
+	 * Initialize the contents of the frame. Creates an instance of the class ImageCarousel to create a slide show of images to display for the user.
 	 */
 	private void initialize() {
 		frmSetup = new JFrame();
