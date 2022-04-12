@@ -25,14 +25,33 @@ import javax.swing.JEditorPane;
 
 public class MainScreen {
 
-	private JFrame frmMainscreen;
-	private ImageIcon imagesToUse[];
-	private ArrayList<Monster> team = Inventory.getTeam();
-	private GameEnvironment gameEnvironment;
-	private JLabel lblMonsterTotal;
-
 	/**
-	 * Create the application.
+	 * Attribute frmMainscreen of type JFrame. The frame which is displayed to the user. Contains the UI for the MainScreen.
+	 */
+	private JFrame frmMainscreen;
+	
+	/**
+	 * Attribute imagesToUse of type ImageIcon[]. The images that are used in the slide show shown to the user. Attribute is passed to an instance of ImageCarousel.
+	 */
+	private ImageIcon imagesToUse[];
+	
+	/**
+	 * Attribute team of type ArrayList<Monster>. The user's current team of Monsters. Created by calling the getTeam() method from the class Inventory.
+	 */
+	private ArrayList<Monster> team = Inventory.getTeam();
+	
+	/**
+	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
+	 */
+	private GameEnvironment gameEnvironment;
+	
+	
+//	private JLabel lblMonsterTotal;
+
+	
+	/**
+	 * Constructor for the class MainScreen. Sets the private gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
+	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
 	public MainScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
@@ -40,21 +59,24 @@ public class MainScreen {
 		frmMainscreen.setVisible(true);
 	}
 	
+	
+	/**
+	 * Closes the frame.
+	 */
 	public void closeWindow() {
 		frmMainscreen.dispose();
 	}
 	
+	/**
+	 * Calls the GameEnvironment method closeMainScreen, passing the MainScreen object as a parameter.
+	 */
 	public void finishedWindow() {
 		gameEnvironment.closeMainScreen(this);
 	}
 
-	/**
-	 * Create the application.
-	 */
-
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the frame. Creates an instance of the class ImageCarousel to create a slide show of images for the user.
 	 */
 	private void initialize() {
 		frmMainscreen = new JFrame();
@@ -97,22 +119,13 @@ public class MainScreen {
 		images.setSize(290, 195);
 		images.setLocation(72, 166);
 		frmMainscreen.getContentPane().add(images);
-//		ImageCarousel.backwards.addActionListener(images);
-//		ImageCarousel.forwards.addActionListener(images);
-		
-		
+
 		
 		JLabel lblGoldAmount = new JLabel("Amount of gold:");
 		lblGoldAmount.setText("Amount of gold: " + Double.toString(Player.getGoldAmount()));
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblGoldAmount.setBounds(10, 38, 203, 20);
 		frmMainscreen.getContentPane().add(lblGoldAmount);
-		
-//		JLabel lblGoldAmount = new JLabel();
-//		lblGoldAmount.setText(Double.toString(Player.getGoldAmount()));
-//		lblGoldAmount.setFont(new Font("Tahoma", Font.ITALIC, 16));
-//		lblGoldAmount.setBounds(145, 10, 45, 20);
-//		frmMainscreen.getContentPane().add(lblGoldAmount);
 		
 		
 		JLabel lblDayNumber = new JLabel();
@@ -148,13 +161,6 @@ public class MainScreen {
 		textPaneMonsterDescription.setBounds(480, 148, 281, 271);
 		frmMainscreen.getContentPane().add(textPaneMonsterDescription);
 		
-//		JLabel lblDayNumber = new JLabel("N/A");
-//		lblDayNumber.setFont(new Font("Tahoma", Font.ITALIC, 16));
-//		lblDayNumber.setBounds(119, 40, 45, 20);
-//		frmMainscreen.getContentPane().add(lblDayNumber);
-		
-
-		
 		JButton btnSleep = new JButton("Sleep");
 		btnSleep.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -167,27 +173,27 @@ public class MainScreen {
 		btnSleep.setBounds(741, 483, 85, 26);
 		frmMainscreen.getContentPane().add(btnSleep);
 		
-		JLabel lblCarouselCounter = new JLabel("Monster: ");
-		lblCarouselCounter.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblCarouselCounter.setBounds(136, 371, 54, 20);
-		frmMainscreen.getContentPane().add(lblCarouselCounter);
-		
-		JLabel lblMonsterNum = new JLabel();
-		lblMonsterNum.setText(images.getImg());
-		lblMonsterNum.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblMonsterNum.setBounds(188, 371, 40, 20);
-		frmMainscreen.getContentPane().add(lblMonsterNum);
-		
-		JLabel lblMonsterTotal = new JLabel();
-		lblMonsterTotal.setText(Integer.toString(team.size()));
-		lblMonsterTotal.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblMonsterTotal.setBounds(253, 371, 22, 20);
-		frmMainscreen.getContentPane().add(lblMonsterTotal);
-		
-		JLabel lblFwdSlsh = new JLabel("/");
-		lblFwdSlsh.setFont(new Font("Tahoma", Font.PLAIN, 13));
-		lblFwdSlsh.setBounds(238, 371, 5, 20);
-		frmMainscreen.getContentPane().add(lblFwdSlsh);
+//		JLabel lblCarouselCounter = new JLabel("Monster: ");
+//		lblCarouselCounter.setFont(new Font("Tahoma", Font.PLAIN, 13));
+//		lblCarouselCounter.setBounds(136, 371, 54, 20);
+//		frmMainscreen.getContentPane().add(lblCarouselCounter);
+//		
+//		JLabel lblMonsterNum = new JLabel();
+//		lblMonsterNum.setText(images.getImg());
+//		lblMonsterNum.setFont(new Font("Tahoma", Font.PLAIN, 13));
+//		lblMonsterNum.setBounds(188, 371, 40, 20);
+//		frmMainscreen.getContentPane().add(lblMonsterNum);
+//		
+//		JLabel lblMonsterTotal = new JLabel();
+//		lblMonsterTotal.setText(Integer.toString(team.size()));
+//		lblMonsterTotal.setFont(new Font("Tahoma", Font.PLAIN, 13));
+//		lblMonsterTotal.setBounds(253, 371, 22, 20);
+//		frmMainscreen.getContentPane().add(lblMonsterTotal);
+//		
+//		JLabel lblFwdSlsh = new JLabel("/");
+//		lblFwdSlsh.setFont(new Font("Tahoma", Font.PLAIN, 13));
+//		lblFwdSlsh.setBounds(238, 371, 5, 20);
+//		frmMainscreen.getContentPane().add(lblFwdSlsh);
 		
 		JLabel lblWelcomeUser = new JLabel();
 		lblWelcomeUser.setText("Welcome, " + Player.getName());
@@ -199,6 +205,10 @@ public class MainScreen {
 		
 		JButton btnChangeMonsterName = new JButton("Change Monster Name");
 		btnChangeMonsterName.addActionListener(new ActionListener() {
+			/**
+			 * Creates a pop-up window that prompts the user for a new name for the monster selected. Once the user confirms their choice, calls the setName() method on the Monster selected.
+			 * @param e the action that was performed, type ActionEvent.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				
 				String monsterDescription = images.getImg();
@@ -213,17 +223,5 @@ public class MainScreen {
 		frmMainscreen.getContentPane().add(btnChangeMonsterName);
 		
 	}
-	
-	
-//	public void actionPerformed(ActionEvent e) {
-//		
-//		   if (e.getSource() == ImageCarousel.backwards) {
-//			   System.out.println("hello");
-//			   lblMonsterTotal.setText("hello" +Integer.toString(team.size()));
-//		       
-//		   } else if (e.getSource() == ImageCarousel.forwards) {
-//			   System.out.println("bye");
-//			   lblMonsterTotal.setText("bye" +Integer.toString(team.size()));
-//		   }
-//	}
+
 }
