@@ -13,10 +13,12 @@ public class SharedListSelectionHandler implements ListSelectionListener {
 
 	
 	private DefaultListModel<String> shopArray;
+	private String shopVersion;
 	
 	
-	public SharedListSelectionHandler(DefaultListModel<String> monsters) {
+	public SharedListSelectionHandler(DefaultListModel<String> monsters, String shop) {
 		shopArray = monsters;
+		shopVersion = shop;
 	}
 	
 	
@@ -37,12 +39,23 @@ public class SharedListSelectionHandler implements ListSelectionListener {
                 }
             }
         }
-        ShopBuy.setTxtrDescription(output);
-        ShopBuy.setSelectedCost(Double.parseDouble(output.substring(output.indexOf("Price") + 7)));
-		
-
+//        System.out.println("output"+output);
+        if (shopVersion == "ShopBuy") {
+        	ShopBuy.setTxtrDescription(output);
+            ShopBuy.setSelectedCost(Double.parseDouble(output.substring(output.indexOf("Price") + 7)));
+        } else if (shopVersion == "ShopSell") {
+        	ShopSell.setSelectedMonster(output);
+//          ShopSell.setSelectedPrice(Double.parseDouble(output.substring(output.indexOf("Price") + 7)));
+        }
+        
+        
+        
+        
+        
 		
 	}
+	
+	
 	
 	
 

@@ -108,6 +108,15 @@ class  GameEnvironment {
 	}
 	
 	
+	public void launchShopSellScreen(){
+		ShopSell shopSellScreen = new ShopSell(this);
+	}
+	
+	public void closeShopSellScreen(ShopSell shopSellWindow) {
+		shopSellWindow.closeWindow();
+	}
+	
+	
 	
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
