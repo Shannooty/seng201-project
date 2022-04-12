@@ -10,6 +10,7 @@ import exceptions.InsufficientGoldException;
 import exceptions.NegativeValueException;
 import inventory.Inventory;
 import player.Player;
+import purchasable.monsters.Slime;
 
 class PlayerTest {
 	
@@ -17,7 +18,8 @@ class PlayerTest {
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		testPlayer = new Player("Test dummy", null);
+		Slime startingMonster = new Slime();
+		testPlayer = new Player("Test dummy", startingMonster);
 	}
 
 	@AfterEach
@@ -70,5 +72,19 @@ class PlayerTest {
 		Inventory inventory = testPlayer.getInventory();
 		assertNotNull(inventory);
 	}
-
+	
+	@Test
+	void testAddPoints() {
+		testPlayer.addPoints(1000);
+		assertEquals(1000, testPlayer.getPoints());
+		
+		//Test adding 0 points
+		testPlayer.addPoints(0);
+		assertEquals(1000, testPlayer.getPoints());
+		
+		//Test adding negative points
+		testPlayer.addPoints(-200);
+		assertEquals(1000, testPlayer.getPoints());
+	}
+	
 }
