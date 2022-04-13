@@ -1,5 +1,7 @@
 package purchasable.monsters;
 
+import java.util.Comparator;
+
 import purchasable.Purchasable;
 import purchasable.items.armors.Armor;
 import purchasable.items.weapons.Weapon;
@@ -11,7 +13,7 @@ import purchasable.items.weapons.Weapon;
  * <p>An abstract Monster class that contains all the attributes and methods for all Monster types.
  */
 
-public abstract class Monster extends Purchasable {
+public abstract class Monster extends Purchasable implements Comparator<Monster> {
 	
 	private int health;
 	private int maxHealth;
@@ -208,5 +210,18 @@ public abstract class Monster extends Purchasable {
 		return type+": "+getName();
 	}
 	
+	@Override
+	public int compare(Monster monster1, Monster monster2) {
+		int monsterSpeed1 = monster1.getSpeed();
+		int monsterSpeed2 = monster2.getSpeed();
+		
+		if (monsterSpeed1 > monsterSpeed2) {
+			return 1;
+		} else if (monsterSpeed1 < monsterSpeed2) {
+			return -1;
+		} else {
+			return 0;
+		}
+	}
 	
 }
