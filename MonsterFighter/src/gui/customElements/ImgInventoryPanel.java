@@ -52,6 +52,7 @@ public class ImgInventoryPanel extends JPanel {
 	
 	
 	
+	// NOTE: If you want to go back to the original code, it's commented out up above, so feel free to comment this version and un-comment the one above
 	
 	private void placeItemsInPanel(ArrayList<Monster> itemsToDisplay) {
 		
