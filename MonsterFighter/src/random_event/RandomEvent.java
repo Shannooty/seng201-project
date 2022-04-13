@@ -4,7 +4,7 @@ import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Random;
 import inventory.Inventory;
-
+import player.Team;
 import purchasable.monsters.Monster;
 
 /**
@@ -35,7 +35,7 @@ public class RandomEvent {
 	/**
 	 * Attribute playerTeam, of type ArrayList<Monster>. Calls the method getTeam() in class Inventory to get the player's team.
 	 */
-	private ArrayList<Monster> playerTeam;
+	private Team playerTeam;
 	
 	
 	
@@ -83,7 +83,7 @@ public class RandomEvent {
 	 * Returns the player's team.
 	 * @return playerTeam, of type ArrayList<Monster>
 	 */
-	public ArrayList<Monster> getPlayerTeam() {
+	public Team getPlayerTeam() {
 		return playerTeam;
 	}
 
@@ -91,7 +91,7 @@ public class RandomEvent {
 	 * Sets the private variable playerTeam to the value of the playerTeam given to it. Return type void.
 	 * @param playerTeam, of type ArrayList<Monster>. The player's team.
 	 */
-	public void setPlayerTeam(ArrayList<Monster> playerTeam) {
+	public void setPlayerTeam(Team playerTeam) {
 		this.playerTeam = playerTeam;
 	}
 	

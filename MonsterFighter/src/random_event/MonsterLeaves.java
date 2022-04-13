@@ -2,6 +2,7 @@ package random_event;
 import java.util.Random;
 
 import inventory.Inventory;
+import player.Team;
 
 /**
  * 
@@ -13,7 +14,7 @@ public class MonsterLeaves extends RandomEvent {
 	/**
 	 * Attribute random, of type Random. A random generator.
 	 */
-	Random random = new Random();
+	private Random random = new Random();
 	
 	/**
 	 * Attribute inventory, of type Inventory. The player's inventory.
@@ -31,7 +32,8 @@ public class MonsterLeaves extends RandomEvent {
 	 * Removes the Monster from the team variable in Inventory. Returns void.
 	 */
 	public void removeMonster() {
-		inventory.team.remove(random.nextInt(inventory.team.size()));
+		//TODO FIX THIS
+		inventory.getTeam().getTeam().remove(random.nextInt(inventory.getTeam().getTeam().size()));
 	}
 	
 
