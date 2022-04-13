@@ -19,6 +19,7 @@ import javax.swing.ListSelectionModel;
 
 import inventory.Inventory;
 import player.Player;
+import player.Team;
 import purchasable.items.Item;
 import purchasable.monsters.*;
 import shop.Shop;
@@ -49,7 +50,7 @@ public class ShopSell {
 	/**
 	 * Attribute selectedMonster of type String. The currently selected Monster.
 	 */
-	private static String selectedMonster;
+	private static Monster selectedMonster;
 	
 	/**
 	 * Attribute selectedItem of type Item. The currently selected Item.
@@ -70,6 +71,8 @@ public class ShopSell {
 	 * Attribute player of type Player. The current player.
 	 */
 	private Player player;
+	
+	private static Team team;
 
 	
 
@@ -81,6 +84,7 @@ public class ShopSell {
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
 		inventory = player.getInventory();
+		team = inventory.getTeam();
 		initialize();
 		frmShopSell.setVisible(true);
 	}
@@ -156,27 +160,30 @@ public class ShopSell {
 		frmShopSell.getContentPane().add(txtDescription);
 		
 		
-		
+		ArrayList<Double> prices = new ArrayList<Double>();
 		DefaultListModel<String> shopStrings = new DefaultListModel<>();
 		DefaultListModel<String> shopInfo = new DefaultListModel<>();
 
-		ArrayList<Monster> monsterInfo = inventory.getTeam();
+		Team monsterInfo = inventory.getTeam();
 		ArrayList<Item> itemInfo = inventory.getItems();
 		
-		for(Monster val : monsterInfo) {
+		for(Monster val : monsterInfo.getTeam()) {
 			shopStrings.addElement(val.getDescription());
 			shopInfo.addElement(val.toString());
+			prices.add(val.getPurchasePrice());
 		}
 		shopStrings.addElement(null);
 		shopInfo.addElement(null);
+		prices.add(null);
 
 		for(Item val : itemInfo) {
-			shopStrings.addElement(val.getItemName());
+			shopStrings.addElement(val.getName());
 			shopInfo.addElement(val.toString());
+			prices.add(val.getPurchasePrice());
 		}
 		
-		System.out.println("shopStrings " + shopStrings);
-		System.out.println("shopInfo " + shopInfo);
+//		System.out.println("shopStrings " + shopStrings);
+//		System.out.println("shopInfo " + shopInfo);
 		
 		// Create the actual JList, notice that we put the astronautListModel in as an argument to new JList		
 		JList<String> availablePurchasables = new JList<>(shopStrings);
@@ -184,7 +191,9 @@ public class ShopSell {
 		availablePurchasables.setBounds(49, 88, 341, 233);
 		frmShopSell.getContentPane().add(availablePurchasables);
 		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
-		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopSell"));
+		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopSell", prices));
+		
+		
 		
 		JButton btnSell = new JButton("Sell");
 		btnSell.addActionListener(new ActionListener() {
@@ -197,6 +206,13 @@ public class ShopSell {
 				if (choice == JOptionPane.YES_OPTION) {
 					player.addGold(selectedPrice);
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
+					
+//					List<Monster> listOfMonsters = team.stream().filter(s -> selectedMonster.equals(s.getName())).collect(Collectors.toList());
+//					Monster monsterToRemove = listOfMonsters.get(0);
+//					System.out.println(selectedMonster);
+					inventory.removeMonster(selectedMonster);
+					
+					
 //					STILL NEED TO REMOVE MONSTER/ITEM FROM INVENTORY
 				}
 			}
@@ -228,13 +244,11 @@ public class ShopSell {
 	
 	
 	/**
-	 * Sets the private variable selectedMonster to the value of monster.
-	 * @param monster, of type String. The currently selected monster.
+	 * Sets the private variable selectedMonster to the value of the Monster at index monster in team.
+	 * @param monster, of type integer. The index of the currently selected monster.
 	 */
-	public static void setSelectedMonster(String monster) {
-		selectedMonster = monster;
-//		List<Monster> listOfMonsters = team.stream().filter(s -> oldMonster.equals(s.getName())).collect(Collectors.toList());
-//		System.out.println("monster: "+monster);
+	public static void setSelectedMonster(int monster) {
+		selectedMonster = team.getTeam().get(monster);
 	}
 	
 	

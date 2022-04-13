@@ -20,8 +20,11 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 
+import inventory.Inventory;
 import player.Player;
+import player.Team;
 import shop.Shop;
+import purchasable.Purchasable;
 import purchasable.items.Item;
 import purchasable.monsters.*;
 import javax.swing.ListModel;
@@ -69,7 +72,25 @@ public class ShopBuy {
 	private Player player;
 	
 	private Shop shop;
+	
+	/**
+	 * Attribute inventory of type Inventory. The player's inventory.
+	 */
+	private Inventory inventory;
 
+	
+	private static Team team;
+
+	
+	/**
+	 * Attribute selectedMonster of type String. The currently selected Monster.
+	 */
+	private static Monster selectedMonster;
+	
+	/**
+	 * Attribute selectedItem of type Item. The currently selected Item.
+	 */
+	private static Item selectedItem;
 	
 	
 
@@ -78,9 +99,10 @@ public class ShopBuy {
 	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
 	public ShopBuy(GameEnvironment gameManager, Shop shop) {
-//		super(3,5);
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
+		inventory = player.getInventory();
+		team = inventory.getTeam();
 		this.shop = shop;
 		initialize();
 		frmShopbuy.setVisible(true);
@@ -143,7 +165,7 @@ public class ShopBuy {
 //		Shop.addMonsters();
 //		shop.addMonsters();
 //		shop.addMonsters();
-		
+		ArrayList<Double> prices = new ArrayList<Double>();
 		DefaultListModel<String> shopStrings = new DefaultListModel<>();
 		DefaultListModel<String> shopInfo = new DefaultListModel<>();
 
@@ -153,13 +175,16 @@ public class ShopBuy {
 		for(Monster val : monsterInfo) {
 			shopStrings.addElement(val.getDescription());
 			shopInfo.addElement(val.toString());
+			prices.add(val.getPurchasePrice());
 		}
 		shopStrings.addElement(null);
 		shopInfo.addElement(null);
+		prices.add(null);
 
 		for(Item val : itemInfo) {
-			shopStrings.addElement(val.getItemName());
+			shopStrings.addElement(val.getName());
 			shopInfo.addElement(val.toString());
+			prices.add(val.getPurchasePrice());
 		}
 		
 		
@@ -170,7 +195,7 @@ public class ShopBuy {
 		availablePurchasables.setBounds(49, 88, 341, 233);
 		frmShopbuy.getContentPane().add(availablePurchasables);
 		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
-		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopBuy"));
+		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopBuy", prices));
 		
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
@@ -183,6 +208,15 @@ public class ShopBuy {
 				if (choice == JOptionPane.YES_OPTION) {
 					player.removeGold(selectedCost);
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());	
+					
+//					System.out.println("HHHHHHHHHHH" + inventory.toStringTeam());
+					
+//					inventory.addMonster(selectedMonster);
+					
+//					System.out.println("GGGGGGGGGGGGGGGGGGGG" + inventory.toStringTeam());
+					
+					
+					
 //					STILL NEED TO ADD MONSTER/ITEM TO INVENTORY
 				}
 			}
@@ -231,6 +265,16 @@ public class ShopBuy {
 	 */
 	public static void setTxtrDescription(String text) {
 		txtDescription.setText(text);
+	}
+	
+	
+	
+	/**
+	 * Sets the private variable selectedMonster to the value of the Monster at index monster in team.
+	 * @param monster, of type integer. The index of the currently selected monster.
+	 */
+	public static void setSelectedMonster(int monster) {
+		selectedMonster = team.getTeam().get(monster);
 	}
 	
 	

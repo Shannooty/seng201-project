@@ -49,7 +49,7 @@ public class MainScreen {
 	/**
 	 * Attribute team of type ArrayList<Monster>. The user's current team of Monsters.
 	 */
-	private ArrayList<Monster> team;
+	private Team team;
 	
 	/**
 	 * Attribute player of type Player. The current player.
@@ -107,22 +107,22 @@ public class MainScreen {
 //		Inventory.addMonster(mobster);
 //		------------------------------------------------------------
 		
-		imagesToUse = new ImageIcon[team.size()]; 
+		imagesToUse = new ImageIcon[team.getTeam().size()]; 
 		
-		for (int i = 0; i < team.size(); i++) {
+		for (int i = 0; i < team.getTeam().size(); i++) {
 			
-			switch ((team.get(i)).getMonsterType()) {
+			switch ((team.getTeam().get(i)).getMonsterType()) {
 			  case "skeleton":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton1.png"), "skeleton:" + (team.get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton1.png"), "skeleton:" + (team.getTeam().get(i)).getName());
 			    break;
 			  case "slime":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime1.png"), "slime:" + (team.get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime1.png"), "slime:" + (team.getTeam().get(i)).getName());
 			    break;
 			  case "zombie":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie1.png"), "zombie:" + (team.get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie1.png"), "zombie:" + (team.getTeam().get(i)).getName());
 			    break;
 			  case "undeadGuard":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard1.png"), "undeadGuard:" + (team.get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard1.png"), "undeadGuard:" + (team.getTeam().get(i)).getName());
 			    break;
 			}
 			
@@ -232,7 +232,7 @@ public class MainScreen {
 				String oldMonster = monsterDescription.substring(monsterDescription.indexOf(":") + 1);
 				String newMonsterName = JOptionPane.showInputDialog(frmMainscreen,"Enter a new name:", null);
 				
-				List<Monster> listOfMonsters = team.stream().filter(s -> oldMonster.equals(s.getName())).collect(Collectors.toList());
+				List<Monster> listOfMonsters = team.getTeam().stream().filter(s -> oldMonster.equals(s.getName())).collect(Collectors.toList());
 				(listOfMonsters.get(0)).setName(newMonsterName);
 			}
 		});

@@ -1,6 +1,8 @@
 package inventory;
 import java.util.ArrayList;
 
+import purchasable.Purchasable;
+
 import player.Team;
 import purchasable.items.*;
 import purchasable.monsters.*;
@@ -79,4 +81,14 @@ public class Inventory {
 	public Team getTeam(){
 		return team;
 	}
+	
+	
+//	public String toStringTeam() {
+//		String output = "";
+//		
+//		for(Monster val : getTeam()) {
+//			output += val;
+//		}
+//		return output;
+//	}
 }
