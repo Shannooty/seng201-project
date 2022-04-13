@@ -2,6 +2,7 @@ package purchasable.monsters;
 
 import java.util.Comparator;
 
+import player.Player;
 import purchasable.Purchasable;
 import purchasable.items.armors.Armor;
 import purchasable.items.weapons.Weapon;
@@ -208,6 +209,18 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
 		return type+": "+getName();
+	}
+	
+	@Override
+	public void buy(Player player) {
+		player.removeGold(this.getPurchasePrice());
+		player.getInventory().addMonster(this);
+	}
+	
+	@Override
+	public void sell(Player player) {
+		player.addGold(getSellPrice());
+		player.getInventory().removeMonster(this);
 	}
 	
 	@Override
