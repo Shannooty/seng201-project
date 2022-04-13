@@ -197,6 +197,7 @@ public class ShopSell {
 				if (choice == JOptionPane.YES_OPTION) {
 					player.addGold(selectedPrice);
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
+					
 //					STILL NEED TO REMOVE MONSTER/ITEM FROM INVENTORY
 				}
 			}
