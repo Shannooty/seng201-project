@@ -83,12 +83,12 @@ public class Inventory {
 	}
 	
 	
-//	public String toStringTeam() {
-//		String output = "";
-//		
-//		for(Monster val : getTeam()) {
-//			output += val;
-//		}
-//		return output;
-//	}
+	public String toStringTeam() {
+		String output = "";
+		
+		for(Monster val : team.getTeam()) {
+			output += val;
+		}
+		return output;
+	}
 }

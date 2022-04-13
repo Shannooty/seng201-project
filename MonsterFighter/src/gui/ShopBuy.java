@@ -20,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 
+import gui.customElements.*;
 import inventory.Inventory;
 import player.Player;
 import player.Team;
@@ -127,121 +128,144 @@ public class ShopBuy {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frmShopbuy = new JFrame();
 		frmShopbuy.setTitle("ShopBuy");
 		frmShopbuy.setBounds(100, 100, 850, 570);
 		frmShopbuy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmShopbuy.getContentPane().setLayout(null);
-		
-		JLabel lblGoldAmount = new JLabel();
-		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
-		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblGoldAmount.setBounds(10, 10, 219, 20);
-		frmShopbuy.getContentPane().add(lblGoldAmount);
-		
-		JButton btnShopSell = new JButton("Sell");
-		btnShopSell.addActionListener(new ActionListener() {
-			/**
-			 * Launches the ShopSell class, and calls finishedWindow() for ShopBuy.
-			 * @param e the action that was performed, type ActionEvent.
-			 */
-			public void actionPerformed(ActionEvent e) {
-				gameEnvironment.launchShopSellScreen();
-				finishedWindow();
-			}
-		});
-		btnShopSell.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnShopSell.setBounds(741, 10, 85, 21);
-		frmShopbuy.getContentPane().add(btnShopSell);
-		
-		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
-		txtDescription.setText("Description: Not Selected\r\n\r\n");
-		txtDescription.setBounds(457, 88, 302, 233);
-		frmShopbuy.getContentPane().add(txtDescription);
-		
-		
-//		Shop shop = new Shop(2, 2);
-//		Shop.setNumMonsters(2);
-//		Shop.addMonsters();
-//		shop.addMonsters();
-//		shop.addMonsters();
-		ArrayList<Double> prices = new ArrayList<Double>();
-		DefaultListModel<String> shopStrings = new DefaultListModel<>();
-		DefaultListModel<String> shopInfo = new DefaultListModel<>();
-
 		ArrayList<Monster> monsterInfo = shop.getAvalibleMonsters();
-		ArrayList<Item> itemInfo = shop.getAvalibleItems();
 		
-		for(Monster val : monsterInfo) {
-			shopStrings.addElement(val.getDescription());
-			shopInfo.addElement(val.toString());
-			prices.add(val.getPurchasePrice());
-		}
-		shopStrings.addElement(null);
-		shopInfo.addElement(null);
-		prices.add(null);
-
-		for(Item val : itemInfo) {
-			shopStrings.addElement(val.getName());
-			shopInfo.addElement(val.toString());
-			prices.add(val.getPurchasePrice());
-		}
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(52, 88, 411, 343);
+		frmShopbuy.getContentPane().add(scrollPane);
+		
+		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, monsterInfo);
+		scrollPane.setViewportView(panel);
 		
 		
-
-		// Create the actual JList, notice that we put the astronautListModel in as an argument to new JList		
-		JList<String> availablePurchasables = new JList<>(shopStrings);
-		availablePurchasables.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		availablePurchasables.setBounds(49, 88, 341, 233);
-		frmShopbuy.getContentPane().add(availablePurchasables);
-		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
-		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopBuy", prices));
 		
-		JButton btnBuy = new JButton("Buy");
-		btnBuy.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				/**
-				 * Creates a pop-up window that asks the user if they are sure they want to buy the selected Item/Monster. Once the user confirms their choice, removes the gold using Player.removeGold(). Monster is added to the player's inventory.
-				 * @param e the action that was performed, type ActionEvent.
-				 */
-				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
-				if (choice == JOptionPane.YES_OPTION) {
-					player.removeGold(selectedCost);
-					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());	
-					
+		
+//		frmShopbuy = new JFrame();
+//		frmShopbuy.setTitle("ShopBuy");
+//		frmShopbuy.setBounds(100, 100, 850, 570);
+//		frmShopbuy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		frmShopbuy.getContentPane().setLayout(null);
+//		
+//		JLabel lblGoldAmount = new JLabel();
+//		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
+//		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
+//		lblGoldAmount.setBounds(10, 10, 219, 20);
+//		frmShopbuy.getContentPane().add(lblGoldAmount);
+//		
+//		JButton btnShopSell = new JButton("Sell");
+//		btnShopSell.addActionListener(new ActionListener() {
+//			/**
+//			 * Launches the ShopSell class, and calls finishedWindow() for ShopBuy.
+//			 * @param e the action that was performed, type ActionEvent.
+//			 */
+//			public void actionPerformed(ActionEvent e) {
+//				gameEnvironment.launchShopSellScreen();
+//				finishedWindow();
+//			}
+//		});
+//		btnShopSell.setFont(new Font("Tahoma", Font.BOLD, 16));
+//		btnShopSell.setBounds(741, 10, 85, 21);
+//		frmShopbuy.getContentPane().add(btnShopSell);
+//		
+//		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
+//		txtDescription.setText("Description: Not Selected\r\n\r\n");
+//		txtDescription.setBounds(457, 88, 302, 233);
+//		frmShopbuy.getContentPane().add(txtDescription);
+//		
+//		
+////		Shop shop = new Shop(2, 2);
+////		Shop.setNumMonsters(2);
+////		Shop.addMonsters();
+////		shop.addMonsters();
+////		shop.addMonsters();
+//		ArrayList<Double> prices = new ArrayList<Double>();
+//		DefaultListModel<String> shopStrings = new DefaultListModel<>();
+//		DefaultListModel<String> shopInfo = new DefaultListModel<>();
+//
+//		ArrayList<Monster> monsterInfo = shop.getAvalibleMonsters();
+//		ArrayList<Item> itemInfo = shop.getAvalibleItems();
+//		
+//		for(Monster val : monsterInfo) {
+//			shopStrings.addElement(val.getDescription());
+//			shopInfo.addElement(val.toString());
+//			prices.add(val.getPurchasePrice());
+//		}
+//		shopStrings.addElement(null);
+//		shopInfo.addElement(null);
+//		prices.add(null);
+//
+//		for(Item val : itemInfo) {
+//			shopStrings.addElement(val.getName());
+//			shopInfo.addElement(val.toString());
+//			prices.add(val.getPurchasePrice());
+//		}
+//		
+//		
+//
+//		// Create the actual JList, notice that we put the astronautListModel in as an argument to new JList		
+//		JList<String> availablePurchasables = new JList<>(shopStrings);
+//		
+//		
+//		
+//		availablePurchasables.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		availablePurchasables.setBounds(49, 88, 341, 233);
+//		frmShopbuy.getContentPane().add(availablePurchasables);
+//		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
+//		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopBuy", prices));
+////		System.out.println(shopInfo);
+//		JButton btnBuy = new JButton("Buy");
+//		btnBuy.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				/**
+//				 * Creates a pop-up window that asks the user if they are sure they want to buy the selected Item/Monster. Once the user confirms their choice, removes the gold using Player.removeGold(). Monster is added to the player's inventory.
+//				 * @param e the action that was performed, type ActionEvent.
+//				 */
+//				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
+//				if (choice == JOptionPane.YES_OPTION) {
+//					player.removeGold(selectedCost);
+//					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());	
+//					
+////					shop.removeMonster(selectedMonster);
+//					
 //					System.out.println("HHHHHHHHHHH" + inventory.toStringTeam());
-					
-//					inventory.addMonster(selectedMonster);
-					
+//					selectedMonster.buy();
+////					inventory.addMonster(selectedMonster);
+//					
 //					System.out.println("GGGGGGGGGGGGGGGGGGGG" + inventory.toStringTeam());
-					
-					
-					
-//					STILL NEED TO ADD MONSTER/ITEM TO INVENTORY
-				}
-			}
-		});
-		btnBuy.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnBuy.setBounds(617, 331, 142, 21);
-		frmShopbuy.getContentPane().add(btnBuy);
-		
-		JButton btnReturnHome = new JButton("Return Home");
-		btnReturnHome.addActionListener(new ActionListener() {
-			/**
-			 * Launches the MainScreen, and calls finishedWindow() for ShopBuy.
-			 * @param e the action that was performed, type ActionEvent.
-			 */
-			public void actionPerformed(ActionEvent e) {
-				gameEnvironment.launchMainScreen();
-				finishedWindow();
-			}
-		});
-		btnReturnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnReturnHome.setBounds(684, 41, 142, 20);
-		frmShopbuy.getContentPane().add(btnReturnHome);
-		
-
-		
+//					
+//					
+//					
+////					STILL NEED TO ADD MONSTER/ITEM TO INVENTORY
+//				}
+//			}
+//		});
+//		btnBuy.setFont(new Font("Tahoma", Font.BOLD, 16));
+//		btnBuy.setBounds(617, 331, 142, 21);
+//		frmShopbuy.getContentPane().add(btnBuy);
+//		
+//		JButton btnReturnHome = new JButton("Return Home");
+//		btnReturnHome.addActionListener(new ActionListener() {
+//			/**
+//			 * Launches the MainScreen, and calls finishedWindow() for ShopBuy.
+//			 * @param e the action that was performed, type ActionEvent.
+//			 */
+//			public void actionPerformed(ActionEvent e) {
+//				gameEnvironment.launchMainScreen();
+//				finishedWindow();
+//			}
+//		});
+//		btnReturnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
+//		btnReturnHome.setBounds(684, 41, 142, 20);
+//		frmShopbuy.getContentPane().add(btnReturnHome);
+//		
+//
+//		
 
 
 	    
@@ -259,30 +283,31 @@ public class ShopBuy {
 //		
 	}
 	
-	/**
-	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
-	 * @param text, type String. The description of the currently selected Item/Monster.
-	 */
-	public static void setTxtrDescription(String text) {
-		txtDescription.setText(text);
-	}
-	
-	
-	
-	/**
-	 * Sets the private variable selectedMonster to the value of the Monster at index monster in team.
-	 * @param monster, of type integer. The index of the currently selected monster.
-	 */
-	public static void setSelectedMonster(int monster) {
-		selectedMonster = team.getTeam().get(monster);
-	}
-	
-	
-	/**
-	 * Sets the private variable selectedCost to the value of cost.
-	 * @param cost, of type double. The cost of the currently selected Item/Monster.
-	 */
-	public static void setSelectedCost(double cost) {
-		selectedCost = cost;
-	}
+//	/**
+//	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
+//	 * @param text, type String. The description of the currently selected Item/Monster.
+//	 */
+//	public static void setTxtrDescription(String text) {
+//		txtDescription.setText(text);
+//	}
+//	
+//	
+//	
+//	/**
+//	 * Sets the private variable selectedMonster to the value of the Monster at index monster in team.
+//	 * @param monster, of type integer. The index of the currently selected monster.
+//	 */
+//	public static void setSelectedMonster(int monster) {
+//		selectedMonster = team.getTeam().get(monster);
+//		System.out.println("selectedMonster: " + selectedMonster.getDescription() + selectedMonster.getClass());
+//	}
+//	
+//	
+//	/**
+//	 * Sets the private variable selectedCost to the value of cost.
+//	 * @param cost, of type double. The cost of the currently selected Item/Monster.
+//	 */
+//	public static void setSelectedCost(double cost) {
+//		selectedCost = cost;
+//	}
 }
