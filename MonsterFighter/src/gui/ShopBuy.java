@@ -72,7 +72,7 @@ public class ShopBuy {
 	 */
 	private Player player;
 	
-	private Shop shop;
+	private static Shop shop;
 	
 	/**
 	 * Attribute inventory of type Inventory. The player's inventory.
@@ -144,6 +144,18 @@ public class ShopBuy {
 		scrollPane.setViewportView(panel);
 		
 		
+		
+		JLabel lblGoldAmount = new JLabel();
+		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
+		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblGoldAmount.setBounds(10, 10, 219, 20);
+		frmShopbuy.getContentPane().add(lblGoldAmount);
+		
+		
+		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
+		txtDescription.setText("Description: Not Selected\r\n\r\n");
+		txtDescription.setBounds(473, 88, 302, 233);
+		frmShopbuy.getContentPane().add(txtDescription);
 		
 		
 //		frmShopbuy = new JFrame();
@@ -283,13 +295,16 @@ public class ShopBuy {
 //		
 	}
 	
-//	/**
-//	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
-//	 * @param text, type String. The description of the currently selected Item/Monster.
-//	 */
-//	public static void setTxtrDescription(String text) {
-//		txtDescription.setText(text);
-//	}
+	/**
+	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
+	 * @param text, type String. The description of the currently selected Item/Monster.
+	 */
+	public static void setTxtrDescription(String text) {
+		List<Monster> listOfMonsters = shop.getAvalibleMonsters().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		Monster monster = listOfMonsters.get(0);
+		String monsterString = monster.toString();
+		txtDescription.setText(monsterString);
+	}
 //	
 //	
 //	

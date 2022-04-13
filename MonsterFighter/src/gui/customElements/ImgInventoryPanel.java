@@ -1,13 +1,19 @@
 package gui.customElements;
 
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.Icon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JToggleButton;
 
 import purchasable.Purchasable;
 import purchasable.monsters.Monster;
 import net.miginfocom.swing.MigLayout;
+import gui.ShopBuy;
 
 public class ImgInventoryPanel extends JPanel {
 
@@ -29,10 +35,39 @@ public class ImgInventoryPanel extends JPanel {
 		placeItemsInPanel(itemsToDisplay);
 	}
 
+//	private void placeItemsInPanel(ArrayList<Monster> itemsToDisplay) {
+//		
+//		for (Purchasable item : itemsToDisplay) {
+//			InventoryToggleButton button = new InventoryToggleButton(item);
+//			getButtonGroup().add(button);
+//			this.add(button);
+//			
+//		}
+//		
+//	}
+	
+	private InventoryButtonGroup getButtonGroup() {
+		return buttonGroup;
+	}
+	
+	
+	
+	
 	private void placeItemsInPanel(ArrayList<Monster> itemsToDisplay) {
 		
 		for (Purchasable item : itemsToDisplay) {
-			InventoryToggleButton button = new InventoryToggleButton(item);
+			
+			Icon icon = item.getImg();
+			JToggleButton button = new JToggleButton(icon);
+			button.setName(Integer.toString(item.getID()));
+			
+			button.addActionListener(new ActionListener() { 
+				  public void actionPerformed(ActionEvent e) { 
+//					  System.out.println(( (Component) e.getSource()).getName());
+					  ShopBuy.setTxtrDescription(( (Component) e.getSource()).getName());
+				  } 
+				} );
+			
 			getButtonGroup().add(button);
 			this.add(button);
 			
@@ -40,7 +75,5 @@ public class ImgInventoryPanel extends JPanel {
 		
 	}
 	
-	private InventoryButtonGroup getButtonGroup() {
-		return buttonGroup;
-	}
+	
 }

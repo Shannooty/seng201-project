@@ -12,9 +12,13 @@ public abstract class Purchasable {
 	private String discription;
 	private String imgPath;
 	private ImageIcon img;
+	private static int id = 0;
+    private int instanceId = ++id;
+    
 	
 	public Purchasable(String name) {
 		setName(name);
+//		System.out.println("Name: "+name+" ID: " +id);
 	}
 	
 	public void setName(String name) {
@@ -64,5 +68,11 @@ public abstract class Purchasable {
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
+	
+    public int getID() {
+        return instanceId;
+    }
+	
+
 
 }

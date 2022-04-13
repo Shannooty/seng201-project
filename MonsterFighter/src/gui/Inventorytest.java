@@ -49,8 +49,8 @@ public class Inventorytest {
 		scrollPane.setBounds(52, 88, 312, 126);
 		frame.getContentPane().add(scrollPane);
 		
-		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, );
-		scrollPane.setViewportView(panel);
+//		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, );
+//		scrollPane.setViewportView(panel);
 	}
 
 }
