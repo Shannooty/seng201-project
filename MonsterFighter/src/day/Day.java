@@ -25,6 +25,15 @@ public class Day {
 		}
 	}
 	
+	
+	public void setTodaysShop(Shop shop) {
+		todaysShop = shop;
+	}
+	
+	public Shop getTodaysShop() {
+		return todaysShop;
+	}
+	
 	public void viewShop() {
 //		open shop window
 //		testing

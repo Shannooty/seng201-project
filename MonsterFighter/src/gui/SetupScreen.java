@@ -36,47 +36,82 @@ import day.Day;
 import javax.swing.JList;
 import javax.swing.JSpinner;
 
-//testing
-public class SetupScreen {
 
+/**
+ * 
+ * @author 
+ *
+ */
+public class SetupScreen {
+	
+	/**
+	 * Attribute frmSetup of type JFrame. The frame which is displayed to the user. Contains the UI for the SetupScreen.
+	 */
 	private JFrame frmSetup;
-	Monster startingMonster;
+	
+	/**
+	 * Attribute startingMonster of type Monster. The user's starting Monster.
+	 */
+	private Monster startingMonster;
+	
+	/**
+	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
+	 */
 	private GameEnvironment gameEnvironment;
+	
+	/**
+	 * Attribute player of type Player. The current player.
+	 */
 	private Player player;
-	private int gameLength;
-	private String difficulty;
+	
+//	/**
+//	 * Attribute gameLength of type integer. The length of the game (how many days the game lasts.)
+//	 */
+//	private int gameLength;
+//	
+//	/**
+//	 * Attribute difficulty of type String. The difficulty of the game.
+//	 */
+//	private String difficulty;
+	
+	/**
+	 * Attribute username of type JTextField. The user's username.
+	 */
 	private JTextField username;
+	
+	/**
+	 * Attribute imagesToUse of type ImageIcon[]. The images that are used in the slide show shown to the user. Attribute is passed to an instance of ImageCarousel.
+	 */
 	private ImageIcon imagesToUse[];
+	
+	/**
+	 * Attribute stringDifficulty of type List<String>. The list of possible difficulties for the game, "Easy", "Medium", or "Hard".
+	 */
 	private List<String> stringDifficulty = Arrays.asList("Easy", "Medium", "Hard");
 	
-//	
-//	public int getgameLength() {
-//		return gameLength;
-//	}
-//	
-//	public void setGameLength(int game) {
-//		gameLength = game;
-//	}
-//	
-//	public String getGameDifficulty() {
-//		return difficulty;
-//	}
-//	
-//	public void setGameDifficulty(String gameDifficulty) {
-//		difficulty = gameDifficulty;
-//	}
-	
+
+	/**
+	 * Returns the instance of class Player representing the current player.
+	 * @return type Player, the current player.
+	 */
 	public Player getPlayer() {
 		return player;
 	}
 	
-	
+	/**
+	 * Sets the private variable player equal to the player passed to it.
+	 * @param player type Player, the current player.
+	 */
 	public void setPlayer(Player player) {
 		this.player = player;
 	}
 
+	
+	
+	
 	/**
-	 * Create the application.
+	 * Constructor for the class SetupScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
+	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
 	public SetupScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
@@ -84,16 +119,24 @@ public class SetupScreen {
 		frmSetup.setVisible(true);
 	}
 	
+	/**
+	 * Closes the frame frmSetUp.
+	 */
 	public void closeWindow() {
 		frmSetup.dispose();
 	}
 	
+	/**
+	 * Calls the GameEnvironment method closeSetupScreen, passing the SetupScreen object as a parameter.
+	 */
 	public void finishedWindow() {
 		gameEnvironment.closeSetupScreen(this);
 	}
 	
+	
+	
 	/**
-	 * Initialize the contents of the frame.
+	 * Initialize the contents of the frame. Creates an instance of the class ImageCarousel to create a slide show of images to display for the user.
 	 */
 	private void initialize() {
 		frmSetup = new JFrame();
@@ -171,10 +214,14 @@ public class SetupScreen {
 
 		JButton btnNext = new JButton("Next");
 		btnNext.addActionListener(new ActionListener() {
+			/**
+			 * Gets the values given by the user, and sets them using setGameLength(), setGameDifficulty(), and setToday(). Creates an instance of the Player class, launches the MainScreen, and calls finishedWindow() for SetupScreen.
+			 * @param arg0 the action that was performed, type ActionEvent.
+			 */
 			public void actionPerformed(ActionEvent arg0) {
-				GameEnvironment.setGameLength(gameLengthSlider.getValue());
-				GameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()));
-				GameEnvironment.setToday(new Day(0));
+				gameEnvironment.setGameLength(gameLengthSlider.getValue());
+				gameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()));
+				gameEnvironment.setToday(new Day(0));
 				
 				switch (images.getImg()) {
 				  case "skeleton":
@@ -192,6 +239,7 @@ public class SetupScreen {
 				}
 				
 				Player player = new Player(username.getText(), startingMonster);
+				gameEnvironment.setPlayer(player);
 				
 				gameEnvironment.launchMainScreen();
 				finishedWindow();

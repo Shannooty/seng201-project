@@ -23,33 +23,84 @@ import purchasable.items.Item;
 import purchasable.monsters.*;
 import shop.Shop;
 
-public class ShopSell extends Shop {
 
-	private JFrame frmShopSell;
-	private static JTextArea txtDescription = new JTextArea("");
-	private static double selectedPrice;
-	private static String selectedMonster;
-	private static Item selectedItem;
-	private GameEnvironment gameEnvironment;
+/**
+ * 
+ * @author 
+ *
+ */
+public class ShopSell {
 
 	/**
-	 * Launch the application.
+	 * Attribute frmShopSell of type JFrame. The frame which is displayed to the user. Contains the UI for ShopSell.
+	 */
+	private JFrame frmShopSell;
+	
+	/**
+	 * Attribute txtDescription of type JTextArea. The area where the Item/Monster's description is displayed to the user.
+	 */
+	private static JTextArea txtDescription = new JTextArea("");
+	
+	/**
+	 * Attribute selectedPrice of type double. The price of the currently selected Item/Monster/
+	 */
+	private static double selectedPrice;
+	
+	/**
+	 * Attribute selectedMonster of type String. The currently selected Monster.
+	 */
+	private static String selectedMonster;
+	
+	/**
+	 * Attribute selectedItem of type Item. The currently selected Item.
+	 */
+	private static Item selectedItem;
+	
+	/**
+	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
+	 */
+	private GameEnvironment gameEnvironment;
+	
+	/**
+	 * Attribute inventory of type Inventory. The player's inventory.
+	 */
+	private Inventory inventory;
+	
+	/**
+	 * Attribute player of type Player. The current player.
+	 */
+	private Player player;
+
+	
+
+	/**
+	 * Constructor for the class ShopSell. Creates an instance of the class Shop, ShopSell's parent. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. Sets the private variable player through the GameEnvironment class, and sets the private variable via the variable player.
+	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
 	public ShopSell(GameEnvironment gameManager) {
-		super(3,5);
 		gameEnvironment = gameManager;
+		player = gameEnvironment.getPlayer();
+		inventory = player.getInventory();
 		initialize();
 		frmShopSell.setVisible(true);
 	}
 	
+	/**
+	 * Closes the frame frmShopSell.
+	 */
 	public void closeWindow() {
 		frmShopSell.dispose();
 	}
 	
+	/**
+	 * Calls the GameEnvironment method closeShopSellScreen, passing the ShopSell object as a parameter.
+	 */
 	public void finishedWindow() {
 		gameEnvironment.closeShopSellScreen(this);
 	}
 
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -61,7 +112,7 @@ public class ShopSell extends Shop {
 		
 		
 		JLabel lblGoldAmount = new JLabel();
-		lblGoldAmount.setText("Amount of gold: "+Player.getGoldAmount());
+		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblGoldAmount.setBounds(10, 10, 219, 20);
 		frmShopSell.getContentPane().add(lblGoldAmount);
@@ -69,6 +120,10 @@ public class ShopSell extends Shop {
 		
 		JButton btnShopBuy = new JButton("Buy");
 		btnShopBuy.addActionListener(new ActionListener() {
+			/**
+			 * Launches the ShopBuy class, and calls finishedWindow() for ShopSell.
+			 * @param e the action that was performed, type ActionEvent.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				gameEnvironment.launchShopBuyScreen();
 				finishedWindow();
@@ -80,6 +135,10 @@ public class ShopSell extends Shop {
 		
 		JButton btnReturnHome = new JButton("Return Home");
 		btnReturnHome.addActionListener(new ActionListener() {
+			/**
+			 * Launches the MainScreen, and calls finishedWindow() for ShopSell.
+			 * @param e the action that was performed, type ActionEvent.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				gameEnvironment.launchMainScreen();
 				finishedWindow();
@@ -101,8 +160,8 @@ public class ShopSell extends Shop {
 		DefaultListModel<String> shopStrings = new DefaultListModel<>();
 		DefaultListModel<String> shopInfo = new DefaultListModel<>();
 
-		ArrayList<Monster> monsterInfo = Inventory.getTeam();
-		ArrayList<Item> itemInfo = Inventory.getItems();
+		ArrayList<Monster> monsterInfo = inventory.getTeam();
+		ArrayList<Item> itemInfo = inventory.getItems();
 		
 		for(Monster val : monsterInfo) {
 			shopStrings.addElement(val.getDescription());
@@ -129,11 +188,15 @@ public class ShopSell extends Shop {
 		
 		JButton btnSell = new JButton("Sell");
 		btnSell.addActionListener(new ActionListener() {
+			/**
+			 * Creates a pop-up window that asks the user if they are sure they want to sell the selected Item/Monster. Once the user confirms their choice, adds the gold using Player.addGold(). Monster is removed from the player's inventory.
+			 * @param e the action that was performed, type ActionEvent.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				int choice = JOptionPane.showConfirmDialog(frmShopSell, "Are you sure you want to sell this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
 				if (choice == JOptionPane.YES_OPTION) {
-					Player.addGold(selectedPrice);
-					lblGoldAmount.setText("Amount of gold: "+Player.getGoldAmount());
+					player.addGold(selectedPrice);
+					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 //					STILL NEED TO REMOVE MONSTER/ITEM FROM INVENTORY
 				}
 			}
@@ -145,20 +208,40 @@ public class ShopSell extends Shop {
 		
 	}
 	
+	
+	/**
+	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
+	 * @param text, type String. The description of the currently selected Item/Monster.
+	 */
 	public static void setTxtrDescription(String text) {
 		txtDescription.setText(text);
 	}
 	
+	
+	/**
+	 * Sets the private variable selectedPrice to the value of cost.
+	 * @param cost, of type double. The cost of the currently selected Item/Monster.
+	 */
 	public static void setSelectedPrice(double cost) {
 		selectedPrice = cost;
 	}
 	
+	
+	/**
+	 * Sets the private variable selectedMonster to the value of monster.
+	 * @param monster, of type String. The currently selected monster.
+	 */
 	public static void setSelectedMonster(String monster) {
 		selectedMonster = monster;
 //		List<Monster> listOfMonsters = team.stream().filter(s -> oldMonster.equals(s.getName())).collect(Collectors.toList());
-		System.out.println("monster: "+monster);
+//		System.out.println("monster: "+monster);
 	}
 	
+	
+	/**
+	 * Sets the private variable selectedItem to the value of item.
+	 * @param item, of type Item. The currently selected item.
+	 */
 	public static void setSelectedItem(Item item) {
 		selectedItem = item;
 	}

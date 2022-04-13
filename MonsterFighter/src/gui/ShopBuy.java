@@ -29,39 +29,76 @@ import javax.swing.ListModel;
 
 
 
+/**
+ * 
+ * @author 
+ *
+ */
+public class ShopBuy {
 
-public class ShopBuy extends Shop {
-
+	/**
+	 * Attribute frmShopbuy of type JFrame. The frame which is displayed to the user. Contains the UI for ShopBuy.
+	 */
 	private JFrame frmShopbuy;
+	
 //	private ArrayList<String> monsters;
+	
+	/**
+	 * Attribute txtDescription of type JTextArea. The area where the Item/Monster's description is displayed to the user.
+	 */
 	private static JTextArea txtDescription = new JTextArea("");
-	private double gold = Player.getGoldAmount();
+	
+//	/**
+//	 * Attribute gold of type double. The amount of gold the player currently has. 
+//	 */
+//	private double gold;
+	
+	/**
+	 * Attribute selectedCost of type double. The cost of the currently selected Item/Monster.
+	 */
 	private static double selectedCost;
+	
+	/**
+	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
+	 */
 	private GameEnvironment gameEnvironment;
+	
+	/**
+	 * Attribute player of type Player. The current player.
+	 */
+	private Player player;
+	
+	private Shop shop;
 
 	
 	
 
 	/**
-	 * Launch the application.
+	 * Constructor for the class ShopBuy. Creates an instance of the class Shop, ShopBuy's parent. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
+	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
-	public ShopBuy(GameEnvironment gameManager) {
-		super(3,5);
+	public ShopBuy(GameEnvironment gameManager, Shop shop) {
+//		super(3,5);
 		gameEnvironment = gameManager;
+		player = gameEnvironment.getPlayer();
+		this.shop = shop;
 		initialize();
 		frmShopbuy.setVisible(true);
 	}
 	
+	/**
+	 * Closes the frame frmShopbuy.
+	 */
 	public void closeWindow() {
 		frmShopbuy.dispose();
 	}
 	
+	/**
+	 * Calls the GameEnvironment method closeShopBuyScreen, passing the ShopBuy object as a parameter.
+	 */
 	public void finishedWindow() {
 		gameEnvironment.closeShopBuyScreen(this);
 	}
-	/**
-	 * Create the application.
-	 */
 
 
 	/**
@@ -75,13 +112,17 @@ public class ShopBuy extends Shop {
 		frmShopbuy.getContentPane().setLayout(null);
 		
 		JLabel lblGoldAmount = new JLabel();
-		lblGoldAmount.setText("Amount of gold: "+gold);
+		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblGoldAmount.setBounds(10, 10, 219, 20);
 		frmShopbuy.getContentPane().add(lblGoldAmount);
 		
 		JButton btnShopSell = new JButton("Sell");
 		btnShopSell.addActionListener(new ActionListener() {
+			/**
+			 * Launches the ShopSell class, and calls finishedWindow() for ShopBuy.
+			 * @param e the action that was performed, type ActionEvent.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				gameEnvironment.launchShopSellScreen();
 				finishedWindow();
@@ -91,7 +132,6 @@ public class ShopBuy extends Shop {
 		btnShopSell.setBounds(741, 10, 85, 21);
 		frmShopbuy.getContentPane().add(btnShopSell);
 		
-//		JTextArea txtrDescription = new JTextArea();
 		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		txtDescription.setText("Description: Not Selected\r\n\r\n");
 		txtDescription.setBounds(457, 88, 302, 233);
@@ -107,8 +147,8 @@ public class ShopBuy extends Shop {
 		DefaultListModel<String> shopStrings = new DefaultListModel<>();
 		DefaultListModel<String> shopInfo = new DefaultListModel<>();
 
-		ArrayList<Monster> monsterInfo = super.getAvalibleMonsters();
-		ArrayList<Item> itemInfo = super.getAvalibleItems();
+		ArrayList<Monster> monsterInfo = shop.getAvalibleMonsters();
+		ArrayList<Item> itemInfo = shop.getAvalibleItems();
 		
 		for(Monster val : monsterInfo) {
 			shopStrings.addElement(val.getDescription());
@@ -135,10 +175,14 @@ public class ShopBuy extends Shop {
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/**
+				 * Creates a pop-up window that asks the user if they are sure they want to buy the selected Item/Monster. Once the user confirms their choice, removes the gold using Player.removeGold(). Monster is added to the player's inventory.
+				 * @param e the action that was performed, type ActionEvent.
+				 */
 				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
 				if (choice == JOptionPane.YES_OPTION) {
-					Player.removeGold(selectedCost);
-					lblGoldAmount.setText("Amount of gold: "+Player.getGoldAmount());	
+					player.removeGold(selectedCost);
+					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());	
 //					STILL NEED TO ADD MONSTER/ITEM TO INVENTORY
 				}
 			}
@@ -149,6 +193,10 @@ public class ShopBuy extends Shop {
 		
 		JButton btnReturnHome = new JButton("Return Home");
 		btnReturnHome.addActionListener(new ActionListener() {
+			/**
+			 * Launches the MainScreen, and calls finishedWindow() for ShopBuy.
+			 * @param e the action that was performed, type ActionEvent.
+			 */
 			public void actionPerformed(ActionEvent e) {
 				gameEnvironment.launchMainScreen();
 				finishedWindow();
@@ -177,11 +225,19 @@ public class ShopBuy extends Shop {
 //		
 	}
 	
-	
+	/**
+	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
+	 * @param text, type String. The description of the currently selected Item/Monster.
+	 */
 	public static void setTxtrDescription(String text) {
 		txtDescription.setText(text);
 	}
 	
+	
+	/**
+	 * Sets the private variable selectedCost to the value of cost.
+	 * @param cost, of type double. The cost of the currently selected Item/Monster.
+	 */
 	public static void setSelectedCost(double cost) {
 		selectedCost = cost;
 	}

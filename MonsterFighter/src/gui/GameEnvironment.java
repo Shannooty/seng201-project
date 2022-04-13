@@ -8,23 +8,23 @@ import purchasable.monsters.*;
 
 class  GameEnvironment {
 
-	private static int gameLength;
-	private static String difficulty;
+	private int gameLength;
+	private String difficulty;
 	private Player player;
-	private static int dayNumber = 0;
+	private int dayNumber = 0;
 	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
-	private static Day today;
+	private Day today;
 
 	
 	public GameEnvironment() {
 		setStartingMonsters();
 	}
 	
-	public static int getgameLength() {
+	public int getgameLength() {
 		return gameLength;
 	}
 	
-	public static void setGameLength(int game) {
+	public void setGameLength(int game) {
 		gameLength = game;
 	}
 	
@@ -32,15 +32,15 @@ class  GameEnvironment {
 		return difficulty;
 	}
 	
-	public static void setGameDifficulty(String gameDifficulty) {
+	public void setGameDifficulty(String gameDifficulty) {
 		difficulty = gameDifficulty;
 	}
 	
-	public static int getDayNumber() {
+	public int getDayNumber() {
 		return dayNumber;
 	}
 	
-	public static void increaseDayNumber() {
+	public void increaseDayNumber() {
 		dayNumber += 1;
 	}
 	
@@ -48,7 +48,7 @@ class  GameEnvironment {
 		return today;
 	}
 	
-	public static void setToday(Day day) {
+	public void setToday(Day day) {
 		today = day;
 	}
 	
@@ -100,7 +100,7 @@ class  GameEnvironment {
 	
 	
 	public void launchShopBuyScreen(){
-		ShopBuy shopBuyScreen = new ShopBuy(this);
+		ShopBuy shopBuyScreen = new ShopBuy(this, today.getTodaysShop());
 	}
 	
 	public void closeShopBuyScreen(ShopBuy shopBuyWindow) {
