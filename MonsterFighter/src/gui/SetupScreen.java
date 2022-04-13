@@ -239,6 +239,7 @@ public class SetupScreen {
 				}
 				
 				Player player = new Player(username.getText(), startingMonster);
+				gameEnvironment.setPlayer(player);
 				
 				gameEnvironment.launchMainScreen();
 				finishedWindow();
