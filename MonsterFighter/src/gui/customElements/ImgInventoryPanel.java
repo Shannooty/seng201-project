@@ -6,7 +6,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import purchasable.Purchasable;
-
+import purchasable.monsters.Monster;
 import net.miginfocom.swing.MigLayout;
 
 public class ImgInventoryPanel extends JPanel {
@@ -17,7 +17,7 @@ public class ImgInventoryPanel extends JPanel {
 	private static final long serialVersionUID = -3684204445436872689L;
 	private static final InventoryButtonGroup buttonGroup = new InventoryButtonGroup();
 	
-	public ImgInventoryPanel(JScrollPane pane, ArrayList<Purchasable> itemsToDisplay) {
+	public ImgInventoryPanel(JScrollPane pane, ArrayList<Monster> itemsToDisplay) {
 		int iconWidth = itemsToDisplay.get(0).getImg().getIconWidth();
 		int paneWidth = pane.getWidth();
 		int numItems = paneWidth / iconWidth;
@@ -28,7 +28,7 @@ public class ImgInventoryPanel extends JPanel {
 		placeItemsInPanel(itemsToDisplay);
 	}
 
-	private void placeItemsInPanel(ArrayList<Purchasable> itemsToDisplay) {
+	private void placeItemsInPanel(ArrayList<Monster> itemsToDisplay) {
 		
 		for (Purchasable item : itemsToDisplay) {
 			InventoryToggleButton button = new InventoryToggleButton(item);
