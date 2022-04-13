@@ -8,7 +8,7 @@ import purchasable.items.weapons.Weapon;
  * 
  * @author Bede Nathan, Celia Allen
  * 
- * <p>An abstract monster class that contains all the attributes and methods for all Monster types.
+ * <p>An abstract Monster class that contains all the attributes and methods for all Monster types.
  */
 
 public abstract class Monster extends Purchasable {
@@ -24,7 +24,14 @@ public abstract class Monster extends Purchasable {
 	private Armor armorSlot = null;
 	private String monsterType;
 	
-	
+	/**
+	 * Main constructor for the abstract superclass of Monster
+	 * 
+	 * @param name Sets the name
+	 * @param maxHealth Sets the maximum health
+	 * @param attackAmount Sets the base attack damage
+	 * @param speed Sets the base speed (determines attack order)
+	 */
 	public Monster(String name, int maxHealth, int attackAmount, int speed) {
 		super(name);
 		this.attackAmount = attackAmount;
@@ -34,35 +41,66 @@ public abstract class Monster extends Purchasable {
 		
 	}
 	
+	/**
+	 * Heals the unit by the inputed healAmount
+	 * @param healAmount amount of health the monster will be healed by
+	 */
 	public void addHealth(int healAmount) {
 		health = getHealth() + healAmount;
 	}
 	
+	/**
+	 * Removes health from the monster when damaged
+	 * @param damage damage dealt to the monster
+	 */
 	public void removeHealth(int damage) {
 		health = getHealth() - damage;
 	}
 	
+	/**
+	 * Returns the monsters current health
+	 * @return health
+	 */
 	public int getHealth() {
 		return health;
 	}
 	
-	
+	/**
+	 * Increases the monsters maximum health limit
+	 * @param healthIncrease the value to increase the monsters max health by
+	 */
 	public void addMaxHealth(int healthIncrease) {
 		maxHealth = getMaxHealth() + healthIncrease;
 	}
 	
+	/**
+	 * Decreases the monsters maximum health limit
+	 * @param healthDecrease the value to decrease maxHealth by
+	 */
 	public void removeMaxHealth(int healthDecrease) {
 		maxHealth = getMaxHealth() - healthDecrease;
 	}
 	
+	/**
+	 * Returns the maximum health value
+	 * @return maxHealth
+	 */
 	public int getMaxHealth() {
 		return maxHealth;
 	}
 	
+	/**
+	 * Sets the amount a monster heals by while sleeping
+	 * @param healAmount amount to heal by
+	 */
 	public void setHealAmount(int healAmount) {
 		this.healAmount = healAmount; 
 	}
 	
+	/**
+	 * Returns the heal amount for a monster
+	 * @return healAmount
+	 */
 	public int getHealAmount() {
 		return healAmount;
 	}
