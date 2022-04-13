@@ -22,6 +22,7 @@ import javax.swing.ListSelectionModel;
 
 import inventory.Inventory;
 import player.Player;
+import player.Team;
 import shop.Shop;
 import purchasable.Purchasable;
 import purchasable.items.Item;
@@ -78,7 +79,7 @@ public class ShopBuy {
 	private Inventory inventory;
 
 	
-	private static ArrayList<Monster> team;
+	private static Team team;
 
 	
 	/**
@@ -208,11 +209,11 @@ public class ShopBuy {
 					player.removeGold(selectedCost);
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());	
 					
-					System.out.println("HHHHHHHHHHH" + inventory.toStringTeam());
+//					System.out.println("HHHHHHHHHHH" + inventory.toStringTeam());
 					
-					inventory.addMonster(selectedMonster);
+//					inventory.addMonster(selectedMonster);
 					
-					System.out.println("GGGGGGGGGGGGGGGGGGGG" + inventory.toStringTeam());
+//					System.out.println("GGGGGGGGGGGGGGGGGGGG" + inventory.toStringTeam());
 					
 					
 					
@@ -273,7 +274,7 @@ public class ShopBuy {
 	 * @param monster, of type integer. The index of the currently selected monster.
 	 */
 	public static void setSelectedMonster(int monster) {
-		selectedMonster = team.get(monster);
+		selectedMonster = team.getTeam().get(monster);
 	}
 	
 	

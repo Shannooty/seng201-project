@@ -19,6 +19,7 @@ import javax.swing.ListSelectionModel;
 
 import inventory.Inventory;
 import player.Player;
+import player.Team;
 import purchasable.items.Item;
 import purchasable.monsters.*;
 import shop.Shop;
@@ -71,7 +72,7 @@ public class ShopSell {
 	 */
 	private Player player;
 	
-	private static ArrayList<Monster> team;
+	private static Team team;
 
 	
 
@@ -163,10 +164,10 @@ public class ShopSell {
 		DefaultListModel<String> shopStrings = new DefaultListModel<>();
 		DefaultListModel<String> shopInfo = new DefaultListModel<>();
 
-		ArrayList<Monster> monsterInfo = inventory.getTeam();
+		Team monsterInfo = inventory.getTeam();
 		ArrayList<Item> itemInfo = inventory.getItems();
 		
-		for(Monster val : monsterInfo) {
+		for(Monster val : monsterInfo.getTeam()) {
 			shopStrings.addElement(val.getDescription());
 			shopInfo.addElement(val.toString());
 			prices.add(val.getPurchasePrice());
@@ -181,8 +182,8 @@ public class ShopSell {
 			prices.add(val.getPurchasePrice());
 		}
 		
-		System.out.println("shopStrings " + shopStrings);
-		System.out.println("shopInfo " + shopInfo);
+//		System.out.println("shopStrings " + shopStrings);
+//		System.out.println("shopInfo " + shopInfo);
 		
 		// Create the actual JList, notice that we put the astronautListModel in as an argument to new JList		
 		JList<String> availablePurchasables = new JList<>(shopStrings);
@@ -191,6 +192,8 @@ public class ShopSell {
 		frmShopSell.getContentPane().add(availablePurchasables);
 		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
 		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopSell", prices));
+		
+		
 		
 		JButton btnSell = new JButton("Sell");
 		btnSell.addActionListener(new ActionListener() {
@@ -245,7 +248,7 @@ public class ShopSell {
 	 * @param monster, of type integer. The index of the currently selected monster.
 	 */
 	public static void setSelectedMonster(int monster) {
-		selectedMonster = team.get(monster);
+		selectedMonster = team.getTeam().get(monster);
 	}
 	
 	
