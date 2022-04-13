@@ -2,6 +2,7 @@ package purchasable;
 
 import javax.swing.ImageIcon;
 
+import player.Player;
 import purchasable.monsters.Monster;
 
 public abstract class Purchasable {
@@ -24,13 +25,9 @@ public abstract class Purchasable {
 		return name;
 	}
 	
-	public void buy() {
-		
-	}
+	public abstract void buy(Player player);
 	
-	public void sell() {
-		
-	}
+	public abstract void sell(Player player);
 	
 	public double getPurchasePrice() {
 		return purchasePrice;
@@ -67,4 +64,5 @@ public abstract class Purchasable {
 	public void setImgPath(String imgPath) {
 		this.imgPath = imgPath;
 	}
+
 }
