@@ -15,7 +15,8 @@ public class ImgInventoryPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = -3684204445436872689L;
-	private static final InventoryButtonGroup buttonGroup = new InventoryButtonGroup();
+	private final InventoryButtonGroup buttonGroup = new InventoryButtonGroup();
+	
 	
 	public ImgInventoryPanel(JScrollPane pane, ArrayList<Monster> itemsToDisplay) {
 		int iconWidth = itemsToDisplay.get(0).getImg().getIconWidth();
@@ -34,11 +35,12 @@ public class ImgInventoryPanel extends JPanel {
 			InventoryToggleButton button = new InventoryToggleButton(item);
 			getButtonGroup().add(button);
 			this.add(button);
+			
 		}
 		
 	}
 	
-	private static InventoryButtonGroup getButtonGroup() {
+	private InventoryButtonGroup getButtonGroup() {
 		return buttonGroup;
 	}
 }
