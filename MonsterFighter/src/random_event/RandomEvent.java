@@ -20,34 +20,54 @@ public class RandomEvent {
 	/**
 	 * Attribute randomEvents, of type String[]. A list of the possible random events, {"MonsterLeaves", "NewMonsterJoins", "MonsterLevelsUp"}.
 	 */
-	private static String[] randomEvents = {"MonsterLeaves", "NewMonsterJoins", "MonsterLevelsUp"};
+	private String[] randomEvents = {"MonsterLeaves", "NewMonsterJoins", "MonsterLevelsUp"};
 	
 	/**
 	 * Attribute randomItem, of type Random. A random generator.
 	 */
-	private static Random randomItem = new Random();
+	private Random randomItem = new Random();
 	
 	
 //	private static Random randomItem;
 	
+	protected Inventory inventory;
+	
 	/**
 	 * Attribute playerTeam, of type ArrayList<Monster>. Calls the method getTeam() in class Inventory to get the player's team.
 	 */
-	private ArrayList<Monster> playerTeam = Inventory.getTeam();
+	private ArrayList<Monster> playerTeam;
+	
+	
+	
+	/**
+	 * Constructor for the class RandomEvent. Does not require any parameters, returns nothing, and does nothing. Created so RandomEvent's subclasses don't have to try and create an Inventory they don't have.
+	 */
+	public RandomEvent() {
+		
+	}
+	
+	/**
+	 * Constructor for the class RandomEvent. Sets the private variable inventory to the give inventory, and sets the private variable playerTeam to the player's current team.
+	 * @param inventory, of type Inventory. The player's inventory.
+	 */
+	public RandomEvent(Inventory inventory) {
+		this.inventory = inventory;
+		playerTeam = inventory.getTeam();
+	}
 	
 	
 	/**
 	 * Returns a random item from the list randomEvents, using the random generator randomItem.
 	 * @return an item of randomEvents, of type String. A possible event that can occur overnight in the game.
 	 */
-	public static String getRandomEvent() {		
+	public String getRandomEvent() {		
 		return randomEvents[(randomItem.nextInt(randomEvents.length))];
 	}
 
 	/**
 	 * Calls the method getRandomEvent(), and creates an instance of the class depending on the random event the call to getRandomEvent() returns. Return type void.
 	 */
-	public static void runRandomEvent() {
+	public void runRandomEvent() {
 		String randomEvent = getRandomEvent();
 		if (randomEvent == "MonsterLeaves") {
 			MonsterLeaves leaves = new MonsterLeaves();
@@ -73,6 +93,11 @@ public class RandomEvent {
 	 */
 	public void setPlayerTeam(ArrayList<Monster> playerTeam) {
 		this.playerTeam = playerTeam;
+	}
+	
+	
+	public Inventory getInventory() {
+		return inventory;
 	}
 	
 	

@@ -31,6 +31,11 @@ public class Sleep {
 	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
 	 */
 	private GameEnvironment gameEnvironment;
+	
+	/**
+	 * Attribute randomEvent, of type RandomEvent. A new RandomEvent.
+	 */
+	private RandomEvent randomEvent;
 
 	
 	/**
@@ -39,6 +44,7 @@ public class Sleep {
 	 */
 	public Sleep(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
+		randomEvent = new RandomEvent(gameEnvironment.getPlayer().getInventory());
 		initialize();
 		frmSleep.setVisible(true);
 	}
@@ -107,8 +113,8 @@ public class Sleep {
 		frmSleep.getContentPane().add(lblGainedGoldPoints);
 		
 		JLabel lblRandomEvent = new JLabel();
-		String event = RandomEvent.getRandomEvent();
-		RandomEvent.runRandomEvent();
+		String event = randomEvent.getRandomEvent();
+		randomEvent.runRandomEvent();
 		lblRandomEvent.setText("Random event "+event+" occured.");
 		lblRandomEvent.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblRandomEvent.setBounds(257, 253, 328, 20);
