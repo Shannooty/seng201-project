@@ -1,5 +1,7 @@
 package gui;
 
+import java.util.ArrayList;
+
 import javax.swing.DefaultListModel;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
@@ -27,15 +29,18 @@ public class SharedListSelectionHandler implements ListSelectionListener {
 	 */
 	private String shopVersion;
 	
+	private ArrayList<Double> prices;
+	
 	
 	/**
 	 * Constructor for the class SharedListSelectionHandler. Sets the private variable shopArray to the purchasable given, sets the private variable shopVersion to shop.
 	 * @param purchasable of type DefaultListModel<String>. A list of the purchasable Monsters/Items that are to be displayed to the user.
 	 * @param shop of type String. The version of the shop that is currently be viewed (ShopBuy or ShopSell), so the correct JTextPane is updated.
 	 */
-	public SharedListSelectionHandler(DefaultListModel<String> purchasable, String shop) {
+	public SharedListSelectionHandler(DefaultListModel<String> purchasable, String shop, ArrayList<Double> costs) {
 		shopArray = purchasable;
 		shopVersion = shop;
+		prices = costs;
 	}
 	
 	
@@ -48,6 +53,8 @@ public class SharedListSelectionHandler implements ListSelectionListener {
 	public void valueChanged(ListSelectionEvent e) {
 
 		String output = "";
+		double cost = 0;
+		int index = 0;
 		
 		ListSelectionModel lsm = (ListSelectionModel)e.getSource();
 
@@ -57,17 +64,21 @@ public class SharedListSelectionHandler implements ListSelectionListener {
             int maxIndex = lsm.getMaxSelectionIndex();
             for (int i = minIndex; i <= maxIndex; i++) {
                 if (lsm.isSelectedIndex(i)) {
-                    output += (shopArray.get(i));
+                	index = i;
+                    output = (shopArray.get(i));
+                    cost = prices.get(i);
                 }
             }
         }
 
         if (shopVersion == "ShopBuy") {
         	ShopBuy.setTxtrDescription(output);
-            ShopBuy.setSelectedCost(Double.parseDouble(output.substring(output.indexOf("Price") + 7)));
+            ShopBuy.setSelectedCost(cost);
+            ShopBuy.setSelectedMonster(index);
         } else if (shopVersion == "ShopSell") {
-        	ShopSell.setSelectedMonster(output);
-//          ShopSell.setSelectedPrice(Double.parseDouble(output.substring(output.indexOf("Price") + 7)));
+        	ShopSell.setTxtrDescription(output);
+        	ShopSell.setSelectedMonster(index);
+         	ShopSell.setSelectedPrice(cost);
         }
 		
 	}

@@ -1,6 +1,7 @@
 package inventory;
 import java.util.ArrayList;
 
+import purchasable.Purchasable;
 import purchasable.items.*;
 import purchasable.monsters.*;
 
@@ -77,5 +78,15 @@ public class Inventory {
 	 */
 	public ArrayList<Monster> getTeam(){
 		return team;
+	}
+	
+	
+	public String toStringTeam() {
+		String output = "";
+		
+		for(Monster val : getTeam()) {
+			output += val;
+		}
+		return output;
 	}
 }
