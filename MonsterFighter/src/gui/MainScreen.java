@@ -142,7 +142,7 @@ public class MainScreen {
 		
 		
 		JLabel lblDayNumber = new JLabel();
-		lblDayNumber.setText("Day Number: " + Integer.toString(GameEnvironment.getDayNumber()));
+		lblDayNumber.setText("Day Number: " + Integer.toString(gameEnvironment.getDayNumber()));
 		lblDayNumber.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblDayNumber.setBounds(10, 68, 152, 20);
 		frmMainscreen.getContentPane().add(lblDayNumber);
@@ -181,7 +181,7 @@ public class MainScreen {
 			 * @param e the action that was performed, type ActionEvent
 			 */
 			public void actionPerformed(ActionEvent e) {
-				GameEnvironment.increaseDayNumber();
+				gameEnvironment.increaseDayNumber();
 				gameEnvironment.launchSleepScreen();
 				finishedWindow();
 			}

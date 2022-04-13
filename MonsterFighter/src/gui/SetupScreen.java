@@ -219,9 +219,9 @@ public class SetupScreen {
 			 * @param arg0 the action that was performed, type ActionEvent.
 			 */
 			public void actionPerformed(ActionEvent arg0) {
-				GameEnvironment.setGameLength(gameLengthSlider.getValue());
-				GameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()));
-				GameEnvironment.setToday(new Day(0));
+				gameEnvironment.setGameLength(gameLengthSlider.getValue());
+				gameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()));
+				gameEnvironment.setToday(new Day(0));
 				
 				switch (images.getImg()) {
 				  case "skeleton":
