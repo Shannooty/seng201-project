@@ -58,6 +58,14 @@ public class Shop {
 		}
 	}
 	
+	public void removeMonster(Monster monster) {
+		getAvalibleMonsters().remove(monster);
+	}
+	
+	public void removeItem(Item item) {
+		getAvalibleItems().remove(item);
+	}
+	
 	/**
 	 * Calls the getNumItems() method to get the number of Items that should be in the Shop, and used the class ItemGenerator to create that number of Items. Adds them to the Shop. Return type void.
 	 */
