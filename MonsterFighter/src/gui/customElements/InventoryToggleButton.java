@@ -16,17 +16,13 @@ public class InventoryToggleButton extends JToggleButton {
 	private Purchasable buttonObject;
 	
 	
-	public InventoryToggleButton(Monster item) {
+	public InventoryToggleButton(Purchasable item) {
 		setButtonObject(item);
 		this.setIcon(item.getImg());
 		this.setBorder(null);
 		this.setSelectedIcon(item.getImg());
 	}
 	
-	public InventoryToggleButton(Item item) {
-		setButtonObject(item);
-		this.setIcon(item.getImg());
-	}
 
 	public Purchasable getButtonObject() {
 		return buttonObject;
