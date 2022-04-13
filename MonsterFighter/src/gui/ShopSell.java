@@ -204,13 +204,16 @@ public class ShopSell {
 			public void actionPerformed(ActionEvent e) {
 				int choice = JOptionPane.showConfirmDialog(frmShopSell, "Are you sure you want to sell this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
 				if (choice == JOptionPane.YES_OPTION) {
-					player.addGold(selectedPrice);
-					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
+					
+					selectedMonster.sell();
+					
+//					player.addGold(selectedPrice);
+//					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 					
 //					List<Monster> listOfMonsters = team.stream().filter(s -> selectedMonster.equals(s.getName())).collect(Collectors.toList());
 //					Monster monsterToRemove = listOfMonsters.get(0);
 //					System.out.println(selectedMonster);
-					inventory.removeMonster(selectedMonster);
+//					inventory.removeMonster(selectedMonster);
 					
 					
 //					STILL NEED TO REMOVE MONSTER/ITEM FROM INVENTORY
@@ -249,6 +252,7 @@ public class ShopSell {
 	 */
 	public static void setSelectedMonster(int monster) {
 		selectedMonster = team.getTeam().get(monster);
+//		System.out.println("selectedMonster: " + selectedMonster.getDescription() + selectedMonster.getClass());
 	}
 	
 	

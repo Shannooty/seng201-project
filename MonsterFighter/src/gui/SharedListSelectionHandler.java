@@ -68,8 +68,10 @@ public class SharedListSelectionHandler implements ListSelectionListener {
                 	index = i;
                     output = (shopArray.get(i));
                     cost = prices.get(i);
+                    
                 }
             }
+            System.out.println("output "+output);
         }
 
         if (shopVersion == "ShopBuy") {

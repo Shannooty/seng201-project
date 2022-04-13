@@ -191,12 +191,15 @@ public class ShopBuy {
 
 		// Create the actual JList, notice that we put the astronautListModel in as an argument to new JList		
 		JList<String> availablePurchasables = new JList<>(shopStrings);
+		
+		
+		
 		availablePurchasables.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		availablePurchasables.setBounds(49, 88, 341, 233);
 		frmShopbuy.getContentPane().add(availablePurchasables);
 		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
 		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopBuy", prices));
-		
+//		System.out.println(shopInfo);
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -209,11 +212,13 @@ public class ShopBuy {
 					player.removeGold(selectedCost);
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());	
 					
-//					System.out.println("HHHHHHHHHHH" + inventory.toStringTeam());
+//					shop.removeMonster(selectedMonster);
 					
+					System.out.println("HHHHHHHHHHH" + inventory.toStringTeam());
+					selectedMonster.buy();
 //					inventory.addMonster(selectedMonster);
 					
-//					System.out.println("GGGGGGGGGGGGGGGGGGGG" + inventory.toStringTeam());
+					System.out.println("GGGGGGGGGGGGGGGGGGGG" + inventory.toStringTeam());
 					
 					
 					
@@ -275,6 +280,7 @@ public class ShopBuy {
 	 */
 	public static void setSelectedMonster(int monster) {
 		selectedMonster = team.getTeam().get(monster);
+		System.out.println("selectedMonster: " + selectedMonster.getDescription() + selectedMonster.getClass());
 	}
 	
 	
