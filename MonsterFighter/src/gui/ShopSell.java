@@ -171,7 +171,7 @@ public class ShopSell {
 		shopInfo.addElement(null);
 
 		for(Item val : itemInfo) {
-			shopStrings.addElement(val.getItemName());
+			shopStrings.addElement(val.getName());
 			shopInfo.addElement(val.toString());
 		}
 		
