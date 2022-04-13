@@ -20,8 +20,6 @@ public abstract class Monster extends Purchasable {
 	private boolean isStunned = false;
 	private Weapon weaponSlot = null;
 	private Armor armorSlot = null;
-	private String imgPath;
-	private ImageIcon img;
 	private String monsterType;
 	
 	
@@ -165,19 +163,6 @@ public abstract class Monster extends Purchasable {
 		
 		return armor;
 	}
-
-	public ImageIcon getImg() {
-		return img;
-	}
-	
-	public void setImg() {
-		this.img = new ImageIcon(Monster.class.getResource(imgPath));
-	}
-	
-	public void setImgPath(String imgPath) {
-		this.imgPath = imgPath;
-	}
-	
 	
 	public String toString() {
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");

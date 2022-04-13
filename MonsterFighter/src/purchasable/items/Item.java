@@ -1,5 +1,8 @@
 package purchasable.items;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 import purchasable.Purchasable;
 import purchasable.monsters.*;
 
@@ -24,4 +27,5 @@ public abstract class Item extends Purchasable {
 	public String toString() {
 		return "Type: "+ getClass()+"\nName: " + getItemName()+"\n\nPrice: "+getPurchasePrice();
 	}
+
 }
