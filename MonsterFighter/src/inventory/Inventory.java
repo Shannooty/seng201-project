@@ -1,6 +1,7 @@
 package inventory;
 import java.util.ArrayList;
 
+import player.Team;
 import purchasable.items.*;
 import purchasable.monsters.*;
 
@@ -18,9 +19,9 @@ public class Inventory {
 	private ArrayList<Item> ownedItems = new ArrayList<Item>();
 	
 	/**
-	 * Attribute team of type ArrayList<Monster>. ArrayList of the monsters the player has on their team.
+	 * Attribute team of type Team. The players team.
 	 */
-	public ArrayList<Monster> team = new ArrayList<Monster>();
+	private Team team = new Team();
 	
 	
 	/**
@@ -75,7 +76,7 @@ public class Inventory {
 	 * Returns the private variable team, the Monsters that the player currently owns.
 	 * @return team, or type ArrayList<Monster>
 	 */
-	public ArrayList<Monster> getTeam(){
+	public Team getTeam(){
 		return team;
 	}
 }
