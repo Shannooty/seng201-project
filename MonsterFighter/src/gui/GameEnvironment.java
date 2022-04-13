@@ -100,7 +100,7 @@ class  GameEnvironment {
 	
 	
 	public void launchShopBuyScreen(){
-		ShopBuy shopBuyScreen = new ShopBuy(this);
+		ShopBuy shopBuyScreen = new ShopBuy(this, today.getTodaysShop());
 	}
 	
 	public void closeShopBuyScreen(ShopBuy shopBuyWindow) {

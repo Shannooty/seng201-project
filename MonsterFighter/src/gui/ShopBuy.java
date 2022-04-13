@@ -34,7 +34,7 @@ import javax.swing.ListModel;
  * @author 
  *
  */
-public class ShopBuy extends Shop {
+public class ShopBuy {
 
 	/**
 	 * Attribute frmShopbuy of type JFrame. The frame which is displayed to the user. Contains the UI for ShopBuy.
@@ -62,6 +62,8 @@ public class ShopBuy extends Shop {
 	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
 	 */
 	private GameEnvironment gameEnvironment;
+	
+	private Shop shop;
 
 	
 	
@@ -70,9 +72,10 @@ public class ShopBuy extends Shop {
 	 * Constructor for the class ShopBuy. Creates an instance of the class Shop, ShopBuy's parent. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
 	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
-	public ShopBuy(GameEnvironment gameManager) {
-		super(3,5);
+	public ShopBuy(GameEnvironment gameManager, Shop shop) {
+//		super(3,5);
 		gameEnvironment = gameManager;
+		this.shop = shop;
 		initialize();
 		frmShopbuy.setVisible(true);
 	}
@@ -138,8 +141,8 @@ public class ShopBuy extends Shop {
 		DefaultListModel<String> shopStrings = new DefaultListModel<>();
 		DefaultListModel<String> shopInfo = new DefaultListModel<>();
 
-		ArrayList<Monster> monsterInfo = super.getAvalibleMonsters();
-		ArrayList<Item> itemInfo = super.getAvalibleItems();
+		ArrayList<Monster> monsterInfo = shop.getAvalibleMonsters();
+		ArrayList<Item> itemInfo = shop.getAvalibleItems();
 		
 		for(Monster val : monsterInfo) {
 			shopStrings.addElement(val.getDescription());

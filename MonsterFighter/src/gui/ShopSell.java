@@ -29,7 +29,7 @@ import shop.Shop;
  * @author 
  *
  */
-public class ShopSell extends Shop {
+public class ShopSell {
 
 	/**
 	 * Attribute frmShopSell of type JFrame. The frame which is displayed to the user. Contains the UI for ShopSell.
@@ -68,7 +68,6 @@ public class ShopSell extends Shop {
 	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
 	public ShopSell(GameEnvironment gameManager) {
-		super(3,5);
 		gameEnvironment = gameManager;
 		initialize();
 		frmShopSell.setVisible(true);
