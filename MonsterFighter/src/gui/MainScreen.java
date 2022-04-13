@@ -22,6 +22,8 @@ import player.*;
 import purchasable.monsters.*;
 
 import javax.swing.JEditorPane;
+import javax.swing.JPanel;
+import net.miginfocom.swing.MigLayout;
 
 public class MainScreen {
 
@@ -213,17 +215,4 @@ public class MainScreen {
 		frmMainscreen.getContentPane().add(btnChangeMonsterName);
 		
 	}
-	
-	
-//	public void actionPerformed(ActionEvent e) {
-//		
-//		   if (e.getSource() == ImageCarousel.backwards) {
-//			   System.out.println("hello");
-//			   lblMonsterTotal.setText("hello" +Integer.toString(team.size()));
-//		       
-//		   } else if (e.getSource() == ImageCarousel.forwards) {
-//			   System.out.println("bye");
-//			   lblMonsterTotal.setText("bye" +Integer.toString(team.size()));
-//		   }
-//	}
 }
