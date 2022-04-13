@@ -61,17 +61,26 @@ public class ShopSell {
 	 */
 	private GameEnvironment gameEnvironment;
 	
+	/**
+	 * Attribute inventory of type Inventory. The player's inventory.
+	 */
+	private Inventory inventory;
 	
-	private Inventory inventory = gameEnvironment.getPlayer().getInventory();
+	/**
+	 * Attribute player of type Player. The current player.
+	 */
+	private Player player;
 
 	
 
 	/**
-	 * Constructor for the class ShopSell. Creates an instance of the class Shop, ShopSell's parent. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
+	 * Constructor for the class ShopSell. Creates an instance of the class Shop, ShopSell's parent. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. Sets the private variable player through the GameEnvironment class, and sets the private variable via the variable player.
 	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
 	public ShopSell(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
+		player = gameEnvironment.getPlayer();
+		inventory = player.getInventory();
 		initialize();
 		frmShopSell.setVisible(true);
 	}
@@ -103,7 +112,7 @@ public class ShopSell {
 		
 		
 		JLabel lblGoldAmount = new JLabel();
-		lblGoldAmount.setText("Amount of gold: "+Player.getGoldAmount());
+		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblGoldAmount.setBounds(10, 10, 219, 20);
 		frmShopSell.getContentPane().add(lblGoldAmount);
@@ -186,8 +195,8 @@ public class ShopSell {
 			public void actionPerformed(ActionEvent e) {
 				int choice = JOptionPane.showConfirmDialog(frmShopSell, "Are you sure you want to sell this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
 				if (choice == JOptionPane.YES_OPTION) {
-					Player.addGold(selectedPrice);
-					lblGoldAmount.setText("Amount of gold: "+Player.getGoldAmount());
+					player.addGold(selectedPrice);
+					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 //					STILL NEED TO REMOVE MONSTER/ITEM FROM INVENTORY
 				}
 			}
