@@ -60,6 +60,9 @@ public class ShopSell {
 	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
 	 */
 	private GameEnvironment gameEnvironment;
+	
+	
+	private Inventory inventory = gameEnvironment.getPlayer().getInventory();
 
 	
 
@@ -148,8 +151,8 @@ public class ShopSell {
 		DefaultListModel<String> shopStrings = new DefaultListModel<>();
 		DefaultListModel<String> shopInfo = new DefaultListModel<>();
 
-		ArrayList<Monster> monsterInfo = Inventory.getTeam();
-		ArrayList<Item> itemInfo = Inventory.getItems();
+		ArrayList<Monster> monsterInfo = inventory.getTeam();
+		ArrayList<Item> itemInfo = inventory.getItems();
 		
 		for(Monster val : monsterInfo) {
 			shopStrings.addElement(val.getDescription());

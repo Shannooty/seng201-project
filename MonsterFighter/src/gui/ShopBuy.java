@@ -48,10 +48,10 @@ public class ShopBuy {
 	 */
 	private static JTextArea txtDescription = new JTextArea("");
 	
-	/**
-	 * Attribute gold of type double. The amount of gold the player currently has. 
-	 */
-	private double gold = Player.getGoldAmount();
+//	/**
+//	 * Attribute gold of type double. The amount of gold the player currently has. 
+//	 */
+//	private double gold;
 	
 	/**
 	 * Attribute selectedCost of type double. The cost of the currently selected Item/Monster.
@@ -62,6 +62,11 @@ public class ShopBuy {
 	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
 	 */
 	private GameEnvironment gameEnvironment;
+	
+	/**
+	 * Attribute player of type Player. The current player.
+	 */
+	private Player player;
 	
 	private Shop shop;
 
@@ -75,6 +80,7 @@ public class ShopBuy {
 	public ShopBuy(GameEnvironment gameManager, Shop shop) {
 //		super(3,5);
 		gameEnvironment = gameManager;
+		player = gameEnvironment.getPlayer();
 		this.shop = shop;
 		initialize();
 		frmShopbuy.setVisible(true);
@@ -106,7 +112,7 @@ public class ShopBuy {
 		frmShopbuy.getContentPane().setLayout(null);
 		
 		JLabel lblGoldAmount = new JLabel();
-		lblGoldAmount.setText("Amount of gold: "+gold);
+		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblGoldAmount.setBounds(10, 10, 219, 20);
 		frmShopbuy.getContentPane().add(lblGoldAmount);
@@ -175,8 +181,8 @@ public class ShopBuy {
 				 */
 				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
 				if (choice == JOptionPane.YES_OPTION) {
-					Player.removeGold(selectedCost);
-					lblGoldAmount.setText("Amount of gold: "+Player.getGoldAmount());	
+					player.removeGold(selectedCost);
+					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());	
 //					STILL NEED TO ADD MONSTER/ITEM TO INVENTORY
 				}
 			}

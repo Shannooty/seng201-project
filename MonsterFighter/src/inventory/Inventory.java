@@ -15,12 +15,12 @@ public class Inventory {
 	/**
 	 * Attribute ownedItems of type ArrayList<Item>. ArrayList of the items the player owns.
 	 */
-	private static ArrayList<Item> ownedItems = new ArrayList<Item>();
+	private ArrayList<Item> ownedItems = new ArrayList<Item>();
 	
 	/**
 	 * Attribute team of type ArrayList<Monster>. ArrayList of the monsters the player has on their team.
 	 */
-	public static ArrayList<Monster> team = new ArrayList<Monster>();
+	public ArrayList<Monster> team = new ArrayList<Monster>();
 	
 	
 	/**
@@ -59,7 +59,7 @@ public class Inventory {
 	 * Adds the given Monster to the player's team. Return type void.
 	 * @param monster, type Monster. The Monster to be added to the player's team.
 	 */
-	public static void addMonster(Monster monster) {
+	public void addMonster(Monster monster) {
 		team.add(monster);
 	}
 	
@@ -67,7 +67,7 @@ public class Inventory {
 	 * Returns the private variable ownedItems, the Items that the player currently owns.
 	 * @return ownedItems, of type ArrayList<Item>.
 	 */
-	public static ArrayList<Item> getItems(){
+	public ArrayList<Item> getItems(){
 		return ownedItems;
 	}
 	
@@ -75,7 +75,7 @@ public class Inventory {
 	 * Returns the private variable team, the Monsters that the player currently owns.
 	 * @return team, or type ArrayList<Monster>
 	 */
-	public static ArrayList<Monster> getTeam(){
+	public ArrayList<Monster> getTeam(){
 		return team;
 	}
 }

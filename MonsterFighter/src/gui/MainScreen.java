@@ -42,25 +42,32 @@ public class MainScreen {
 	private ImageIcon imagesToUse[];
 	
 	/**
-	 * Attribute team of type ArrayList<Monster>. The user's current team of Monsters. Created by calling the getTeam() method from the class Inventory.
-	 */
-	private ArrayList<Monster> team = Inventory.getTeam();
-	
-	/**
 	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
 	 */
 	private GameEnvironment gameEnvironment;
+	
+	/**
+	 * Attribute team of type ArrayList<Monster>. The user's current team of Monsters.
+	 */
+	private ArrayList<Monster> team;
+	
+	/**
+	 * Attribute player of type Player. The current player.
+	 */
+	private Player player;
 	
 	
 //	private JLabel lblMonsterTotal;
 
 	
 	/**
-	 * Constructor for the class MainScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
+	 * Constructor for the class MainScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. Sets the private variable player to the player, accessed through the GameEnvironment class. Sets the private variable team to the player's team, accessed via the private player variable, then the Inventory class.
 	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
 	public MainScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
+		player = gameEnvironment.getPlayer();
+		team = player.getInventory().getTeam();
 		initialize();
 		frmMainscreen.setVisible(true);
 	}
@@ -94,10 +101,10 @@ public class MainScreen {
 		
 //		For initial testing:
 //		------------------------------------------------------------
-		Zombie startingMonster = new Zombie();
-		Slime mobster = new Slime();
-		Inventory.addMonster(startingMonster);
-		Inventory.addMonster(mobster);
+//		Zombie startingMonster = new Zombie();
+//		Slime mobster = new Slime();
+//		Inventory.addMonster(startingMonster);
+//		Inventory.addMonster(mobster);
 //		------------------------------------------------------------
 		
 		imagesToUse = new ImageIcon[team.size()]; 
@@ -128,7 +135,7 @@ public class MainScreen {
 
 		
 		JLabel lblGoldAmount = new JLabel("Amount of gold:");
-		lblGoldAmount.setText("Amount of gold: " + Double.toString(Player.getGoldAmount()));
+		lblGoldAmount.setText("Amount of gold: " + Double.toString(player.getGoldAmount()));
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblGoldAmount.setBounds(10, 38, 203, 20);
 		frmMainscreen.getContentPane().add(lblGoldAmount);
@@ -206,7 +213,7 @@ public class MainScreen {
 //		frmMainscreen.getContentPane().add(lblFwdSlsh);
 		
 		JLabel lblWelcomeUser = new JLabel();
-		lblWelcomeUser.setText("Welcome, " + Player.getName());
+		lblWelcomeUser.setText("Welcome, " + player.getName());
 		lblWelcomeUser.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblWelcomeUser.setBounds(10, 10, 180, 20);
 		frmMainscreen.getContentPane().add(lblWelcomeUser);

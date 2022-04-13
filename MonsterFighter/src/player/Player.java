@@ -17,12 +17,12 @@ public class Player {
 	/**
 	 * Attribute name, of type String. The player's name.
 	 */
-	private static String name;
+	private String name;
 	
 	/**
 	 * Attribute goldAmount, of type double. The amount of gold the player has. Initialized to 100.
 	 */
-	private static double goldAmount = 100;
+	private double goldAmount = 100;
 	
 	/**
 	 * Attribute currentPoints, of type integer. The number of points the player has. Initialized to 0.
@@ -50,7 +50,7 @@ public class Player {
 	 * Returns the player's username.
 	 * @return name, of type String. 
 	 */
-	public static String getName() {
+	public String getName() {
 		return name;
 	}
 	
@@ -66,7 +66,7 @@ public class Player {
 	 * Returns the amount of gold the player currently has.
 	 * @return goldAmount, of type double. The amount of gold a player has.
 	 */
-	public static double getGoldAmount() {
+	public double getGoldAmount() {
 		return goldAmount;
 	}
 	
@@ -75,7 +75,7 @@ public class Player {
 	 * Adds gold to the player's private variable goldAmount. Return type void.
 	 * @param gold, of type double. The amount of gold the player has gained.
 	 */
-	public static void addGold(double gold) {
+	public void addGold(double gold) {
 		if (gold < 0) {
 			throw new NegativeValueException("Cannot add negative gold");
 		} else {
@@ -87,7 +87,7 @@ public class Player {
 	 * Removes from the player's private variable goldAmount. If the player does not have enough gold, throws InsufficientGoldException. If the value of the given variable gold is negative, throws NegativeValueException. Return type void.
 	 * @param gold, of type double. The amount of gold the player no longer has.
 	 */
-	public static void removeGold(double gold) {
+	public void removeGold(double gold) {
 		
 		if (getGoldAmount() < gold) {
 			throw new InsufficientGoldException("Insufficient Gold");
