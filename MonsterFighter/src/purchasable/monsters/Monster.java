@@ -1,16 +1,18 @@
 package purchasable.monsters;
 
-import javax.swing.ImageIcon;
-
 import purchasable.Purchasable;
 import purchasable.items.armors.Armor;
 import purchasable.items.weapons.Weapon;
 
-
+/**
+ * 
+ * @author Bede Nathan, Celia Allen
+ * 
+ * <p>An abstract monster class that contains all the attributes and methods for all Monster types.
+ */
 
 public abstract class Monster extends Purchasable {
 	
-	private String name;
 	private int health;
 	private int maxHealth;
 	private int armorAmount = 0;
@@ -24,20 +26,12 @@ public abstract class Monster extends Purchasable {
 	
 	
 	public Monster(String name, int maxHealth, int attackAmount, int speed) {
-		setName(name);
+		super(name);
 		this.attackAmount = attackAmount;
 		this.maxHealth = maxHealth;
 		health = maxHealth;
 		this.speed = speed;
 		
-	}
-	
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	public String getName() {
-		return name;
 	}
 	
 	public void addHealth(int healAmount) {

@@ -4,12 +4,25 @@ import javax.swing.ImageIcon;
 
 import purchasable.monsters.Monster;
 
-public class Purchasable {
+public abstract class Purchasable {
+	private String name;
 	private double purchasePrice;
 	private double sellPrice;
 	private String discription;
 	private String imgPath;
 	private ImageIcon img;
+	
+	public Purchasable(String name) {
+		setName(name);
+	}
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public String getName() {
+		return name;
+	}
 	
 	public void buy() {
 		
