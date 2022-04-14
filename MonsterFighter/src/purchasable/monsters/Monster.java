@@ -160,6 +160,11 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		isStunned = status;
 	}
 	
+	
+    public void setInitialID() {
+    	super.instanceId = 0;
+    }
+	
 	public void sleep() {
 		addHealth(getHealAmount());
 		
@@ -208,7 +213,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	public String getDescription() {
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
-		return type+": "+getName();
+		return type+": "+getName()+" "+getID()+"gg";
 	}
 	
 	@Override

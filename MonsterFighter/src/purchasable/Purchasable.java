@@ -13,7 +13,7 @@ public abstract class Purchasable {
 	private String imgPath;
 	private ImageIcon img;
 	private static int id = 0;
-    private int instanceId = ++id;
+    protected int instanceId = ++id;
     
 	
 	public Purchasable(String name) {
@@ -71,6 +71,10 @@ public abstract class Purchasable {
 	
     public int getID() {
         return instanceId;
+    }
+    
+    public void setInitialID() {
+    	instanceId = 0;
     }
 	
 

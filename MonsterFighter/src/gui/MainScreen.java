@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -18,6 +19,7 @@ import javax.swing.JButton;
 import javax.swing.JTextPane;
 
 import player.*;
+import purchasable.items.Item;
 import purchasable.monsters.*;
 
 import javax.swing.JEditorPane;
@@ -48,13 +50,18 @@ public class MainScreen {
 	/**
 	 * Attribute team of type ArrayList<Monster>. The user's current team of Monsters.
 	 */
-	private Team team;
+	private static ArrayList<Monster> team;
 	
 	/**
 	 * Attribute player of type Player. The current player.
 	 */
 	private Player player;
 	
+	
+	private static JTextArea textAreaMonsterDescription = new JTextArea("");
+
+	private static Monster selectedMonster;
+
 	
 //	private JLabel lblMonsterTotal;
 
@@ -66,7 +73,7 @@ public class MainScreen {
 	public MainScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
-		team = player.getInventory().getTeam();
+		team = player.getInventory().getTeam().getTeam();
 		initialize();
 		frmMainscreen.setVisible(true);
 	}
@@ -106,22 +113,22 @@ public class MainScreen {
 //		Inventory.addMonster(mobster);
 //		------------------------------------------------------------
 		
-		imagesToUse = new ImageIcon[team.getTeam().size()]; 
+		imagesToUse = new ImageIcon[team.size()]; 
 		
-		for (int i = 0; i < team.getTeam().size(); i++) {
+		for (int i = 0; i < team.size(); i++) {
 			
-			switch ((team.getTeam().get(i)).getMonsterType()) {
+			switch ((team.get(i)).getMonsterType()) {
 			  case "skeleton":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton:" + (team.getTeam().get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), Integer.toString((team.get(i)).getID()));
 			    break;
 			  case "slime":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime.png"), "slime:" + (team.getTeam().get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime.png"), Integer.toString((team.get(i)).getID()));
 			    break;
 			  case "zombie":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), "zombie:" + (team.getTeam().get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), Integer.toString((team.get(i)).getID()));
 			    break;
 			  case "undeadGuard":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard.png"), "undeadGuard:" + (team.getTeam().get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard.png"), Integer.toString((team.get(i)).getID()));
 			    break;
 			}
 			
@@ -179,11 +186,12 @@ public class MainScreen {
 		btnShop.setBounds(741, 65, 85, 26);
 		frmMainscreen.getContentPane().add(btnShop);
 		
-		JTextPane textPaneMonsterDescription = new JTextPane();
-		textPaneMonsterDescription.setFont(new Font("Tahoma", Font.BOLD, 16));
-		textPaneMonsterDescription.setText("Monster Description:\r\n\r\n\r\nName:\r\n\r\nHealth:\r\n\r\nDamage:\r\n\r\nItem(s):");
-		textPaneMonsterDescription.setBounds(480, 148, 281, 271);
-		frmMainscreen.getContentPane().add(textPaneMonsterDescription);
+//		JTextPane textPaneMonsterDescription = new JTextPane();
+		textAreaMonsterDescription.setFont(new Font("Tahoma", Font.BOLD, 16));
+//		textAreaMonsterDescription.setText("Monster Description:\r\n\r\n\r\nName:\r\n\r\nHealth:\r\n\r\nDamage:\r\n\r\nItem(s):");
+		setTxtrDescription(Integer.toString(team.get(0).getID()));
+		textAreaMonsterDescription.setBounds(480, 148, 281, 271);
+		frmMainscreen.getContentPane().add(textAreaMonsterDescription);
 		
 		JButton btnSleep = new JButton("Sleep");
 		btnSleep.addActionListener(new ActionListener() {
@@ -243,13 +251,20 @@ public class MainScreen {
 				String oldMonster = monsterDescription.substring(monsterDescription.indexOf(":") + 1);
 				String newMonsterName = JOptionPane.showInputDialog(frmMainscreen,"Enter a new name:", null);
 				
-				List<Monster> listOfMonsters = team.getTeam().stream().filter(s -> oldMonster.equals(s.getName())).collect(Collectors.toList());
+				List<Monster> listOfMonsters = team.stream().filter(s -> oldMonster.equals(s.getName())).collect(Collectors.toList());
 				(listOfMonsters.get(0)).setName(newMonsterName);
 			}
 		});
 		btnChangeMonsterName.setBounds(100, 390, 222, 29);
 		frmMainscreen.getContentPane().add(btnChangeMonsterName);
 		
+	}
+	
+	public static void setTxtrDescription(String text) {
+		List<Monster> streamedTeam = team.stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		selectedMonster = streamedTeam.get(0);
+		String itemString = selectedMonster.toString();
+		textAreaMonsterDescription.setText(itemString);
 	}
 
 }

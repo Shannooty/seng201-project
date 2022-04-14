@@ -64,6 +64,12 @@ class ImageCarousel extends JPanel implements ActionListener {
 	   forwards=new JButton(">>");
 	   imagePanel.add(backwards);
 	   imagePanel.add(forwards);
+	   
+	   if (givenImages.length == 1) {
+		   backwards.setEnabled(false);
+		   forwards.setEnabled(false);
+	   }
+	   
 	   add(imagePanel,BorderLayout.SOUTH);
 	   backwards.addActionListener(this);
 	   forwards.addActionListener(this);
@@ -96,7 +102,8 @@ class ImageCarousel extends JPanel implements ActionListener {
 	       }
 	   }
 	   currDescription = images[index].getDescription();
-	   
+	   System.out.println(currDescription);
+	   MainScreen.setTxtrDescription(currDescription);
 	   ImageIcon imageIcon = scaleImage(images[index]);
 	   imageSpace.setIcon(imageIcon);
 	   

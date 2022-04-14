@@ -224,21 +224,24 @@ public class SetupScreen {
 			public void actionPerformed(ActionEvent arg0) {
 				gameEnvironment.setGameLength(gameLengthSlider.getValue());
 				gameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()-1));
-//				System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ "+stringDifficulty.get(gameDifficultySlider.getValue()-1));
 				gameEnvironment.setToday(new Day(0, stringDifficulty.get(gameDifficultySlider.getValue()-1)));
 				
 				switch (images.getImg()) {
 				  case "skeleton":
 					startingMonster = new Skeleton();
+					startingMonster.setInitialID();
 				    break;
 				  case "slime":
 					startingMonster = new Slime();
+					startingMonster.setInitialID();
 				    break;
 				  case "zombie":
 					startingMonster = new Zombie();
+					startingMonster.setInitialID();
 				    break;
 				  case "undeadGuard":
 					startingMonster = new UndeadGuard();
+					startingMonster.setInitialID();
 				    break;
 				}
 				
