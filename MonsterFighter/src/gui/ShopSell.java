@@ -47,10 +47,10 @@ public class ShopSell {
 	 */
 	private static JTextArea txtDescription = new JTextArea("");
 	
-	/**
-	 * Attribute selectedPrice of type double. The price of the currently selected Item/Monster/
-	 */
-	private static double selectedPrice;
+//	/**
+//	 * Attribute selectedPrice of type double. The price of the currently selected Item/Monster/
+//	 */
+//	private static double selectedPrice;
 	
 	/**
 	 * Attribute selectedMonster of type String. The currently selected Monster.

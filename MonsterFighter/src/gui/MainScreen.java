@@ -153,6 +153,12 @@ public class MainScreen {
 		frmMainscreen.getContentPane().add(btnBattleSelect);
 		
 		JButton btnInventory = new JButton("Inventory");
+		btnInventory.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.launchInventoryScreen();
+				finishedWindow();
+			}
+		});
 		btnInventory.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnInventory.setBounds(674, 37, 152, 26);
 		frmMainscreen.getContentPane().add(btnInventory);
