@@ -34,15 +34,8 @@ public class Day {
 		return todaysShop;
 	}
 	
-	public void viewShop() {
-//		open shop window
-//		testing
-//		testing again
-//		testing once more
-	}
-	
-	public void sleep() {
-//		create instance of RandomEvent
+	public int getDayNumber() {
+		return dayNumber;
 		
 	}
 	
