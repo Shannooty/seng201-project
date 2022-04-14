@@ -20,7 +20,7 @@ class  GameEnvironment {
 		setStartingMonsters();
 	}
 	
-	public int getgameLength() {
+	public int getGameLength() {
 		return gameLength;
 	}
 	
@@ -73,6 +73,17 @@ class  GameEnvironment {
 		startingMonsters.add(new Skeleton());
 	}
 	
+	public void sleep() {
+		if (getToday().getDayNumber() == getGameLength()) {
+			//TODO open end screen
+		} else {
+			Day nextDay = new Day(getToday().getDayNumber() + 1);
+			setToday(nextDay);
+			launchSleepScreen();
+		}
+		
+	}
+	
 	public void launchSetupScreen(){
 		SetupScreen setupScreen = new SetupScreen(this);
 	}
@@ -96,6 +107,7 @@ class  GameEnvironment {
 	
 	public void closeSleep(Sleep sleepWindow) {
 		sleepWindow.closeWindow();
+		launchMainScreen();
 	}
 	
 	
