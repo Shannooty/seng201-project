@@ -1,7 +1,9 @@
 package random_event;
 import java.util.Random;
 
+import generators.MonsterGenerator;
 import generators.registries.AvalibleMonsters;
+import player.Inventory;
 import purchasable.monsters.*;
 
 
@@ -21,7 +23,8 @@ public class NewMonsterJoins extends RandomEvent {
 	/**
 	 * Constructor for class NewMonsterJoins. ______???? and calls the method createMonster().
 	 */
-	public NewMonsterJoins() {	
+	public NewMonsterJoins(Inventory inventory) {
+		super(inventory);
 		AvalibleMonsters[] monsterList = AvalibleMonsters.values();
 		createMonster(monsterList[random.nextInt(monsterList.length)]);
 	}
@@ -33,7 +36,7 @@ public class NewMonsterJoins extends RandomEvent {
 	public void createMonster(AvalibleMonsters monsterType) {
 		
 		Monster newMonster;
-		newMonster = getNewMonster(monsterType);
+		newMonster = MonsterGenerator.newMonster();
 		addMonster(newMonster);
 		
 	}

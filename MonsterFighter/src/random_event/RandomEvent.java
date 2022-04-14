@@ -71,11 +71,11 @@ public class RandomEvent {
 	public void runRandomEvent() {
 		String randomEvent = getRandomEvent();
 		if (randomEvent == "MonsterLeaves") {
-			MonsterLeaves leaves = new MonsterLeaves();
+			MonsterLeaves leaves = new MonsterLeaves(getInventory());
 		} else if (randomEvent == "NewMonsterJoins") {
-			NewMonsterJoins joins = new NewMonsterJoins();
+			NewMonsterJoins joins = new NewMonsterJoins(getInventory());
 		} else {
-			MonsterLevelsUp levelsUp = new MonsterLevelsUp();
+			MonsterLevelsUp levelsUp = new MonsterLevelsUp(getInventory());
 		}		
 		
 	}

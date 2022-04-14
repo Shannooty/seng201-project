@@ -15,16 +15,12 @@ public class MonsterLeaves extends RandomEvent {
 	 * Attribute random, of type Random. A random generator.
 	 */
 	private Random random = new Random();
-	
-	/**
-	 * Attribute inventory, of type Inventory. The player's inventory.
-	 */
-	private Inventory inventory = super.getInventory();
 
 	/**
 	 * Constructor for the class MonsterLeaves. Calls the method removeMonster().
 	 */
-	public MonsterLeaves() {
+	public MonsterLeaves(Inventory inventory) {
+		super(inventory);
 		removeMonster();
 	}
 	

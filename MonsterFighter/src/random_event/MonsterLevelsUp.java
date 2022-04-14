@@ -22,16 +22,10 @@ public class MonsterLevelsUp extends RandomEvent {
 	private int[] healthIncrease = {10, 5, 8, 15, 30};
 	
 	/**
-	 * Attribute inventory, of type Inventory. The player's inventory.
-	 */
-	private Inventory inventory = super.getInventory();
-	
-	
-	
-	/**
 	 * Constructor for the MonsterLevelsUp class. Calls the levelUpSetUp() method.
 	 */
-	public MonsterLevelsUp() {
+	public MonsterLevelsUp(Inventory inventory) {
+		super(inventory);
 		levelUpSetUp();
 	}
 	
