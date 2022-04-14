@@ -112,16 +112,16 @@ public class MainScreen {
 			
 			switch ((team.getTeam().get(i)).getMonsterType()) {
 			  case "skeleton":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton1.png"), "skeleton:" + (team.getTeam().get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton:" + (team.getTeam().get(i)).getName());
 			    break;
 			  case "slime":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime1.png"), "slime:" + (team.getTeam().get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime.png"), "slime:" + (team.getTeam().get(i)).getName());
 			    break;
 			  case "zombie":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie1.png"), "zombie:" + (team.getTeam().get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), "zombie:" + (team.getTeam().get(i)).getName());
 			    break;
 			  case "undeadGuard":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard1.png"), "undeadGuard:" + (team.getTeam().get(i)).getName());
+				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard.png"), "undeadGuard:" + (team.getTeam().get(i)).getName());
 			    break;
 			}
 			
