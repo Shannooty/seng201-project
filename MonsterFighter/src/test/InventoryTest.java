@@ -88,7 +88,7 @@ class InventoryTest {
 	
 	@Test
 	void testAddMonster() {
-		ArrayList<Monster> inventoryMonsters = testInventory.getTeam();
+		ArrayList<Monster> inventoryMonsters = testInventory.getTeam().getTeam();
 		assertEquals(1, inventoryMonsters.size());
 		
 		testInventory.addMonster(testMonsters.get(0));
@@ -111,7 +111,7 @@ class InventoryTest {
 	
 	@Test
 	void testRemoveMonster() {
-		ArrayList<Monster> inventoryMonsters = testInventory.getTeam();
+		ArrayList<Monster> inventoryMonsters = testInventory.getTeam().getTeam();
 		assertEquals(1, inventoryMonsters.size());
 		
 		//Try remove monster that doesn't exist
