@@ -88,7 +88,6 @@ public class ImgInventoryPanel extends JPanel {
 		
 		for (Purchasable item : itemsToDisplay) {
 			
-			//Icon icon = item.getImg();
 			InventoryToggleButton button = new InventoryToggleButton(item);
 			button.setName(Integer.toString(item.getID()));
 			
