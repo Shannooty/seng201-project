@@ -99,6 +99,15 @@ class  GameEnvironment {
 	}
 	
 	
+	public void launchInventoryScreen(){
+		InventoryScreen inventoryScreen = new InventoryScreen(this);
+	}
+	
+	public void closeInventoryScreen(InventoryScreen inventoryWindow) {
+		inventoryWindow.closeWindow();
+	}
+	
+	
 	public void launchShopBuyScreen(){
 		ShopBuy shopBuyScreen = new ShopBuy(this, today.getTodaysShop());
 	}

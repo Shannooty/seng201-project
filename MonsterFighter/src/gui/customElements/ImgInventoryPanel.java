@@ -14,6 +14,7 @@ import purchasable.Purchasable;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
 import net.miginfocom.swing.MigLayout;
+import gui.InventoryScreen;
 import gui.ShopBuy;
 import gui.ShopSell;
 
@@ -99,6 +100,8 @@ public class ImgInventoryPanel extends JPanel {
 						  ShopBuy.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
 					  } else if (version == "ShopSell") {
 						  ShopSell.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
+					  } else if (version == "Inventory") {
+						  InventoryScreen.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
 					  }
 					  
 				  } 
@@ -128,6 +131,8 @@ public class ImgInventoryPanel extends JPanel {
 						  ShopBuy.setTxtrDescriptionItem(( (Component) e.getSource()).getName());
 					  } else if (version == "ShopSell") {
 						  ShopSell.setTxtrDescriptionItem(( (Component) e.getSource()).getName());
+					  } else if (version == "Inventory") {
+						  InventoryScreen.setTxtrDescriptionItem(( (Component) e.getSource()).getName());
 					  }
 					  
 				  } 
