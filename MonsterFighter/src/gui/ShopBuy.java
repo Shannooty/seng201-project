@@ -24,7 +24,7 @@ import javax.swing.JToggleButton;
 import javax.swing.ListSelectionModel;
 
 import gui.customElements.*;
-import inventory.Inventory;
+import player.Inventory;
 import player.Player;
 import player.Team;
 import shop.Shop;

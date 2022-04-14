@@ -22,7 +22,7 @@ import javax.swing.JToggleButton;
 import javax.swing.ListSelectionModel;
 
 import gui.customElements.ImgInventoryPanel;
-import inventory.Inventory;
+import player.Inventory;
 import player.Player;
 import player.Team;
 import purchasable.items.Item;

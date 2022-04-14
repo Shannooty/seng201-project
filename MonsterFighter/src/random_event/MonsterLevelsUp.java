@@ -1,6 +1,7 @@
 package random_event;
 import java.util.Random;
-import inventory.Inventory;
+
+import player.Inventory;
 import purchasable.monsters.Monster;
 
 /**

@@ -4,7 +4,6 @@ package player;
 
 import exceptions.InsufficientGoldException;
 import exceptions.NegativeValueException;
-import inventory.Inventory;
 import purchasable.monsters.Monster;
 
 /**

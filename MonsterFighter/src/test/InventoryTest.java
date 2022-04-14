@@ -9,7 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import inventory.Inventory;
+import player.Inventory;
 import purchasable.items.*;
 import purchasable.items.armors.*;
 import purchasable.items.food.*;

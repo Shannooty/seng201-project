@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 import gui.customElements.ImgInventoryPanel;
-import inventory.Inventory;
+import player.Inventory;
 import player.Player;
 import player.Team;
 import purchasable.items.Item;

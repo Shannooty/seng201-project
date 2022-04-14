@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import exceptions.InsufficientGoldException;
 import exceptions.NegativeValueException;
-import inventory.Inventory;
+import player.Inventory;
 import player.Player;
 import purchasable.monsters.Slime;
 

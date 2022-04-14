@@ -17,7 +17,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
 
-import inventory.Inventory;
 import player.*;
 import purchasable.monsters.*;
 

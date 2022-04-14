@@ -3,7 +3,8 @@ package random_event;
 import java.lang.reflect.*;
 import java.util.ArrayList;
 import java.util.Random;
-import inventory.Inventory;
+
+import player.Inventory;
 import player.Team;
 import purchasable.monsters.Monster;
 

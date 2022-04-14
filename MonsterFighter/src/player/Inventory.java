@@ -1,9 +1,7 @@
-package inventory;
+package player;
 import java.util.ArrayList;
 
 import purchasable.Purchasable;
-
-import player.Team;
 import purchasable.items.*;
 import purchasable.monsters.*;
 
