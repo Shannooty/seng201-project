@@ -60,6 +60,11 @@ class InventoryTest {
 		assertEquals(2, inventoryItems.size());
 		assertEquals(testItems.get(1), inventoryItems.get(1));
 		
+		//Add an Item of the same instance
+		testInventory.addItem(testItems.get(1));
+		assertEquals(2, inventoryItems.size());
+		assertEquals(testItems.get(1), inventoryItems.get(1));
+		
 		//Try adding a null object, size should remain the same
 		testInventory.addItem(null);
 		assertEquals(2, inventoryItems.size());
