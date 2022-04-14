@@ -264,9 +264,7 @@ public class ShopBuy {
 		btnReturnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnReturnHome.setBounds(684, 35, 142, 21);
 		frmShopbuy.getContentPane().add(btnReturnHome);
-		
-		
-		
+
 
 		
 	}
@@ -289,11 +287,4 @@ public class ShopBuy {
 		txtDescription.setText(itemString);
 	}
 	
-	public void enableMonsters() {
-		
-	}
-	
-	public void enableItems() {
-		
-	}
 }

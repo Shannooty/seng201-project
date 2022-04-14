@@ -221,8 +221,6 @@ public class ShopSell {
 					
 					
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
-//					ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell");
-//					scrollPane.setViewportView(panel);
 					txtDescription.setText("Nothing selected.");
 				}
 			}
@@ -230,19 +228,13 @@ public class ShopSell {
 		btnSell.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnSell.setBounds(617, 331, 142, 21);
 		frmShopSell.getContentPane().add(btnSell);
-//		
-//		
+		
 	}
-//	
 	
 	/**
 	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
 	 * @param text, type String. The description of the currently selected Item/Monster.
-	 */
-//	public static void setTxtrDescription(String text) {
-//		txtDescription.setText(text);
-//	}
-	
+	 */	
 	public static void setTxtrDescriptionMonster(String text) {
 		List<Monster> listOfMonsters = team.getTeam().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		selectedMonster = listOfMonsters.get(0);
@@ -260,30 +252,30 @@ public class ShopSell {
 	
 	
 	
-	/**
-	 * Sets the private variable selectedPrice to the value of cost.
-	 * @param cost, of type double. The cost of the currently selected Item/Monster.
-	 */
-	public static void setSelectedPrice(double cost) {
-		selectedPrice = cost;
-	}
-	
-	
-	/**
-	 * Sets the private variable selectedMonster to the value of the Monster at index monster in team.
-	 * @param monster, of type integer. The index of the currently selected monster.
-	 */
-	public static void setSelectedMonster(int monster) {
-		selectedMonster = team.getTeam().get(monster);
-//		System.out.println("selectedMonster: " + selectedMonster.getDescription() + selectedMonster.getClass());
-	}
-	
-	
-	/**
-	 * Sets the private variable selectedItem to the value of item.
-	 * @param item, of type Item. The currently selected item.
-	 */
-	public static void setSelectedItem(Item item) {
-		selectedItem = item;
-	}
+//	/**
+//	 * Sets the private variable selectedPrice to the value of cost.
+//	 * @param cost, of type double. The cost of the currently selected Item/Monster.
+//	 */
+//	public static void setSelectedPrice(double cost) {
+//		selectedPrice = cost;
+//	}
+//	
+//	
+//	/**
+//	 * Sets the private variable selectedMonster to the value of the Monster at index monster in team.
+//	 * @param monster, of type integer. The index of the currently selected monster.
+//	 */
+//	public static void setSelectedMonster(int monster) {
+//		selectedMonster = team.getTeam().get(monster);
+////		System.out.println("selectedMonster: " + selectedMonster.getDescription() + selectedMonster.getClass());
+//	}
+//	
+//	
+//	/**
+//	 * Sets the private variable selectedItem to the value of item.
+//	 * @param item, of type Item. The currently selected item.
+//	 */
+//	public static void setSelectedItem(Item item) {
+//		selectedItem = item;
+//	}
 }
