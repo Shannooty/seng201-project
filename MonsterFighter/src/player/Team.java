@@ -2,6 +2,7 @@ package player;
 
 import java.util.ArrayList;
 
+import exceptions.TeamFullException;
 import purchasable.monsters.Monster;
 
 public class Team {
@@ -13,6 +14,10 @@ public class Team {
 	
 	public void add(Monster monster) {
 		if (monster != null) {
+			if (getTeam().size() == 4) {
+				throw new TeamFullException("Team cannot have more than 4 members");
+			}
+			
 			if (!getTeam().contains(monster)) {
 				getTeam().add(monster);
 				refreshOrder();
@@ -26,7 +31,6 @@ public class Team {
 	}
 	
 	public void refreshOrder() {
-//		getTeam().sort(null);
 		sort(getTeam());
 	}
 	
