@@ -35,7 +35,7 @@ public class InventoryScreen {
 	
 	private static Inventory inventory;
 	
-	private static Team team;
+	private static ArrayList<Monster> team;
 	
 	/**
 	 * Attribute selectedMonster of type String. The currently selected Monster.
@@ -66,7 +66,8 @@ public class InventoryScreen {
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
 		inventory = player.getInventory();
-		team = inventory.getTeam();
+//		team = player.getInventory().getTeam();
+		team = inventory.getTeam().getTeam();
 		initialize();
 		frmInventoryscreen.setVisible(true);
 	}
@@ -106,7 +107,7 @@ public class InventoryScreen {
 		itemScrollPane.setBounds(54, 318, 409, 205);
 		frmInventoryscreen.getContentPane().add(itemScrollPane);
 		
-		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team.getTeam(), "Inventory");
+		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, "Inventory");
 		monsterScrollPane.setViewportView(monsterPanel);
 		
 		ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), itemScrollPane, "Inventory");
@@ -137,7 +138,9 @@ public class InventoryScreen {
 	}
 	
 	public static void setTxtrDescriptionMonster(String text) {
-		List<Monster> listOfMonsters = team.getTeam().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		List<Monster> listOfMonsters = team.stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		
+		
 		selectedMonster = listOfMonsters.get(0);
 		String monsterString = selectedMonster.toString();
 		txtDescriptionMonsters.setText(monsterString);

@@ -243,6 +243,8 @@ public class ShopBuy {
 					
 					
 					txtDescription.setText("Nothing selected.");
+					
+					System.out.println(inventory.toStringTeam());
 				}
 			}
 		});
