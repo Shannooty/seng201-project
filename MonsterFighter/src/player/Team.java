@@ -12,8 +12,12 @@ public class Team {
 	}
 	
 	public void add(Monster monster) {
-		getTeam().add(monster);
-		refreshOrder();
+		if (monster != null) {
+			if (!getTeam().contains(monster)) {
+				getTeam().add(monster);
+				refreshOrder();
+			}
+		}
 	}
 	
 	public void remove(Monster monster) {

@@ -47,7 +47,11 @@ public class Inventory {
 	 * @param item, type Item. The item to be added to the player's inventory.
 	 */
 	public void addItem(Item item) {
-		ownedItems.add(item);
+		if (item != null) {
+			if (!getItems().contains(item)) {
+				getItems().add(item);
+			}
+		}
 	}
 	
 	/**
@@ -83,11 +87,11 @@ public class Inventory {
 	}
 	
 	
-	public String toStringTeam() {
+	public String toString() {
 		String output = "";
 		
-		for(Monster val : team.getTeam()) {
-			output += val;
+		for(Item val : getItems()) {
+			output += val + "\n";
 		}
 		return output;
 	}
