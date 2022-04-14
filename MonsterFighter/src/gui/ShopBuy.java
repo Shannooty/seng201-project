@@ -170,20 +170,20 @@ public class ShopBuy {
 //		lblGoldAmount.setBounds(10, 10, 219, 20);
 //		frmShopbuy.getContentPane().add(lblGoldAmount);
 //		
-//		JButton btnShopSell = new JButton("Sell");
-//		btnShopSell.addActionListener(new ActionListener() {
-//			/**
-//			 * Launches the ShopSell class, and calls finishedWindow() for ShopBuy.
-//			 * @param e the action that was performed, type ActionEvent.
-//			 */
-//			public void actionPerformed(ActionEvent e) {
-//				gameEnvironment.launchShopSellScreen();
-//				finishedWindow();
-//			}
-//		});
-//		btnShopSell.setFont(new Font("Tahoma", Font.BOLD, 16));
-//		btnShopSell.setBounds(741, 10, 85, 21);
-//		frmShopbuy.getContentPane().add(btnShopSell);
+		JButton btnShopSell = new JButton("Sell");
+		btnShopSell.addActionListener(new ActionListener() {
+			/**
+			 * Launches the ShopSell class, and calls finishedWindow() for ShopBuy.
+			 * @param e the action that was performed, type ActionEvent.
+			 */
+			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.launchShopSellScreen();
+				finishedWindow();
+			}
+		});
+		btnShopSell.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnShopSell.setBounds(741, 10, 85, 21);
+		frmShopbuy.getContentPane().add(btnShopSell);
 //		
 //		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
 //		txtDescription.setText("Description: Not Selected\r\n\r\n");
@@ -242,27 +242,30 @@ public class ShopBuy {
 				if (choice == JOptionPane.YES_OPTION) {
 					selectedMonster.buy(player);
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
+					shop.removeMonster(selectedMonster);
+					ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters());
+					scrollPane.setViewportView(panel);
 				}
 			}
 		});
 		btnBuy.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnBuy.setBounds(617, 331, 142, 21);
+		btnBuy.setBounds(633, 331, 142, 21);
 		frmShopbuy.getContentPane().add(btnBuy);
 //		
-//		JButton btnReturnHome = new JButton("Return Home");
-//		btnReturnHome.addActionListener(new ActionListener() {
-//			/**
-//			 * Launches the MainScreen, and calls finishedWindow() for ShopBuy.
-//			 * @param e the action that was performed, type ActionEvent.
-//			 */
-//			public void actionPerformed(ActionEvent e) {
-//				gameEnvironment.launchMainScreen();
-//				finishedWindow();
-//			}
-//		});
-//		btnReturnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
-//		btnReturnHome.setBounds(684, 41, 142, 20);
-//		frmShopbuy.getContentPane().add(btnReturnHome);
+		JButton btnReturnHome = new JButton("Return Home");
+		btnReturnHome.addActionListener(new ActionListener() {
+			/**
+			 * Launches the MainScreen, and calls finishedWindow() for ShopBuy.
+			 * @param e the action that was performed, type ActionEvent.
+			 */
+			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.launchMainScreen();
+				finishedWindow();
+			}
+		});
+		btnReturnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnReturnHome.setBounds(684, 35, 142, 21);
+		frmShopbuy.getContentPane().add(btnReturnHome);
 //		
 //
 //		
