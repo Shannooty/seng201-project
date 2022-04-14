@@ -29,7 +29,7 @@ class PlayerTest {
 
 	@Test
 	void testAddGold() {
-		testPlayer.addGold(1000);
+		testPlayer.addGold(900);
 		assertEquals(1000, testPlayer.getGoldAmount());
 		
 		//Testing negative values, should be no change
@@ -46,7 +46,7 @@ class PlayerTest {
 	
 	@Test
 	void testRemoveGold() {
-		testPlayer.addGold(1000);
+		testPlayer.addGold(900);
 		
 		testPlayer.removeGold(500);
 		assertEquals(500, testPlayer.getGoldAmount());
@@ -83,7 +83,10 @@ class PlayerTest {
 		assertEquals(1000, testPlayer.getPoints());
 		
 		//Test adding negative points
-		testPlayer.addPoints(-200);
+		NegativeValueException negativeValueException = assertThrows(NegativeValueException.class, 
+				() -> testPlayer.addPoints(-200));
+		
+		assertEquals("Cannot add negative points", negativeValueException.getMessage());
 		assertEquals(1000, testPlayer.getPoints());
 	}
 	
