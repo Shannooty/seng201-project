@@ -77,7 +77,7 @@ class  GameEnvironment {
 		if (getToday().getDayNumber() == getGameLength()) {
 			//TODO open end screen
 		} else {
-			Day nextDay = new Day(getToday().getDayNumber() + 1);
+			Day nextDay = new Day(getToday().getDayNumber() + 1, getGameDifficulty());
 			setToday(nextDay);
 			launchSleepScreen();
 		}
@@ -136,6 +136,17 @@ class  GameEnvironment {
 	public void closeShopSellScreen(ShopSell shopSellWindow) {
 		shopSellWindow.closeWindow();
 	}
+	
+	
+	public void launchChooseBattleScreen(){
+		ChooseBattleScreen chooseBattleScreen = new ChooseBattleScreen(this);
+	}
+	
+	public void closeChooseBattleScreen(ChooseBattleScreen chooseBattleWindow) {
+		chooseBattleWindow.closeWindow();
+	}
+	
+	
 	
 	
 	

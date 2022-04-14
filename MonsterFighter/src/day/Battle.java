@@ -60,11 +60,8 @@ public class Battle {
 	}
 	
 	public String toString() {
-		return "Gold: "+gold+"\nPoints: "+points+"\nNumMonsters: "+numMonstersToFight+"\nMonsters: "+monstersTofight;
+		return "Gold: "+gold+"\nPoints: "+points+"\nNumMonsters: "+numMonstersToFight+"\nMonsters: ";
+//		return "Gold: "+gold+"\nPoints: "+points+"\nNumMonsters: "+numMonstersToFight+"\nMonsters: "+monstersTofight;
 	}
 	
-	public static void main(String[] args) {
-		Battle battle = new Battle("Easy");
-	}
-
 }

@@ -147,6 +147,12 @@ public class MainScreen {
 		frmMainscreen.getContentPane().add(lblDayNumber);
 		
 		JButton btnBattleSelect = new JButton("Select Battle");
+		btnBattleSelect.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.launchChooseBattleScreen();
+				finishedWindow();
+			}
+		});
 		btnBattleSelect.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnBattleSelect.setBounds(664, 10, 162, 26);
 		frmMainscreen.getContentPane().add(btnBattleSelect);

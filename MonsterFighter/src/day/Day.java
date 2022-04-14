@@ -8,8 +8,10 @@ public class Day {
 	private int dayNumber;
 	private Shop todaysShop;
 	private ArrayList<Battle> todaysBattles = new ArrayList<Battle>();
+	private String difficulty;
 	
-	public Day(int dayNumber) {
+	public Day(int dayNumber, String difficulty) {
+		this.difficulty = difficulty;
 		setDayNumber(dayNumber);
 		todaysShop = new Shop(3, 5); //parameters could be randomized
 		createDailyBattles(5);
@@ -21,8 +23,12 @@ public class Day {
 	
 	private void createDailyBattles(int numOfBattles) {
 		for (int i = 0; i < numOfBattles; i++) {
-			todaysBattles.add(new Battle());
+			todaysBattles.add(new Battle(difficulty));
 		}
+	}
+	
+	public ArrayList<Battle> getBattles(){
+		return todaysBattles;
 	}
 	
 	

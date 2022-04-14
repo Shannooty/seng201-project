@@ -204,6 +204,9 @@ public class SetupScreen {
 		difficultyLabels.put(3, new JLabel("Hard"));
         gameDifficultySlider.setLabelTable(difficultyLabels);
 		
+        
+        
+        
 		gameDifficultySlider.setPaintLabels(true);
 		gameDifficultySlider.setMinorTickSpacing(1);
 		gameDifficultySlider.setMajorTickSpacing(1);
@@ -220,8 +223,9 @@ public class SetupScreen {
 			 */
 			public void actionPerformed(ActionEvent arg0) {
 				gameEnvironment.setGameLength(gameLengthSlider.getValue());
-				gameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()));
-				gameEnvironment.setToday(new Day(0));
+				gameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()-1));
+//				System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ "+stringDifficulty.get(gameDifficultySlider.getValue()-1));
+				gameEnvironment.setToday(new Day(0, stringDifficulty.get(gameDifficultySlider.getValue()-1)));
 				
 				switch (images.getImg()) {
 				  case "skeleton":
