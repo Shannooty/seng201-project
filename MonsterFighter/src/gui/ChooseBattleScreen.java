@@ -1,15 +1,21 @@
 package gui;
 
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
 import day.Battle;
 import day.Day;
 import generators.MonsterGenerator;
+import gui.customElements.ImgInventoryPanel;
 import purchasable.monsters.Monster;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 public class ChooseBattleScreen {
@@ -25,7 +31,16 @@ public class ChooseBattleScreen {
 	
 	private String difficulty;
 	
-	private Day day;
+	private static Day day;
+	
+	private ImageIcon imagesToUse[];
+	
+	private ArrayList<Monster> gameMonsters;
+	
+	private static Battle selectedBattle;
+	
+	private static JTextArea txtDescription = new JTextArea("");
+
 
 
 	/**
@@ -41,7 +56,12 @@ public class ChooseBattleScreen {
 //		}
 		day = gameEnvironment.getToday();
 		
+		
+		
 		possibleBattles = day.getBattles();
+		
+//		gameMonsters = possibleBattles.getGameMonsters();
+		
 //		player = gameEnvironment.getPlayer();
 //		team = player.getInventory().getTeam();
 		initialize();
@@ -72,12 +92,47 @@ public class ChooseBattleScreen {
 		frmChoosebattle.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmChoosebattle.getContentPane().setLayout(null);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setText(possibleBattles.toString());
-		textArea.setBounds(72, 68, 458, 215);
-		frmChoosebattle.getContentPane().add(textArea);
+		
+//		imagesToUse = new ImageIcon[possibleBattles.size()]; 
+//		imagesToUse[0] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), "skeleton");
+//		for (int i = 1; i < possibleBattles.size(); i++) {
+//			imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
+//		}
+//		
+//		ImageCarousel images = new ImageCarousel(imagesToUse);
+//		images.setSize(290, 195);
+//		images.setLocation(266, 195);
+//		frmChoosebattle.getContentPane().add(images);
+		
+		
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(52, 88, 411, 343);
+		frmChoosebattle.getContentPane().add(scrollPane);
+
+		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(possibleBattles, scrollPane);
+		scrollPane.setViewportView(monsterPanel);
+		
+		
+		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
+		txtDescription.setText("Description: Not Selected\r\n\r\n");
+		txtDescription.setBounds(473, 88, 302, 233);
+		frmChoosebattle.getContentPane().add(txtDescription);
+		
+		
+//		JTextArea textArea = new JTextArea();
+//		textArea.setText(possibleBattles.toString());
+//		textArea.setBounds(72, 68, 458, 215);
+//		frmChoosebattle.getContentPane().add(textArea);
 		
 		
 		System.out.println(possibleBattles);
+	}
+	
+	public static void setTxtrDescription(String text) {
+		List<Battle> battles = day.getBattles().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		selectedBattle = battles.get(0);
+		String battleString = selectedBattle.toString();
+		txtDescription.setText(battleString);
 	}
 }

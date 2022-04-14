@@ -6,14 +6,17 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
 
+import day.Battle;
 import purchasable.Purchasable;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
 import net.miginfocom.swing.MigLayout;
+import gui.ChooseBattleScreen;
 import gui.InventoryScreen;
 import gui.ShopBuy;
 import gui.ShopSell;
@@ -75,6 +78,25 @@ public class ImgInventoryPanel extends JPanel {
 	}
 	
 
+	
+	public ImgInventoryPanel(ArrayList<Battle> battlesToDisplay, JScrollPane pane) {
+		if (battlesToDisplay.size() > 0) {
+			int iconWidth = battlesToDisplay.get(0).getImg().getIconWidth();
+			int paneWidth = pane.getWidth();
+			int numItems = paneWidth / iconWidth;
+			String rowColContraints = "["+ iconWidth + "!]";
+			this.setLayout(new MigLayout("wrap " + numItems, rowColContraints, rowColContraints));
+			
+			pane.setViewportView(this);
+			placeBattlesInPanel(battlesToDisplay);
+			
+			
+			//Delete if going back to og code
+//			this.version = version;
+		}
+
+	}
+	
 	
 	private InventoryButtonGroup getButtonGroup() {
 		return buttonGroup;
@@ -143,6 +165,33 @@ public class ImgInventoryPanel extends JPanel {
 		}
 		
 	}
+	
+	private void placeBattlesInPanel(ArrayList<Battle> BattlesToDisplay) {
+		
+		for (Battle item : BattlesToDisplay) {
+			
+			Icon icon = item.getImg();
+//			Icon icon = new ImageIcon("/images/skeleton.png");
+			System.out.println(icon);
+			JToggleButton button = new JToggleButton(icon);
+			button.setName(Integer.toString(item.getID()));
+//			System.out.println("button.getName() " + button.getName());
+			
+			
+			button.addActionListener(new ActionListener() { 
+				  public void actionPerformed(ActionEvent e) { 
+//					  System.out.println(( (Component) e.getSource()).getName());
+					  ChooseBattleScreen.setTxtrDescription(( (Component) e.getSource()).getName());
+				  } 
+				} );
+			
+			getButtonGroup().add(button);
+			this.add(button);
+			
+		}
+		
+	}
+	
 	
 	
 }

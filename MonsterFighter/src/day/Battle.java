@@ -3,6 +3,8 @@ package day;
 import java.util.ArrayList;
 import java.util.Random;
 
+import javax.swing.ImageIcon;
+
 import generators.MonsterGenerator;
 import purchasable.monsters.*;
 
@@ -14,6 +16,10 @@ public class Battle {
 	private ArrayList<Monster> team;
 	private int numMonstersToFight;
 	private String[][] possibleBattles = new String[][] { {"100", "1000", "3"}, {"150", "1000", "4"}, {"90", "1200", "3"}, {"120", "1200", "4"}, {"160", "1500", "5"} };
+	private String imgPath;
+	private ImageIcon img;
+	private static int id = 0;
+    private int instanceId = ++id;
 
 	
 	
@@ -40,8 +46,33 @@ public class Battle {
 			monstersTofight.add(newMonster);
 		}
 		
+		setImg();
+		setImgPath();
+		
 //		System.out.println("Gold: "+gold+"\nPoints: "+points+"\nNumMonsters: "+numMonstersToFight+"\nMonsters: "+monstersTofight);
 	}
+	
+	public ArrayList<Monster> getGameMonsters() {
+		return monstersTofight;
+	}
+	
+	
+	public ImageIcon getImg() {
+		return img;
+	}
+	
+	public void setImg() {
+		this.img = new ImageIcon("/images/skeleton1.png");
+	}
+	
+	public void setImgPath() {
+		this.imgPath = "/images/skeleton1.png";
+	}
+	
+    public int getID() {
+        return instanceId;
+    }
+	
 	
 	public void attack(Monster playerMonster, Monster gameMonster) {
 		
