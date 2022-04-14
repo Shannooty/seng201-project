@@ -1,5 +1,6 @@
 package gui.customElements;
 
+import javax.swing.ImageIcon;
 import javax.swing.JToggleButton;
 
 import purchasable.Purchasable;
@@ -20,7 +21,7 @@ public class InventoryToggleButton extends JToggleButton {
 		setButtonObject(item);
 		this.setIcon(item.getImg());
 		this.setBorder(null);
-		this.setSelectedIcon(item.getImg());
+		this.setSelectedIcon(new ImageIcon(InventoryToggleButton.class.getResource("/images/index1.png")));
 	}
 	
 
