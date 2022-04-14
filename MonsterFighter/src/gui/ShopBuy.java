@@ -61,10 +61,10 @@ public class ShopBuy {
 //	 */
 //	private double gold;
 	
-	/**
-	 * Attribute selectedCost of type double. The cost of the currently selected Item/Monster.
-	 */
-	private static double selectedCost;
+//	/**
+//	 * Attribute selectedCost of type double. The cost of the currently selected Item/Monster.
+//	 */
+//	private static double selectedCost;
 	
 	/**
 	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
@@ -243,8 +243,9 @@ public class ShopBuy {
 					
 					
 					txtDescription.setText("Nothing selected.");
+//					System.out.println("HHHHHHHHHHHHHHHHHHHHHH");
+//					System.out.println(inventory.toStringTeam());
 					
-					System.out.println(inventory.toStringTeam());
 				}
 			}
 		});
@@ -269,6 +270,11 @@ public class ShopBuy {
 
 
 		
+	}
+	
+	
+	public void setTxtDescription(String description) {
+		txtDescription = new JTextArea(description);
 	}
 	
 	/**

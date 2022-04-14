@@ -22,7 +22,7 @@ public class Player {
 	/**
 	 * Attribute goldAmount, of type double. The amount of gold the player has. Initialized to 100.
 	 */
-	private double goldAmount = 1000;
+	private double goldAmount = 100;
 	
 	/**
 	 * Attribute currentPoints, of type integer. The number of points the player has. Initialized to 0.
