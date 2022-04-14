@@ -8,14 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JToggleButton;
 import javax.swing.ListSelectionModel;
 
 import gui.customElements.ImgInventoryPanel;
@@ -169,42 +172,34 @@ public class ShopSell {
 		txtDescription.setBounds(473, 88, 302, 233);
 		frmShopSell.getContentPane().add(txtDescription);
 		
-//		
-//		ArrayList<Double> prices = new ArrayList<Double>();
-//		DefaultListModel<String> shopStrings = new DefaultListModel<>();
-//		DefaultListModel<String> shopInfo = new DefaultListModel<>();
-//
-//		Team monsterInfo = inventory.getTeam();
-//		ArrayList<Item> itemInfo = inventory.getItems();
-//		
-//		for(Monster val : monsterInfo.getTeam()) {
-//			shopStrings.addElement(val.getDescription());
-//			shopInfo.addElement(val.toString());
-//			prices.add(val.getPurchasePrice());
-//		}
-//		shopStrings.addElement(null);
-//		shopInfo.addElement(null);
-//		prices.add(null);
-//
-//		for(Item val : itemInfo) {
-//			shopStrings.addElement(val.getName());
-//			shopInfo.addElement(val.toString());
-//			prices.add(val.getPurchasePrice());
-//		}
-//		
-////		System.out.println("shopStrings " + shopStrings);
-////		System.out.println("shopInfo " + shopInfo);
-//		
-//		// Create the actual JList, notice that we put the astronautListModel in as an argument to new JList		
-//		JList<String> availablePurchasables = new JList<>(shopStrings);
-//		availablePurchasables.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//		availablePurchasables.setBounds(49, 88, 341, 233);
-//		frmShopSell.getContentPane().add(availablePurchasables);
-//		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
-//		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopSell", prices));
-//		
-//		
-//		
+		
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBounds(52, 40, 327, 34);
+		frmShopSell.getContentPane().add(buttonPanel);
+		
+		ButtonGroup buttons = new ButtonGroup();
+		JToggleButton showMonsters = new JToggleButton("Show Monsters");
+		JToggleButton showItems = new JToggleButton("Show Items");
+		buttons.add(showMonsters);
+		buttons.add(showItems);
+		buttonPanel.add(showMonsters);
+		buttonPanel.add(showItems);
+		
+		showMonsters.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopBuy");
+				  scrollPane.setViewportView(monsterPanel);
+				  txtDescription.setText("Nothing selected.");
+			  }
+			} );
+		
+		showItems.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), scrollPane, "ShopBuy");
+				  scrollPane.setViewportView(itemPanel);
+				  txtDescription.setText("Nothing selected.");
+			  }
+			} );	
 		JButton btnSell = new JButton("Sell");
 		btnSell.addActionListener(new ActionListener() {
 			/**

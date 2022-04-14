@@ -1,5 +1,6 @@
 package gui;
 
+import java.awt.Component;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -15,9 +16,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
+import javax.swing.JToggleButton;
 import javax.swing.ListSelectionModel;
 
 import gui.customElements.*;
@@ -29,6 +32,7 @@ import purchasable.Purchasable;
 import purchasable.items.Item;
 import purchasable.monsters.*;
 import javax.swing.ListModel;
+import javax.swing.JPanel;
 
 
 
@@ -151,46 +155,35 @@ public class ShopBuy {
 		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, "ShopBuy");
 		scrollPane.setViewportView(monsterPanel);
 		
-//		
-//		scrollPane.setViewportView(itemPanel);
-		
-		JButton btnShowMonsters = new JButton("Show Monsters");
-		btnShowMonsters.setEnabled( false );
-//		btnShowMonsters.setVisible(false);
-		btnShowMonsters.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, "ShopBuy");
-				scrollPane.setViewportView(monsterPanel);
-				
-				btnShowMonsters.setEnabled( false );
-		        btnShowItems.setEnabled(true);
-			}
-		});
-		btnShowMonsters.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnShowMonsters.setBounds(171, 60, 170, 21);
-		frmShopbuy.getContentPane().add(btnShowMonsters);
-		
-		JButton btnShowItems = new JButton("Show Items");
-		btnShowItems.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemInfo, scrollPane, "ShopBuy");
-				scrollPane.setViewportView(itemPanel);
-				btnShowItems.setEnabled( false );
-		        btnShowMonsters.setEnabled(true);
-			}
-		});
-		btnShowItems.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnShowItems.setBounds(71, 60, 142, 21);
-		frmShopbuy.getContentPane().add(btnShowItems);
+		JPanel buttonPanel = new JPanel();
+		buttonPanel.setBounds(52, 40, 327, 34);
+		frmShopbuy.getContentPane().add(buttonPanel);
 		
 		
+		ButtonGroup buttons = new ButtonGroup();
+		JToggleButton showMonsters = new JToggleButton("Show Monsters");
+		JToggleButton showItems = new JToggleButton("Show Items");
+		buttons.add(showMonsters);
+		buttons.add(showItems);
+		buttonPanel.add(showMonsters);
+		buttonPanel.add(showItems);
 		
-
+		showMonsters.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, "ShopBuy");
+				  scrollPane.setViewportView(monsterPanel);
+				  txtDescription.setText("Nothing selected.");
+			  }
+			} );
 		
+		showItems.addActionListener(new ActionListener() { 
+			  public void actionPerformed(ActionEvent e) { 
+				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemInfo, scrollPane, "ShopBuy");
+				  scrollPane.setViewportView(itemPanel);
+				  txtDescription.setText("Nothing selected.");
+			  }
+			} );
 		
-
-		
-
 		
 		
 		
@@ -222,54 +215,7 @@ public class ShopBuy {
 		btnShopSell.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnShopSell.setBounds(741, 10, 85, 21);
 		frmShopbuy.getContentPane().add(btnShopSell);
-//		
-//		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
-//		txtDescription.setText("Description: Not Selected\r\n\r\n");
-//		txtDescription.setBounds(457, 88, 302, 233);
-//		frmShopbuy.getContentPane().add(txtDescription);
-//		
-//		
-////		Shop shop = new Shop(2, 2);
-////		Shop.setNumMonsters(2);
-////		Shop.addMonsters();
-////		shop.addMonsters();
-////		shop.addMonsters();
-//		ArrayList<Double> prices = new ArrayList<Double>();
-//		DefaultListModel<String> shopStrings = new DefaultListModel<>();
-//		DefaultListModel<String> shopInfo = new DefaultListModel<>();
-//
-//		ArrayList<Monster> monsterInfo = shop.getAvalibleMonsters();
-//		ArrayList<Item> itemInfo = shop.getAvalibleItems();
-//		
-//		for(Monster val : monsterInfo) {
-//			shopStrings.addElement(val.getDescription());
-//			shopInfo.addElement(val.toString());
-//			prices.add(val.getPurchasePrice());
-//		}
-//		shopStrings.addElement(null);
-//		shopInfo.addElement(null);
-//		prices.add(null);
-//
-//		for(Item val : itemInfo) {
-//			shopStrings.addElement(val.getName());
-//			shopInfo.addElement(val.toString());
-//			prices.add(val.getPurchasePrice());
-//		}
-//		
-//		
-//
-//		// Create the actual JList, notice that we put the astronautListModel in as an argument to new JList		
-//		JList<String> availablePurchasables = new JList<>(shopStrings);
-//		
-//		
-//		
-//		availablePurchasables.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//		availablePurchasables.setBounds(49, 88, 341, 233);
-//		frmShopbuy.getContentPane().add(availablePurchasables);
-//		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
-//		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopBuy", prices));
-////		System.out.println(shopInfo);
-		
+
 		
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
@@ -293,8 +239,7 @@ public class ShopBuy {
 						scrollPane.setViewportView(itemPanel);
 						
 					}
-					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
-//					
+					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());				
 					
 					
 					txtDescription.setText("Nothing selected.");
@@ -319,6 +264,8 @@ public class ShopBuy {
 		btnReturnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnReturnHome.setBounds(684, 35, 142, 21);
 		frmShopbuy.getContentPane().add(btnReturnHome);
+		
+		
 		
 
 		
