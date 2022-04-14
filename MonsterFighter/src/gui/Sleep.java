@@ -77,7 +77,7 @@ public class Sleep {
 		frmSleep.getContentPane().setLayout(null);
 		
 		JLabel lblDaysRemaining = new JLabel("There are __ days remaining.");
-		lblDaysRemaining.setText("There are "+(gameEnvironment.getgameLength() - gameEnvironment.getDayNumber())+" days remaining.");	
+		lblDaysRemaining.setText("There are "+(gameEnvironment.getGameLength() - gameEnvironment.getDayNumber())+" days remaining.");	
 		lblDaysRemaining.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblDaysRemaining.setBounds(302, 340, 222, 20);
 		frmSleep.getContentPane().add(lblDaysRemaining);
