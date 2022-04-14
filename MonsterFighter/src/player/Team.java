@@ -22,6 +22,12 @@ public class Team {
 	}
 	
 	public void refreshOrder() {
-		getTeam().sort(null);
+//		getTeam().sort(null);
+		sort(getTeam());
 	}
+	
+	public void sort(ArrayList<Monster> list)
+    {
+        list.sort((o1, o2) -> Integer.compare(o1.getSpeed(), o2.getSpeed()));
+    }
 }

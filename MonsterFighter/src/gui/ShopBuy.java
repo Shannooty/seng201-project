@@ -231,35 +231,23 @@ public class ShopBuy {
 //		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
 //		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopBuy", prices));
 ////		System.out.println(shopInfo);
-//		JButton btnBuy = new JButton("Buy");
-//		btnBuy.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				/**
-//				 * Creates a pop-up window that asks the user if they are sure they want to buy the selected Item/Monster. Once the user confirms their choice, removes the gold using Player.removeGold(). Monster is added to the player's inventory.
-//				 * @param e the action that was performed, type ActionEvent.
-//				 */
-//				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
-//				if (choice == JOptionPane.YES_OPTION) {
-//					player.removeGold(selectedCost);
-//					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());	
-//					
-////					shop.removeMonster(selectedMonster);
-//					
-//					System.out.println("HHHHHHHHHHH" + inventory.toStringTeam());
-//					selectedMonster.buy();
-////					inventory.addMonster(selectedMonster);
-//					
-//					System.out.println("GGGGGGGGGGGGGGGGGGGG" + inventory.toStringTeam());
-//					
-//					
-//					
-////					STILL NEED TO ADD MONSTER/ITEM TO INVENTORY
-//				}
-//			}
-//		});
-//		btnBuy.setFont(new Font("Tahoma", Font.BOLD, 16));
-//		btnBuy.setBounds(617, 331, 142, 21);
-//		frmShopbuy.getContentPane().add(btnBuy);
+		JButton btnBuy = new JButton("Buy");
+		btnBuy.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				/**
+				 * Creates a pop-up window that asks the user if they are sure they want to buy the selected Item/Monster. Once the user confirms their choice, removes the gold using Player.removeGold(). Monster is added to the player's inventory.
+				 * @param e the action that was performed, type ActionEvent.
+				 */
+				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
+				if (choice == JOptionPane.YES_OPTION) {
+					selectedMonster.buy(player);
+					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
+				}
+			}
+		});
+		btnBuy.setFont(new Font("Tahoma", Font.BOLD, 16));
+		btnBuy.setBounds(617, 331, 142, 21);
+		frmShopbuy.getContentPane().add(btnBuy);
 //		
 //		JButton btnReturnHome = new JButton("Return Home");
 //		btnReturnHome.addActionListener(new ActionListener() {
@@ -301,8 +289,8 @@ public class ShopBuy {
 	 */
 	public static void setTxtrDescription(String text) {
 		List<Monster> listOfMonsters = shop.getAvalibleMonsters().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
-		Monster monster = listOfMonsters.get(0);
-		String monsterString = monster.toString();
+		selectedMonster = listOfMonsters.get(0);
+		String monsterString = selectedMonster.toString();
 		txtDescription.setText(monsterString);
 	}
 //	
