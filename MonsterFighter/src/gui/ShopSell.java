@@ -14,9 +14,11 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.ListSelectionModel;
 
+import gui.customElements.ImgInventoryPanel;
 import inventory.Inventory;
 import player.Player;
 import player.Team;
@@ -65,7 +67,7 @@ public class ShopSell {
 	/**
 	 * Attribute inventory of type Inventory. The player's inventory.
 	 */
-	private Inventory inventory;
+	private static Inventory inventory;
 	
 	/**
 	 * Attribute player of type Player. The current player.
@@ -115,6 +117,14 @@ public class ShopSell {
 		frmShopSell.getContentPane().setLayout(null);
 		
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(52, 88, 411, 343);
+		frmShopSell.getContentPane().add(scrollPane);
+		
+		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell");
+		scrollPane.setViewportView(panel);
+		
+		
 		JLabel lblGoldAmount = new JLabel();
 		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -156,45 +166,45 @@ public class ShopSell {
 		
 		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		txtDescription.setText("Description: Not Selected\r\n\r\n");
-		txtDescription.setBounds(457, 88, 302, 233);
+		txtDescription.setBounds(473, 88, 302, 233);
 		frmShopSell.getContentPane().add(txtDescription);
 		
-		
-		ArrayList<Double> prices = new ArrayList<Double>();
-		DefaultListModel<String> shopStrings = new DefaultListModel<>();
-		DefaultListModel<String> shopInfo = new DefaultListModel<>();
-
-		Team monsterInfo = inventory.getTeam();
-		ArrayList<Item> itemInfo = inventory.getItems();
-		
-		for(Monster val : monsterInfo.getTeam()) {
-			shopStrings.addElement(val.getDescription());
-			shopInfo.addElement(val.toString());
-			prices.add(val.getPurchasePrice());
-		}
-		shopStrings.addElement(null);
-		shopInfo.addElement(null);
-		prices.add(null);
-
-		for(Item val : itemInfo) {
-			shopStrings.addElement(val.getName());
-			shopInfo.addElement(val.toString());
-			prices.add(val.getPurchasePrice());
-		}
-		
-//		System.out.println("shopStrings " + shopStrings);
-//		System.out.println("shopInfo " + shopInfo);
-		
-		// Create the actual JList, notice that we put the astronautListModel in as an argument to new JList		
-		JList<String> availablePurchasables = new JList<>(shopStrings);
-		availablePurchasables.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		availablePurchasables.setBounds(49, 88, 341, 233);
-		frmShopSell.getContentPane().add(availablePurchasables);
-		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
-		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopSell", prices));
-		
-		
-		
+//		
+//		ArrayList<Double> prices = new ArrayList<Double>();
+//		DefaultListModel<String> shopStrings = new DefaultListModel<>();
+//		DefaultListModel<String> shopInfo = new DefaultListModel<>();
+//
+//		Team monsterInfo = inventory.getTeam();
+//		ArrayList<Item> itemInfo = inventory.getItems();
+//		
+//		for(Monster val : monsterInfo.getTeam()) {
+//			shopStrings.addElement(val.getDescription());
+//			shopInfo.addElement(val.toString());
+//			prices.add(val.getPurchasePrice());
+//		}
+//		shopStrings.addElement(null);
+//		shopInfo.addElement(null);
+//		prices.add(null);
+//
+//		for(Item val : itemInfo) {
+//			shopStrings.addElement(val.getName());
+//			shopInfo.addElement(val.toString());
+//			prices.add(val.getPurchasePrice());
+//		}
+//		
+////		System.out.println("shopStrings " + shopStrings);
+////		System.out.println("shopInfo " + shopInfo);
+//		
+//		// Create the actual JList, notice that we put the astronautListModel in as an argument to new JList		
+//		JList<String> availablePurchasables = new JList<>(shopStrings);
+//		availablePurchasables.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		availablePurchasables.setBounds(49, 88, 341, 233);
+//		frmShopSell.getContentPane().add(availablePurchasables);
+//		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
+//		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopSell", prices));
+//		
+//		
+//		
 		JButton btnSell = new JButton("Sell");
 		btnSell.addActionListener(new ActionListener() {
 			/**
@@ -204,37 +214,55 @@ public class ShopSell {
 			public void actionPerformed(ActionEvent e) {
 				int choice = JOptionPane.showConfirmDialog(frmShopSell, "Are you sure you want to sell this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
 				if (choice == JOptionPane.YES_OPTION) {
+					if (selectedMonster != null) {
+						selectedMonster.sell(player);
+						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell");
+						scrollPane.setViewportView(monsterPanel);
+					} else if (selectedItem != null) {
+						selectedItem.sell(player);
+						ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), scrollPane, "ShopSell");
+						scrollPane.setViewportView(itemPanel);
+					}
 					
-					selectedMonster.sell();
 					
-//					player.addGold(selectedPrice);
-//					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
-					
-//					List<Monster> listOfMonsters = team.stream().filter(s -> selectedMonster.equals(s.getName())).collect(Collectors.toList());
-//					Monster monsterToRemove = listOfMonsters.get(0);
-//					System.out.println(selectedMonster);
-//					inventory.removeMonster(selectedMonster);
-					
-					
-//					STILL NEED TO REMOVE MONSTER/ITEM FROM INVENTORY
+					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
+//					ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell");
+//					scrollPane.setViewportView(panel);
+					txtDescription.setText("Nothing selected.");
 				}
 			}
 		});
 		btnSell.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnSell.setBounds(617, 331, 142, 21);
 		frmShopSell.getContentPane().add(btnSell);
-		
-		
+//		
+//		
 	}
-	
+//	
 	
 	/**
 	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
 	 * @param text, type String. The description of the currently selected Item/Monster.
 	 */
-	public static void setTxtrDescription(String text) {
-		txtDescription.setText(text);
+//	public static void setTxtrDescription(String text) {
+//		txtDescription.setText(text);
+//	}
+	
+	public static void setTxtrDescriptionMonster(String text) {
+		List<Monster> listOfMonsters = team.getTeam().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		selectedMonster = listOfMonsters.get(0);
+		String monsterString = selectedMonster.toString();
+		txtDescription.setText(monsterString);
 	}
+	
+	
+	public static void setTxtrDescriptionItem(String text) {
+		List<Item> listOfItems = inventory.getItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		selectedItem = listOfItems.get(0);
+		String itemString = selectedItem.toString();
+		txtDescription.setText(itemString);
+	}
+	
 	
 	
 	/**

@@ -94,6 +94,9 @@ public class ShopBuy {
 	private static Item selectedItem;
 	
 	
+	JButton btnShowMonsters, btnShowItems;
+
+	
 
 	/**
 	 * Constructor for the class ShopBuy. Creates an instance of the class Shop, ShopBuy's parent. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
@@ -135,13 +138,59 @@ public class ShopBuy {
 		frmShopbuy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmShopbuy.getContentPane().setLayout(null);
 		ArrayList<Monster> monsterInfo = shop.getAvalibleMonsters();
+		ArrayList<Item> itemInfo = shop.getAvalibleItems();
+		
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(52, 88, 411, 343);
 		frmShopbuy.getContentPane().add(scrollPane);
 		
-		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, monsterInfo);
-		scrollPane.setViewportView(panel);
+		
+		
+		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, "ShopBuy");
+		scrollPane.setViewportView(monsterPanel);
+		
+//		
+//		scrollPane.setViewportView(itemPanel);
+		
+		JButton btnShowMonsters = new JButton("Show Monsters");
+		btnShowMonsters.setEnabled( false );
+//		btnShowMonsters.setVisible(false);
+		btnShowMonsters.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, "ShopBuy");
+				scrollPane.setViewportView(monsterPanel);
+				
+				btnShowMonsters.setEnabled( false );
+		        btnShowItems.setEnabled(true);
+			}
+		});
+		btnShowMonsters.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnShowMonsters.setBounds(171, 60, 170, 21);
+		frmShopbuy.getContentPane().add(btnShowMonsters);
+		
+		JButton btnShowItems = new JButton("Show Items");
+		btnShowItems.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemInfo, scrollPane, "ShopBuy");
+				scrollPane.setViewportView(itemPanel);
+				btnShowItems.setEnabled( false );
+		        btnShowMonsters.setEnabled(true);
+			}
+		});
+		btnShowItems.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnShowItems.setBounds(71, 60, 142, 21);
+		frmShopbuy.getContentPane().add(btnShowItems);
+		
+		
+		
+
+		
+		
+
+		
+
 		
 		
 		
@@ -157,19 +206,8 @@ public class ShopBuy {
 		txtDescription.setBounds(473, 88, 302, 233);
 		frmShopbuy.getContentPane().add(txtDescription);
 		
-		
-//		frmShopbuy = new JFrame();
-//		frmShopbuy.setTitle("ShopBuy");
-//		frmShopbuy.setBounds(100, 100, 850, 570);
-//		frmShopbuy.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		frmShopbuy.getContentPane().setLayout(null);
-//		
-//		JLabel lblGoldAmount = new JLabel();
-//		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
-//		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
-//		lblGoldAmount.setBounds(10, 10, 219, 20);
-//		frmShopbuy.getContentPane().add(lblGoldAmount);
-//		
+
+	
 		JButton btnShopSell = new JButton("Sell");
 		btnShopSell.addActionListener(new ActionListener() {
 			/**
@@ -231,6 +269,8 @@ public class ShopBuy {
 //		ListSelectionModel monsterSelectionModel = availablePurchasables.getSelectionModel();
 //		monsterSelectionModel.addListSelectionListener(new SharedListSelectionHandler(shopInfo, "ShopBuy", prices));
 ////		System.out.println(shopInfo);
+		
+		
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -238,13 +278,26 @@ public class ShopBuy {
 				 * Creates a pop-up window that asks the user if they are sure they want to buy the selected Item/Monster. Once the user confirms their choice, removes the gold using Player.removeGold(). Monster is added to the player's inventory.
 				 * @param e the action that was performed, type ActionEvent.
 				 */
-				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
+				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);			
 				if (choice == JOptionPane.YES_OPTION) {
-					selectedMonster.buy(player);
+					if (selectedMonster != null) {
+						selectedMonster.buy(player);
+						shop.removeMonster(selectedMonster);
+						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters(), "ShopBuy");
+						scrollPane.setViewportView(monsterPanel);
+						
+					} else if (selectedItem != null) {
+						selectedItem.buy(player);
+						shop.removeItem(selectedItem);
+						ImgInventoryPanel itemPanel = new ImgInventoryPanel(shop.getAvalibleItems(), scrollPane, "ShopBuy");
+						scrollPane.setViewportView(itemPanel);
+						
+					}
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
-					shop.removeMonster(selectedMonster);
-					ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters());
-					scrollPane.setViewportView(panel);
+//					
+					
+					
+					txtDescription.setText("Nothing selected.");
 				}
 			}
 		});
@@ -266,54 +319,34 @@ public class ShopBuy {
 		btnReturnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnReturnHome.setBounds(684, 35, 142, 21);
 		frmShopbuy.getContentPane().add(btnReturnHome);
-//		
-//
-//		
+		
 
-
-	    
-//	    
-//		JButton btnShowDetailsButton = new JButton("Show Selected Details");
-//		btnShowDetailsButton.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				System.out.println("Button pressed! Currently selected astronaut is:");
-//				System.out.println(availableMonsters.getSelectedValue());
-//			}
-//		});
-//		btnShowDetailsButton.setFont(new Font("Tahoma", Font.PLAIN, 14));
-//		btnShowDetailsButton.setBounds(116, 232, 192, 21);
-//		frmShopbuy.getContentPane().add(btnShowDetailsButton);
-//		
+		
 	}
 	
 	/**
 	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
 	 * @param text, type String. The description of the currently selected Item/Monster.
 	 */
-	public static void setTxtrDescription(String text) {
+	public static void setTxtrDescriptionMonster(String text) {
 		List<Monster> listOfMonsters = shop.getAvalibleMonsters().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		selectedMonster = listOfMonsters.get(0);
 		String monsterString = selectedMonster.toString();
 		txtDescription.setText(monsterString);
 	}
-//	
-//	
-//	
-//	/**
-//	 * Sets the private variable selectedMonster to the value of the Monster at index monster in team.
-//	 * @param monster, of type integer. The index of the currently selected monster.
-//	 */
-//	public static void setSelectedMonster(int monster) {
-//		selectedMonster = team.getTeam().get(monster);
-//		System.out.println("selectedMonster: " + selectedMonster.getDescription() + selectedMonster.getClass());
-//	}
-//	
-//	
-//	/**
-//	 * Sets the private variable selectedCost to the value of cost.
-//	 * @param cost, of type double. The cost of the currently selected Item/Monster.
-//	 */
-//	public static void setSelectedCost(double cost) {
-//		selectedCost = cost;
-//	}
+	
+	public static void setTxtrDescriptionItem(String text) {
+		List<Item> listOfItems = shop.getAvalibleItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		selectedItem = listOfItems.get(0);
+		String itemString = selectedItem.toString();
+		txtDescription.setText(itemString);
+	}
+	
+	public void enableMonsters() {
+		
+	}
+	
+	public void enableItems() {
+		
+	}
 }
