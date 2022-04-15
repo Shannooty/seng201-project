@@ -14,6 +14,7 @@ import javax.swing.SwingConstants;
 import leaderboard.Leaderboard;
 
 import javax.swing.JList;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.ListSelectionModel;
 
@@ -22,7 +23,6 @@ public class EndScreen {
 	private JFrame frame;
 	private GameEnvironment gameEnvironment;
 	private Player player;
-	private Leaderboard leaderboard;
 	
 	/**
 	 * Create the application.
@@ -31,7 +31,8 @@ public class EndScreen {
 		initialize();
 		gameEnvironment = manager;
 		setPlayer(manager.getPlayer());
-		setLeaderboard(GameEnvironment.getLeaderboard());
+		frame.setVisible(true);
+		
 	}
 	
 	public void closeWindow() {
@@ -43,14 +44,16 @@ public class EndScreen {
 		gameEnvironment.closeEndScreen(this);
 	}
 	
-	private void loadLeaderboard(JList list) {
+	private DefaultListModel<String> loadLeaderboard() {
 		int position = 0;
-		for (PlayerScore score : getLeaderboard().getLeaderboard()) {
-			String displayMessage = position++ + " " + score;
-			JLabel entry = new JLabel(displayMessage);
-			list.add(entry);
-		}
+		DefaultListModel<String> model = new DefaultListModel<String>();
 		
+		for (PlayerScore score : GameEnvironment.getLeaderboard().getLeaderboard()) {
+			String displayMessage = ++position + " " + score;
+			model.addElement(displayMessage);
+			
+		}
+		return model;
 	}
 
 	/**
@@ -80,14 +83,13 @@ public class EndScreen {
 		lblLeaderboard.setBounds(295, 115, 244, 46);
 		frame.getContentPane().add(lblLeaderboard);
 		
-		JList listLeaderboard = new JList();
+		JList<String> listLeaderboard = new JList<String>(loadLeaderboard());
 		listLeaderboard.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listLeaderboard.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		listLeaderboard.setVisibleRowCount(20);
 		listLeaderboard.setBounds(295, 157, 244, 306);
 		frame.getContentPane().add(listLeaderboard);
 		
-		loadLeaderboard(listLeaderboard);
 		
 		JButton btnPlayAgain = new JButton("Play Again");
 		btnPlayAgain.setBounds(295, 478, 110, 28);
@@ -110,11 +112,4 @@ public class EndScreen {
 		this.player = player;
 	}
 
-	public Leaderboard getLeaderboard() {
-		return leaderboard;
-	}
-
-	public void setLeaderboard(Leaderboard leaderboard) {
-		this.leaderboard = leaderboard;
-	}
 }
