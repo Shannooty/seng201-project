@@ -15,7 +15,7 @@ public class Battle {
 	private ArrayList<Monster> monstersTofight = new ArrayList<Monster>();
 	private ArrayList<Monster> team;
 	private int numMonstersToFight;
-	private String[][] possibleBattles = new String[][] { {"100", "1000", "3"}, {"150", "1000", "4"}, {"90", "1200", "3"}, {"120", "1200", "4"}, {"160", "1500", "5"} };
+	private String[][] possibleBattles = new String[][] { {"100", "1000", "2"}, {"150", "1000", "3"}, {"90", "1200", "2"}, {"120", "1200", "3"}, {"160", "1500", "4"} };
 	private String imgPath;
 	private ImageIcon img;
 	private static int id = 0;
@@ -33,11 +33,11 @@ public class Battle {
 		if (difficulty == "Hard") {
 			gold += 10;
 			points += 30;
-			numMonstersToFight += 3;
+			numMonstersToFight += 2;
 		} else if (difficulty == "Medium") {
 			gold += 20;
 			points += 20;
-			numMonstersToFight += 2;
+			numMonstersToFight += 1;
 		}
 		
 		for (int i = 0; i < numMonstersToFight; i++) {
