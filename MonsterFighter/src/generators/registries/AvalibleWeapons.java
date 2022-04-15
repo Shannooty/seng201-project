@@ -3,7 +3,7 @@ package generators.registries;
 import java.util.Random;
 
 public enum AvalibleWeapons {
-	SHARPSTICK;
+	SHARPSTICK, SLEDGEHAMMER;
 	
 private static final AvalibleWeapons[] VALUES = AvalibleWeapons.values();
 	

@@ -34,6 +34,8 @@ public class ItemGenerator extends Generator {
 		switch(armorType) {
 		case FLOWERCROWN:
 			return new FlowerCrown();
+		case SHIELD:
+			return new Shield();
 		default:
 			return null;
 		
@@ -60,6 +62,8 @@ public class ItemGenerator extends Generator {
 		switch(weaponType) {
 		case SHARPSTICK:
 			return new SharpStick();
+		case SLEDGEHAMMER:
+			return new SledgeHammer();
 		default:
 			return null;
 		
