@@ -53,7 +53,7 @@ public class Shop {
 	public void addMonsters() {
 		for (int i = 0; i < getNumMonsters(); i++) {
 			Monster newMonster = MonsterGenerator.newMonster();
-			newMonster.setPurchasePrice(70);
+//			newMonster.setPurchasePrice(70);
 			avalibleMonsters.add(newMonster);
 		}
 	}
@@ -72,7 +72,7 @@ public class Shop {
 	public void addItems() {
 		for (int i = 0; i < getNumItems(); i++) {
 			Item newItem = ItemGenerator.newItem();
-			newItem.setPurchasePrice(10);
+//			newItem.setPurchasePrice(10);
 			avalibleItems.add(newItem);
 		}
 	}
