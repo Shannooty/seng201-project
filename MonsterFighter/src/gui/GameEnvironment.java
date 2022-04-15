@@ -82,6 +82,7 @@ class  GameEnvironment {
 	
 	public void sleep() {
 		if (getToday().getDayNumber() == getGameLength()) {
+			getLeaderboard().addScore(getPlayer().getScore());
 			launchEndScreen();
 		} else {
 			Day nextDay = new Day(getDayNumber(), getGameDifficulty());
