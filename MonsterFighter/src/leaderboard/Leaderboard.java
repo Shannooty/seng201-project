@@ -3,9 +3,6 @@ package leaderboard;
 import java.io.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.TreeMap;
-import java.util.TreeSet;
 
 import player.PlayerScore;
 
