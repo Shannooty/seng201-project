@@ -13,7 +13,7 @@ class  GameEnvironment {
 	private int gameLength;
 	private String difficulty;
 	private Player player;
-	private int dayNumber = 0;
+	private int dayNumber = 1;
 	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
 	private Day today;
 	private static Leaderboard leaderboard = new Leaderboard();
@@ -82,9 +82,9 @@ class  GameEnvironment {
 	
 	public void sleep() {
 		if (getToday().getDayNumber() == getGameLength()) {
-			//TODO open end screen
+			launchEndScreen();
 		} else {
-			Day nextDay = new Day(getToday().getDayNumber() + 1, getGameDifficulty());
+			Day nextDay = new Day(getDayNumber(), getGameDifficulty());
 			setToday(nextDay);
 			launchSleepScreen();
 		}
@@ -114,7 +114,7 @@ class  GameEnvironment {
 	
 	public void closeSleep(Sleep sleepWindow) {
 		sleepWindow.closeWindow();
-		launchMainScreen();
+		
 	}
 	
 	
