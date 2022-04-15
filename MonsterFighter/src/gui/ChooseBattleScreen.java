@@ -15,8 +15,12 @@ import generators.MonsterGenerator;
 import gui.customElements.ImgInventoryPanel;
 import purchasable.monsters.Monster;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ChooseBattleScreen {
 
@@ -118,6 +122,29 @@ public class ChooseBattleScreen {
 		txtDescription.setText("Description: Not Selected\r\n\r\n");
 		txtDescription.setBounds(473, 88, 302, 233);
 		frmChoosebattle.getContentPane().add(txtDescription);
+		
+		JButton btnNewButton = new JButton("Return Home");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.launchMainScreen();
+				finishedWindow();
+			}
+		});
+		btnNewButton.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnNewButton.setBounds(691, 10, 135, 27);
+		frmChoosebattle.getContentPane().add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Start Battle");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int choice = JOptionPane.showConfirmDialog(frmChoosebattle, "Are you sure you want to start this battle?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
+				if (choice == JOptionPane.YES_OPTION) {
+					}
+			}
+		});
+		btnNewButton_1.setFont(new Font("Tahoma", Font.BOLD, 15));
+		btnNewButton_1.setBounds(655, 342, 121, 27);
+		frmChoosebattle.getContentPane().add(btnNewButton_1);
 		
 		
 //		JTextArea textArea = new JTextArea();

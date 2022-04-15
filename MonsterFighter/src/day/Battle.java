@@ -49,7 +49,7 @@ public class Battle {
 		setImgPath("/images/skeleton.png");
 		setImg();
 		
-		System.out.println(getImg());
+//		System.out.println(getImg());
 		
 //		System.out.println("Gold: "+gold+"\nPoints: "+points+"\nNumMonsters: "+numMonstersToFight+"\nMonsters: "+monstersTofight);
 	}

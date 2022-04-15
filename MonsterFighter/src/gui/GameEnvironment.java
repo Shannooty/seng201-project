@@ -147,7 +147,13 @@ class  GameEnvironment {
 	}
 	
 	
+	public void launchBattleScreen(){
+		BattleScreen battleScreen = new BattleScreen(this);
+	}
 	
+	public void closeBattleScreen(BattleScreen battleWindow) {
+		battleWindow.closeWindow();
+	}
 	
 	
 	public static void main(String[] args) {
