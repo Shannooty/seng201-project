@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import day.Battle;
 import day.Day;
+import leaderboard.Leaderboard;
 import player.Player;
 import purchasable.monsters.*;
 
@@ -15,12 +16,17 @@ class  GameEnvironment {
 	private int dayNumber = 0;
 	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
 	private Day today;
+	private static Leaderboard leaderboard = new Leaderboard();
 
 	
 	public GameEnvironment() {
 		setStartingMonsters();
 	}
 	
+	public static Object getLeaderboard() {
+		return leaderboard;
+	}
+
 	public int getGameLength() {
 		return gameLength;
 	}
