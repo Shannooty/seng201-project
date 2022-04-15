@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import day.Battle;
 import day.Day;
+import leaderboard.Leaderboard;
 import player.Player;
 import purchasable.monsters.*;
 
@@ -12,15 +13,20 @@ class  GameEnvironment {
 	private int gameLength;
 	private String difficulty;
 	private Player player;
-	private int dayNumber = 0;
+	private int dayNumber = 1;
 	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
 	private Day today;
+	private static Leaderboard leaderboard = new Leaderboard();
 
 	
 	public GameEnvironment() {
 		setStartingMonsters();
 	}
 	
+	public static Leaderboard getLeaderboard() {
+		return leaderboard;
+	}
+
 	public int getGameLength() {
 		return gameLength;
 	}
@@ -76,9 +82,10 @@ class  GameEnvironment {
 	
 	public void sleep() {
 		if (getToday().getDayNumber() == getGameLength()) {
-			//TODO open end screen
+			getLeaderboard().addScore(getPlayer().getScore());
+			launchEndScreen();
 		} else {
-			Day nextDay = new Day(getToday().getDayNumber() + 1, getGameDifficulty());
+			Day nextDay = new Day(getDayNumber(), getGameDifficulty());
 			setToday(nextDay);
 			launchSleepScreen();
 		}
@@ -108,7 +115,7 @@ class  GameEnvironment {
 	
 	public void closeSleep(Sleep sleepWindow) {
 		sleepWindow.closeWindow();
-		launchMainScreen();
+		
 	}
 	
 	
@@ -156,6 +163,13 @@ class  GameEnvironment {
 		battleWindow.closeWindow();
 	}
 	
+	public void launchEndScreen() {
+		EndScreen endScreen = new EndScreen(this);
+	}
+	
+	public void closeEndScreen(EndScreen endScreenWindow) {
+		endScreenWindow.closeWindow();
+	}
 	
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();

@@ -26,7 +26,7 @@ public class Player {
 	/**
 	 * Attribute currentPoints, of type integer. The number of points the player has. Initialized to 0.
 	 */
-	private int currentPoints = 0;
+	private PlayerScore score;
 	
 	/**
 	 * Attribute inventory, of type Inventory. The player's inventory.
@@ -43,6 +43,7 @@ public class Player {
 	public Player(String name, Monster startingMonster) {
 		setName(name);
 		setInventory(new Inventory(startingMonster));
+		score = new PlayerScore(this);
 	}
 	
 	/**
@@ -102,7 +103,7 @@ public class Player {
 	 * @return currentPoints, of type integer. 
 	 */
 	public int getPoints() {
-		return currentPoints;
+		return getScore().getPoints();
 	}
 	
 	/**
@@ -113,7 +114,7 @@ public class Player {
 		if (points < 0) {
 			throw new NegativeValueException("Cannot add negative points");
 		} else {
-			currentPoints += points;
+			getScore().addPoints(points);
 		}
 	}
 
@@ -131,6 +132,10 @@ public class Player {
 	 */
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
+	}
+
+	public PlayerScore getScore() {
+		return score;
 	}
 	
 
