@@ -23,7 +23,7 @@ class  GameEnvironment {
 		setStartingMonsters();
 	}
 	
-	public static Object getLeaderboard() {
+	public static Leaderboard getLeaderboard() {
 		return leaderboard;
 	}
 
