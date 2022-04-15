@@ -48,5 +48,10 @@ public class PlayerScore implements Comparable<PlayerScore>{
 		playerName = name;
 	}
 	
+	public String toString() {
+		String message = getName() + " : " + getPoints();
+		return message;
+	}
+	
 	
 }
