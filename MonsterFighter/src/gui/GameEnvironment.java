@@ -2,6 +2,7 @@ package gui;
 
 import java.util.ArrayList;
 
+import day.Battle;
 import day.Day;
 import player.Player;
 import purchasable.monsters.*;
@@ -147,8 +148,8 @@ class  GameEnvironment {
 	}
 	
 	
-	public void launchBattleScreen(){
-		BattleScreen battleScreen = new BattleScreen(this);
+	public void launchBattleScreen(Battle selectedBattle){
+		BattleScreen battleScreen = new BattleScreen(this, selectedBattle);
 	}
 	
 	public void closeBattleScreen(BattleScreen battleWindow) {
