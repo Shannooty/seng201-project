@@ -36,6 +36,8 @@ public class ItemGenerator extends Generator {
 			return new FlowerCrown();
 		case SHIELD:
 			return new Shield();
+		case CHAINMAIL:
+			return new Chainmail();
 		default:
 			return null;
 		
@@ -50,6 +52,8 @@ public class ItemGenerator extends Generator {
 			return new Apple();
 		case BREAD:
 			return new Bread();
+		case MUSHROOM:
+			return new Mushroom();
 		default:
 			return null;
 		
@@ -64,6 +68,8 @@ public class ItemGenerator extends Generator {
 			return new SharpStick();
 		case SLEDGEHAMMER:
 			return new SledgeHammer();
+		case KNIFE:
+			return new Knife();
 		default:
 			return null;
 		

@@ -3,7 +3,7 @@ package generators.registries;
 import java.util.Random;
 
 public enum AvalibleArmors {
-	FLOWERCROWN, SHIELD;
+	FLOWERCROWN, SHIELD, CHAINMAIL;
 	
 	private static final AvalibleArmors[] VALUES = AvalibleArmors.values();
 	
