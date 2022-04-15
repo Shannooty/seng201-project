@@ -162,6 +162,7 @@ public class ShopBuy {
 		
 		ButtonGroup buttons = new ButtonGroup();
 		JToggleButton showMonsters = new JToggleButton("Show Monsters");
+		showMonsters.setSelected(true);
 		JToggleButton showItems = new JToggleButton("Show Items");
 		buttons.add(showMonsters);
 		buttons.add(showItems);
