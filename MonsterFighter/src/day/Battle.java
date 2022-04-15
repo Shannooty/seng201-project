@@ -46,8 +46,10 @@ public class Battle {
 			monstersTofight.add(newMonster);
 		}
 		
+		setImgPath("/images/skeleton.png");
 		setImg();
-		setImgPath();
+		
+		System.out.println(getImg());
 		
 //		System.out.println("Gold: "+gold+"\nPoints: "+points+"\nNumMonsters: "+numMonstersToFight+"\nMonsters: "+monstersTofight);
 	}
@@ -62,11 +64,11 @@ public class Battle {
 	}
 	
 	public void setImg() {
-		this.img = new ImageIcon("/images/skeleton1.png");
+		this.img = new ImageIcon(Monster.class.getResource(imgPath));
 	}
 	
-	public void setImgPath() {
-		this.imgPath = "/images/skeleton1.png";
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
 	}
 	
     public int getID() {
