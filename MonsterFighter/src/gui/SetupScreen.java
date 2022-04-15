@@ -222,7 +222,7 @@ public class SetupScreen {
 			 * @param arg0 the action that was performed, type ActionEvent.
 			 */
 			public void actionPerformed(ActionEvent arg0) {
-				gameEnvironment.setGameLength(gameLengthSlider.getValue());
+				gameEnvironment.setGameLength(gameLengthSlider.getValue());				
 				gameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()-1));
 				gameEnvironment.setToday(new Day(0, stringDifficulty.get(gameDifficultySlider.getValue()-1)));
 				

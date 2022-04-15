@@ -3,7 +3,7 @@ package generators.registries;
 import java.util.Random;
 
 public enum AvalibleFoods {
-	APPLE;
+	APPLE, BREAD;
 	
 	private static final AvalibleFoods[] VALUES = AvalibleFoods.values();
 	

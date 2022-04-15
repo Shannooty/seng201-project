@@ -46,6 +46,8 @@ public class ItemGenerator extends Generator {
 		switch(foodType) {
 		case APPLE:
 			return new Apple();
+		case BREAD:
+			return new Bread();
 		default:
 			return null;
 		
