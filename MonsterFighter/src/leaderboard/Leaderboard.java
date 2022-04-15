@@ -2,14 +2,16 @@ package leaderboard;
 
 import java.io.*;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 import player.PlayerScore;
 
 public class Leaderboard {
 	
-	private TreeSet<PlayerScore> leaderboard = new TreeSet<PlayerScore>();
+	private ArrayList<PlayerScore> leaderboard = new ArrayList<PlayerScore>();
 	private String leaderboardFilePath = "leaderboard.txt";
 	private String lineFormat = "%s:%s\n";
 	
@@ -18,35 +20,31 @@ public class Leaderboard {
 	}
 
 	
-	public TreeSet<PlayerScore> getLeaderboard() {
+	public ArrayList<PlayerScore> getLeaderboard() {
 		return leaderboard;
 	}
 	
 	public void addScore(PlayerScore score) {
 		getLeaderboard().add(score);
+		getLeaderboard().sort(null);
 		save();
 	}
 	
 	public int getPosition(PlayerScore score) {
-		Iterator<PlayerScore> leaderboardIterator = getLeaderboard().iterator();
-		int playerPosition = -1;
-		int counter = 0;
-		
-		while (playerPosition == -1 && leaderboardIterator.hasNext()) {
-			counter++;
-			if (leaderboardIterator.next() == score) {
-				playerPosition = counter;
-			}
-		}
-		
-		return playerPosition;
+		int playerPosition = getLeaderboard().indexOf(score);
+		return playerPosition + 1;
+	}
+	
+	public void clear() {
+		getLeaderboard().clear();
+		save();
 	}
 	
 	private void load() {
 		try {
 			BufferedReader br = new BufferedReader(
 					new FileReader(leaderboardFilePath));
-			String line;
+			String line = br.readLine();
 			String playerName;
 			String playerPoints;
 			
@@ -67,6 +65,7 @@ public class Leaderboard {
 		try {
 			BufferedWriter bw = new BufferedWriter(
 					new FileWriter(leaderboardFilePath));
+			bw.write("Leaderboard:\n");
 			
 			for (PlayerScore score : getLeaderboard()) {
 				String fileLine = String.format(lineFormat, score.getName(), score.getPoints());
@@ -80,7 +79,4 @@ public class Leaderboard {
 		}
 	}
 	
-	public static void main(String[] args) {
-		
-	}
 }
