@@ -201,7 +201,7 @@ public class MainScreen {
 			 */
 			public void actionPerformed(ActionEvent e) {
 				gameEnvironment.increaseDayNumber();
-				gameEnvironment.launchSleepScreen();
+				gameEnvironment.sleep();
 				finishedWindow();
 			}
 		});
