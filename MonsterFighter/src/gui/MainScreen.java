@@ -246,13 +246,10 @@ public class MainScreen {
 			 * @param e the action that was performed, type ActionEvent.
 			 */
 			public void actionPerformed(ActionEvent e) {
-				
-				String monsterDescription = images.getImg();
-				String oldMonster = monsterDescription.substring(monsterDescription.indexOf(":") + 1);
 				String newMonsterName = JOptionPane.showInputDialog(frmMainscreen,"Enter a new name:", null);
+				selectedMonster.setName(newMonsterName);
+				setTxtrDescription(Integer.toString(selectedMonster.getID()));
 				
-				List<Monster> listOfMonsters = team.stream().filter(s -> oldMonster.equals(s.getName())).collect(Collectors.toList());
-				(listOfMonsters.get(0)).setName(newMonsterName);
 			}
 		});
 		btnChangeMonsterName.setBounds(100, 390, 222, 29);
