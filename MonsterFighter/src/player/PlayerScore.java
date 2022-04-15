@@ -35,7 +35,11 @@ public class PlayerScore implements Comparable<PlayerScore>{
 	public int compareTo(PlayerScore other) {
 		Integer thisScore = this.getPoints();
 		Integer otherScore = other.getPoints();
-		int compareValue = thisScore.compareTo(otherScore);
+		int compareValue = otherScore.compareTo(thisScore);
+		
+		if (compareValue == 0) {
+			compareValue = -1;
+		}
 		
 		return compareValue;
 	}
