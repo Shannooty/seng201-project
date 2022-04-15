@@ -1,0 +1,6 @@
+Leaderboard:
+Celia:1000
+Bede:400
+Celia:200
+Celia:100
+Bede:100
