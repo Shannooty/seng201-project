@@ -162,6 +162,13 @@ class  GameEnvironment {
 		battleWindow.closeWindow();
 	}
 	
+	public void launchEndScreen() {
+		EndScreen endScreen = new EndScreen(this);
+	}
+	
+	public void closeEndScreen(EndScreen endScreenWindow) {
+		endScreenWindow.closeWindow();
+	}
 	
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();
