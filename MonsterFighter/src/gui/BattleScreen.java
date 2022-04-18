@@ -13,6 +13,7 @@ import javax.swing.JTextArea;
 
 import day.Battle;
 import day.Day;
+import javax.swing.JTextPane;
 
 public class BattleScreen {
 
@@ -23,6 +24,7 @@ public class BattleScreen {
 	private Day day;
 	private ArrayList<Monster> monstersToFight;
 	private Battle selectedBattle;
+	private JTextPane textPaneFight;
 
 
 	/**
@@ -65,15 +67,26 @@ public class BattleScreen {
 		frmBattlescreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmBattlescreen.getContentPane().setLayout(null);
 		
-		JTextArea textAreaPlayer = new JTextArea();
+		JTextPane textAreaPlayer = new JTextPane();
 		textAreaPlayer.setText(team.getTeam().toString());
 		textAreaPlayer.setBounds(34, 38, 228, 426);
 		frmBattlescreen.getContentPane().add(textAreaPlayer);
 		
-		JTextArea textAreaGame = new JTextArea();
+		JTextPane textAreaGame = new JTextPane();
 		textAreaGame.setText(monstersToFight.toString());
 		textAreaGame.setBounds(569, 38, 228, 426);
 		frmBattlescreen.getContentPane().add(textAreaGame);
+		
+		JTextPane textPaneFight = new JTextPane();
+		textPaneFight.setText("You: " + (team.getTeam().get(0)).getDescription() + "\nvs.\nUs: " + ((monstersToFight.get(0))).getDescription());
+		textPaneFight.setBounds(318, 136, 197, 237);
+		frmBattlescreen.getContentPane().add(textPaneFight);
+		
+		selectedBattle.attack(team.getTeam().get(0), monstersToFight.get(0));
 	}
-
+	
+	
+	public void updateStatus() {
+		this.textPaneFight.setText("");
+	}
 }

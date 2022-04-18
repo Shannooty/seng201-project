@@ -76,7 +76,28 @@ public class Battle {
     }
 	
 	
-	public void attack(Monster playerMonster, Monster gameMonster) {
+	public Monster attack(Monster playerMonster, Monster gameMonster) {
+//		Monster startingMonster;
+//		if (playerMonster.getSpeed() >= gameMonster.getSpeed()) {
+//			startingMonster = playerMonster;
+//		} else {
+//			startingMonster = gameMonster;
+//		}
+//		
+		while (playerMonster.getHealth() != 0 && gameMonster.getHealth() != 0) {
+			gameMonster.removeHealth(playerMonster.getAttackAmount());
+			playerMonster.removeHealth(gameMonster.getAttackAmount());
+		}
+		
+		Monster winner;
+		
+		if (playerMonster.getHealth() == 0) {
+			winner = gameMonster;
+		} else {
+			winner = playerMonster;
+		}
+		
+		return winner;
 		
 	}
 	
@@ -84,9 +105,7 @@ public class Battle {
 		
 	}
 	
-	public void updateStatus() {
-		
-	}
+
 	
 	public void startBattle() {
 		
