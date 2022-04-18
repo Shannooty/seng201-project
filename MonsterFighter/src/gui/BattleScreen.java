@@ -81,7 +81,7 @@ public class BattleScreen {
 		textAreaGame.setBounds(569, 38, 228, 426);
 		frmBattlescreen.getContentPane().add(textAreaGame);
 		
-		JTextPane textPaneFight = new JTextPane();
+//		JTextPane textPaneFight = new JTextPane();
 		textPaneFight.setText("You: " + (team.getTeam().get(0)).getDescription() + "\nvs.\nUs: " + ((monstersToFight.get(0))).getDescription());
 		textPaneFight.setBounds(318, 136, 197, 237);
 		frmBattlescreen.getContentPane().add(textPaneFight);
@@ -117,6 +117,6 @@ public class BattleScreen {
 	}
 	
 	public void updateStatus(String winner) {
-		this.textPaneFight.setText("Winner: " + winner);
+		textPaneFight.setText("Winner: " + winner);
 	}
 }
