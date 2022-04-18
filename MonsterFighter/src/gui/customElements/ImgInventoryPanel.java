@@ -172,7 +172,7 @@ public class ImgInventoryPanel extends JPanel {
 			
 			Icon icon = item.getImg();
 //			Icon icon = new ImageIcon("/images/skeleton.png");
-			System.out.println(icon);
+//			System.out.println(icon);
 			JToggleButton button = new JToggleButton(icon);
 			button.setName(Integer.toString(item.getID()));
 //			System.out.println("button.getName() " + button.getName());

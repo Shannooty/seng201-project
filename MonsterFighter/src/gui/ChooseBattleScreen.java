@@ -159,7 +159,7 @@ public class ChooseBattleScreen {
 //		frmChoosebattle.getContentPane().add(textArea);
 		
 		
-		System.out.println(possibleBattles);
+//		System.out.println(possibleBattles);
 	}
 	
 	public static void setTxtrDescription(String text) {

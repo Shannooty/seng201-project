@@ -13,7 +13,7 @@ public class Battle {
 	private double gold;
 	private int points;
 	private ArrayList<Monster> monstersTofight = new ArrayList<Monster>();
-	private ArrayList<Monster> team;
+	private ArrayList<Monster> team = new ArrayList<Monster>();
 	private int numMonstersToFight;
 	private String[][] possibleBattles = new String[][] { {"100", "1000", "2"}, {"150", "1000", "3"}, {"90", "1200", "2"}, {"120", "1200", "3"}, {"160", "1500", "4"} };
 	private String imgPath;
@@ -23,8 +23,8 @@ public class Battle {
 
 	
 	
-	public Battle(String difficulty) {
-		
+	public Battle(String difficulty, ArrayList<Monster> team) {
+		this.team = team;
 		String[] battle =  possibleBattles[new Random().nextInt(possibleBattles.length)];		
 		gold = Double.parseDouble(battle[0]);
 		points = Integer.parseInt(battle[1]);
@@ -93,8 +93,10 @@ public class Battle {
 		
 		if (playerMonster.getHealth() == 0) {
 			winner = gameMonster;
+			team.remove(playerMonster);
 		} else {
 			winner = playerMonster;
+			monstersTofight.remove(gameMonster);
 		}
 		
 		return winner;

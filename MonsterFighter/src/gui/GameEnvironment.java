@@ -8,7 +8,7 @@ import leaderboard.Leaderboard;
 import player.Player;
 import purchasable.monsters.*;
 
-class  GameEnvironment {
+public class GameEnvironment {
 
 	private int gameLength;
 	private String difficulty;
@@ -85,7 +85,7 @@ class  GameEnvironment {
 			getLeaderboard().addScore(getPlayer().getScore());
 			launchEndScreen();
 		} else {
-			Day nextDay = new Day(getDayNumber(), getGameDifficulty());
+			Day nextDay = new Day(this);
 			setToday(nextDay);
 			launchSleepScreen();
 		}

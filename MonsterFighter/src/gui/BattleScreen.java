@@ -14,6 +14,10 @@ import javax.swing.JTextArea;
 import day.Battle;
 import day.Day;
 import javax.swing.JTextPane;
+import javax.swing.JButton;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class BattleScreen {
 
@@ -24,7 +28,7 @@ public class BattleScreen {
 	private Day day;
 	private ArrayList<Monster> monstersToFight;
 	private Battle selectedBattle;
-	private JTextPane textPaneFight;
+	private JTextPane textPaneFight = new JTextPane();
 
 
 	/**
@@ -82,11 +86,37 @@ public class BattleScreen {
 		textPaneFight.setBounds(318, 136, 197, 237);
 		frmBattlescreen.getContentPane().add(textPaneFight);
 		
-		selectedBattle.attack(team.getTeam().get(0), monstersToFight.get(0));
+		JButton btnContinue = new JButton("Continue");
+		btnContinue.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				fight();
+			}
+		});
+		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnContinue.setBounds(353, 392, 128, 21);
+		frmBattlescreen.getContentPane().add(btnContinue);
+		
+		
+		
 	}
 	
 	
-	public void updateStatus() {
-		this.textPaneFight.setText("");
+	public void fight() {
+		if (team.getTeam().size() > 0 && monstersToFight.size() > 0) {
+			Monster winner = selectedBattle.attack(team.getTeam().get(0), monstersToFight.get(0));
+			updateStatus(winner.toString());
+		} else {
+			String gameWinner;
+			if (team.getTeam().size() == 0 ) {
+				gameWinner = "game";
+			} else {
+				gameWinner = "you";
+			}
+			updateStatus("end, winner: " + gameWinner);
+		}
+	}
+	
+	public void updateStatus(String winner) {
+		this.textPaneFight.setText("Winner: " + winner);
 	}
 }

@@ -2,6 +2,8 @@ package day;
 import java.util.ArrayList;
 
 import shop.Shop;
+import gui.GameEnvironment;
+import player.Team;
 
 public class Day {
 	
@@ -9,10 +11,17 @@ public class Day {
 	private Shop todaysShop;
 	private ArrayList<Battle> todaysBattles = new ArrayList<Battle>();
 	private String difficulty;
+	private GameEnvironment gameEnvironment;
+	private Team team;
 	
-	public Day(int dayNumber, String difficulty) {
-		this.difficulty = difficulty;
-		setDayNumber(dayNumber);
+	public Day(GameEnvironment gameEnvironment) {
+		team = gameEnvironment.getPlayer().getInventory().getTeam();
+		
+		this.gameEnvironment = gameEnvironment;
+		difficulty = gameEnvironment.getGameDifficulty();		
+		setDayNumber(gameEnvironment.getDayNumber());
+		
+		
 		todaysShop = new Shop(3, 5); //parameters could be randomized
 		createDailyBattles(5);
 	}
@@ -23,7 +32,7 @@ public class Day {
 	
 	private void createDailyBattles(int numOfBattles) {
 		for (int i = 0; i < numOfBattles; i++) {
-			todaysBattles.add(new Battle(difficulty));
+			todaysBattles.add(new Battle(difficulty, team.getTeam()));
 		}
 	}
 	
