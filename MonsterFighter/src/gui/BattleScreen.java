@@ -29,6 +29,10 @@ public class BattleScreen {
 	private ArrayList<Monster> monstersToFight;
 	private Battle selectedBattle;
 	private JTextPane textPaneFight = new JTextPane();
+	private JTextPane textAreaGame = new JTextPane();
+	private JTextPane textAreaPlayer = new JTextPane();
+	
+	
 
 
 	/**
@@ -71,12 +75,12 @@ public class BattleScreen {
 		frmBattlescreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmBattlescreen.getContentPane().setLayout(null);
 		
-		JTextPane textAreaPlayer = new JTextPane();
+//		JTextPane textAreaPlayer = new JTextPane();
 		textAreaPlayer.setText(team.getTeam().toString());
 		textAreaPlayer.setBounds(34, 38, 228, 426);
 		frmBattlescreen.getContentPane().add(textAreaPlayer);
 		
-		JTextPane textAreaGame = new JTextPane();
+//		JTextPane textAreaGame = new JTextPane();
 		textAreaGame.setText(monstersToFight.toString());
 		textAreaGame.setBounds(569, 38, 228, 426);
 		frmBattlescreen.getContentPane().add(textAreaGame);
@@ -118,5 +122,7 @@ public class BattleScreen {
 	
 	public void updateStatus(String winner) {
 		textPaneFight.setText("Winner: " + winner);
+		textAreaPlayer.setText(team.getTeam().toString());
+		textAreaGame.setText(monstersToFight.toString());
 	}
 }

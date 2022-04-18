@@ -84,19 +84,33 @@ public class Battle {
 //			startingMonster = gameMonster;
 //		}
 //		
-		while (playerMonster.getHealth() != 0 && gameMonster.getHealth() != 0) {
+		while (playerMonster.getHealth() > 0 && gameMonster.getHealth() > 0) {
+			
+			//Player attacks
 			gameMonster.removeHealth(playerMonster.getAttackAmount());
-			playerMonster.removeHealth(gameMonster.getAttackAmount());
+			
+			if (gameMonster.getHealth() > 0) {
+				//Game attacks
+				playerMonster.removeHealth(gameMonster.getAttackAmount());
+			}
 		}
 		
 		Monster winner;
 		
-		if (playerMonster.getHealth() == 0) {
+		if (playerMonster.getHealth() <= 0) {
 			winner = gameMonster;
 			team.remove(playerMonster);
-		} else {
+		} 
+		if (gameMonster.getHealth() <= 0) {
 			winner = playerMonster;
 			monstersTofight.remove(gameMonster);
+		}
+		
+		
+		if (gameMonster.getHealth() > playerMonster.getHealth()) {
+			winner = gameMonster;
+		} else {
+			winner = playerMonster;
 		}
 		
 		return winner;
