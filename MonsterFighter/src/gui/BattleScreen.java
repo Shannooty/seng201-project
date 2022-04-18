@@ -31,6 +31,8 @@ public class BattleScreen {
 	private JTextPane textPaneFight = new JTextPane();
 	private JTextPane textAreaGame = new JTextPane();
 	private JTextPane textAreaPlayer = new JTextPane();
+	private JTextPane textPanePlayerMonster = new JTextPane();
+	private JTextPane textPaneGameMonster = new JTextPane();
 	
 	
 
@@ -86,8 +88,8 @@ public class BattleScreen {
 		frmBattlescreen.getContentPane().add(textAreaGame);
 		
 //		JTextPane textPaneFight = new JTextPane();
-		textPaneFight.setText("You: " + (team.getTeam().get(0)).getDescription() + "\nvs.\nUs: " + ((monstersToFight.get(0))).getDescription());
-		textPaneFight.setBounds(318, 136, 197, 237);
+//		textPaneFight.setText();
+		textPaneFight.setBounds(320, 344, 197, 120);
 		frmBattlescreen.getContentPane().add(textPaneFight);
 		
 		JButton btnContinue = new JButton("Continue");
@@ -97,8 +99,19 @@ public class BattleScreen {
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnContinue.setBounds(353, 392, 128, 21);
+		btnContinue.setBounds(350, 297, 128, 21);
 		frmBattlescreen.getContentPane().add(btnContinue);
+		
+		
+		textPanePlayerMonster.setText("You: "+(team.getTeam().get(0)).getDescription());
+		textPanePlayerMonster.setBounds(272, 38, 128, 120);
+		frmBattlescreen.getContentPane().add(textPanePlayerMonster);
+		
+		
+		
+		textPaneGameMonster.setText("Us: "+((monstersToFight.get(0))).getDescription());
+		textPaneGameMonster.setBounds(431, 38, 128, 120);
+		frmBattlescreen.getContentPane().add(textPaneGameMonster);
 		
 		
 		
@@ -124,5 +137,9 @@ public class BattleScreen {
 		textPaneFight.setText("Winner: " + winner);
 		textAreaPlayer.setText(team.getTeam().toString());
 		textAreaGame.setText(monstersToFight.toString());
+		
+		textPanePlayerMonster.setText("You: "+(team.getTeam().get(0)).getDescription());
+		textPaneGameMonster.setText("Us: "+((monstersToFight.get(0))).getDescription());
+
 	}
 }
