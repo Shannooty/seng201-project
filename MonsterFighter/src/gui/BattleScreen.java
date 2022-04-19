@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.EventQueue;
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import javax.swing.JFrame;
 
@@ -24,10 +25,11 @@ public class BattleScreen {
 	private JFrame frmBattlescreen;
 	private GameEnvironment gameEnvironment;
 	private Player player;
-	private static Team team;
+	private static ArrayList<Monster> team;
 	private Day day;
 	private ArrayList<Monster> monstersToFight;
 	private Battle selectedBattle;
+	private Team actualTeam;
 	private JTextPane textPaneFight = new JTextPane();
 	private JTextPane textAreaGame = new JTextPane();
 	private JTextPane textAreaPlayer = new JTextPane();
@@ -43,7 +45,12 @@ public class BattleScreen {
 	public BattleScreen(GameEnvironment gameManager, Battle selectedBattle) {
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
-		team = player.getInventory().getTeam();
+		this.actualTeam = player.getInventory().getTeam();
+
+		team = getCurrentTeam(actualTeam.getTeam());
+//		System.out.println(team);
+//		team = (ArrayList<Monster>) actualTeam.getTeam().stream().filter(Monster::getStunnedStatus).collect(Collectors.toList());
+		
 		day = gameEnvironment.getToday();
 		this.selectedBattle = selectedBattle;
 		monstersToFight = selectedBattle.getGameMonsters();
@@ -78,7 +85,7 @@ public class BattleScreen {
 		frmBattlescreen.getContentPane().setLayout(null);
 		
 //		JTextPane textAreaPlayer = new JTextPane();
-		textAreaPlayer.setText(team.getTeam().toString());
+		textAreaPlayer.setText(team.toString());
 		textAreaPlayer.setBounds(34, 38, 228, 426);
 		frmBattlescreen.getContentPane().add(textAreaPlayer);
 		
@@ -103,7 +110,7 @@ public class BattleScreen {
 		frmBattlescreen.getContentPane().add(btnContinue);
 		
 		
-		textPanePlayerMonster.setText("You: "+(team.getTeam().get(0)).getDescription());
+		textPanePlayerMonster.setText("You: "+(team.get(0)).getDescription());
 		textPanePlayerMonster.setBounds(272, 38, 128, 120);
 		frmBattlescreen.getContentPane().add(textPanePlayerMonster);
 		
@@ -119,27 +126,33 @@ public class BattleScreen {
 	
 	
 	public void fight() {
-		if (team.getTeam().size() > 0 && monstersToFight.size() > 0) {
-			Monster winner = selectedBattle.attack(team.getTeam().get(0), monstersToFight.get(0));
+		if (team.size() > 0 && monstersToFight.size() > 0) {
+			Monster winner = selectedBattle.attack(team.get(0), monstersToFight.get(0));
 			updateStatus(winner.toString());
 		} else {
 			String gameWinner;
-			if (team.getTeam().size() == 0 ) {
+			if (team.size() == 0 ) {
 				gameWinner = "game";
 			} else {
 				gameWinner = "you";
 			}
 			updateStatus("end, winner: " + gameWinner);
+//			System.out.println(actualTeam.getTeam().size());
 		}
 	}
 	
 	public void updateStatus(String winner) {
+		team = getCurrentTeam(actualTeam.getTeam());
 		textPaneFight.setText("Winner: " + winner);
-		textAreaPlayer.setText(team.getTeam().toString());
+		textAreaPlayer.setText(team.toString());
 		textAreaGame.setText(monstersToFight.toString());
 		
-		textPanePlayerMonster.setText("You: "+(team.getTeam().get(0)).getDescription());
-		textPaneGameMonster.setText("Us: "+((monstersToFight.get(0))).getDescription());
+//		textPanePlayerMonster.setText("You: "+(team.get(0)).getDescription());
+//		textPaneGameMonster.setText("Us: "+((monstersToFight.get(0))).getDescription());
 
+	}
+	
+	public ArrayList<Monster> getCurrentTeam(ArrayList<Monster> actualTeam) {
+		return (ArrayList<Monster>) actualTeam.stream().filter(m -> m.getStunnedStatus() == false).collect(Collectors.toList());
 	}
 }
