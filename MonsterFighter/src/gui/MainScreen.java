@@ -57,6 +57,8 @@ public class MainScreen {
 	 */
 	private Player player;
 	
+	private JButton btnChangeMonsterName = new JButton("Change Monster Name");
+
 	
 	private static JTextArea textAreaMonsterDescription = new JTextArea("");
 
@@ -189,7 +191,14 @@ public class MainScreen {
 //		JTextPane textPaneMonsterDescription = new JTextPane();
 		textAreaMonsterDescription.setFont(new Font("Tahoma", Font.BOLD, 16));
 //		textAreaMonsterDescription.setText("Monster Description:\r\n\r\n\r\nName:\r\n\r\nHealth:\r\n\r\nDamage:\r\n\r\nItem(s):");
-		setTxtrDescription(Integer.toString(team.get(0).getID()));
+		if (team.size() > 0) {
+			setTxtrDescription(Integer.toString(team.get(0).getID()));
+			btnChangeMonsterName.setVisible(true);
+		} else {
+			textAreaMonsterDescription.setText("Nothing to display.");
+			btnChangeMonsterName.setVisible(false);
+		}
+		
 		textAreaMonsterDescription.setBounds(480, 148, 281, 271);
 		frmMainscreen.getContentPane().add(textAreaMonsterDescription);
 		
@@ -209,27 +218,6 @@ public class MainScreen {
 		btnSleep.setBounds(741, 483, 85, 26);
 		frmMainscreen.getContentPane().add(btnSleep);
 		
-//		JLabel lblCarouselCounter = new JLabel("Monster: ");
-//		lblCarouselCounter.setFont(new Font("Tahoma", Font.PLAIN, 13));
-//		lblCarouselCounter.setBounds(136, 371, 54, 20);
-//		frmMainscreen.getContentPane().add(lblCarouselCounter);
-//		
-//		JLabel lblMonsterNum = new JLabel();
-//		lblMonsterNum.setText(images.getImg());
-//		lblMonsterNum.setFont(new Font("Tahoma", Font.PLAIN, 13));
-//		lblMonsterNum.setBounds(188, 371, 40, 20);
-//		frmMainscreen.getContentPane().add(lblMonsterNum);
-//		
-//		JLabel lblMonsterTotal = new JLabel();
-//		lblMonsterTotal.setText(Integer.toString(team.size()));
-//		lblMonsterTotal.setFont(new Font("Tahoma", Font.PLAIN, 13));
-//		lblMonsterTotal.setBounds(253, 371, 22, 20);
-//		frmMainscreen.getContentPane().add(lblMonsterTotal);
-//		
-//		JLabel lblFwdSlsh = new JLabel("/");
-//		lblFwdSlsh.setFont(new Font("Tahoma", Font.PLAIN, 13));
-//		lblFwdSlsh.setBounds(238, 371, 5, 20);
-//		frmMainscreen.getContentPane().add(lblFwdSlsh);
 		
 		JLabel lblWelcomeUser = new JLabel();
 		lblWelcomeUser.setText("Welcome, " + player.getName());
@@ -239,7 +227,7 @@ public class MainScreen {
 		
 		
 		
-		JButton btnChangeMonsterName = new JButton("Change Monster Name");
+//		JButton btnChangeMonsterName = new JButton("Change Monster Name");
 		btnChangeMonsterName.addActionListener(new ActionListener() {
 			/**
 			 * Creates a pop-up window that prompts the user for a new name for the monster selected. Once the user confirms their choice, calls the setName() method on the Monster selected.

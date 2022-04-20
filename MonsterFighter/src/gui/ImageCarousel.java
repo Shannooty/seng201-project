@@ -48,32 +48,34 @@ class ImageCarousel extends JPanel implements ActionListener {
 	 */
 	public ImageCarousel(ImageIcon[] givenImages) {
 
-	   JPanel imagePanel = new JPanel();
+	   if (givenImages.length > 0) {
+		   JPanel imagePanel = new JPanel();
 
-	   images = givenImages;
-	   imageSpace = new JLabel("",JLabel.CENTER); 
-	   add(imageSpace,BorderLayout.CENTER);
-	   
-	   
-	   ImageIcon imageIcon = scaleImage(images[0]);
+		   images = givenImages;
+		   imageSpace = new JLabel("",JLabel.CENTER); 
+		   add(imageSpace,BorderLayout.CENTER);
+		   
+		   ImageIcon imageIcon = scaleImage(images[0]);
 
-	   imageSpace.setIcon(imageIcon);
-	   currDescription = images[0].getDescription();
-	   
-	   backwards=new JButton("<<");
-	   forwards=new JButton(">>");
-	   imagePanel.add(backwards);
-	   imagePanel.add(forwards);
-	   
-	   if (givenImages.length == 1) {
-		   backwards.setEnabled(false);
-		   forwards.setEnabled(false);
+		   imageSpace.setIcon(imageIcon);
+		   currDescription = images[0].getDescription();
+		   
+		   backwards=new JButton("<<");
+		   forwards=new JButton(">>");
+		   imagePanel.add(backwards);
+		   imagePanel.add(forwards);
+		   
+		   if (givenImages.length == 1) {
+			   backwards.setEnabled(false);
+			   forwards.setEnabled(false);
+		   }
+		   
+		   add(imagePanel,BorderLayout.SOUTH);
+		   backwards.addActionListener(this);
+		   forwards.addActionListener(this);
+		   setVisible(true);
 	   }
-	   
-	   add(imagePanel,BorderLayout.SOUTH);
-	   backwards.addActionListener(this);
-	   forwards.addActionListener(this);
-	   setVisible(true);
+
 	      
 	}
 
