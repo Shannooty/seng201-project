@@ -140,9 +140,12 @@ public class ImgInventoryPanel extends JPanel {
 		
 		for (Purchasable item : itemsToDisplay) {
 			
-			Icon icon = item.getImg();
-			JToggleButton button = new JToggleButton(icon);
+			InventoryToggleButton button = new InventoryToggleButton(item);
 			button.setName(Integer.toString(item.getID()));
+			
+//			Icon icon = item.getImg();
+//			JToggleButton button = new JToggleButton(icon);
+//			button.setName(Integer.toString(item.getID()));
 			
 			
 			button.addActionListener(new ActionListener() { 
@@ -169,6 +172,8 @@ public class ImgInventoryPanel extends JPanel {
 	private void placeBattlesInPanel(ArrayList<Battle> BattlesToDisplay) {
 		
 		for (Battle item : BattlesToDisplay) {
+			
+			
 			
 			Icon icon = item.getImg();
 //			Icon icon = new ImageIcon("/images/skeleton.png");
