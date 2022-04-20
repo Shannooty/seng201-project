@@ -66,7 +66,6 @@ public class Leaderboard {
 			
 			for (PlayerScore score : getLeaderboard()) {
 				String fileLine = String.format(lineFormat, score.getName(), score.getPoints());
-				System.out.println(fileLine);
 				bw.write(fileLine);
 			}
 			
