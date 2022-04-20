@@ -6,7 +6,7 @@ public class Shield extends Armor {
 		super("Shield", 200, 100);
 		setPurchasePrice(30);
 		setSellPrice(30);
-		setImgPath("/images/skeleton.png");
+		setImgPath("/images/shield.png");
 		setImg();
 	}
 }

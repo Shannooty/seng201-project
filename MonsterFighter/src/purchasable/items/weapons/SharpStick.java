@@ -7,7 +7,7 @@ public class SharpStick extends Weapon {
 		super("Sharp Stick", 50);
 		setPurchasePrice(12);
 		setSellPrice(12);
-		setImgPath("/images/skeleton.png");
+		setImgPath("/images/sharpStick.png");
 		setImg();
 	}
 

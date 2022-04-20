@@ -7,7 +7,7 @@ public class Apple extends Food {
 		setHealAmount(100);
 		setPurchasePrice(15);
 		setSellPrice(15);
-		setImgPath("/images/skeleton.png");
+		setImgPath("/images/apple.png");
 		setImg();
 	}
 }

@@ -7,7 +7,7 @@ public class Bread extends Food {
 		setHealAmount(120);
 		setPurchasePrice(17);
 		setSellPrice(17);
-		setImgPath("/images/skeleton.png");
+		setImgPath("/images/bread.png");
 		setImg();
 	}
 

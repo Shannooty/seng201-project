@@ -6,7 +6,7 @@ public class SledgeHammer extends Weapon {
 		super("Sedgehammer", 100);
 		setPurchasePrice(22);
 		setSellPrice(22);
-		setImgPath("/images/skeleton.png");
+		setImgPath("/images/sledgehammer.png");
 		setImg();
 	}
 
