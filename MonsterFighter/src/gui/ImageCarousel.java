@@ -111,7 +111,7 @@ class ImageCarousel extends JPanel implements ActionListener {
 	       }
 	   }
 	   currDescription = images[index].getDescription();
-	   System.out.println(currDescription);
+//	   System.out.println(currDescription);
 	   if (currDescription != "skeleton" && currDescription != "slime" && currDescription != "zombie" && currDescription != "undeadGuard") {
 		   MainScreen.setTxtrDescription(currDescription);
 	   }
