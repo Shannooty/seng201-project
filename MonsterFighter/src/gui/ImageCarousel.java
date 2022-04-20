@@ -8,7 +8,7 @@ import java.awt.event.*;
  * Creates a slide show of the images passed to the constructor that the user can click through/
  * @param 
  */
-class ImageCarousel extends JPanel implements ActionListener {
+public class ImageCarousel extends JPanel implements ActionListener {
 	
 	/**
 	 * Attribute images of type ImageIcon[]. Contains the images that are displayed to the user in a slide show.

@@ -32,7 +32,7 @@ public class Day {
 	
 	private void createDailyBattles(int numOfBattles) {
 		for (int i = 0; i < numOfBattles; i++) {
-			todaysBattles.add(new Battle(difficulty, team.getTeam()));
+			todaysBattles.add(new Battle(gameEnvironment));
 		}
 	}
 	

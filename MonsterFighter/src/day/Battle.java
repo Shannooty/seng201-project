@@ -8,43 +8,68 @@ import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 
 import generators.MonsterGenerator;
+import gui.GameEnvironment;
+import gui.ImageCarousel;
 import purchasable.monsters.*;
 
 public class Battle {
 	
 	private double gold;
 	private int points;
+	private String difficulty;
+	private int dayNum;
+	private int gameLength;
 	private ArrayList<Monster> monstersTofight = new ArrayList<Monster>();
 	private ArrayList<Monster> team = new ArrayList<Monster>();
 	private int numMonstersToFight;
-	private String[][] possibleBattles = new String[][] { {"100", "1000", "2"}, {"150", "1000", "3"}, {"90", "1200", "2"}, {"120", "1200", "3"}, {"160", "1500", "4"} };
+	private String[][] possibleBattles = new String[][] { {"100", "1000", "1"}, {"150", "1000", "2"}, {"90", "1200", "1"}, {"120", "1200", "2"}, {"160", "1500", "3"} };
 	private String imgPath;
 	private ImageIcon img;
 	private static int id = 0;
     private int instanceId = ++id;
+	private GameEnvironment gameEnvironment;
+
 
 	
 	
-	public Battle(String difficulty, ArrayList<Monster> team) {
-		this.team = team;
+	public Battle(GameEnvironment gameEnvironment) {
+		this.gameEnvironment = gameEnvironment;
+		team = gameEnvironment.getPlayer().getInventory().getTeam().getTeam();
+		difficulty = gameEnvironment.getGameDifficulty();
+		dayNum = gameEnvironment.getDayNumber();
+		gameLength = gameEnvironment.getGameLength();
+		
 		String[] battle =  possibleBattles[new Random().nextInt(possibleBattles.length)];		
 		gold = Double.parseDouble(battle[0]);
 		points = Integer.parseInt(battle[1]);
 		numMonstersToFight = Integer.parseInt(battle[2]);
 		
-		if (difficulty == "Hard") {
-			gold += 10;
-			points += 30;
-			numMonstersToFight += 2;
-		} else if (difficulty == "Medium") {
-			gold += 20;
-			points += 20;
+		double gameProgress = dayNum/gameLength;
+		
+		if (gameProgress > 0.2 && gameProgress < 0.4) {
 			numMonstersToFight += 1;
+		} else if (gameProgress > 0.4 && gameProgress < 0.6) {
+			numMonstersToFight += 2;
+		} else if (gameProgress > 0.6 && gameProgress < 0.8) {
+			numMonstersToFight += 3;
+		} else if (gameProgress > 0.8) {
+			numMonstersToFight += 4;
+		}
+		
+		
+		if (difficulty == "Hard") {
+			gold -= 20;
+			points += 100;
+//			numMonstersToFight += 2;
+		} else if (difficulty == "Medium") {
+			gold -= 10;
+			points += 50;
+//			numMonstersToFight += 1;
 		}
 		
 		for (int i = 0; i < numMonstersToFight; i++) {
 			Monster newMonster = MonsterGenerator.newMonster();
-			newMonster.setPurchasePrice(70);
+			newMonster.setPurchasePrice(0);
 			monstersTofight.add(newMonster);
 		}
 		
