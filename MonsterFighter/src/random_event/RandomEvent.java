@@ -26,7 +26,7 @@ public class RandomEvent {
 	/**
 	 * Attribute randomItem, of type Random. A random generator.
 	 */
-	private Random randomItem = new Random();
+	protected Random randomItem = new Random();
 	
 	
 //	private static Random randomItem;
