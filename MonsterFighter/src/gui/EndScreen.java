@@ -17,20 +17,24 @@ import javax.swing.JList;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class EndScreen {
 
 	private JFrame frame;
 	private GameEnvironment gameEnvironment;
 	private Player player;
+	private int playerPosition;
 	
 	/**
 	 * Create the application.
 	 */
 	public EndScreen(GameEnvironment manager) {
-		initialize();
 		gameEnvironment = manager;
 		setPlayer(manager.getPlayer());
+		
+		initialize();
 		frame.setVisible(true);
 		
 	}
@@ -52,6 +56,9 @@ public class EndScreen {
 			String displayMessage = ++position + " " + score;
 			model.addElement(displayMessage);
 			
+			if (score == getPlayer().getScore()) {
+				playerPosition = position - 1;
+			}
 		}
 		return model;
 	}
@@ -71,7 +78,9 @@ public class EndScreen {
 		lblGameOver.setBounds(248, 11, 337, 53);
 		frame.getContentPane().add(lblGameOver);
 		
-		JLabel lblScore = new JLabel("Score : #####");
+		String scoreMessage = "Score : " + getPlayer().getPoints();
+		
+		JLabel lblScore = new JLabel(scoreMessage);
 		lblScore.setHorizontalAlignment(SwingConstants.CENTER);
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblScore.setBounds(257, 61, 320, 53);
@@ -89,7 +98,12 @@ public class EndScreen {
 		listLeaderboard.setVisibleRowCount(20);
 		listLeaderboard.setBounds(295, 157, 244, 306);
 		frame.getContentPane().add(listLeaderboard);
-		
+		listLeaderboard.setSelectedIndex(getPlayerPosition());
+		listLeaderboard.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				listLeaderboard.setSelectedIndex(getPlayerPosition());
+			}
+		});
 		
 		JButton btnPlayAgain = new JButton("Play Again");
 		btnPlayAgain.setBounds(295, 478, 110, 28);
@@ -100,15 +114,19 @@ public class EndScreen {
 		frame.getContentPane().add(btnQuit);
 	}
 
+	private int getPlayerPosition() {
+		return playerPosition;
+	}
+
 	public GameEnvironment getGameEnvironment() {
 		return gameEnvironment;
 	}
 
-	public Player getPlayer() {
+	private Player getPlayer() {
 		return player;
 	}
 
-	public void setPlayer(Player player) {
+	private void setPlayer(Player player) {
 		this.player = player;
 	}
 
