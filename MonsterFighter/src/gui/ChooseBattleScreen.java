@@ -112,6 +112,7 @@ public class ChooseBattleScreen {
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
 		scrollPane.setBounds(52, 88, 411, 343);
 		frmChoosebattle.getContentPane().add(scrollPane);
 

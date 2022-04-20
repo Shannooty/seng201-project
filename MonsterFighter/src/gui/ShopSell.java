@@ -121,6 +121,7 @@ public class ShopSell {
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
 		scrollPane.setBounds(52, 88, 411, 343);
 		frmShopSell.getContentPane().add(scrollPane);
 		
