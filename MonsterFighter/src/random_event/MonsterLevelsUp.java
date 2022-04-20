@@ -12,11 +12,6 @@ import purchasable.monsters.Monster;
 public class MonsterLevelsUp extends RandomEvent {
 	
 	/**
-	 * Attribute random, of type Random. A random generator.
-	 */
-	Random random = new Random();
-	
-	/**
 	 * Attribute healthIncrease, of type integer[]. A list of the possible increases in health a monster can have, {10, 5, 8, 15, 30}.
 	 */
 	private int[] healthIncrease = {10, 5, 8, 15, 30};
@@ -33,8 +28,8 @@ public class MonsterLevelsUp extends RandomEvent {
 	 * Selects a random health increase from the private variable healthIncrease, using the random generator random. Selects a random Monster from the player's Inventory. Calls the method heal(), passing in the random health increase, and the random Monster. Return type void.
 	 */
 	public void levelUpSetUp() {
-		int health = healthIncrease[(random.nextInt(healthIncrease.length))];
-		Monster monster = inventory.getTeam().getTeam().get(random.nextInt(inventory.getTeam().getTeam().size()));
+		int health = healthIncrease[(randomItem.nextInt(healthIncrease.length))];
+		Monster monster = inventory.getTeam().getTeam().get(randomItem.nextInt(inventory.getTeam().getTeam().size()));
 		heal(health, monster);
 	}
 	
