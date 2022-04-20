@@ -44,7 +44,8 @@ public class Battle {
 		points = Integer.parseInt(battle[1]);
 		numMonstersToFight = Integer.parseInt(battle[2]);
 		
-		double gameProgress = dayNum/gameLength;
+		double gameProgress = (Double.valueOf(dayNum)/Double.valueOf(gameLength));
+
 		
 		if (gameProgress > 0.2 && gameProgress < 0.4) {
 			numMonstersToFight += 1;
