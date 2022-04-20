@@ -91,6 +91,14 @@ class RandomEventTest {
 	
 	@Test
 	void runMonsterLeaves() {
+		assertEquals(1, playerTeam.size());
+		
+		MonsterLeaves monsterLeavesEvent = new MonsterLeaves(testPlayer.getInventory());
+		assertEquals(0, playerTeam.size());
+		
+		//Remove monster from empty team, no change should occur
+		monsterLeavesEvent = new MonsterLeaves(testPlayer.getInventory());
+		assertEquals(0, playerTeam.size());
 		
 	}
 
