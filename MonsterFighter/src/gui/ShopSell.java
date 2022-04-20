@@ -188,7 +188,7 @@ public class ShopSell {
 		
 		showMonsters.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopBuy");
+				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell");
 				  scrollPane.setViewportView(monsterPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
@@ -196,7 +196,7 @@ public class ShopSell {
 		
 		showItems.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), scrollPane, "ShopBuy");
+				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), scrollPane, "ShopSell");
 				  scrollPane.setViewportView(itemPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
