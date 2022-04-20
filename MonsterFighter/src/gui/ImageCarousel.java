@@ -47,13 +47,16 @@ class ImageCarousel extends JPanel implements ActionListener {
 	 * @param givenImages type ImageIcon[], the list of images that the constructor displays to the user. Private variable images is set to the value of givenImages. 
 	 */
 	public ImageCarousel(ImageIcon[] givenImages) {
+		
+//		givenImages[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
+		JPanel imagePanel = new JPanel();
 
-	   if (givenImages.length > 0) {
-		   JPanel imagePanel = new JPanel();
+		images = givenImages;
+		imageSpace = new JLabel("",JLabel.CENTER); 
+		add(imageSpace,BorderLayout.CENTER);
 
-		   images = givenImages;
-		   imageSpace = new JLabel("",JLabel.CENTER); 
-		   add(imageSpace,BorderLayout.CENTER);
+		if (givenImages.length > 0) {
+		  
 		   
 		   ImageIcon imageIcon = scaleImage(images[0]);
 
@@ -74,6 +77,10 @@ class ImageCarousel extends JPanel implements ActionListener {
 		   backwards.addActionListener(this);
 		   forwards.addActionListener(this);
 		   setVisible(true);
+	   } else {
+		   ImageIcon imageIcon = scaleImage(new ImageIcon(ImageCarousel.class.getResource("/images/NA.png"), "N/A"));
+		   imageSpace.setIcon(imageIcon);
+		   currDescription = "N/A";
 	   }
 
 	      
