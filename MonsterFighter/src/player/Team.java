@@ -34,6 +34,10 @@ public class Team {
 		sort(getTeam());
 	}
 	
+	public int size() {
+		return getTeam().size();
+	}
+	
 	public void sort(ArrayList<Monster> list)
     {
         list.sort((o1, o2) -> Integer.compare(o1.getSpeed(), o2.getSpeed()));
