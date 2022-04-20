@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import shop.Shop;
 import gui.GameEnvironment;
+import player.Player;
 import player.Team;
 
 public class Day {
@@ -15,9 +16,12 @@ public class Day {
 	private Team team;
 	private int pointsEarnedToday = 0;
 	private double goldEarnedToday = 0;
+	private Player player;
+	
 	
 	public Day(GameEnvironment gameEnvironment) {
-		team = gameEnvironment.getPlayer().getInventory().getTeam();
+		player = gameEnvironment.getPlayer();
+		team = player.getInventory().getTeam();
 		
 		this.gameEnvironment = gameEnvironment;
 		difficulty = gameEnvironment.getGameDifficulty();		
@@ -63,6 +67,7 @@ public class Day {
 	
 	public void setGoldEarnedToday(double gold) {
 		goldEarnedToday += gold;
+		player.addGold(goldEarnedToday);
 	}
 	
 	public double getGoldEarnedToday() {
@@ -71,6 +76,8 @@ public class Day {
 	
 	public void setPointsEarnedToday(int points) {
 		pointsEarnedToday += points;
+		player.addPoints(pointsEarnedToday);
+
 	}
 	
 	public int getPointsEarnedToday() {

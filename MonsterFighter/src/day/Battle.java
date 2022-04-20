@@ -145,6 +145,15 @@ public class Battle {
 		
 	}
 	
+	public double getGold() {
+		return gold;
+	}
+	
+	public int getPoints() {
+		return points;
+	}
+	
+	
 	public void removeMonster() {
 		
 	}

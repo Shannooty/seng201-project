@@ -110,6 +110,19 @@ public class BattleScreen {
 		frmBattlescreen.getContentPane().add(btnContinue);
 		
 		
+		JButton btnFinish = new JButton("Finish");
+		btnFinish.setVisible(false);
+		btnFinish.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				gameEnvironment.launchMainScreen();
+				finishedWindow();
+			}
+		});
+		btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnFinish.setBounds(350, 277, 128, 21);
+		frmBattlescreen.getContentPane().add(btnFinish);
+		
+		
 		textPanePlayerMonster.setText("You: "+(team.get(0)).getDescription());
 		textPanePlayerMonster.setBounds(272, 38, 128, 120);
 		frmBattlescreen.getContentPane().add(textPanePlayerMonster);
@@ -135,6 +148,10 @@ public class BattleScreen {
 				gameWinner = "game";
 			} else {
 				gameWinner = "you";
+				day.setPointsEarnedToday(selectedBattle.getPoints());
+				day.setGoldEarnedToday(selectedBattle.getGold());
+//				selectedBattle
+				
 			}
 			updateStatus("end, winner: " + gameWinner);
 //			System.out.println(actualTeam.getTeam().size());
