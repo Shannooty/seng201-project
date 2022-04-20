@@ -12,16 +12,14 @@ import player.Team;
 public class MonsterLeaves extends RandomEvent {
 
 	/**
-	 * Attribute random, of type Random. A random generator.
-	 */
-	private Random random = new Random();
-
-	/**
 	 * Constructor for the class MonsterLeaves. Calls the method removeMonster().
 	 */
 	public MonsterLeaves(Inventory inventory) {
 		super(inventory);
-		removeMonster();
+		
+		if (getPlayerTeam().size() > 0) {
+			removeMonster();
+		}
 	}
 	
 	/**
@@ -29,7 +27,7 @@ public class MonsterLeaves extends RandomEvent {
 	 */
 	public void removeMonster() {
 		//TODO FIX THIS
-		inventory.getTeam().getTeam().remove(random.nextInt(inventory.getTeam().getTeam().size()));
+		getPlayerTeam().getTeam().remove(randomItem.nextInt(getPlayerTeam().size()));
 	}
 	
 
