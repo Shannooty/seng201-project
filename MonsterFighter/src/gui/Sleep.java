@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import day.Day;
 import player.Player;
 import random_event.RandomEvent;
 
@@ -36,7 +37,10 @@ public class Sleep {
 	 * Attribute randomEvent, of type RandomEvent. A new RandomEvent.
 	 */
 	private RandomEvent randomEvent;
-
+	
+//	private int pointsEarnedToday;
+//	private double goldEarnedToday;
+	private Day today;
 	
 	/**
 	 * Constructor for the class Sleep. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
@@ -44,6 +48,9 @@ public class Sleep {
 	 */
 	public Sleep(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
+		today = gameEnvironment.getToday();
+//		pointsEarnedToday = today.getPointsEarnedToday();
+//		goldEarnedToday = today.getGoldEarnedToday();
 		randomEvent = new RandomEvent(gameEnvironment.getPlayer().getInventory());
 		initialize();
 		frmSleep.setVisible(true);
@@ -76,7 +83,7 @@ public class Sleep {
 		frmSleep.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSleep.getContentPane().setLayout(null);
 		
-		JLabel lblDaysRemaining = new JLabel("There are __ days remaining.");
+		JLabel lblDaysRemaining = new JLabel();
 		lblDaysRemaining.setText("There are "+(gameEnvironment.getGameLength() - gameEnvironment.getDayNumber())+" days remaining.");	
 		lblDaysRemaining.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblDaysRemaining.setBounds(302, 340, 222, 20);
@@ -107,7 +114,7 @@ public class Sleep {
 		lblBattlesUpdated.setBounds(292, 127, 203, 20);
 		frmSleep.getContentPane().add(lblBattlesUpdated);
 		
-		JLabel lblGainedGoldPoints = new JLabel("You gained __ gold and __ points today.");		
+		JLabel lblGainedGoldPoints = new JLabel("You gained "+today.getGoldEarnedToday()+" gold and "+today.getPointsEarnedToday()+" points today.");		
 		lblGainedGoldPoints.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblGainedGoldPoints.setBounds(257, 173, 308, 20);
 		frmSleep.getContentPane().add(lblGainedGoldPoints);

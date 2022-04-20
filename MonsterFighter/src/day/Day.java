@@ -13,6 +13,8 @@ public class Day {
 	private String difficulty;
 	private GameEnvironment gameEnvironment;
 	private Team team;
+	private int pointsEarnedToday = 0;
+	private double goldEarnedToday = 0;
 	
 	public Day(GameEnvironment gameEnvironment) {
 		team = gameEnvironment.getPlayer().getInventory().getTeam();
@@ -56,6 +58,23 @@ public class Day {
 	
 	public void battle() {
 //		create instance of Battle
+	}
+	
+	
+	public void setGoldEarnedToday(double gold) {
+		goldEarnedToday += gold;
+	}
+	
+	public double getGoldEarnedToday() {
+		return goldEarnedToday;
+	}
+	
+	public void setPointsEarnedToday(int points) {
+		pointsEarnedToday += points;
+	}
+	
+	public int getPointsEarnedToday() {
+		return pointsEarnedToday;
 	}
 	
 	
