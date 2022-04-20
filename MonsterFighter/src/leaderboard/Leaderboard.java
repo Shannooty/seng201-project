@@ -9,7 +9,7 @@ import player.PlayerScore;
 public class Leaderboard {
 	
 	private ArrayList<PlayerScore> leaderboard = new ArrayList<PlayerScore>();
-	private String leaderboardFilePath = "leaderboard.txt";
+	private String leaderboardFilePath = "src/leaderboard/leaderboard.txt";
 	private String lineFormat = "%s:%s\n";
 	
 	public Leaderboard() {
