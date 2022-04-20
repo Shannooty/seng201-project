@@ -19,6 +19,8 @@ import javax.swing.JButton;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EndScreen {
 
@@ -106,10 +108,21 @@ public class EndScreen {
 		});
 		
 		JButton btnPlayAgain = new JButton("Play Again");
+		btnPlayAgain.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
+				GameEnvironment.main(null);
+			}
+		});
 		btnPlayAgain.setBounds(295, 478, 110, 28);
 		frame.getContentPane().add(btnPlayAgain);
 		
 		JButton btnQuit = new JButton("Quit");
+		btnQuit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				finishedWindow();
+			}
+		});
 		btnQuit.setBounds(429, 478, 110, 28);
 		frame.getContentPane().add(btnQuit);
 	}
