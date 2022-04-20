@@ -11,6 +11,11 @@ import java.awt.event.*;
 public class ImageCarousel extends JPanel implements ActionListener {
 	
 	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 566482839682183554L;
+
+	/**
 	 * Attribute images of type ImageIcon[]. Contains the images that are displayed to the user in a slide show.
 	 */
 	private ImageIcon images[];
