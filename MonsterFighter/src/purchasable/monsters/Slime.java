@@ -9,5 +9,6 @@ public class Slime extends Monster {
 		setHealAmount(300);
 		setMonsterType("slime");
 		setPurchasePrice(65);
+		setSellPrice(65);
 	}
 }

@@ -9,6 +9,7 @@ public class SpeedPotion extends Item {
 	public SpeedPotion() {
 		super("Speed Potion");
 		setPurchasePrice(13);
+		setSellPrice(13);
 		setImgPath("/images/skeleton.png");
 		setImg();
 	}

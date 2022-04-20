@@ -5,6 +5,7 @@ public class Knife extends Weapon{
 	public Knife() {
 		super("Knife", 60);
 		setPurchasePrice(17);
+		setSellPrice(17);
 		setImgPath("/images/skeleton.png");
 		setImg();
 	}

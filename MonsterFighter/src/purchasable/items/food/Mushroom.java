@@ -5,6 +5,7 @@ public class Mushroom extends Food {
 		super("Mushroom");
 		setHealAmount(70);
 		setPurchasePrice(10);
+		setSellPrice(10);
 		setImgPath("/images/skeleton.png");
 		setImg();
 	}

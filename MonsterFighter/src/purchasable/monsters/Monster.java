@@ -224,6 +224,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	@Override
 	public void sell(Player player) {
+		System.out.println("getSellPrice() " +getSellPrice());
 		player.addGold(getSellPrice());
 		player.getInventory().removeMonster(this);
 	}
