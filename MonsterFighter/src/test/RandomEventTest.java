@@ -68,6 +68,30 @@ class RandomEventTest {
 		monsterJoinsEvent = new NewMonsterJoins(testPlayer.getInventory());
 		assertEquals(4, playerTeam.size());
 		
+		//One more NewMonsterJoins shouldn't do anything
+		monsterJoinsEvent = new NewMonsterJoins(testPlayer.getInventory());
+		assertEquals(4, playerTeam.size());
+	}
+	
+	@Test
+	void runMonsterLevelsUp() {
+		Monster playerMonster = playerTeam.getTeam().get(0);
+		int monsterMaxHealth = playerMonster.getMaxHealth();
+		
+		playerMonster.removeHealth(100);
+		int currentHealth = playerMonster.getHealth();
+		
+		assertFalse(monsterMaxHealth == currentHealth);
+		
+		MonsterLevelsUp levelUpEvent = new MonsterLevelsUp(testPlayer.getInventory());
+		
+		assertTrue(monsterMaxHealth < playerMonster.getMaxHealth());
+		assertTrue(currentHealth == playerMonster.getHealth());
+	}
+	
+	@Test
+	void runMonsterLeaves() {
+		
 	}
 
 }
