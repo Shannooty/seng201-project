@@ -29,7 +29,7 @@ public class MonsterLevelsUp extends RandomEvent {
 	 */
 	public void levelUpSetUp() {
 		int health = healthIncrease[(randomItem.nextInt(healthIncrease.length))];
-		Monster monster = inventory.getTeam().getTeam().get(randomItem.nextInt(inventory.getTeam().getTeam().size()));
+		Monster monster = getPlayerTeam().getTeam().get(randomItem.nextInt(getPlayerTeam().size()));
 		heal(health, monster);
 	}
 	
