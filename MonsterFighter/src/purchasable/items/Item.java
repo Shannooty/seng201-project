@@ -1,5 +1,6 @@
 package purchasable.items;
 
+import exceptions.InsufficientGoldException;
 import player.Player;
 import purchasable.Purchasable;
 import purchasable.items.armors.Armor;
@@ -16,7 +17,7 @@ public abstract class Item extends Purchasable {
 	}
 	
 	@Override
-	public void buy(Player player) {
+	public void buy(Player player) throws InsufficientGoldException {
 		player.removeGold(getPurchasePrice());
 		player.getInventory().addItem(this);
 	}
