@@ -220,17 +220,7 @@ public class InventoryScreen {
 					List<Monster> listOfMonsters = team.stream().filter(s -> selectedID.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 					Monster monsterToEquip = listOfMonsters.get(0);
 //
-					if (selectedItem instanceof Food) {
-						monsterToEquip.addHealth(((Food) selectedItem).getHealAmount());
-					} else if (selectedItem instanceof Weapon) {
-						monsterToEquip.addAttackAmount(((Weapon) selectedItem).getDamage());
-					} else if (selectedItem instanceof Armor) {
-						monsterToEquip.addMaxHealth(((Armor) selectedItem).getHealthIncrease());
-						monsterToEquip.addHealth(((Armor) selectedItem).getHealthIncrease());
-						monsterToEquip.addArmorAmount(((Armor) selectedItem).getArmorIncrease());
-					} else if (selectedItem instanceof SpeedPotion) {
-						monsterToEquip.addSpeed(((SpeedPotion) selectedItem).getSpeedIncrease());
-					}
+					inventory.useItem(selectedItem, monsterToEquip);
 					
 					selectedItem.setEquipped(true);
 					txtDescriptionItems.setText("Nothing selected.");
