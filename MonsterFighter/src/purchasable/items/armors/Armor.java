@@ -24,7 +24,6 @@ public abstract class Armor extends Item {
 	
 	@Override
 	public Item use(Monster monster) {
-		
 		Armor oldArmor = monster.addArmor(this);
 		return oldArmor;
 

@@ -1,5 +1,6 @@
 package purchasable.monsters;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 
 import exceptions.InsufficientGoldException;
@@ -27,6 +28,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	private Weapon weaponSlot = null;
 	private Armor armorSlot = null;
 	private String monsterType;
+	private ArrayList<String> equipped = new ArrayList<String>();
 	
 	/**
 	 * Main constructor for the abstract superclass of Monster
@@ -175,6 +177,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		Weapon oldWeapon = removeWeapon();
 		weaponSlot = weapon;
 		addAttackAmount(weapon.getDamage());
+		equipped.add(weapon.getClass().getSimpleName());
 //		System.out.println("Monster, weapon.getDamage() "+weapon.getDamage());
 //		System.out.println("Monster, getAttackAmount() "+getAttackAmount());
 		return oldWeapon;
@@ -195,7 +198,10 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		armorSlot = armor;
 		addMaxHealth(armor.getHealthIncrease());
 		addArmorAmount(armor.getArmorIncrease());
-		
+		equipped.add(armor.getClass().getSimpleName());
+		if (oldArmor != null) {
+			equipped.remove(oldArmor.getClass().getSimpleName());
+		}
 		return oldArmor;
 	}
 	
@@ -209,6 +215,9 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		
 		return armor;
 	}
+	
+	
+	
 	
 	public String toString() {
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
@@ -225,7 +234,15 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	public String getSellBackDescription() {
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
-		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+getHealth()+"\nAttack Amount: "+getAttackAmount()+"\nArmor Amount: "+getArmorAmount()+"\nSpeed: "+getSpeed()+"\n\nSell-back Price: "+getPurchasePrice();
+		
+		String equippedString = "";
+		
+		for (int i = 0; i < equipped.size(); i++) {
+			equippedString += equipped.get(i);
+			equippedString += " ";
+		}
+		
+		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+getHealth()+"\nAttack Amount: "+getAttackAmount()+"\nArmor Amount: "+getArmorAmount()+"\nEquipped: "+equippedString+"\nSpeed: "+getSpeed()+"\n\nSell-back Price: "+getPurchasePrice();
 	}
 	
 	public String getBuyDescription() {

@@ -127,25 +127,31 @@ public class InventoryScreen {
 		
 		txtDescriptionItems.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		txtDescriptionItems.setMargin(new Insets(0,7,0,7));
-		txtDescriptionItems.setBounds(530, 68, 267, 190);
+//		txtDescriptionItems.setBounds(530, 68, 267, 190);
 		txtDescriptionItems.setLineWrap(true);
 		txtDescriptionItems.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionItems);
 		
-//        JScrollPane scrollableTextArea = new JScrollPane(txtDescriptionItems);  
-//        scrollableTextArea.setBounds(530, 68, 267, 148);
-//  
-//        scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
-//        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
-//  
-//        frmInventoryscreen.getContentPane().add(scrollableTextArea); 
+        JScrollPane scrollableTextAreaItems = new JScrollPane(txtDescriptionItems);  
+        scrollableTextAreaItems.setBounds(530, 68, 267, 190);
+        scrollableTextAreaItems.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
+        scrollableTextAreaItems.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+        frmInventoryscreen.getContentPane().add(scrollableTextAreaItems); 
 		
 		txtDescriptionMonsters.setFont(new Font("Monospaced", Font.PLAIN, 15));		
 		txtDescriptionMonsters.setMargin(new Insets(0,7,0,7));
-		txtDescriptionMonsters.setBounds(530, 316, 267, 190);
+//		txtDescriptionMonsters.setBounds(530, 316, 267, 190);
 		txtDescriptionMonsters.setLineWrap(true);
 		txtDescriptionMonsters.setEditable(false);
-		frmInventoryscreen.getContentPane().add(txtDescriptionMonsters);
+//		frmInventoryscreen.getContentPane().add(txtDescriptionMonsters);
+		
+		
+        JScrollPane scrollableTextAreaMonsters = new JScrollPane(txtDescriptionMonsters);  
+        scrollableTextAreaMonsters.setBounds(530, 316, 267, 190);
+        scrollableTextAreaMonsters.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
+        scrollableTextAreaMonsters.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+        frmInventoryscreen.getContentPane().add(scrollableTextAreaMonsters); 
+		
 		
 		JButton btnHome = new JButton("Return Home");
 		btnHome.addActionListener(new ActionListener() {
@@ -211,6 +217,7 @@ public class InventoryScreen {
 
 				if (selection != null) {
 					String selectedID = selection.substring(selection.length() - 1);
+//					System.out.println("InventoryScreen, selection "+selection);
 					List<Monster> listOfMonsters = team.stream().filter(s -> selectedID.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 					Monster monsterToEquip = listOfMonsters.get(0);
 //					System.out.println("selectedItem "+selectedItem+" "+selectedItem.toString());
@@ -245,6 +252,7 @@ public class InventoryScreen {
 		selectedMonster = listOfMonsters.get(0);
 		String monsterString = selectedMonster.getSellBackDescription();
 		txtDescriptionMonsters.setText(monsterString);
+		txtDescriptionMonsters.setCaretPosition(0);
 	}
 	
 	
@@ -253,5 +261,6 @@ public class InventoryScreen {
 		selectedItem = listOfItems.get(0);
 		String itemString = selectedItem.getSellBackDescription();
 		txtDescriptionItems.setText(itemString);
+		txtDescriptionItems.setCaretPosition(0);
 	}
 }
