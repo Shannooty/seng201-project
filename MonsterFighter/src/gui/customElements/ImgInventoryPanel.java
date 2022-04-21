@@ -173,14 +173,16 @@ public class ImgInventoryPanel extends JPanel {
 		
 		for (Battle item : BattlesToDisplay) {
 			
-			
-			
-			Icon icon = item.getImg();
-//			Icon icon = new ImageIcon("/images/skeleton.png");
-//			System.out.println(icon);
-			JToggleButton button = new JToggleButton(icon);
+			InventoryToggleButton button = new InventoryToggleButton(item);
 			button.setName(Integer.toString(item.getID()));
-//			System.out.println("button.getName() " + button.getName());
+			
+			
+//			Icon icon = item.getImg();
+////			Icon icon = new ImageIcon("/images/skeleton.png");
+////			System.out.println(icon);
+//			JToggleButton button = new JToggleButton(icon);
+//			button.setName(Integer.toString(item.getID()));
+////			System.out.println("button.getName() " + button.getName());
 			
 			
 			button.addActionListener(new ActionListener() { 
