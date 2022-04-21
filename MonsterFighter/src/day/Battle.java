@@ -28,6 +28,10 @@ public class Battle {
 	private static int id = 0;
     private int instanceId = ++id;
 	private GameEnvironment gameEnvironment;
+	private Monster startingMonster;
+	private String startingMonsterString;
+	private Monster secondMonster;
+	private String secondMonsterString;
 
 
 	
@@ -105,21 +109,41 @@ public class Battle {
 	
 	
 	public Monster attack(Monster playerMonster, Monster gameMonster) {
-//		Monster startingMonster;
-//		if (playerMonster.getSpeed() >= gameMonster.getSpeed()) {
-//			startingMonster = playerMonster;
-//		} else {
-//			startingMonster = gameMonster;
-//		}
-//		
+		Monster startingMonster;
+		if (playerMonster.getSpeed() >= gameMonster.getSpeed()) {
+			startingMonster = playerMonster;
+			secondMonster = gameMonster;
+			startingMonsterString = "Player";
+			secondMonsterString = "Game";
+		} else {
+			startingMonster = gameMonster;
+			secondMonster = playerMonster;
+			startingMonsterString = "Game";
+			secondMonsterString = "Player";
+		}
+		
+		long starterFrequency = Math.round(Double.valueOf(startingMonster.getSpeed())/Double.valueOf(secondMonster.getSpeed()));
+		long secondFrequency = Math.round(Double.valueOf(secondMonster.getSpeed())/Double.valueOf(startingMonster.getSpeed()));
+		
+		
 		while (playerMonster.getHealth() > 0 && gameMonster.getHealth() > 0) {
 			
-			//Player attacks
-			gameMonster.removeHealth(playerMonster.getAttackAmount());
+			for (long i = 0; i < starterFrequency; i++) {
+				secondMonster.removeHealth(startingMonster.getAttackAmount());
+			}
 			
-			if (gameMonster.getHealth() > 0) {
+			
+			
+			//Player attacks
+//			gameMonster.removeHealth(playerMonster.getAttackAmount());
+			
+			if (secondMonster.getHealth() > 0) {
 				//Game attacks
-				playerMonster.removeHealth(gameMonster.getAttackAmount());
+//				playerMonster.removeHealth(gameMonster.getAttackAmount());
+				
+				for (long i = 0; i < secondFrequency; i++) {
+					startingMonster.removeHealth(secondMonster.getAttackAmount());
+				}
 			}
 		}
 		
@@ -175,7 +199,7 @@ public class Battle {
 		
 		
 		for (Monster monster : monstersTofight.subList(1, monstersTofight.size())) {
-			monsters += "\n";
+//			monsters += "\n";
 			monsters += monster.toString();
 			
 		}
