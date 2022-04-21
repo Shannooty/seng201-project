@@ -157,7 +157,7 @@ class InventoryTest {
 		
 		//Armor test
 		testInventory.useItem(testInventory.getItems().get(0), playerMonster);
-		assertEquals(0, testInventory.getItems().size());
+		assertEquals(2, testInventory.getItems().size());
 		assertTrue(monsterMaxHealth < playerMonster.getMaxHealth());
 		assertTrue(monsterArmorAmount < playerMonster.getArmorAmount());
 				
@@ -166,14 +166,14 @@ class InventoryTest {
 		
 		//SpeedPotion test
 		testInventory.useItem(testInventory.getItems().get(0), playerMonster);
-		assertEquals(2, testInventory.getItems().size());
+		assertEquals(1, testInventory.getItems().size());
 		assertFalse(monsterSpeed == playerMonster.getSpeed());
 		
 		monsterSpeed = playerMonster.getSpeed();
 		
 		//Weapon test
 		testInventory.useItem(testInventory.getItems().get(0), playerMonster);
-		assertEquals(1, testInventory.getItems().size());
+		assertEquals(0, testInventory.getItems().size());
 		assertTrue(monsterAttackDamage < playerMonster.getAttackAmount());
 		
 		monsterAttackDamage = playerMonster.getAttackAmount();
