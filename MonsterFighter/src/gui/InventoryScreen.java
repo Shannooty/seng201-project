@@ -23,6 +23,7 @@ import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class InventoryScreen {
 
@@ -117,14 +118,14 @@ public class InventoryScreen {
 		
 		txtDescriptionItems.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		txtDescriptionItems.setMargin(new Insets(0,7,0,7));
-		txtDescriptionItems.setBounds(544, 318, 241, 207);
+		txtDescriptionItems.setBounds(544, 318, 241, 148);
 		txtDescriptionItems.setLineWrap(true);
 		txtDescriptionItems.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionItems);
 		
 		txtDescriptionMonsters.setFont(new Font("Monospaced", Font.PLAIN, 15));		
 		txtDescriptionMonsters.setMargin(new Insets(0,7,0,7));
-		txtDescriptionMonsters.setBounds(544, 69, 241, 207);
+		txtDescriptionMonsters.setBounds(544, 69, 241, 148);
 		txtDescriptionMonsters.setLineWrap(true);
 		txtDescriptionMonsters.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionMonsters);
@@ -145,6 +146,66 @@ public class InventoryScreen {
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblNewLabel.setBounds(52, 10, 347, 19);
 		frmInventoryscreen.getContentPane().add(lblNewLabel);
+		
+		JLabel lblYourTeam = new JLabel("Your Team:");
+		lblYourTeam.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblYourTeam.setBounds(52, 39, 99, 20);
+		frmInventoryscreen.getContentPane().add(lblYourTeam);
+		
+		JLabel lblNewLabel_1 = new JLabel("Items you own:");
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel_1.setBounds(52, 293, 140, 19);
+		frmInventoryscreen.getContentPane().add(lblNewLabel_1);
+		
+//		JButton btnEquipItem = new JButton("Equip Item");
+//		btnEquipItem.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				int choice = JOptionPane.showConfirmDialog(frmInventoryscreen, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);			
+//				if (choice == JOptionPane.YES_OPTION) {
+//					
+//				}
+//			}
+//		});
+//		btnEquipItem.setFont(new Font("Tahoma", Font.BOLD, 15));
+//		btnEquipItem.setBounds(663, 476, 122, 25);
+//		frmInventoryscreen.getContentPane().add(btnEquipItem);
+		
+
+		
+		
+		
+		
+		JButton btnEquipItem = new JButton("Equip Item");
+		btnEquipItem.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnEquipItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String[] choices = new String[team.size()];
+				for (int i = 0; i < team.size(); i++) {
+					choices[i] = team.get(i).getDescription();
+				}
+				String selection = (String) JOptionPane.showInputDialog(
+						frmInventoryscreen,
+				                    "Which monster do you wish to use this item on?",
+				                    "Inventory pop-up",
+				                    JOptionPane.PLAIN_MESSAGE,
+				                    null,
+				                    choices,
+				                    team.get(0).getDescription());
+
+				if (selection != null) {
+					System.out.println(selection);
+				}
+			}
+		});
+		btnEquipItem.setBounds(630, 476, 155, 25);
+		frmInventoryscreen.getContentPane().add(btnEquipItem);
+		
+		
+		if (inventory.getItems().size() == 0) {
+			btnEquipItem.setEnabled(false);
+		}
+		
+
 	}
 	
 	public static void setTxtrDescriptionMonster(String text) {
