@@ -235,12 +235,19 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
 		
-		String equippedString = "";
+		String equippedString = "N/A";
 		
-		for (int i = 0; i < equipped.size(); i++) {
-			equippedString += equipped.get(i);
-			equippedString += " ";
+		if (equipped.size() == 1) {
+			equippedString = equipped.get(0);
+		} else if (equipped.size() > 1) {
+			equippedString = equipped.get(0);
+			for (int i = 0; i < equipped.size(); i++) {
+				equippedString += ", ";
+				equippedString += equipped.get(i);
+			}
 		}
+		
+		
 		
 		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+getHealth()+"\nAttack Amount: "+getAttackAmount()+"\nArmor Amount: "+getArmorAmount()+"\nEquipped: "+equippedString+"\nSpeed: "+getSpeed()+"\n\nSell-back Price: "+getPurchasePrice();
 	}
