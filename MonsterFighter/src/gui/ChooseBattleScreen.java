@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import interfaces.HasImage;
 import day.Battle;
 import day.Day;
 import generators.MonsterGenerator;
@@ -142,7 +143,7 @@ public class ChooseBattleScreen {
 		scrollPane.setBounds(52, 88, 411, 343);
 		frmChoosebattle.getContentPane().add(scrollPane);
 
-		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(possibleBattles, scrollPane);
+		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, possibleBattles, "ChooseBattleScreen");
 		scrollPane.setViewportView(monsterPanel);
 		
 
