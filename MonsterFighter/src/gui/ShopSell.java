@@ -1,27 +1,21 @@
 package gui;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JToggleButton;
-import javax.swing.ListSelectionModel;
 
 import gui.customElements.ImgInventoryPanel;
 import player.Inventory;
@@ -29,7 +23,6 @@ import player.Player;
 import player.Team;
 import purchasable.items.Item;
 import purchasable.monsters.*;
-import shop.Shop;
 
 
 /**
@@ -202,7 +195,7 @@ public class ShopSell {
 		
 		showItems.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), scrollPane, "ShopSell");
+				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), "ShopSell");
 				  scrollPane.setViewportView(itemPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
@@ -224,7 +217,7 @@ public class ShopSell {
 					
 					if (selectedItem != null && showItems.isSelected() == true) {
 						selectedItem.sell(player);
-						ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), scrollPane, "ShopSell");
+						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), "ShopSell");
 						scrollPane.setViewportView(itemPanel);
 					}
 					

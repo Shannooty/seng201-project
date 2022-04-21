@@ -1,11 +1,7 @@
 package gui;
 
-import java.awt.Component;
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 
@@ -17,23 +13,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JToggleButton;
-import javax.swing.ListSelectionModel;
 
 import gui.customElements.*;
-import player.Inventory;
 import player.Player;
-import player.Team;
 import shop.Shop;
-import purchasable.Purchasable;
 import purchasable.items.Item;
 import purchasable.monsters.*;
-import javax.swing.ListModel;
 import javax.swing.JPanel;
 
 
@@ -81,15 +70,6 @@ public class ShopBuy {
 	private static Shop shop;
 	
 	/**
-	 * Attribute inventory of type Inventory. The player's inventory.
-	 */
-	private Inventory inventory;
-
-	
-	private static Team team;
-
-	
-	/**
 	 * Attribute selectedMonster of type String. The currently selected Monster.
 	 */
 	private static Monster selectedMonster;
@@ -111,9 +91,7 @@ public class ShopBuy {
 	public ShopBuy(GameEnvironment gameManager, Shop shop) {
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
-		inventory = player.getInventory();
-		team = inventory.getTeam();
-		this.shop = shop;
+		ShopBuy.shop = shop;
 		initialize();
 		frmShopbuy.setVisible(true);
 	}
@@ -182,7 +160,7 @@ public class ShopBuy {
 		
 		showItems.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemInfo, scrollPane, "ShopBuy");
+				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, itemInfo, "ShopBuy");
 				  scrollPane.setViewportView(itemPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
@@ -242,7 +220,7 @@ public class ShopBuy {
 					
 					if (selectedItem != null && showItems.isSelected() == true) {
 						shop.purchase(selectedItem, player);
-						ImgInventoryPanel itemPanel = new ImgInventoryPanel(shop.getAvalibleItems(), scrollPane, "ShopBuy");
+						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleItems(), "ShopBuy");
 						scrollPane.setViewportView(itemPanel);
 					}
 					
