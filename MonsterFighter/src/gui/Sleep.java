@@ -99,7 +99,7 @@ public class Sleep {
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnContinue.setBounds(328, 419, 167, 21);
+		btnContinue.setBounds(328, 419, 167, 25);
 		frmSleep.getContentPane().add(btnContinue);
 		
 		JLabel lblShopUpdated = new JLabel("The shop has been updated.");

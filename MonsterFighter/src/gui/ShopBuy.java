@@ -220,7 +220,7 @@ public class ShopBuy {
 			}
 		});
 		btnShopSell.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnShopSell.setBounds(741, 10, 85, 21);
+		btnShopSell.setBounds(741, 10, 85, 25);
 		frmShopbuy.getContentPane().add(btnShopSell);
 
 		
@@ -272,7 +272,7 @@ public class ShopBuy {
 			}
 		});
 		btnReturnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnReturnHome.setBounds(684, 35, 142, 21);
+		btnReturnHome.setBounds(684, 35, 142, 25);
 		frmShopbuy.getContentPane().add(btnReturnHome);
 
 

@@ -107,7 +107,7 @@ public class BattleScreen {
 			}
 		});
 		btnContinue.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnContinue.setBounds(350, 297, 128, 21);
+		btnContinue.setBounds(350, 297, 128, 25);
 		frmBattlescreen.getContentPane().add(btnContinue);
 		
 		
@@ -120,7 +120,7 @@ public class BattleScreen {
 			}
 		});
 		btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnFinish.setBounds(350, 277, 128, 21);
+		btnFinish.setBounds(350, 277, 128, 25);
 		frmBattlescreen.getContentPane().add(btnFinish);
 		
 		

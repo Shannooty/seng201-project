@@ -150,7 +150,7 @@ public class ShopSell {
 			}
 		});
 		btnShopBuy.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnShopBuy.setBounds(741, 10, 85, 21);
+		btnShopBuy.setBounds(741, 10, 85, 25);
 		frmShopSell.getContentPane().add(btnShopBuy);
 		
 		JButton btnReturnHome = new JButton("Return Home");
@@ -165,7 +165,7 @@ public class ShopSell {
 			}
 		});
 		btnReturnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnReturnHome.setBounds(684, 41, 142, 20);
+		btnReturnHome.setBounds(684, 41, 142, 25);
 		frmShopSell.getContentPane().add(btnReturnHome);
 		
 		
@@ -233,7 +233,7 @@ public class ShopSell {
 			}
 		});
 		btnSell.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnSell.setBounds(617, 331, 142, 21);
+		btnSell.setBounds(617, 331, 142, 25);
 		frmShopSell.getContentPane().add(btnSell);
 		
 	}

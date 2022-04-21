@@ -163,7 +163,7 @@ public class MainScreen {
 			}
 		});
 		btnBattleSelect.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnBattleSelect.setBounds(664, 10, 162, 26);
+		btnBattleSelect.setBounds(664, 10, 162, 25);
 		frmMainscreen.getContentPane().add(btnBattleSelect);
 		
 		JButton btnInventory = new JButton("Inventory");
@@ -174,7 +174,7 @@ public class MainScreen {
 			}
 		});
 		btnInventory.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnInventory.setBounds(674, 37, 152, 26);
+		btnInventory.setBounds(674, 37, 152, 25);
 		frmMainscreen.getContentPane().add(btnInventory);
 		
 		JButton btnShop = new JButton("Shop");
@@ -185,7 +185,7 @@ public class MainScreen {
 			}
 		});
 		btnShop.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnShop.setBounds(741, 65, 85, 26);
+		btnShop.setBounds(741, 65, 85, 25);
 		frmMainscreen.getContentPane().add(btnShop);
 		
 //		JTextPane textPaneMonsterDescription = new JTextPane();
@@ -218,7 +218,7 @@ public class MainScreen {
 			}
 		});
 		btnSleep.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnSleep.setBounds(741, 483, 85, 26);
+		btnSleep.setBounds(741, 483, 85, 25);
 		frmMainscreen.getContentPane().add(btnSleep);
 		
 		

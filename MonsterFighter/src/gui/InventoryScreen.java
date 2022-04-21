@@ -137,7 +137,7 @@ public class InventoryScreen {
 			}
 		});
 		btnHome.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnHome.setBounds(663, 10, 163, 27);
+		btnHome.setBounds(663, 10, 163, 25);
 		frmInventoryscreen.getContentPane().add(btnHome);
 		
 		JLabel lblNewLabel = new JLabel();

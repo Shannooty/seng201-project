@@ -154,7 +154,7 @@ public class ChooseBattleScreen {
 			}
 		});
 		btnReturnHome.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnReturnHome.setBounds(672, 10, 154, 27);
+		btnReturnHome.setBounds(672, 10, 154, 25);
 		frmChoosebattle.getContentPane().add(btnReturnHome);
 		
 		JButton btnStartBattle = new JButton("Start Battle");
@@ -168,7 +168,7 @@ public class ChooseBattleScreen {
 			}
 		});
 		btnStartBattle.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnStartBattle.setBounds(631, 342, 145, 27);
+		btnStartBattle.setBounds(631, 342, 145, 25);
 		frmChoosebattle.getContentPane().add(btnStartBattle);
 		
 
