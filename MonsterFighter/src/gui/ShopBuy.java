@@ -235,15 +235,13 @@ public class ShopBuy {
 				if (choice == JOptionPane.YES_OPTION) {
 
 					if (selectedMonster != null && showMonsters.isSelected() == true) {
-						selectedMonster.buy(player);
-						shop.removeMonster(selectedMonster);
+						shop.purchase(selectedMonster, player);
 						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters(), "ShopBuy");
 						scrollPane.setViewportView(monsterPanel);
 					} 
 					
 					if (selectedItem != null && showItems.isSelected() == true) {
-						selectedItem.buy(player);
-						shop.removeItem(selectedItem);
+						shop.purchase(selectedItem, player);
 						ImgInventoryPanel itemPanel = new ImgInventoryPanel(shop.getAvalibleItems(), scrollPane, "ShopBuy");
 						scrollPane.setViewportView(itemPanel);
 					}
