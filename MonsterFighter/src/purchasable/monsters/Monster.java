@@ -181,7 +181,9 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	public Weapon removeWeapon() {
 		Weapon weapon = weaponSlot;
 		weaponSlot = null;
-		removeAttackAmount(weapon.getDamage());
+		if (weapon != null) {
+			removeAttackAmount(weapon.getDamage());
+		}
 		
 		return weapon;
 	}
@@ -198,8 +200,10 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	public Armor removeArmor() {
 		Armor armor = armorSlot;
 		armorSlot = null;
-		removeMaxHealth(armor.getHealthIncrease());
-		removeArmorAmount(armor.getArmorIncrease());
+		if (armor != null) {
+			removeMaxHealth(armor.getHealthIncrease());
+			removeArmorAmount(armor.getArmorIncrease());
+		}
 		
 		return armor;
 	}
