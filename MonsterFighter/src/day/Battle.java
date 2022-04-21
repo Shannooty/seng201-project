@@ -125,6 +125,12 @@ public class Battle {
 		long starterFrequency = Math.round(Double.valueOf(startingMonster.getSpeed())/Double.valueOf(secondMonster.getSpeed()));
 		long secondFrequency = Math.round(Double.valueOf(secondMonster.getSpeed())/Double.valueOf(startingMonster.getSpeed()));
 		
+		if (starterFrequency == 0) {
+			starterFrequency = 1;
+		}
+		if (secondFrequency == 0) {
+			secondFrequency = 1;
+		}
 		
 		while (playerMonster.getHealth() > 0 && gameMonster.getHealth() > 0) {
 			
@@ -137,14 +143,14 @@ public class Battle {
 			//Player attacks
 //			gameMonster.removeHealth(playerMonster.getAttackAmount());
 			
-			if (secondMonster.getHealth() > 0) {
+//			if (secondMonster.getHealth() > 0) {
 				//Game attacks
 //				playerMonster.removeHealth(gameMonster.getAttackAmount());
 				
-				for (long i = 0; i < secondFrequency; i++) {
-					startingMonster.removeHealth(secondMonster.getAttackAmount());
-				}
+			for (long i = 0; i < secondFrequency; i++) {
+				startingMonster.removeHealth(secondMonster.getAttackAmount());
 			}
+//			}
 		}
 		
 		Monster winner;
