@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JToggleButton;
 
 import day.Battle;
+import interfaces.HasImage;
 import purchasable.Purchasable;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
@@ -16,12 +17,9 @@ public class InventoryToggleButton extends JToggleButton {
 	 */
 	private static final long serialVersionUID = -5449563501811900529L;
 	
-	private Purchasable buttonObject;
+	private HasImage buttonObject;
 	
-	private Battle battleButtonObject;
-	
-	
-	public InventoryToggleButton(Purchasable item) {
+	public InventoryToggleButton(HasImage item) {
 		setButtonObject(item);
 		this.setIcon(item.getImg());
 		this.setBorder(null);
@@ -29,7 +27,7 @@ public class InventoryToggleButton extends JToggleButton {
 	}
 	
 	public InventoryToggleButton(Battle battle) {
-		setBattleButtonObject(battle);
+		setButtonObject(battle);
 		this.setIcon(battle.getImg());
 		this.setText("Number of monsters to fight: "+Integer.toString(battle.getNumMonsters()));
 		this.setHorizontalTextPosition(JLabel.CENTER);
@@ -39,15 +37,11 @@ public class InventoryToggleButton extends JToggleButton {
 	}
 	
 
-	public Purchasable getButtonObject() {
+	public HasImage getButtonObject() {
 		return buttonObject;
 	}
 
-	private void setButtonObject(Purchasable buttonObject) {
-		this.buttonObject = buttonObject;
-	}
-	
-	private void setBattleButtonObject(Battle battleButtonObject) {
-		this.battleButtonObject = battleButtonObject;
+	private void setButtonObject(HasImage item) {
+		this.buttonObject = item;
 	}
 }
