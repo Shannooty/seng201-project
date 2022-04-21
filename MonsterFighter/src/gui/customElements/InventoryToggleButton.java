@@ -25,22 +25,17 @@ public class InventoryToggleButton extends JToggleButton {
 		this.setBorder(null);
 		this.setSelectedIcon(new ImageIcon(InventoryToggleButton.class.getResource("/images/index1.png")));
 	}
-	
-	public InventoryToggleButton(Battle battle) {
-		setButtonObject(battle);
-		this.setIcon(battle.getImg());
-		this.setText("Number of monsters to fight: "+Integer.toString(battle.getNumMonsters()));
-		this.setHorizontalTextPosition(JLabel.CENTER);
-		this.setVerticalTextPosition(JLabel.CENTER);
-		this.setBorder(null);
-		this.setSelectedIcon(new ImageIcon(InventoryToggleButton.class.getResource("/images/index1.png")));
-	}
-	
 
 	public HasImage getButtonObject() {
 		return buttonObject;
 	}
-
+	
+	public void setBattleInfo(Battle battle) {
+		this.setText("Number of monsters to fight: "+Integer.toString(battle.getNumMonsters()));
+		this.setHorizontalTextPosition(JLabel.CENTER);
+		this.setVerticalTextPosition(JLabel.CENTER);
+	}
+	
 	private void setButtonObject(HasImage item) {
 		this.buttonObject = item;
 	}
