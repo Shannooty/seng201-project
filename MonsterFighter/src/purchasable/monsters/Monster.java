@@ -52,7 +52,11 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * @param healAmount amount of health the monster will be healed by
 	 */
 	public void addHealth(int healAmount) {
-		health = getHealth() + healAmount;
+		if ((health + healAmount) > maxHealth) {
+			health = maxHealth;
+		} else {
+			health = getHealth() + healAmount;
+		}		
 	}
 	
 	/**
@@ -60,7 +64,11 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * @param damage damage dealt to the monster
 	 */
 	public void removeHealth(int damage) {
-		health = getHealth() - damage;
+		if ((health - damage) < 0) {
+			health = 0;
+		} else {
+			health = getHealth() - damage;
+		}
 	}
 	
 	/**
@@ -197,6 +205,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		Armor oldArmor = removeArmor();
 		armorSlot = armor;
 		addMaxHealth(armor.getHealthIncrease());
+		addHealth(armor.getHealthIncrease());
 		addArmorAmount(armor.getArmorIncrease());
 		equipped.add(armor.getClass().getSimpleName());
 		if (oldArmor != null) {

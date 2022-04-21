@@ -122,8 +122,9 @@ public class InventoryScreen {
 //		txtDescription.setEditable(false);
 //		
 
-
-		
+//
+//		txtDescriptionItems.setText("Nothing selected.");
+//		txtDescriptionMonsters.setText("Nothing selected.");
 		
 		txtDescriptionItems.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		txtDescriptionItems.setMargin(new Insets(0,7,0,7));
