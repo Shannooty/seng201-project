@@ -18,6 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -110,6 +111,28 @@ public class ChooseBattleScreen {
 //		frmChoosebattle.getContentPane().add(images);
 		
 		
+//		JTextPane txtDescription = new JTextPane();
+ 
+		
+		
+		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
+		txtDescription.setText("Description: Not Selected\r\n\r\n");
+		txtDescription.setLineWrap(true);
+		txtDescription.setEditable(false);
+//		txtDescription.setBounds(473, 88, 302, 233);
+////		JScrollPane scrollableTextArea = new JScrollPane(txtDescription);  
+////        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+//		frmChoosebattle.getContentPane().add(txtDescription);
+		
+//		JTextArea textArea = new JTextArea("hello");  
+        JScrollPane scrollableTextArea = new JScrollPane(txtDescription);  
+        scrollableTextArea.setBounds(473, 88, 302, 233);
+  
+        scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
+        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+  
+        frmChoosebattle.getContentPane().add(scrollableTextArea); 
+		
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
@@ -118,12 +141,6 @@ public class ChooseBattleScreen {
 
 		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(possibleBattles, scrollPane);
 		scrollPane.setViewportView(monsterPanel);
-		
-		
-		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
-		txtDescription.setText("Description: Not Selected\r\n\r\n");
-		txtDescription.setBounds(473, 88, 302, 233);
-		frmChoosebattle.getContentPane().add(txtDescription);
 		
 
 		
