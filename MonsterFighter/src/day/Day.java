@@ -14,8 +14,8 @@ public class Day {
 	private String difficulty;
 	private GameEnvironment gameEnvironment;
 	private Team team;
-	private int pointsEarnedToday = 0;
-	private double goldEarnedToday = 0;
+	private int pointsEarnedToday;
+	private double goldEarnedToday;
 	private Player player;
 	
 	

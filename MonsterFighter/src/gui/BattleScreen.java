@@ -35,7 +35,8 @@ public class BattleScreen {
 	private JTextPane textAreaPlayer = new JTextPane();
 	private JTextPane textPanePlayerMonster = new JTextPane();
 	private JTextPane textPaneGameMonster = new JTextPane();
-	
+	private JButton btnFinish = new JButton("Finish");
+	private JButton btnContinue = new JButton("Continue");
 	
 
 
@@ -99,7 +100,7 @@ public class BattleScreen {
 		textPaneFight.setBounds(320, 344, 197, 120);
 		frmBattlescreen.getContentPane().add(textPaneFight);
 		
-		JButton btnContinue = new JButton("Continue");
+		
 		btnContinue.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				fight();
@@ -110,7 +111,7 @@ public class BattleScreen {
 		frmBattlescreen.getContentPane().add(btnContinue);
 		
 		
-		JButton btnFinish = new JButton("Finish");
+		
 		btnFinish.setVisible(false);
 		btnFinish.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -147,13 +148,13 @@ public class BattleScreen {
 			if (team.size() == 0 ) {
 				gameWinner = "game";
 			} else {
-				gameWinner = "you";
-				day.setPointsEarnedToday(selectedBattle.getPoints());
-				day.setGoldEarnedToday(selectedBattle.getGold());
-//				selectedBattle
-				
+				gameWinner = "you";	
 			}
 			updateStatus("end, winner: " + gameWinner);
+			day.setPointsEarnedToday(selectedBattle.getPoints());
+			day.setGoldEarnedToday(selectedBattle.getGold());
+			btnFinish.setVisible(true);
+			btnContinue.setVisible(false);
 //			System.out.println(actualTeam.getTeam().size());
 		}
 	}

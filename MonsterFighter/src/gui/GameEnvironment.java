@@ -85,9 +85,11 @@ public class GameEnvironment {
 			getLeaderboard().addScore(getPlayer().getScore());
 			launchEndScreen();
 		} else {
+			Double goldEarnedToday = today.getGoldEarnedToday();
+			int pointsEarnedToday = today.getPointsEarnedToday();
 			Day nextDay = new Day(this);
 			setToday(nextDay);
-			launchSleepScreen();
+			launchSleepScreen(goldEarnedToday, pointsEarnedToday);
 		}
 		
 	}
@@ -109,8 +111,8 @@ public class GameEnvironment {
 	}
 	
 	
-	public void launchSleepScreen(){
-		Sleep sleepScreen = new Sleep(this);
+	public void launchSleepScreen(Double goldEarnedToday, int pointsEarnedToday){
+		Sleep sleepScreen = new Sleep(this, goldEarnedToday, pointsEarnedToday);
 	}
 	
 	public void closeSleep(Sleep sleepWindow) {

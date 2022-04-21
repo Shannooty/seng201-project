@@ -38,19 +38,17 @@ public class Sleep {
 	 */
 	private RandomEvent randomEvent;
 	
-//	private int pointsEarnedToday;
-//	private double goldEarnedToday;
-	private Day today;
+	private int pointsEarnedToday;
+	private double goldEarnedToday;
 	
 	/**
 	 * Constructor for the class Sleep. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
 	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
 	 */
-	public Sleep(GameEnvironment gameManager) {
+	public Sleep(GameEnvironment gameManager, Double goldEarnedToday, int pointsEarnedToday) {
 		gameEnvironment = gameManager;
-		today = gameEnvironment.getToday();
-//		pointsEarnedToday = today.getPointsEarnedToday();
-//		goldEarnedToday = today.getGoldEarnedToday();
+		this.pointsEarnedToday = pointsEarnedToday;
+		this.goldEarnedToday = goldEarnedToday;
 		randomEvent = new RandomEvent(gameEnvironment.getPlayer().getInventory());
 		initialize();
 		frmSleep.setVisible(true);
@@ -114,9 +112,9 @@ public class Sleep {
 		lblBattlesUpdated.setBounds(292, 127, 203, 20);
 		frmSleep.getContentPane().add(lblBattlesUpdated);
 		
-		JLabel lblGainedGoldPoints = new JLabel("You gained "+today.getGoldEarnedToday()+" gold and "+today.getPointsEarnedToday()+" points today.");		
+		JLabel lblGainedGoldPoints = new JLabel("You gained "+goldEarnedToday+" gold and "+pointsEarnedToday+" points today.");
 		lblGainedGoldPoints.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblGainedGoldPoints.setBounds(257, 173, 308, 20);
+		lblGainedGoldPoints.setBounds(236, 173, 374, 20);
 		frmSleep.getContentPane().add(lblGainedGoldPoints);
 		
 		JLabel lblRandomEvent = new JLabel();
