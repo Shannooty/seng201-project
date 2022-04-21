@@ -1,26 +1,18 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 
 import gui.customElements.ImgInventoryPanel;
 import player.Inventory;
 import player.Player;
-import player.Team;
 import purchasable.items.Item;
-import purchasable.items.SpeedPotion;
-import purchasable.items.armors.Armor;
-import purchasable.items.food.Food;
-import purchasable.items.weapons.Weapon;
 import purchasable.monsters.Monster;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.JTextArea;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Insets;
@@ -117,7 +109,7 @@ public class InventoryScreen {
 		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, "Inventory");
 		monsterScrollPane.setViewportView(monsterPanel);
 		
-		ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), itemScrollPane, "Inventory");
+		ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemScrollPane, inventory.getItems(), "Inventory");
 		itemScrollPane.setViewportView(itemPanel);
 		
 		
@@ -219,18 +211,15 @@ public class InventoryScreen {
 					String selectedID = selection.substring(selection.length() - 1);
 					List<Monster> listOfMonsters = team.stream().filter(s -> selectedID.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 					Monster monsterToEquip = listOfMonsters.get(0);
-//
 					inventory.useItem(selectedItem, monsterToEquip);
 					
 					selectedItem.setEquipped(true);
 					txtDescriptionItems.setText("Nothing selected.");
 					txtDescriptionMonsters.setText("Nothing selected.");
-//					System.out.println(monsterToEquip);
-//					System.out.println(selectedItem);
 					ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, "Inventory");
 					monsterScrollPane.setViewportView(monsterPanel);
 					
-					ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), itemScrollPane, "Inventory");
+					ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemScrollPane, inventory.getItems(), "Inventory");
 					itemScrollPane.setViewportView(itemPanel);
 
 				}
