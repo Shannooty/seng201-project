@@ -19,11 +19,15 @@ public class InventoryToggleButton extends JToggleButton {
 	
 	private HasImage buttonObject;
 	
-	public InventoryToggleButton(HasImage item) {
+	public <T extends HasImage> InventoryToggleButton(T item) {
 		setButtonObject(item);
 		this.setIcon(item.getImg());
 		this.setBorder(null);
 		this.setSelectedIcon(new ImageIcon(InventoryToggleButton.class.getResource("/images/index1.png")));
+		
+		if (item instanceof Battle) {
+			setBattleInfo((Battle)item);
+		}
 	}
 
 	public HasImage getButtonObject() {
