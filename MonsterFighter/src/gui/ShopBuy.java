@@ -233,25 +233,23 @@ public class ShopBuy {
 				 */
 				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);			
 				if (choice == JOptionPane.YES_OPTION) {
-					if (selectedMonster != null) {
+
+					if (selectedMonster != null && showMonsters.isSelected() == true) {
 						selectedMonster.buy(player);
 						shop.removeMonster(selectedMonster);
 						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters(), "ShopBuy");
 						scrollPane.setViewportView(monsterPanel);
-						
-					} else if (selectedItem != null) {
+					} 
+					
+					if (selectedItem != null && showItems.isSelected() == true) {
 						selectedItem.buy(player);
 						shop.removeItem(selectedItem);
 						ImgInventoryPanel itemPanel = new ImgInventoryPanel(shop.getAvalibleItems(), scrollPane, "ShopBuy");
 						scrollPane.setViewportView(itemPanel);
-						
 					}
+					
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());				
-					
-					
 					txtDescription.setText("Nothing selected.");
-//					System.out.println("HHHHHHHHHHHHHHHHHHHHHH");
-//					System.out.println(inventory.toStringTeam());
 					
 				}
 			}

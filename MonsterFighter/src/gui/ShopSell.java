@@ -216,11 +216,13 @@ public class ShopSell {
 			public void actionPerformed(ActionEvent e) {
 				int choice = JOptionPane.showConfirmDialog(frmShopSell, "Are you sure you want to sell this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
 				if (choice == JOptionPane.YES_OPTION) {
-					if (selectedMonster != null) {
+					if (selectedMonster != null && showMonsters.isSelected() == true) {
 						selectedMonster.sell(player);
 						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell");
 						scrollPane.setViewportView(monsterPanel);
-					} else if (selectedItem != null) {
+					}
+					
+					if (selectedItem != null && showItems.isSelected() == true) {
 						selectedItem.sell(player);
 						ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), scrollPane, "ShopSell");
 						scrollPane.setViewportView(itemPanel);
