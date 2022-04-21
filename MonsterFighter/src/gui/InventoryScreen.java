@@ -10,6 +10,10 @@ import player.Inventory;
 import player.Player;
 import player.Team;
 import purchasable.items.Item;
+import purchasable.items.SpeedPotion;
+import purchasable.items.armors.Armor;
+import purchasable.items.food.Food;
+import purchasable.items.weapons.Weapon;
 import purchasable.monsters.Monster;
 
 import java.util.ArrayList;
@@ -118,14 +122,14 @@ public class InventoryScreen {
 		
 		txtDescriptionItems.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		txtDescriptionItems.setMargin(new Insets(0,7,0,7));
-		txtDescriptionItems.setBounds(544, 318, 241, 148);
+		txtDescriptionItems.setBounds(518, 318, 267, 148);
 		txtDescriptionItems.setLineWrap(true);
 		txtDescriptionItems.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionItems);
 		
 		txtDescriptionMonsters.setFont(new Font("Monospaced", Font.PLAIN, 15));		
 		txtDescriptionMonsters.setMargin(new Insets(0,7,0,7));
-		txtDescriptionMonsters.setBounds(544, 69, 241, 148);
+		txtDescriptionMonsters.setBounds(518, 69, 267, 148);
 		txtDescriptionMonsters.setLineWrap(true);
 		txtDescriptionMonsters.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionMonsters);
@@ -193,7 +197,27 @@ public class InventoryScreen {
 				                    team.get(0).getDescription());
 
 				if (selection != null) {
-					System.out.println(selection);
+					String selectedID = selection.substring(selection.length() - 1);
+					List<Monster> listOfMonsters = team.stream().filter(s -> selectedID.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+					Monster monsterToEquip = listOfMonsters.get(0);
+//
+					if (selectedItem instanceof Food) {
+						monsterToEquip.addHealth(((Food) selectedItem).getHealAmount());
+					} else if (selectedItem instanceof Weapon) {
+						monsterToEquip.addAttackAmount(((Weapon) selectedItem).getDamage());
+					} else if (selectedItem instanceof Armor) {
+						monsterToEquip.addMaxHealth(((Armor) selectedItem).getHealthIncrease());
+						monsterToEquip.addArmorAmount(((Armor) selectedItem).getArmorIncrease());
+					} else if (selectedItem instanceof SpeedPotion) {
+						monsterToEquip.addSpeed(((SpeedPotion) selectedItem).getSpeedIncrease());
+					}
+					
+					selectedItem.setEquipped(true);
+					txtDescriptionItems.setText("Nothing selected.");
+					txtDescriptionMonsters.setText("Nothing selected.");
+//					System.out.println(monsterToEquip);
+//					System.out.println(selectedItem);
+
 				}
 			}
 		});

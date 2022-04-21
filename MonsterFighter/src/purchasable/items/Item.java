@@ -9,6 +9,8 @@ import purchasable.monsters.*;
 
 public abstract class Item extends Purchasable {
 	
+	private boolean equipped = false;
+	
 	public Item(String name) {
 		super(name);
 	}
@@ -27,6 +29,13 @@ public abstract class Item extends Purchasable {
 	
 	public abstract Item use(Monster monster);
 	
+	public void setEquipped(boolean equipped) {
+		this.equipped = equipped;
+	}
+	
+	public boolean getEquipped() {
+		return equipped;
+	}
 	
 	public String createDescription() {
 		String type = (String.valueOf(getClass()).split("\\."))[2];
@@ -46,7 +55,7 @@ public abstract class Item extends Purchasable {
 			
 
 		
-		return "Type: "+typeEdited+"\nName: " + getName()+"\n\n"+effect;
+		return "Type: "+typeEdited+"\nName: " + getName()+"\n\n"+effect+"\n\nEquipped: "+getEquipped();
 	}
 	
 	public String getSellBackDescription() {
