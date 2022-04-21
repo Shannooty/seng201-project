@@ -2,10 +2,11 @@ package purchasable;
 
 import javax.swing.ImageIcon;
 
+import interfaces.HasImage;
 import player.Player;
 import purchasable.monsters.Monster;
 
-public abstract class Purchasable {
+public abstract class Purchasable implements HasImage {
 	private String name;
 	private double purchasePrice;
 	private double sellPrice;
@@ -18,7 +19,6 @@ public abstract class Purchasable {
 	
 	public Purchasable(String name) {
 		setName(name);
-//		System.out.println("Name: "+name+" ID: " +id);
 	}
 	
 	public void setName(String name) {
