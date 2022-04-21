@@ -1,6 +1,7 @@
 package gui.customElements;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JToggleButton;
 
 import day.Battle;
@@ -27,9 +28,12 @@ public class InventoryToggleButton extends JToggleButton {
 		this.setSelectedIcon(new ImageIcon(InventoryToggleButton.class.getResource("/images/index1.png")));
 	}
 	
-	public InventoryToggleButton(Battle item) {
-		setBattleButtonObject(item);
-		this.setIcon(item.getImg());
+	public InventoryToggleButton(Battle battle) {
+		setBattleButtonObject(battle);
+		this.setIcon(battle.getImg());
+		this.setText("Number of monsters to fight: "+Integer.toString(battle.getNumMonsters()));
+		this.setHorizontalTextPosition(JLabel.CENTER);
+		this.setVerticalTextPosition(JLabel.CENTER);
 		this.setBorder(null);
 		this.setSelectedIcon(new ImageIcon(InventoryToggleButton.class.getResource("/images/index1.png")));
 	}

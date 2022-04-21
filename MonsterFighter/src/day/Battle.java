@@ -74,7 +74,7 @@ public class Battle {
 			monstersTofight.add(newMonster);
 		}
 		
-		setImgPath("/images/skeleton.png");
+		setImgPath("/images/battle.png");
 		setImg();
 		
 //		System.out.println(getImg());
@@ -153,6 +153,10 @@ public class Battle {
 		return points;
 	}
 	
+	
+	public int getNumMonsters() {
+		return numMonstersToFight;
+	}
 	
 	public void removeMonster() {
 		
