@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import exceptions.InsufficientGoldException;
 import generators.ItemGenerator;
 import generators.MonsterGenerator;
-import player.Inventory;
 import player.Player;
-import purchasable.Purchasable;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
 
@@ -100,7 +98,7 @@ public class Shop {
 	 * Returns the number of Monsters in the Shop.
 	 * @return numMonsters, of type integer. The number of Monsters in the Shop.
 	 */
-	public int getNumMonsters() {
+	private int getNumMonsters() {
 		return numMonsters;
 	}
 
@@ -108,7 +106,7 @@ public class Shop {
 	 * Sets the private variable numMonsters to the given value. Return type void.
 	 * @param numMonsters, or type integer. The number of Monsters in the Shop.
 	 */
-	public void setNumMonsters(int numMonsters) {
+	private void setNumMonsters(int numMonsters) {
 		this.numMonsters = numMonsters;
 	}
 
@@ -116,7 +114,7 @@ public class Shop {
 	 * Returns the number of Items in the Shop.
 	 * @return numItems, of type integer. The number of Items in the Shop.
 	 */
-	public int getNumItems() {
+	private int getNumItems() {
 		return numItems;
 	}
 
@@ -124,7 +122,7 @@ public class Shop {
 	 * Sets the private variable numItems to the given value. Return type void.
 	 * @param numItems, of type integer. The number of Items in the Shop.
 	 */
-	public void setNumItems(int numItems) {
+	private void setNumItems(int numItems) {
 		this.numItems = numItems;
 	}
 	
