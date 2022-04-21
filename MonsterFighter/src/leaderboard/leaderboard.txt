@@ -4,4 +4,6 @@ Bede:400
 Celia:200
 Bede:100
 Celia:100
+:0
 hello:0
+:0
