@@ -121,6 +121,7 @@ public class ChooseBattleScreen {
 		txtDescription.setText("Nothing selected.");
 		txtDescription.setLineWrap(true);
 		txtDescription.setEditable(false);
+		
 //		txtDescription.setBounds(473, 88, 302, 233);
 ////		JScrollPane scrollableTextArea = new JScrollPane(txtDescription);  
 ////        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
@@ -187,5 +188,6 @@ public class ChooseBattleScreen {
 		selectedBattle = battles.get(0);
 		String battleString = selectedBattle.toString();
 		txtDescription.setText(battleString);
+		txtDescription.setCaretPosition(0);
 	}
 }

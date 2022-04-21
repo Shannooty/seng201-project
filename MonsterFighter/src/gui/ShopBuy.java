@@ -257,7 +257,7 @@ public class ShopBuy {
 			}
 		});
 		btnBuy.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnBuy.setBounds(633, 331, 142, 21);
+		btnBuy.setBounds(633, 331, 142, 25);
 		frmShopbuy.getContentPane().add(btnBuy);
 //		
 		JButton btnReturnHome = new JButton("Return Home");
