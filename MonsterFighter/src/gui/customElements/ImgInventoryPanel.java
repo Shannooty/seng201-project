@@ -16,16 +16,25 @@ import gui.ShopBuy;
 import gui.ShopSell;
 import interfaces.HasImage;
 
+
+/**
+ * Custom panel for displaying Objects which implement HasImage interface
+ * @author Bede Nathan, Celia Allen
+ */
 public class ImgInventoryPanel extends JPanel {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -3684204445436872689L;
 	private final InventoryButtonGroup buttonGroup = new InventoryButtonGroup();
 	
 	private String version;
 	
+	
+	/**
+	 * General constructor for the ImgInventoryPanel
+	 * @param pane The JScrollPane the panel will be added to
+	 * @param toDisplay The ArrayList of objects. Objects must implement HasImage interface
+	 * @param version Version string for different GUI screens
+	 */
 	public ImgInventoryPanel(JScrollPane pane, ArrayList<? extends HasImage> toDisplay, String version) {
 		if (toDisplay.size() > 0) {
 			int iconWidth = toDisplay.get(0).getImg().getIconWidth();
@@ -41,14 +50,21 @@ public class ImgInventoryPanel extends JPanel {
 		}
 	}
 	
+	/**
+	 * Gets the button group for the pane
+	 * @return the button group
+	 */
 	private InventoryButtonGroup getButtonGroup() {
 		return buttonGroup;
 	}
 	
 	
 	
-	// NOTE: If you want to go back to the original code, it's commented out up above, so feel free to comment this version and un-comment the one above
 	
+	/**
+	 * Places all the objects into the panel
+	 * @param toDisplay ArrayList of objects which extend HasImage interface
+	 */
 	private void placeObjectsInPanel(ArrayList<? extends HasImage> toDisplay) {
 		
 		for (HasImage item : toDisplay) {
