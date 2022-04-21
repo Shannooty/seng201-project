@@ -30,6 +30,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import day.Day;
 
@@ -257,9 +259,31 @@ public class SetupScreen {
 				
 			}
 		});
+		
+		btnNext.setEnabled(false);
 		btnNext.setBounds(654, 472, 117, 25);
 		frmSetup.getContentPane().add(btnNext);
 		 
+//	}
+	
+		username.getDocument().addDocumentListener(new DocumentListener() {
+		  public void changedUpdate(DocumentEvent e) {
+			 enableButton();
+		  }
+		  public void removeUpdate(DocumentEvent e) {
+			  enableButton();
+		  }
+		  public void insertUpdate(DocumentEvent e) {
+			  enableButton();
+		  }
+
+		  public void enableButton() {
+		     if (btnNext.isEnabled() == false) {
+		    	 btnNext.setEnabled(true);
+		     }
+		     
+		  }
+		});
 	}
 }
 
