@@ -65,6 +65,11 @@ public class Day {
 	}
 	
 	
+	public void removeBattle(Battle battle) {
+		todaysBattles.remove(battle);
+	}
+	
+	
 	public void setGoldEarnedToday(double gold) {
 		goldEarnedToday += gold;
 		player.addGold(goldEarnedToday);

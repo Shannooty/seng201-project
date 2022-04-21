@@ -115,6 +115,7 @@ public class BattleScreen {
 		btnFinish.setVisible(false);
 		btnFinish.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				day.removeBattle(selectedBattle);
 				gameEnvironment.launchMainScreen();
 				finishedWindow();
 			}
