@@ -10,9 +10,10 @@ import javax.swing.ImageIcon;
 import generators.MonsterGenerator;
 import gui.GameEnvironment;
 import gui.ImageCarousel;
+import interfaces.HasImage;
 import purchasable.monsters.*;
 
-public class Battle {
+public class Battle implements HasImage {
 	
 	private double gold;
 	private int points;
