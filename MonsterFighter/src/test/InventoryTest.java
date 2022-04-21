@@ -179,5 +179,25 @@ class InventoryTest {
 		monsterAttackDamage = playerMonster.getAttackAmount();
 		
 		
+		testInventory.addItem(new FlowerCrown());
+		
+		//Adding a armor ontop of one already equipped
+		testInventory.useItem(testInventory.getItems().get(0), playerMonster);
+		assertEquals(1, testInventory.getItems().size()); //Tests if old Armor is returned to inventory
+		assertTrue(testInventory.getItems().get(0) instanceof Chainmail);
+		assertTrue(monsterMaxHealth < playerMonster.getMaxHealth());
+		assertTrue(monsterArmorAmount > playerMonster.getArmorAmount());
+		
+		monsterArmorAmount = playerMonster.getArmorAmount();
+		monsterMaxHealth = playerMonster.getMaxHealth();
+		
+		
+		testInventory.addItem(new SledgeHammer());
+		
+		//Add a new weapon to monster that already has a weapon
+		testInventory.useItem(testInventory.getItems().get(1), playerMonster);
+		assertEquals(2, testInventory.getItems().size()); //Tests if old Weapon is returned to inventory
+		assertTrue(testInventory.getItems().get(1) instanceof SharpStick);
+		assertTrue(monsterAttackDamage < playerMonster.getAttackAmount());
 	}
 }
