@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 import purchasable.Purchasable;
 import purchasable.items.*;
+import purchasable.items.food.Food;
 import purchasable.monsters.*;
 
 
@@ -84,6 +85,22 @@ public class Inventory {
 		return team;
 	}
 	
+	/**
+	 * Lets the inventory use an item on a monster
+	 * @param item the item to be used
+	 * @param monster the monster for the item to be used on
+	 */
+	public void useItem(Item item, Monster monster) {
+		if (item instanceof Food) {
+			item.use(monster);
+		} else if (item instanceof SpeedPotion) {
+			item.use(monster);
+		}else {
+			Item equipedTool = item.use(monster);
+			addItem(equipedTool);
+		}
+		removeItem(item);
+	}
 	
 	public String toString() {
 		String output = "";
