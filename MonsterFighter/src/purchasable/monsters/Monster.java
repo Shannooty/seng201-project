@@ -219,7 +219,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	public String getSellBackDescription() {
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
-		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+getHealth()+"\nAttack Amount: "+getAttackAmount()+"\nSpeed: "+getSpeed()+"\n\nSell-back Price: "+getPurchasePrice();
+		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+getHealth()+"\nAttack Amount: "+getAttackAmount()+"\nArmor Amount: "+getArmorAmount()+"\nSpeed: "+getSpeed()+"\n\nSell-back Price: "+getPurchasePrice();
 	}
 	
 	public String getBuyDescription() {

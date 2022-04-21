@@ -226,6 +226,7 @@ public class InventoryScreen {
 						monsterToEquip.addAttackAmount(((Weapon) selectedItem).getDamage());
 					} else if (selectedItem instanceof Armor) {
 						monsterToEquip.addMaxHealth(((Armor) selectedItem).getHealthIncrease());
+						monsterToEquip.addHealth(((Armor) selectedItem).getHealthIncrease());
 						monsterToEquip.addArmorAmount(((Armor) selectedItem).getArmorIncrease());
 					} else if (selectedItem instanceof SpeedPotion) {
 						monsterToEquip.addSpeed(((SpeedPotion) selectedItem).getSpeedIncrease());
