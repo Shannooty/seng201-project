@@ -237,6 +237,11 @@ public class InventoryScreen {
 					txtDescriptionMonsters.setText("Nothing selected.");
 //					System.out.println(monsterToEquip);
 //					System.out.println(selectedItem);
+					ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, "Inventory");
+					monsterScrollPane.setViewportView(monsterPanel);
+					
+					ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), itemScrollPane, "Inventory");
+					itemScrollPane.setViewportView(itemPanel);
 
 				}
 			}
