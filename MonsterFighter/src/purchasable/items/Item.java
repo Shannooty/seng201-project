@@ -28,7 +28,7 @@ public abstract class Item extends Purchasable {
 	public abstract Item use(Monster monster);
 	
 	
-	public String toString() {
+	public String createDescription() {
 		String type = (String.valueOf(getClass()).split("\\."))[2];
 		String typeEdited = (type.substring(0, 1).toUpperCase() + type.substring(1, type.length())).replaceAll("s", "");
 		String effect = "";
@@ -46,7 +46,17 @@ public abstract class Item extends Purchasable {
 			
 
 		
-		return "Type: "+typeEdited+"\nName: " + getName()+"\n\n"+effect+"\n\nPrice: "+getPurchasePrice();
+		return "Type: "+typeEdited+"\nName: " + getName()+"\n\n"+effect;
+	}
+	
+	public String getSellBackDescription() {
+		String description = createDescription();
+		return description+"\n\nSell-back Price: "+getPurchasePrice();
+	}
+	
+	public String getBuyDescription() {
+		String description = createDescription();
+		return description+"\n\nPrice: "+getPurchasePrice();
 	}
 
 }

@@ -169,8 +169,19 @@ public class Battle {
 	}
 	
 	public String toString() {
+		
+		String monsters = "";
+		monsters += monstersTofight.get(0).toString();
+		
+		
+		for (Monster monster : monstersTofight.subList(1, monstersTofight.size())) {
+			monsters += "\n";
+			monsters += monster.toString();
+			
+		}
+		
 //		return "Gold: "+gold+"\nPoints: "+points+"\nNumMonsters: "+numMonstersToFight+"\nMonsters: ";
-		return "Gold: "+gold+"\nPoints: "+points+"\nNumMonsters: "+numMonstersToFight+"\nMonsters: "+monstersTofight;
+		return "Gold: "+gold+"\nPoints: "+points+"\nNumber of Monsters: "+numMonstersToFight+"\n\nMonsters: "+monsters+"\n";
 	}
 	
 }

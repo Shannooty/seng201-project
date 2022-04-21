@@ -251,7 +251,7 @@ public class MainScreen {
 	public static void setTxtrDescription(String text) {
 		List<Monster> streamedTeam = team.stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		selectedMonster = streamedTeam.get(0);
-		String itemString = selectedMonster.toString();
+		String itemString = selectedMonster.getSellBackDescription();
 		textAreaMonsterDescription.setText(itemString);
 	}
 

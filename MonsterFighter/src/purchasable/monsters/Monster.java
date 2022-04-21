@@ -207,7 +207,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	public String toString() {
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
-		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+getHealth()+"\nAttack Amount: "+getAttackAmount()+"\nSpeed: "+getSpeed()+"\n\nPrice: "+getPurchasePrice();
+		return "\nType: "+type+"\nHealth: "+getHealth()+"\nAttack Amount: "+getAttackAmount()+"\nSpeed: "+getSpeed();
 	}
 	
 	public String getDescription() {
@@ -215,6 +215,19 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
 		return type+": "+getName()+" "+getID();
 	}
+	
+	public String getSellBackDescription() {
+		String type = getMonsterType().replaceAll("([A-Z])", " $1");
+		type = type.substring(0, 1).toUpperCase() + type.substring(1);
+		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+getHealth()+"\nAttack Amount: "+getAttackAmount()+"\nSpeed: "+getSpeed()+"\n\nSell-back Price: "+getPurchasePrice();
+	}
+	
+	public String getBuyDescription() {
+		String type = getMonsterType().replaceAll("([A-Z])", " $1");
+		type = type.substring(0, 1).toUpperCase() + type.substring(1);
+		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+getHealth()+"\nAttack Amount: "+getAttackAmount()+"\nSpeed: "+getSpeed()+"\n\nPrice: "+getPurchasePrice();
+	}
+	
 	
 	@Override
 	public void buy(Player player) {

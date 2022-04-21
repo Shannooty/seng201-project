@@ -291,14 +291,14 @@ public class ShopBuy {
 	public static void setTxtrDescriptionMonster(String text) {
 		List<Monster> listOfMonsters = shop.getAvalibleMonsters().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		selectedMonster = listOfMonsters.get(0);
-		String monsterString = selectedMonster.toString();
+		String monsterString = selectedMonster.getBuyDescription();
 		txtDescription.setText(monsterString);
 	}
 	
 	public static void setTxtrDescriptionItem(String text) {
 		List<Item> listOfItems = shop.getAvalibleItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		selectedItem = listOfItems.get(0);
-		String itemString = selectedItem.toString();
+		String itemString = selectedItem.getBuyDescription();
 		txtDescription.setText(itemString);
 	}
 	

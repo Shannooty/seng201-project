@@ -245,7 +245,7 @@ public class ShopSell {
 	public static void setTxtrDescriptionMonster(String text) {
 		List<Monster> listOfMonsters = team.getTeam().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		selectedMonster = listOfMonsters.get(0);
-		String monsterString = selectedMonster.toString();
+		String monsterString = selectedMonster.getSellBackDescription();
 		txtDescription.setText(monsterString);
 	}
 	
@@ -253,7 +253,7 @@ public class ShopSell {
 	public static void setTxtrDescriptionItem(String text) {
 		List<Item> listOfItems = inventory.getItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		selectedItem = listOfItems.get(0);
-		String itemString = selectedItem.toString();
+		String itemString = selectedItem.getSellBackDescription();
 		txtDescription.setText(itemString);
 	}
 	
