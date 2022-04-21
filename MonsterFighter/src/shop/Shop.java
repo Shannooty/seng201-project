@@ -2,9 +2,11 @@ package shop;
 
 import java.util.ArrayList;
 
+import exceptions.InsufficientGoldException;
 import generators.ItemGenerator;
 import generators.MonsterGenerator;
 import player.Inventory;
+import player.Player;
 import purchasable.Purchasable;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
@@ -55,7 +57,6 @@ public class Shop {
 	private void addMonsters() {
 		for (int i = 0; i < getNumMonsters(); i++) {
 			Monster newMonster = MonsterGenerator.newMonster();
-//			newMonster.setPurchasePrice(70);
 			avalibleMonsters.add(newMonster);
 		}
 	}
@@ -74,7 +75,6 @@ public class Shop {
 	private void addItems() {
 		for (int i = 0; i < getNumItems(); i++) {
 			Item newItem = ItemGenerator.newItem();
-//			newItem.setPurchasePrice(10);
 			avalibleItems.add(newItem);
 		}
 	}
@@ -128,13 +128,32 @@ public class Shop {
 		this.numItems = numItems;
 	}
 	
-	public void purchaseItem(Item purchaseItem, Inventory playerInventory) {
-		playerInventory.addItem(purchaseItem);
-		removeItem(purchaseItem);
+	/**
+	 * Purchases the item from the shop
+	 * @param purchaseItem item for purchasing
+	 * @param player player who's purchasing
+	 */
+	public void purchase(Item purchaseItem, Player player) {
+		try {
+			purchaseItem.buy(player);
+			removeItem(purchaseItem);
+		}
+		catch (InsufficientGoldException e) {
+			System.out.print(e.getMessage());
+		}
 	}
-	
-	public void purchaseItem(Monster purchaseMonster, Inventory playerInventory) {
-		playerInventory.addMonster(purchaseMonster);
-		removeMonster(purchaseMonster);
+	/**
+	 * Purchases the monster from the store
+	 * @param purchaseMonster Monster being brought
+	 * @param player the player who's buying
+	 */
+	public void purchase(Monster purchaseMonster, Player player) {
+		try {
+			purchaseMonster.buy(player);
+			removeMonster(purchaseMonster);
+		}
+		catch (InsufficientGoldException e) {
+			System.out.print(e.getMessage());
+		}
 	}
 }
