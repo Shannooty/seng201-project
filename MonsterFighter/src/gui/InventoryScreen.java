@@ -107,11 +107,11 @@ public class InventoryScreen {
 		frmInventoryscreen.getContentPane().setLayout(null);
 		
 		JScrollPane monsterScrollPane = new JScrollPane();
-		monsterScrollPane.setBounds(52, 69, 411, 207);
+		monsterScrollPane.setBounds(31, 316, 411, 207);
 		frmInventoryscreen.getContentPane().add(monsterScrollPane);
 		
 		JScrollPane itemScrollPane = new JScrollPane();
-		itemScrollPane.setBounds(54, 318, 409, 205);
+		itemScrollPane.setBounds(31, 68, 409, 205);
 		frmInventoryscreen.getContentPane().add(itemScrollPane);
 		
 		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, "Inventory");
@@ -120,16 +120,35 @@ public class InventoryScreen {
 		ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), itemScrollPane, "Inventory");
 		itemScrollPane.setViewportView(itemPanel);
 		
+		
+//		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
+//		txtDescription.setMargin(new Insets(0,7,0,7));
+//		txtDescription.setText("Nothing selected.");
+//		txtDescription.setLineWrap(true);
+//		txtDescription.setEditable(false);
+//		
+
+
+		
+		
 		txtDescriptionItems.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		txtDescriptionItems.setMargin(new Insets(0,7,0,7));
-		txtDescriptionItems.setBounds(518, 318, 267, 148);
+		txtDescriptionItems.setBounds(530, 68, 267, 190);
 		txtDescriptionItems.setLineWrap(true);
 		txtDescriptionItems.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionItems);
 		
+//        JScrollPane scrollableTextArea = new JScrollPane(txtDescriptionItems);  
+//        scrollableTextArea.setBounds(530, 68, 267, 148);
+//  
+//        scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
+//        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+//  
+//        frmInventoryscreen.getContentPane().add(scrollableTextArea); 
+		
 		txtDescriptionMonsters.setFont(new Font("Monospaced", Font.PLAIN, 15));		
 		txtDescriptionMonsters.setMargin(new Insets(0,7,0,7));
-		txtDescriptionMonsters.setBounds(518, 69, 267, 148);
+		txtDescriptionMonsters.setBounds(530, 316, 267, 190);
 		txtDescriptionMonsters.setLineWrap(true);
 		txtDescriptionMonsters.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionMonsters);
@@ -153,12 +172,12 @@ public class InventoryScreen {
 		
 		JLabel lblYourTeam = new JLabel("Your Team:");
 		lblYourTeam.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblYourTeam.setBounds(52, 39, 99, 20);
+		lblYourTeam.setBounds(31, 286, 99, 20);
 		frmInventoryscreen.getContentPane().add(lblYourTeam);
 		
 		JLabel lblNewLabel_1 = new JLabel("Items you own:");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(52, 293, 140, 19);
+		lblNewLabel_1.setBounds(31, 39, 140, 19);
 		frmInventoryscreen.getContentPane().add(lblNewLabel_1);
 		
 //		JButton btnEquipItem = new JButton("Equip Item");
@@ -221,7 +240,7 @@ public class InventoryScreen {
 				}
 			}
 		});
-		btnEquipItem.setBounds(630, 476, 155, 25);
+		btnEquipItem.setBounds(642, 268, 155, 25);
 		frmInventoryscreen.getContentPane().add(btnEquipItem);
 		
 		
