@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
@@ -115,14 +116,14 @@ public class InventoryScreen {
 		itemScrollPane.setViewportView(itemPanel);
 		
 		txtDescriptionItems.setFont(new Font("Monospaced", Font.PLAIN, 15));
-		txtDescriptionItems.setBorder(BorderFactory.createCompoundBorder(txtDescriptionItems.getBorder(),BorderFactory.createEmptyBorder(0, 7, 0, 7)));
+		txtDescriptionItems.setMargin(new Insets(0,7,0,7));
 		txtDescriptionItems.setBounds(544, 318, 241, 207);
 		txtDescriptionItems.setLineWrap(true);
 		txtDescriptionItems.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionItems);
 		
 		txtDescriptionMonsters.setFont(new Font("Monospaced", Font.PLAIN, 15));		
-		txtDescriptionMonsters.setBorder(BorderFactory.createCompoundBorder(txtDescriptionMonsters.getBorder(),BorderFactory.createEmptyBorder(0, 7, 0, 7)));
+		txtDescriptionMonsters.setMargin(new Insets(0,7,0,7));
 		txtDescriptionMonsters.setBounds(544, 69, 241, 207);
 		txtDescriptionMonsters.setLineWrap(true);
 		txtDescriptionMonsters.setEditable(false);

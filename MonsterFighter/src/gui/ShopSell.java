@@ -2,6 +2,7 @@ package gui;
 
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -170,7 +171,7 @@ public class ShopSell {
 		
 		
 		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
-		txtDescription.setBorder(BorderFactory.createCompoundBorder(txtDescription.getBorder(),BorderFactory.createEmptyBorder(0, 7, 0, 7)));
+		txtDescription.setMargin(new Insets(0,7,0,7));
 		txtDescription.setText("Nothing selected.");
 		txtDescription.setLineWrap(true);
 		txtDescription.setEditable(false);

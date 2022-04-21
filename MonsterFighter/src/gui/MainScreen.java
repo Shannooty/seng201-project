@@ -8,16 +8,15 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 import java.awt.Font;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JTextPane;
 
 import player.*;
 import purchasable.items.Item;
@@ -191,7 +190,7 @@ public class MainScreen {
 		
 //		JTextPane textPaneMonsterDescription = new JTextPane();
 		textAreaMonsterDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
-		textAreaMonsterDescription.setBorder(BorderFactory.createCompoundBorder(textAreaMonsterDescription.getBorder(),BorderFactory.createEmptyBorder(0, 7, 0, 7)));
+		textAreaMonsterDescription.setMargin(new Insets(0,7,0,7));
 //		textAreaMonsterDescription.setText("Monster Description:\r\n\r\n\r\nName:\r\n\r\nHealth:\r\n\r\nDamage:\r\n\r\nItem(s):");
 		if (team.size() > 0) {
 			setTxtrDescription(Integer.toString(team.get(0).getID()));
