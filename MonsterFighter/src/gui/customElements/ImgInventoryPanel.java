@@ -5,16 +5,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JToggleButton;
 
-import day.Battle;
-import purchasable.Purchasable;
-import purchasable.items.Item;
-import purchasable.monsters.Monster;
 import net.miginfocom.swing.MigLayout;
 import gui.ChooseBattleScreen;
 import gui.InventoryScreen;
@@ -32,7 +26,7 @@ public class ImgInventoryPanel extends JPanel {
 	
 	private String version;
 	
-	public ImgInventoryPanel(JScrollPane pane, ArrayList<HasImage> toDisplay, String version) {
+	public ImgInventoryPanel(JScrollPane pane, ArrayList<? extends HasImage> toDisplay, String version) {
 		if (toDisplay.size() > 0) {
 			int iconWidth = toDisplay.get(0).getImg().getIconWidth();
 			int paneWidth = pane.getWidth();
@@ -55,7 +49,7 @@ public class ImgInventoryPanel extends JPanel {
 	
 	// NOTE: If you want to go back to the original code, it's commented out up above, so feel free to comment this version and un-comment the one above
 	
-	private void placeObjectsInPanel(ArrayList<HasImage> toDisplay) {
+	private void placeObjectsInPanel(ArrayList<? extends HasImage> toDisplay) {
 		
 		for (HasImage item : toDisplay) {
 			
