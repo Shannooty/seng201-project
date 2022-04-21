@@ -99,10 +99,12 @@ public class InventoryScreen {
 		frmInventoryscreen.getContentPane().setLayout(null);
 		
 		JScrollPane monsterScrollPane = new JScrollPane();
+		monsterScrollPane.getVerticalScrollBar().setUnitIncrement(15);
 		monsterScrollPane.setBounds(31, 316, 411, 207);
 		frmInventoryscreen.getContentPane().add(monsterScrollPane);
 		
 		JScrollPane itemScrollPane = new JScrollPane();
+		itemScrollPane.getVerticalScrollBar().setUnitIncrement(15);
 		itemScrollPane.setBounds(31, 68, 409, 205);
 		frmInventoryscreen.getContentPane().add(itemScrollPane);
 		
@@ -211,6 +213,8 @@ public class InventoryScreen {
 					String selectedID = selection.substring(selection.length() - 1);
 					List<Monster> listOfMonsters = team.stream().filter(s -> selectedID.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 					Monster monsterToEquip = listOfMonsters.get(0);
+//					System.out.println("selectedItem "+selectedItem+" "+selectedItem.toString());
+//					System.out.println("monsterToEquip "+monsterToEquip+" "+monsterToEquip.toString());
 					inventory.useItem(selectedItem, monsterToEquip);
 					
 					selectedItem.setEquipped(true);

@@ -175,7 +175,8 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		Weapon oldWeapon = removeWeapon();
 		weaponSlot = weapon;
 		addAttackAmount(weapon.getDamage());
-		
+//		System.out.println("Monster, weapon.getDamage() "+weapon.getDamage());
+//		System.out.println("Monster, getAttackAmount() "+getAttackAmount());
 		return oldWeapon;
 	}
 	
