@@ -170,6 +170,8 @@ public class ShopSell {
 		
 		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		txtDescription.setText("Description: Not Selected\r\n\r\n");
+		txtDescription.setLineWrap(true);
+		txtDescription.setEditable(false);
 		txtDescription.setBounds(473, 88, 302, 233);
 		frmShopSell.getContentPane().add(txtDescription);
 		

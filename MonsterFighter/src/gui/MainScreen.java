@@ -200,6 +200,8 @@ public class MainScreen {
 		}
 		
 		textAreaMonsterDescription.setBounds(480, 148, 281, 271);
+		textAreaMonsterDescription.setLineWrap(true);
+		textAreaMonsterDescription.setEditable(false);
 		frmMainscreen.getContentPane().add(textAreaMonsterDescription);
 		
 		JButton btnSleep = new JButton("Sleep");

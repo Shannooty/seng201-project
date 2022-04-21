@@ -114,9 +114,13 @@ public class InventoryScreen {
 		itemScrollPane.setViewportView(itemPanel);
 		
 		txtDescriptionItems.setBounds(544, 318, 241, 207);
+		txtDescriptionItems.setLineWrap(true);
+		txtDescriptionItems.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionItems);
 		
 		txtDescriptionMonsters.setBounds(544, 69, 241, 207);
+		txtDescriptionMonsters.setLineWrap(true);
+		txtDescriptionMonsters.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionMonsters);
 		
 		JButton btnHome = new JButton("Return Home");
