@@ -66,10 +66,17 @@ public class RandomEvent {
 	}
 
 	/**
-	 * Calls the method getRandomEvent(), and creates an instance of the class depending on the random event the call to getRandomEvent() returns. Return type void.
+	 * Calls the method getRandomEvent(), and creates an instance of the class depending on the random event the call to getRandomEvent() returns. Return type string.
 	 */
-	public void runRandomEvent() {
+	public String runRandomEvent() {
 		String randomEvent = getRandomEvent();
+		
+//		System.out.println("randomEvent: "+randomEvent+" team size: "+playerTeam.getTeam().size());
+		while ((randomEvent == "MonsterLeaves" || randomEvent == "MonsterLevelsUp") && playerTeam.getTeam().size() == 0) {
+			randomEvent = getRandomEvent();
+//			System.out.println("WHILE randomEvent: "+randomEvent+" team size: "+playerTeam.getTeam().size());
+		}
+		
 		if (randomEvent == "MonsterLeaves") {
 			MonsterLeaves leaves = new MonsterLeaves(getInventory());
 		} else if (randomEvent == "NewMonsterJoins") {
@@ -78,6 +85,7 @@ public class RandomEvent {
 			MonsterLevelsUp levelsUp = new MonsterLevelsUp(getInventory());
 		}		
 		
+		return randomEvent;
 	}
 
 	/**

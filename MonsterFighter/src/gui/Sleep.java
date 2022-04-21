@@ -118,8 +118,7 @@ public class Sleep {
 		frmSleep.getContentPane().add(lblGainedGoldPoints);
 		
 		JLabel lblRandomEvent = new JLabel();
-		String event = randomEvent.getRandomEvent();
-		randomEvent.runRandomEvent();
+		String event = randomEvent.runRandomEvent();
 		lblRandomEvent.setText("Random event "+event+" occured.");
 		lblRandomEvent.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblRandomEvent.setBounds(257, 253, 328, 20);

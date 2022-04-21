@@ -117,7 +117,6 @@ public class GameEnvironment {
 	
 	public void closeSleep(Sleep sleepWindow) {
 		sleepWindow.closeWindow();
-		
 	}
 	
 	
