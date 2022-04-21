@@ -10,6 +10,9 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import net.miginfocom.swing.MigLayout;
+import purchasable.items.Item;
+import purchasable.items.weapons.Weapon;
+import purchasable.monsters.Monster;
 import gui.ChooseBattleScreen;
 import gui.InventoryScreen;
 import gui.ShopBuy;
@@ -69,19 +72,36 @@ public class ImgInventoryPanel extends JPanel {
 		
 		for (HasImage item : toDisplay) {
 			
+			
 			InventoryToggleButton button = new InventoryToggleButton(item);
 			button.setName(Integer.toString(item.getID()));
 			
 			
 			button.addActionListener(new ActionListener() { 
 				  public void actionPerformed(ActionEvent e) { 
-//					  System.out.println(( (Component) e.getSource()).getName());
+
+						
 					  if (version == "ShopBuy") {
-						  ShopBuy.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
+						  if (item instanceof Item) {
+							  ShopBuy.setTxtrDescriptionItem(( (Component) e.getSource()).getName());
+						  } else if (item instanceof Monster) {
+							  ShopBuy.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
+						  }
+						  
 					  } else if (version == "ShopSell") {
-						  ShopSell.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
+						  if (item instanceof Item) {
+							  ShopSell.setTxtrDescriptionItem(( (Component) e.getSource()).getName());
+						  } else if (item instanceof Monster) {
+							  ShopSell.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
+						  }
+						  
 					  } else if (version == "Inventory") {
-						  InventoryScreen.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
+						  if (item instanceof Item) {
+							  InventoryScreen.setTxtrDescriptionItem(( (Component) e.getSource()).getName());
+						  } else if (item instanceof Monster) {
+							  InventoryScreen.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
+						  }
+						  
 					  } else if (version == "ChooseBattleScreen") {
 						  ChooseBattleScreen.setTxtrDescription(( (Component) e.getSource()).getName());
 					  }
