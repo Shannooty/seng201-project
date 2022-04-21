@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import generators.ItemGenerator;
 import generators.MonsterGenerator;
+import player.Inventory;
+import purchasable.Purchasable;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
 
@@ -50,7 +52,7 @@ public class Shop {
 	/**
 	 * Calls the getNumMonsters() method to get the number of Monsters that should be in the Shop, and used the class MonsterGenerator to create that number of Monsters. Adds them to the Shop. Return type void.
 	 */
-	public void addMonsters() {
+	private void addMonsters() {
 		for (int i = 0; i < getNumMonsters(); i++) {
 			Monster newMonster = MonsterGenerator.newMonster();
 //			newMonster.setPurchasePrice(70);
@@ -58,18 +60,18 @@ public class Shop {
 		}
 	}
 	
-	public void removeMonster(Monster monster) {
+	private void removeMonster(Monster monster) {
 		getAvalibleMonsters().remove(monster);
 	}
 	
-	public void removeItem(Item item) {
+	private void removeItem(Item item) {
 		getAvalibleItems().remove(item);
 	}
 	
 	/**
 	 * Calls the getNumItems() method to get the number of Items that should be in the Shop, and used the class ItemGenerator to create that number of Items. Adds them to the Shop. Return type void.
 	 */
-	public void addItems() {
+	private void addItems() {
 		for (int i = 0; i < getNumItems(); i++) {
 			Item newItem = ItemGenerator.newItem();
 //			newItem.setPurchasePrice(10);
@@ -124,5 +126,15 @@ public class Shop {
 	 */
 	public void setNumItems(int numItems) {
 		this.numItems = numItems;
+	}
+	
+	public void purchaseItem(Item purchaseItem, Inventory playerInventory) {
+		playerInventory.addItem(purchaseItem);
+		removeItem(purchaseItem);
+	}
+	
+	public void purchaseItem(Monster purchaseMonster, Inventory playerInventory) {
+		playerInventory.addMonster(purchaseMonster);
+		removeMonster(purchaseMonster);
 	}
 }
