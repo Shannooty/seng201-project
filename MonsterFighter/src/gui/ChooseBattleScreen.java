@@ -116,7 +116,7 @@ public class ChooseBattleScreen {
 		
 		
 		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
-		txtDescription.setText("Description: Not Selected\r\n\r\n");
+		txtDescription.setText("Nothing selected.");
 		txtDescription.setLineWrap(true);
 		txtDescription.setEditable(false);
 //		txtDescription.setBounds(473, 88, 302, 233);

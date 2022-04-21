@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextPane;
@@ -189,7 +190,8 @@ public class MainScreen {
 		frmMainscreen.getContentPane().add(btnShop);
 		
 //		JTextPane textPaneMonsterDescription = new JTextPane();
-		textAreaMonsterDescription.setFont(new Font("Tahoma", Font.BOLD, 16));
+		textAreaMonsterDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
+		textAreaMonsterDescription.setBorder(BorderFactory.createCompoundBorder(textAreaMonsterDescription.getBorder(),BorderFactory.createEmptyBorder(0, 7, 0, 7)));
 //		textAreaMonsterDescription.setText("Monster Description:\r\n\r\n\r\nName:\r\n\r\nHealth:\r\n\r\nDamage:\r\n\r\nItem(s):");
 		if (team.size() > 0) {
 			setTxtrDescription(Integer.toString(team.get(0).getID()));

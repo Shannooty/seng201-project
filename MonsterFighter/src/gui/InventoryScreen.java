@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import javax.swing.JTextArea;
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -50,12 +51,12 @@ public class InventoryScreen {
 	/**
 	 * Attribute txtDescription of type JTextArea. The area where the Item/Monster's description is displayed to the user.
 	 */
-	private static JTextArea txtDescriptionMonsters = new JTextArea("Nothing currently selected.");
+	private static JTextArea txtDescriptionMonsters = new JTextArea("Nothing selected.");
 	
 	/**
 	 * Attribute txtDescription of type JTextArea. The area where the Item/Monster's description is displayed to the user.
 	 */
-	private static JTextArea txtDescriptionItems = new JTextArea("Nothing currently selected.");
+	private static JTextArea txtDescriptionItems = new JTextArea("Nothing selected.");
 	
 
 
@@ -113,11 +114,15 @@ public class InventoryScreen {
 		ImgInventoryPanel itemPanel = new ImgInventoryPanel(inventory.getItems(), itemScrollPane, "Inventory");
 		itemScrollPane.setViewportView(itemPanel);
 		
+		txtDescriptionItems.setFont(new Font("Monospaced", Font.PLAIN, 15));
+		txtDescriptionItems.setBorder(BorderFactory.createCompoundBorder(txtDescriptionItems.getBorder(),BorderFactory.createEmptyBorder(0, 7, 0, 7)));
 		txtDescriptionItems.setBounds(544, 318, 241, 207);
 		txtDescriptionItems.setLineWrap(true);
 		txtDescriptionItems.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionItems);
 		
+		txtDescriptionMonsters.setFont(new Font("Monospaced", Font.PLAIN, 15));		
+		txtDescriptionMonsters.setBorder(BorderFactory.createCompoundBorder(txtDescriptionMonsters.getBorder(),BorderFactory.createEmptyBorder(0, 7, 0, 7)));
 		txtDescriptionMonsters.setBounds(544, 69, 241, 207);
 		txtDescriptionMonsters.setLineWrap(true);
 		txtDescriptionMonsters.setEditable(false);
@@ -136,8 +141,8 @@ public class InventoryScreen {
 		
 		JLabel lblNewLabel = new JLabel();
 		lblNewLabel.setText("Welcome to the inventory, " + player.getName());
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(52, 10, 291, 19);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblNewLabel.setBounds(52, 10, 347, 19);
 		frmInventoryscreen.getContentPane().add(lblNewLabel);
 	}
 	
