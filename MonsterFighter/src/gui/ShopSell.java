@@ -73,6 +73,7 @@ public class ShopSell {
 	private Player player;
 	
 	private static Team team;
+	
 
 	
 
@@ -200,6 +201,8 @@ public class ShopSell {
 				  txtDescription.setText("Nothing selected.");
 			  }
 			} );	
+		
+		
 		JButton btnSell = new JButton("Sell");
 		btnSell.addActionListener(new ActionListener() {
 			/**

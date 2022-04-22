@@ -56,8 +56,8 @@ public class InventoryScreen {
 	 */
 	private static JTextArea txtDescriptionItems = new JTextArea("Nothing selected.");
 	
-
-
+	
+	
 	/**
 	 * Create the application.
 	 */
@@ -114,13 +114,6 @@ public class InventoryScreen {
 		ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemScrollPane, inventory.getItems(), "Inventory");
 		itemScrollPane.setViewportView(itemPanel);
 		
-		
-//		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
-//		txtDescription.setMargin(new Insets(0,7,0,7));
-//		txtDescription.setText("Nothing selected.");
-//		txtDescription.setLineWrap(true);
-//		txtDescription.setEditable(false);
-//		
 
 //
 //		txtDescriptionItems.setText("Nothing selected.");
@@ -181,23 +174,6 @@ public class InventoryScreen {
 		lblNewLabel_1.setBounds(31, 39, 140, 19);
 		frmInventoryscreen.getContentPane().add(lblNewLabel_1);
 		
-//		JButton btnEquipItem = new JButton("Equip Item");
-//		btnEquipItem.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				int choice = JOptionPane.showConfirmDialog(frmInventoryscreen, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);			
-//				if (choice == JOptionPane.YES_OPTION) {
-//					
-//				}
-//			}
-//		});
-//		btnEquipItem.setFont(new Font("Tahoma", Font.BOLD, 15));
-//		btnEquipItem.setBounds(663, 476, 122, 25);
-//		frmInventoryscreen.getContentPane().add(btnEquipItem);
-		
-
-		
-		
-		
 		
 		JButton btnEquipItem = new JButton("Equip Item");
 		btnEquipItem.setFont(new Font("Tahoma", Font.PLAIN, 15));
@@ -254,6 +230,7 @@ public class InventoryScreen {
 		String monsterString = selectedMonster.getSellBackDescription();
 		txtDescriptionMonsters.setText(monsterString);
 		txtDescriptionMonsters.setCaretPosition(0);
+		
 	}
 	
 	

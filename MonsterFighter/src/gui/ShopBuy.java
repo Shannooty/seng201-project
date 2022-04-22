@@ -79,6 +79,8 @@ public class ShopBuy {
 	 */
 	private static Item selectedItem;
 	
+
+	
 	
 	JButton btnShowMonsters, btnShowItems;
 
@@ -201,7 +203,6 @@ public class ShopBuy {
 		btnShopSell.setBounds(741, 10, 85, 25);
 		frmShopbuy.getContentPane().add(btnShopSell);
 
-		
 		JButton btnBuy = new JButton("Buy");
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import java.awt.Font;
@@ -203,7 +204,14 @@ public class MainScreen {
 		textAreaMonsterDescription.setBounds(480, 148, 281, 271);
 		textAreaMonsterDescription.setLineWrap(true);
 		textAreaMonsterDescription.setEditable(false);
-		frmMainscreen.getContentPane().add(textAreaMonsterDescription);
+//		frmMainscreen.getContentPane().add(textAreaMonsterDescription);
+		
+        JScrollPane scrollableTextArea = new JScrollPane(textAreaMonsterDescription);  
+        scrollableTextArea.setBounds(480, 148, 281, 271);
+        scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
+        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+        frmMainscreen.getContentPane().add(scrollableTextArea); 
+		
 		
 		JButton btnSleep = new JButton("Sleep");
 		btnSleep.addActionListener(new ActionListener() {
@@ -253,6 +261,7 @@ public class MainScreen {
 		selectedMonster = streamedTeam.get(0);
 		String itemString = selectedMonster.getSellBackDescription();
 		textAreaMonsterDescription.setText(itemString);
+		textAreaMonsterDescription.setCaretPosition(0);
 	}
 
 }
