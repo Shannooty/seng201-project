@@ -63,7 +63,8 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * Removes health from the monster when damaged
 	 * @param damage damage dealt to the monster
 	 */
-	public void removeHealth(int damage) {
+	public void removeHealth(int rawDamage) {
+		int damage = rawDamage - (getArmorAmount() / 4);
 		if ((health - damage) < 0) {
 			health = 0;
 			isStunned = true;
@@ -120,22 +121,42 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		return healAmount;
 	}
 	
+	/**
+	 * Adds armor stat to the monster
+	 * @param armourIncrease the amount to increase armor by
+	 */
 	public void addArmorAmount(int armourIncrease) {
 		armorAmount = getArmorAmount() + armourIncrease;
 	}
 	
+	/**
+	 * Removes armor stat for the monster
+	 * @param armourDecrease amount to remove by
+	 */
 	public void removeArmorAmount(int armourDecrease) {
 		armorAmount = getArmorAmount() - armourDecrease;
 	}
 	
+	/**
+	 * Gets the armor amount for the monster
+	 * @return current armor amount
+	 */
 	public int getArmorAmount() {
 		return armorAmount;
 	}
 	
+	/**
+	 * Adds speed to the monster
+	 * @param speedIncrease amount to increase speed by
+	 */
 	public void addSpeed(int speedIncrease) {
 		speed = getSpeed() + speedIncrease;
 	}
 	
+	/**
+	 * Removes speed from the monster
+	 * @param speedDecrease amount to decrease speed by
+	 */
 	public void removeSpeed(int speedDecrease) {
 		speed = getSpeed() - speedDecrease;
 	}
