@@ -29,6 +29,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	private Armor armorSlot = null;
 	private String monsterType;
 	private ArrayList<String> equipped = new ArrayList<String>();
+	private static int armorModifier = 4;
 	
 	/**
 	 * Main constructor for the abstract superclass of Monster
@@ -64,7 +65,8 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * @param damage damage dealt to the monster
 	 */
 	public void removeHealth(int rawDamage) {
-		int damage = rawDamage - (getArmorAmount() / 4);
+		int damage = rawDamage - (getArmorAmount() / Monster.armorModifier);
+		
 		if ((health - damage) < 0) {
 			health = 0;
 			isStunned = true;
