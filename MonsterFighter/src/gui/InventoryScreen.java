@@ -225,7 +225,7 @@ public class InventoryScreen {
 //					System.out.println("monsterToEquip "+monsterToEquip+" "+monsterToEquip.toString());
 					inventory.useItem(selectedItem, monsterToEquip);
 					
-					selectedItem.setEquipped(true);
+//					selectedItem.setEquipped(true);
 					txtDescriptionItems.setText("Nothing selected.");
 					txtDescriptionMonsters.setText("Nothing selected.");
 					ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, "Inventory");

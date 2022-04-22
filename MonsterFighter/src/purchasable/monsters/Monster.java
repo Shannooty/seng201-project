@@ -66,6 +66,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	public void removeHealth(int damage) {
 		if ((health - damage) < 0) {
 			health = 0;
+			isStunned = true;
 		} else {
 			health = getHealth() - damage;
 		}
@@ -244,6 +245,15 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
 		
+		String stunnedStatus = "";
+		
+		if (isStunned == true) {
+			stunnedStatus = "Monster stunned, please heal before battling.";
+		} else {
+			stunnedStatus = "Okay. Monster can battle.";
+		}
+		
+		
 		String equippedString = "N/A";
 		
 		if (equipped.size() == 1) {
@@ -258,7 +268,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		
 		
 		
-		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+getHealth()+"\nAttack Amount: "+getAttackAmount()+"\nArmor Amount: "+getArmorAmount()+"\nEquipped: "+equippedString+"\nSpeed: "+getSpeed()+"\n\nSell-back Price: "+getPurchasePrice();
+		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+getHealth()+"\nStatus: "+stunnedStatus+"\n\nAttack Amount: "+getAttackAmount()+"\nArmor Amount: "+getArmorAmount()+"\nEquipped: "+equippedString+"\nSpeed: "+getSpeed()+"\n\nSell-back Price: "+getPurchasePrice();
 	}
 	
 	public String getBuyDescription() {
