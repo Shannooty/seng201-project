@@ -159,8 +159,22 @@ public class MainScreen {
 		JButton btnBattleSelect = new JButton("Select Battle");
 		btnBattleSelect.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				gameEnvironment.launchChooseBattleScreen();
-				finishedWindow();
+				int nonStunnedMonsters = 0;
+				
+				for (Monster monster : team) {
+					if (monster.getHealth() > 0) {
+						nonStunnedMonsters += 1;
+					}
+				}
+				
+				if (nonStunnedMonsters > 0) {
+					gameEnvironment.launchChooseBattleScreen();
+					finishedWindow();
+				} else {
+					JOptionPane.showMessageDialog(frmMainscreen, "You have no non-stunned monsters. Please heal at least one before you battle.");
+				}
+				
+				
 			}
 		});
 		btnBattleSelect.setFont(new Font("Tahoma", Font.BOLD, 16));

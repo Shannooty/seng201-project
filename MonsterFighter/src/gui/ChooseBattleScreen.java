@@ -49,8 +49,6 @@ public class ChooseBattleScreen {
 	
 	private static JTextArea txtDescription = new JTextArea("");
 	
-	private static JButton btnStartBattle = new JButton("Start Battle");
-
 
 	/**
 	 * Create the application.
@@ -160,8 +158,7 @@ public class ChooseBattleScreen {
 		btnReturnHome.setBounds(672, 10, 154, 25);
 		frmChoosebattle.getContentPane().add(btnReturnHome);
 		
-		
-		btnStartBattle.setEnabled(false);
+		JButton btnStartBattle = new JButton("Start Battle");
 		btnStartBattle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int choice = JOptionPane.showConfirmDialog(frmChoosebattle, "Are you sure you want to start this battle?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
@@ -192,6 +189,5 @@ public class ChooseBattleScreen {
 		String battleString = selectedBattle.toString();
 		txtDescription.setText(battleString);
 		txtDescription.setCaretPosition(0);
-		btnStartBattle.setEnabled(true);
 	}
 }
