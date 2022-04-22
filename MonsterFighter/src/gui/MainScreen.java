@@ -107,15 +107,6 @@ public class MainScreen {
 		frmMainscreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainscreen.getContentPane().setLayout(null);
 		
-		
-//		For initial testing:
-//		------------------------------------------------------------
-//		Zombie startingMonster = new Zombie();
-//		Slime mobster = new Slime();
-//		Inventory.addMonster(startingMonster);
-//		Inventory.addMonster(mobster);
-//		------------------------------------------------------------
-		
 		imagesToUse = new ImageIcon[team.size()]; 
 		
 		for (int i = 0; i < team.size(); i++) {
@@ -260,9 +251,10 @@ public class MainScreen {
 			 */
 			public void actionPerformed(ActionEvent e) {
 				String newMonsterName = JOptionPane.showInputDialog(frmMainscreen,"Enter a new name:", null);
-				selectedMonster.setName(newMonsterName);
-				setTxtrDescription(Integer.toString(selectedMonster.getID()));
-				
+				if (newMonsterName != null) {
+					selectedMonster.setName(newMonsterName);
+					setTxtrDescription(Integer.toString(selectedMonster.getID()));
+				}
 			}
 		});
 		btnChangeMonsterName.setBounds(100, 390, 222, 29);
