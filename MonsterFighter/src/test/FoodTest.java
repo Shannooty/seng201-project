@@ -12,6 +12,7 @@ import purchasable.items.Item;
 import purchasable.items.food.*;
 
 class FoodTest {
+//	NOTE: NOT SURE IF THIS TEST IS NECESSARY
 
 	private Food testFood;
 

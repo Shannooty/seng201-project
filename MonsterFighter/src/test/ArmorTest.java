@@ -12,6 +12,8 @@ import purchasable.items.Item;
 import purchasable.items.armors.*;
 
 class ArmorTest {
+//	NOTE: NOT SURE IF THIS TEST IS NECESSARY
+	
 
 	private Armor testArmor;
 

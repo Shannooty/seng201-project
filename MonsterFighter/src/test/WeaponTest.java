@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import purchasable.items.weapons.*;
 
 class WeaponTest {
+//	NOTE: NOT SURE IF THIS TEST IS NECESSARY
 
 	private Weapon testWeapon;
 
