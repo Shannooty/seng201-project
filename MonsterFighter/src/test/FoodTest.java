@@ -9,33 +9,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import purchasable.items.Item;
+import purchasable.items.food.*;
 
-class ItemTest {
-	
-	private Item testItem;
+class FoodTest {
+
+	private Food testFood;
+
 
 	@BeforeEach
 	void setUp() throws Exception {
+		testFood = new Apple();
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		testItem = null;
-	}
-
-	@Test
-	void testBuy() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSell() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testItem() {
-		fail("Not yet implemented");
+		testFood = null;
 	}
 
 	@Test
@@ -44,17 +32,17 @@ class ItemTest {
 	}
 
 	@Test
-	void testCreateDescription() {
+	void testFood() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testGetSellBackDescription() {
+	void testGetHealAmount() {
 		fail("Not yet implemented");
 	}
 
 	@Test
-	void testGetBuyDescription() {
+	void testSetHealAmount() {
 		fail("Not yet implemented");
 	}
 
