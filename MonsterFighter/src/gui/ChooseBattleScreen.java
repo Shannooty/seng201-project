@@ -15,7 +15,10 @@ import day.Battle;
 import day.Day;
 import generators.MonsterGenerator;
 import gui.customElements.ImgInventoryPanel;
+import purchasable.items.Item;
 import purchasable.monsters.Monster;
+import shop.Shop;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -39,15 +42,15 @@ public class ChooseBattleScreen {
 	
 	private String difficulty;
 	
-	private static Day day;
+	private Day day;
 	
 	private ImageIcon imagesToUse[];
 	
 	private ArrayList<Monster> gameMonsters;
 	
-	private static Battle selectedBattle;
+	private Battle selectedBattle;
 	
-	private static JTextArea txtDescription = new JTextArea("");
+	private JTextArea txtDescription = new JTextArea("");
 	
 
 	/**
@@ -61,7 +64,7 @@ public class ChooseBattleScreen {
 //			Battle battle = new Battle(difficulty);
 //			possibleBattles.add(battle);
 //		}
-		day = gameEnvironment.getToday();
+		setDay(gameEnvironment.getToday());
 		
 		
 		
@@ -183,11 +186,34 @@ public class ChooseBattleScreen {
 //		System.out.println(possibleBattles);
 	}
 	
-	public static void setTxtrDescription(String text) {
-		List<Battle> battles = day.getBattles().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
-		selectedBattle = battles.get(0);
-		String battleString = selectedBattle.toString();
-		txtDescription.setText(battleString);
-		txtDescription.setCaretPosition(0);
+	public JTextArea getTxtDescription() {
+		return txtDescription;
+	}
+	
+	
+	public Battle getSelectedBattle() {
+		return selectedBattle;
+	}
+	
+	public void setSelectedBattle(Battle selectedBattle) {
+		this.selectedBattle = selectedBattle;
+	}
+	
+	
+	public Day getDay() {
+		return day;
+	}
+	
+	public void setDay(Day day) {
+		this.day = day;
+	}
+
+	
+	public void setTxtrDescription(String text) {
+		List<Battle> battles = getDay().getBattles().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		setSelectedBattle(battles.get(0));
+		String battleString = getSelectedBattle().toString();
+		getTxtDescription().setText(battleString);
+		getTxtDescription().setCaretPosition(0);
 	}
 }
