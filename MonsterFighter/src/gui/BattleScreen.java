@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import player.Player;
 import player.Team;
@@ -112,17 +113,17 @@ public class BattleScreen {
 		
 		
 		
-		btnFinish.setVisible(false);
-		btnFinish.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				day.removeBattle(selectedBattle);
-				gameEnvironment.launchMainScreen();
-				finishedWindow();
-			}
-		});
-		btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnFinish.setBounds(350, 277, 128, 25);
-		frmBattlescreen.getContentPane().add(btnFinish);
+//		btnFinish.setVisible(false);
+//		btnFinish.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				day.removeBattle(selectedBattle);
+//				gameEnvironment.launchMainScreen();
+//				finishedWindow();
+//			}
+//		});
+//		btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 15));
+//		btnFinish.setBounds(350, 277, 128, 25);
+//		frmBattlescreen.getContentPane().add(btnFinish);
 		
 		
 		textPanePlayerMonster.setText("You: "+(team.get(0)).getDescription());
@@ -152,27 +153,45 @@ public class BattleScreen {
 	public void fight() {
 		if (getTeamBattle().size() > 0 && monstersToFight.size() > 0) {
 			Monster winner = selectedBattle.attack(getTeamBattle().get(0), monstersToFight.get(0));
-			updateStatus(winner.toString());
+			updateStatus("Winner: "+winner.toString());
 		} else {
-			String gameWinner;
-			if (getTeamBattle().size() == 0 ) {
-				gameWinner = "game";
+			String gameWinner = "";
+			if ((getTeamBattle().size() == 0 && monstersToFight.size() == 0)) {
+				gameWinner = "It was a draw. You receive half the gold and points.";
+				
+				JOptionPane.showMessageDialog(frmBattlescreen, "End of game.\nWinner: "+gameWinner);
+				day.setPointsEarnedToday((selectedBattle.getPoints())/2);
+				day.setGoldEarnedToday((selectedBattle.getGold())/2);
+				
 			} else {
-				gameWinner = "you";	
+				if (getTeamBattle().size() == 0 && monstersToFight.size() != 0) {
+					gameWinner = "Winner: game.";
+				} else if (getTeamBattle().size() != 0 && monstersToFight.size() == 0) {
+					gameWinner = "You Won!";	
+				} 
+				JOptionPane.showMessageDialog(frmBattlescreen, "End of game.\n"+gameWinner);
+				day.setPointsEarnedToday(selectedBattle.getPoints());
+				day.setGoldEarnedToday(selectedBattle.getGold());
 			}
-			updateStatus("end, winner: " + gameWinner);
-			day.setPointsEarnedToday(selectedBattle.getPoints());
-			day.setGoldEarnedToday(selectedBattle.getGold());
-			btnFinish.setVisible(true);
-			btnContinue.setVisible(false);
-//			System.out.println(actualTeam.getTeam().size());
+			
+			
+			
+
+			
+//			updateStatus("end, winner: " + gameWinner);
+			
+//			btnFinish.setVisible(true);
+			btnContinue.setVisible(false);			
+			day.removeBattle(selectedBattle);
+			gameEnvironment.launchMainScreen();
+			finishedWindow();
 		}
 	}
 	
 	public void updateStatus(String winner) {
 		setTeam(getCurrentTeam(actualTeam.getTeam()));
-		textPaneFight.setText("Winner: " + winner);
-		textAreaPlayer.setText(team.toString());
+		textPaneFight.setText(winner);
+		textAreaPlayer.setText(getTeamBattle().toString());
 		textAreaGame.setText(monstersToFight.toString());
 		
 //		textPanePlayerMonster.setText("You: "+(team.get(0)).getDescription());
