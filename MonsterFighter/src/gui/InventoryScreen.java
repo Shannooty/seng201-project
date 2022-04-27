@@ -6,8 +6,10 @@ import javax.swing.JScrollPane;
 import gui.customElements.ImgInventoryPanel;
 import player.Inventory;
 import player.Player;
+import player.Team;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
+import shop.Shop;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,29 +34,29 @@ public class InventoryScreen {
 	
 	private Player player;
 	
-	private static Inventory inventory;
+	private Inventory inventory;
 	
-	private static ArrayList<Monster> team;
+	private ArrayList<Monster> team;
 	
 	/**
 	 * Attribute selectedMonster of type String. The currently selected Monster.
 	 */
-	private static Monster selectedMonster;
+	private Monster selectedMonster;
 	
 	/**
 	 * Attribute selectedItem of type Item. The currently selected Item.
 	 */
-	private static Item selectedItem;
+	private Item selectedItem;
 	
 	/**
 	 * Attribute txtDescription of type JTextArea. The area where the Item/Monster's description is displayed to the user.
 	 */
-	private static JTextArea txtDescriptionMonsters = new JTextArea("Nothing selected.");
+	private JTextArea txtDescriptionMonsters = new JTextArea("Nothing selected.");
 	
 	/**
 	 * Attribute txtDescription of type JTextArea. The area where the Item/Monster's description is displayed to the user.
 	 */
-	private static JTextArea txtDescriptionItems = new JTextArea("Nothing selected.");
+	private JTextArea txtDescriptionItems = new JTextArea("Nothing selected.");
 	
 	
 	
@@ -64,9 +66,9 @@ public class InventoryScreen {
 	public InventoryScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
-		inventory = player.getInventory();
+		setInventory(player.getInventory());
 //		team = player.getInventory().getTeam();
-		team = inventory.getTeam().getTeam();
+		setTeam(inventory.getTeam().getTeam());
 		initialize();
 		frmInventoryscreen.setVisible(true);
 	}
@@ -224,21 +226,71 @@ public class InventoryScreen {
 
 	}
 	
-	public static void setTxtrDescriptionMonster(String text) {
-		List<Monster> listOfMonsters = team.stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
-		selectedMonster = listOfMonsters.get(0);
-		String monsterString = selectedMonster.getSellBackDescription();
-		txtDescriptionMonsters.setText(monsterString);
-		txtDescriptionMonsters.setCaretPosition(0);
+	
+	
+	public JTextArea getTxtDescriptionMonsters() {
+		return txtDescriptionMonsters;
+	}
+	
+	public JTextArea getTxtDescriptionItems() {
+		return txtDescriptionItems;
+	}
+	
+	
+	
+	public Monster getSelectedMonster() {
+		return selectedMonster;
+	}
+	
+	public void setSelectedMonster(Monster selectedMonster) {
+		this.selectedMonster = selectedMonster;
+	}
+	
+	
+	public Item getSelectedItem() {
+		return selectedItem;
+	}
+	
+	public void setSelectedItem(Item selectedItem) {
+		this.selectedItem = selectedItem;
+	}
+	
+	
+	public ArrayList<Monster> getTeam() {
+		return team;
+	}
+	
+	public void setTeam(ArrayList<Monster> team) {
+		this.team = team;
+	}
+	
+	
+	public Inventory getInventory() {
+		return inventory;
+	}
+	
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+
+	
+	
+	
+	public void setTxtrDescriptionMonster(String text) {
+		List<Monster> listOfMonsters = getTeam().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		setSelectedMonster(listOfMonsters.get(0));
+		String monsterString = getSelectedMonster().getSellBackDescription();
+		getTxtDescriptionMonsters().setText(monsterString);
+		getTxtDescriptionMonsters().setCaretPosition(0);
 		
 	}
 	
 	
-	public static void setTxtrDescriptionItem(String text) {
-		List<Item> listOfItems = inventory.getItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
-		selectedItem = listOfItems.get(0);
-		String itemString = selectedItem.getSellBackDescription();
-		txtDescriptionItems.setText(itemString);
-		txtDescriptionItems.setCaretPosition(0);
+	public void setTxtrDescriptionItem(String text) {
+		List<Item> listOfItems = getInventory().getItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		setSelectedItem(listOfItems.get(0));
+		String itemString = getSelectedItem().getSellBackDescription();
+		getTxtDescriptionItems().setText(itemString);
+		getTxtDescriptionItems().setCaretPosition(0);
 	}
 }
