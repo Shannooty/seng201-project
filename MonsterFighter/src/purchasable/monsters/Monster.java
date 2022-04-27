@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 import exceptions.InsufficientGoldException;
+import exceptions.NegativeValueException;
 import player.Player;
 import purchasable.Purchasable;
 import purchasable.items.armors.Armor;
@@ -53,7 +54,9 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * @param healAmount amount of health the monster will be healed by
 	 */
 	public void addHealth(int healAmount) {
-		if ((health + healAmount) > maxHealth) {
+		if(healAmount < 0) {
+			throw new NegativeValueException("Cannot add negative health");
+		} else if ((health + healAmount) > maxHealth) {
 			health = maxHealth;
 		} else {
 			health = getHealth() + healAmount;
@@ -67,7 +70,13 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	public void removeHealth(int rawDamage) {
 		int damage = rawDamage - (getArmorAmount() / Monster.armorModifier);
 		
-		if ((health - damage) < 0) {
+		if (damage < 0) {
+			damage = 0;
+		}
+		
+		if(rawDamage < 0) {
+			throw new NegativeValueException("Cannot remove negative health");
+		} else if ((health - damage) < 0) {
 			health = 0;
 			isStunned = true;
 		} else {
@@ -88,7 +97,15 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * @param healthIncrease the value to increase the monsters max health by
 	 */
 	public void addMaxHealth(int healthIncrease) {
-		maxHealth = getMaxHealth() + healthIncrease;
+		if (healthIncrease < 0) {
+			throw new NegativeValueException("Cannot add negative health");
+		} else {
+			maxHealth = getMaxHealth() + healthIncrease;
+			
+			if (maxHealth < 0) {
+				maxHealth = Integer.MAX_VALUE;
+			}
+		}	
 	}
 	
 	/**
@@ -96,7 +113,15 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * @param healthDecrease the value to decrease maxHealth by
 	 */
 	public void removeMaxHealth(int healthDecrease) {
-		maxHealth = getMaxHealth() - healthDecrease;
+		if (healthDecrease < 0) {
+			throw new NegativeValueException("Cannot remove negative health");
+		} else {
+			maxHealth = getMaxHealth() - healthDecrease;
+			
+			if (getMaxHealth() < 0) {
+				maxHealth = 0;
+			}
+		}
 	}
 	
 	/**
@@ -152,7 +177,15 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * @param speedIncrease amount to increase speed by
 	 */
 	public void addSpeed(int speedIncrease) {
-		speed = getSpeed() + speedIncrease;
+		if (speedIncrease < 0) {
+			throw new NegativeValueException("Cannot add negative speed");
+		} else {
+			speed = getSpeed() + speedIncrease;
+			
+			if (getSpeed() < 0) {
+				speed = Integer.MAX_VALUE;
+			}
+		}
 	}
 	
 	/**
@@ -160,7 +193,15 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * @param speedDecrease amount to decrease speed by
 	 */
 	public void removeSpeed(int speedDecrease) {
-		speed = getSpeed() - speedDecrease;
+		if (speedDecrease < 0) {
+			throw new NegativeValueException("Cannot remove negative speed");
+		} else {
+			speed = getSpeed() - speedDecrease;
+			
+			if (getSpeed() < 0) {
+				speed = 0;
+			}
+		}
 	}
 	
 	/**
@@ -184,7 +225,15 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * @param attackIncrease the amount to increase
 	 */
 	public void addAttackAmount(int attackIncrease) {
-		attackAmount += attackIncrease;
+		if (attackIncrease < 0) {
+			throw new NegativeValueException("Cannot add negative attack amount");
+		} else {
+			attackAmount += attackIncrease;
+			
+			if (getAttackAmount() < 0) {
+				attackAmount = Integer.MAX_VALUE;
+			}
+		}
 	}
 	
 	/**
@@ -192,7 +241,15 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * @param attackDecrease The amount to decrease by
 	 */
 	public void removeAttackAmount(int attackDecrease) {
-		attackAmount -= attackDecrease;
+		if (attackDecrease < 0) {
+			throw new NegativeValueException("Cannot remove negative attack amount");
+		} else {
+			attackAmount -= attackDecrease;
+			
+			if(getAttackAmount() < 0) {
+				attackAmount = 0;
+			}
+		}
 	}
 	
 	/**
@@ -271,9 +328,6 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		addHealth(armor.getHealthIncrease());
 		addArmorAmount(armor.getArmorIncrease());
 		equipped.add(armor.getClass().getSimpleName());
-		if (oldArmor != null) {
-			equipped.remove(oldArmor.getClass().getSimpleName());
-		}
 		return oldArmor;
 	}
 	
@@ -285,14 +339,14 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		Armor armor = armorSlot;
 		armorSlot = null;
 		if (armor != null) {
+			removeArmorAmount(armor.getArmorIncrease());
 			removeMaxHealth(armor.getHealthIncrease());
 			removeHealth(armor.getHealthIncrease());
-			removeArmorAmount(armor.getArmorIncrease());
+			equipped.remove(armor.getClass().getSimpleName());
 		}
 		
 		return armor;
 	}
-	
 	
 	
 	
