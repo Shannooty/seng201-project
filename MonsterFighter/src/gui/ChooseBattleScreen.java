@@ -52,6 +52,8 @@ public class ChooseBattleScreen {
 	
 	private JTextArea txtDescription = new JTextArea("");
 	
+	private Object type = this;
+	
 
 	/**
 	 * Create the application.
@@ -145,7 +147,7 @@ public class ChooseBattleScreen {
 		scrollPane.setBounds(52, 88, 411, 343);
 		frmChoosebattle.getContentPane().add(scrollPane);
 
-		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, possibleBattles, "ChooseBattleScreen");
+		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, possibleBattles, type);
 		scrollPane.setViewportView(monsterPanel);
 		
 

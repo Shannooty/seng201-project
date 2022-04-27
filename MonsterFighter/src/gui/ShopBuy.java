@@ -81,6 +81,9 @@ public class ShopBuy {
 	 */
 	private Item selectedItem;
 	
+	
+	private Object type = this;
+	
 
 	
 	
@@ -137,7 +140,7 @@ public class ShopBuy {
 		
 		
 		
-		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, "ShopBuy", this);
+		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, type);
 		scrollPane.setViewportView(monsterPanel);
 		
 		JPanel buttonPanel = new JPanel();
@@ -156,7 +159,7 @@ public class ShopBuy {
 		
 		showMonsters.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, "ShopBuy", this);
+				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, type);
 				  scrollPane.setViewportView(monsterPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
@@ -164,7 +167,7 @@ public class ShopBuy {
 		
 		showItems.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, itemInfo, "ShopBuy", this);
+				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, itemInfo, type);
 				  scrollPane.setViewportView(itemPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
@@ -217,13 +220,13 @@ public class ShopBuy {
 
 					if (selectedMonster != null && showMonsters.isSelected() == true) {
 						shop.purchase(selectedMonster, player);
-						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters(), "ShopBuy", this);
+						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters(), type);
 						scrollPane.setViewportView(monsterPanel);
 					} 
 					
 					if (selectedItem != null && showItems.isSelected() == true) {
 						shop.purchase(selectedItem, player);
-						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleItems(), "ShopBuy", this);
+						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleItems(), type);
 						scrollPane.setViewportView(itemPanel);
 					}
 					
@@ -295,14 +298,14 @@ public class ShopBuy {
 	 * @param text, type String. The description of the currently selected Item/Monster.
 	 */
 	public void setTxtrDescriptionMonster(String text) {
-		List<Monster> listOfMonsters = shop.getAvalibleMonsters().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		List<Monster> listOfMonsters = getShop().getAvalibleMonsters().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedMonster(listOfMonsters.get(0));
 		String monsterString = getSelectedMonster().getBuyDescription();
 		getTxtDescription().setText(monsterString);
 	}
 	
 	public void setTxtrDescriptionItem(String text) {
-		List<Item> listOfItems = shop.getAvalibleItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		List<Item> listOfItems = getShop().getAvalibleItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedItem(listOfItems.get(0));
 		String itemString = getSelectedItem().getBuyDescription();
 		getTxtDescription().setText(itemString);

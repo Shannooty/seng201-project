@@ -74,6 +74,7 @@ public class ShopSell {
 	
 	private Team team;
 	
+	private Object type = this;
 
 	
 
@@ -121,7 +122,7 @@ public class ShopSell {
 		scrollPane.setBounds(52, 88, 411, 343);
 		frmShopSell.getContentPane().add(scrollPane);
 		
-		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell", this);
+		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, team.getTeam(), type);
 		scrollPane.setViewportView(panel);
 		
 		
@@ -192,7 +193,7 @@ public class ShopSell {
 		
 		showMonsters.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell", type);
+				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), type);
 				  scrollPane.setViewportView(monsterPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
@@ -200,7 +201,7 @@ public class ShopSell {
 		
 		showItems.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), "ShopSell", type);
+				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), type);
 				  scrollPane.setViewportView(itemPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
@@ -218,13 +219,13 @@ public class ShopSell {
 				if (choice == JOptionPane.YES_OPTION) {
 					if (selectedMonster != null && showMonsters.isSelected() == true) {
 						selectedMonster.sell(player);
-						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell", type);
+						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), type);
 						scrollPane.setViewportView(monsterPanel);
 					}
 					
 					if (selectedItem != null && showItems.isSelected() == true) {
 						selectedItem.sell(player);
-						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), "ShopSell", type);
+						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), type);
 						scrollPane.setViewportView(itemPanel);
 					}
 					

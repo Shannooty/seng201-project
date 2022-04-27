@@ -29,7 +29,7 @@ public class ImgInventoryPanel extends JPanel {
 	private static final long serialVersionUID = -3684204445436872689L;
 	private final InventoryButtonGroup buttonGroup = new InventoryButtonGroup();
 	
-	private String version;
+//	private String version;
 	
 	private Object gui;
 	
@@ -40,7 +40,7 @@ public class ImgInventoryPanel extends JPanel {
 	 * @param toDisplay The ArrayList of objects. Objects must implement HasImage interface
 	 * @param version Version string for different GUI screens
 	 */
-	public ImgInventoryPanel(JScrollPane pane, ArrayList<? extends HasImage> toDisplay, String version, Object type) {
+	public ImgInventoryPanel(JScrollPane pane, ArrayList<? extends HasImage> toDisplay, Object type) {
 		if (toDisplay.size() > 0) {
 			int iconWidth = toDisplay.get(0).getImg().getIconWidth();
 			int paneWidth = pane.getWidth();
@@ -51,7 +51,7 @@ public class ImgInventoryPanel extends JPanel {
 			pane.setViewportView(this);
 			placeObjectsInPanel(toDisplay);
 			
-			this.version = version;
+//			this.version = version;
 			this.gui = type;
 		}
 	}
@@ -80,7 +80,6 @@ public class ImgInventoryPanel extends JPanel {
 
 			button.addActionListener(new ActionListener() { 
 				  public void actionPerformed(ActionEvent e) { 
-						
 					  if (gui instanceof ShopBuy) {
 						  if (item instanceof Item) {
 							  ((ShopBuy) gui).setTxtrDescriptionItem(( (Component) e.getSource()).getName());

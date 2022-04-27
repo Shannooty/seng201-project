@@ -59,6 +59,8 @@ public class InventoryScreen {
 	private JTextArea txtDescriptionItems = new JTextArea("Nothing selected.");
 	
 	
+	private Object type = this;
+	
 	
 	/**
 	 * Create the application.
@@ -110,10 +112,10 @@ public class InventoryScreen {
 		itemScrollPane.setBounds(31, 68, 409, 205);
 		frmInventoryscreen.getContentPane().add(itemScrollPane);
 		
-		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, "Inventory");
+		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, type);
 		monsterScrollPane.setViewportView(monsterPanel);
 		
-		ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemScrollPane, inventory.getItems(), "Inventory");
+		ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemScrollPane, inventory.getItems(), type);
 		itemScrollPane.setViewportView(itemPanel);
 		
 
@@ -206,10 +208,10 @@ public class InventoryScreen {
 //					selectedItem.setEquipped(true);
 					txtDescriptionItems.setText("Nothing selected.");
 					txtDescriptionMonsters.setText("Nothing selected.");
-					ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, "Inventory");
+					ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, type);
 					monsterScrollPane.setViewportView(monsterPanel);
 					
-					ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemScrollPane, inventory.getItems(), "Inventory");
+					ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemScrollPane, inventory.getItems(), type);
 					itemScrollPane.setViewportView(itemPanel);
 
 				}
