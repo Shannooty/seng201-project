@@ -163,6 +163,10 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		speed = getSpeed() - speedDecrease;
 	}
 	
+	/**
+	 * Returns the speed attribute
+	 * @return the monsters speed
+	 */
 	public int getSpeed() {
 		return speed;
 	}
@@ -175,22 +179,42 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		return monsterType;
 	}
 	
+	/**
+	 * Increases the monsters attack damage
+	 * @param attackIncrease the amount to increase
+	 */
 	public void addAttackAmount(int attackIncrease) {
 		attackAmount += attackIncrease;
 	}
 	
+	/**
+	 * Removes attack damage from the monster
+	 * @param attackDecrease The amount to decrease by
+	 */
 	public void removeAttackAmount(int attackDecrease) {
 		attackAmount -= attackDecrease;
 	}
 	
+	/**
+	 * Gets the attack damage attribute
+	 * @return attack damage
+	 */
 	public int getAttackAmount() {
 		return attackAmount;
 	}
 	
+	/**
+	 * Gets the stunned status of the monster
+	 * @return boolean value of being stunned
+	 */
 	public boolean getStunnedStatus() {
 		return isStunned;
 	}
 	
+	/**
+	 * Sets the stunned status for the monster
+	 * @param status
+	 */
 	public void setStunnedStatus(boolean status) {
 		isStunned = status;
 	}
@@ -200,21 +224,31 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
     	super.instanceId = 0;
     }
 	
+    /**
+     * Makes the monster sleep and reset any stunned status it may have
+     */
 	public void sleep() {
 		addHealth(getHealAmount());
-		
+		setStunnedStatus(false);
 	}
 	
+	/**
+	 * Gives a monster a weapon to use, if one is already equipped the old weapon will be returned
+	 * @param weapon The weapon to equip
+	 * @return The old weapon or null if none equipped already
+	 */
 	public Weapon addWeapon(Weapon weapon) {
 		Weapon oldWeapon = removeWeapon();
 		weaponSlot = weapon;
 		addAttackAmount(weapon.getDamage());
 		equipped.add(weapon.getClass().getSimpleName());
-//		System.out.println("Monster, weapon.getDamage() "+weapon.getDamage());
-//		System.out.println("Monster, getAttackAmount() "+getAttackAmount());
 		return oldWeapon;
 	}
 	
+	/**
+	 * Removes and returns the equipped weapon from the monster. Returns null if no weapon is equipped
+	 * @return The old weapon
+	 */
 	public Weapon removeWeapon() {
 		Weapon weapon = weaponSlot;
 		weaponSlot = null;
@@ -225,6 +259,11 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		return weapon;
 	}
 	
+	/**
+	 * Adds Armor to the monster and returns the already equipped armor, returns null if none is already equipped
+	 * @param armor The Armor to equip
+	 * @return The already equipped armor
+	 */
 	public Armor addArmor(Armor armor) {
 		Armor oldArmor = removeArmor();
 		armorSlot = armor;
@@ -238,11 +277,16 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		return oldArmor;
 	}
 	
+	/**
+	 * Removes the currently equipped armor, returns null if nothing is equipped
+	 * @return The equipped armor
+	 */
 	public Armor removeArmor() {
 		Armor armor = armorSlot;
 		armorSlot = null;
 		if (armor != null) {
 			removeMaxHealth(armor.getHealthIncrease());
+			removeHealth(armor.getHealthIncrease());
 			removeArmorAmount(armor.getArmorIncrease());
 		}
 		
@@ -300,18 +344,24 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+getHealth()+"\nAttack Amount: "+getAttackAmount()+"\nSpeed: "+getSpeed()+"\n\nPrice: "+getPurchasePrice();
 	}
 	
-	
+	/**
+	 * Lets the player purchase the monster
+	 */
 	@Override
 	public void buy(Player player) throws InsufficientGoldException {
 		player.removeGold(this.getPurchasePrice());
 		player.getInventory().addMonster(this);
 	}
 	
+	/**
+	 * Lets the player sell the Monster
+	 */
 	@Override
 	public void sell(Player player) {
 		player.addGold(getSellPrice());
 		player.getInventory().removeMonster(this);
 	}
+	
 	
 	@Override
 	public int compare(Monster monster1, Monster monster2) {
