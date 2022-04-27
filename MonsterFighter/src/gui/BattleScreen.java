@@ -165,7 +165,7 @@ public class BattleScreen {
 				
 			} else {
 				if (getTeamBattle().size() == 0 && monstersToFight.size() != 0) {
-					gameWinner = "Winner: game.";
+					gameWinner = "You lost.";
 				} else if (getTeamBattle().size() != 0 && monstersToFight.size() == 0) {
 					gameWinner = "You Won!";	
 				} 
