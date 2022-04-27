@@ -91,7 +91,9 @@ public class SetupScreen {
 	 */
 	private List<String> stringDifficulty = Arrays.asList("Easy", "Medium", "Hard");
 	
-
+	private Object type = this;
+	
+	
 	/**
 	 * Returns the instance of class Player representing the current player.
 	 * @return type Player, the current player.
@@ -156,7 +158,7 @@ public class SetupScreen {
 		imagesToUse[3] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard.png"), "undeadGuard");
 		
 		
-		ImageCarousel images = new ImageCarousel(imagesToUse);
+		ImageCarousel images = new ImageCarousel(imagesToUse, type);
 		images.setSize(290, 195);
 		images.setLocation(262, 195);
 		frmSetup.getContentPane().add(images);

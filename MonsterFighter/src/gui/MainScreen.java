@@ -22,6 +22,7 @@ import javax.swing.JButton;
 import player.*;
 import purchasable.items.Item;
 import purchasable.monsters.*;
+import shop.Shop;
 
 import javax.swing.JEditorPane;
 
@@ -51,7 +52,7 @@ public class MainScreen {
 	/**
 	 * Attribute team of type ArrayList<Monster>. The user's current team of Monsters.
 	 */
-	private static ArrayList<Monster> team;
+	private ArrayList<Monster> team;
 	
 	/**
 	 * Attribute player of type Player. The current player.
@@ -61,10 +62,11 @@ public class MainScreen {
 	private JButton btnChangeMonsterName = new JButton("Change Monster Name");
 
 	
-	private static JTextArea textAreaMonsterDescription = new JTextArea("");
+	private JTextArea textAreaMonsterDescription = new JTextArea("");
 
-	private static Monster selectedMonster;
+	private Monster selectedMonster;
 
+	private Object type = this;
 	
 //	private JLabel lblMonsterTotal;
 
@@ -128,7 +130,7 @@ public class MainScreen {
 			
 		}
 		
-		ImageCarousel images = new ImageCarousel(imagesToUse);
+		ImageCarousel images = new ImageCarousel(imagesToUse, type);
 		images.setSize(290, 195);
 		images.setLocation(72, 166);
 		frmMainscreen.getContentPane().add(images);
@@ -262,12 +264,36 @@ public class MainScreen {
 		
 	}
 	
-	public static void setTxtrDescription(String text) {
-		List<Monster> streamedTeam = team.stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
-		selectedMonster = streamedTeam.get(0);
-		String itemString = selectedMonster.getSellBackDescription();
-		textAreaMonsterDescription.setText(itemString);
-		textAreaMonsterDescription.setCaretPosition(0);
+	
+	public JTextArea getTextAreaMonsterDescription() {
+		return textAreaMonsterDescription;
+	}
+	
+	
+	public Monster getSelectedMonster() {
+		return selectedMonster;
+	}
+	
+	public void setSelectedMonster(Monster selectedMonster) {
+		this.selectedMonster = selectedMonster;
+	}
+	
+	
+	public ArrayList<Monster> getTeam() {
+		return team;
+	}
+	
+	public void setTeam(ArrayList<Monster> team) {
+		this.team = team;
+	}
+	
+	
+	public void setTxtrDescription(String text) {
+		List<Monster> streamedTeam = getTeam().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		setSelectedMonster(streamedTeam.get(0));
+		String itemString = getSelectedMonster().getSellBackDescription();
+		getTextAreaMonsterDescription().setText(itemString);
+		getTextAreaMonsterDescription().setCaretPosition(0);
 	}
 
 }

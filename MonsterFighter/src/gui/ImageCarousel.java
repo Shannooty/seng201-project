@@ -45,13 +45,17 @@ public class ImageCarousel extends JPanel implements ActionListener {
 	 */
 	private String currDescription;
 	
+	private Object gui;
+	
 	
 	
 	/**
 	 * Constructor for the class ImageCarousel. Creates a slide show of images that the user can click through. 
 	 * @param givenImages type ImageIcon[], the list of images that the constructor displays to the user. Private variable images is set to the value of givenImages. 
 	 */
-	public ImageCarousel(ImageIcon[] givenImages) {
+	public ImageCarousel(ImageIcon[] givenImages, Object type) {
+		
+		this.gui = type;
 		
 //		givenImages[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
 		JPanel imagePanel = new JPanel();
@@ -117,8 +121,8 @@ public class ImageCarousel extends JPanel implements ActionListener {
 	   }
 	   currDescription = images[index].getDescription();
 //	   System.out.println(currDescription);
-	   if (currDescription != "skeleton" && currDescription != "slime" && currDescription != "zombie" && currDescription != "undeadGuard") {
-		   MainScreen.setTxtrDescription(currDescription);
+	   if (gui instanceof MainScreen) {
+		   ((MainScreen) gui).setTxtrDescription(currDescription);
 	   }
 	   
 	   ImageIcon imageIcon = scaleImage(images[index]);
