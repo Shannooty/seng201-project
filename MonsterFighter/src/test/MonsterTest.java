@@ -8,6 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import exceptions.NegativeValueException;
 import player.Player;
 import player.Team;
 import purchasable.items.armors.*;
@@ -37,7 +38,7 @@ class MonsterTest {
 		testWeapon = null;
 		testPlayer = null;
 	}
-
+	
 	@Test
 	void testAddHealth() {
 		ArrayList<Integer> healthValues = new ArrayList<Integer>();
@@ -54,19 +55,20 @@ class MonsterTest {
 		
 		for (int health : healthValues) {
 			testMonster.removeHealth(Integer.MAX_VALUE);
-			testMonster.addHealth(health);
-			
-			if (health > 0) {
-				assertTrue(monsterHealth < testMonster.getHealth());
+			if (health >= 0) {
+				testMonster.addHealth(health);
+				assertTrue(monsterHealth <= testMonster.getHealth());
 				assertTrue(testMonster.getHealth() <= testMonster.getMaxHealth());
 			} else {
-				assertTrue(monsterHealth == testMonster.getHealth());
+				NegativeValueException exception = assertThrows(NegativeValueException.class, () -> {testMonster.addHealth(health);});
+				assertEquals(exception.getMessage(), "Cannot add negative health");
+				assertEquals(monsterHealth, testMonster.getHealth());
 			}
 		}
 	}
 	
 	@Test
-	void testRemoveHealth() {
+	void testRemoveHealth() throws NegativeValueException {
 		ArrayList<Integer> damageValues = new ArrayList<Integer>();
 		damageValues.add(400);
 		damageValues.add(100);
@@ -81,12 +83,14 @@ class MonsterTest {
 		
 		for (int damage : damageValues) {
 			testMonster.addHealth(100000);
-			testMonster.removeHealth(damage);
-			assertTrue(monsterHealth >= 0);
+			assertEquals(monsterHealth, testMonster.getHealth());
 			
-			if (damage > 0) {
+			if (damage >= 0) {
+				testMonster.removeHealth(damage);
 				assertTrue(monsterHealth >= testMonster.getHealth());
 			} else {
+				NegativeValueException exception = assertThrows(NegativeValueException.class, () -> {testMonster.removeHealth(damage);});
+				assertEquals("Cannot remove negative health", exception.getMessage());
 				assertEquals(monsterHealth, testMonster.getHealth());
 			}
 		}
@@ -95,18 +99,20 @@ class MonsterTest {
 		testMonster.addArmor(testArmor);
 		int armorAmount = testArmor.getArmorIncrease();
 		int armorModifier = Monster.armorModifier;
+		monsterHealth = testMonster.getHealth();
 		
 		//Remove health but with armor
 		for (int damage : damageValues) {
 			testMonster.addHealth(100000);
+			assertEquals(monsterHealth, testMonster.getHealth());
 			
-			testMonster.removeHealth(damage);
-			assertTrue(monsterHealth >= 0);
-			
-			if (damage > 0) {
-				assertTrue(testMonster.getHealth() < monsterHealth);
-				assertTrue(testMonster.getHealth() - monsterHealth < damage);
+			if (damage >= 0) {
+				testMonster.removeHealth(damage);
+				assertTrue(testMonster.getHealth() <= monsterHealth);
+				assertTrue(testMonster.getHealth() - monsterHealth <= damage);
 			} else {
+				NegativeValueException exception = assertThrows(NegativeValueException.class, () -> {testMonster.removeHealth(damage);});
+				assertEquals("Cannot remove negative health", exception.getMessage());
 				assertEquals(monsterHealth, testMonster.getHealth());
 			}
 		}
@@ -127,14 +133,15 @@ class MonsterTest {
 		int currentMaxHealth = testMonster.getMaxHealth();
 		
 		for (int health : healthValues) {
-			testMonster.addMaxHealth(health);
-			assertTrue(testMonster.getMaxHealth() >= currentMaxHealth);
-			assertTrue(testMonster.getMaxHealth() >= 0);
-			
-			if (health < 0) {
+			if (health <= 0) {
+				testMonster.addMaxHealth(health);
+				assertTrue(testMonster.getMaxHealth() >= currentMaxHealth);
+				assertTrue(testMonster.getMaxHealth() >= 0);
 				assertEquals(health, testMonster.getMaxHealth() - currentMaxHealth );
 			} else {
+				NegativeValueException exception = assertThrows(NegativeValueException.class, () -> {testMonster.addMaxHealth(health);});
 				assertEquals(currentMaxHealth, testMonster.getMaxHealth());
+				assertEquals(exception.getMessage(), "Cannot add negative health");
 			}
 			currentMaxHealth = testMonster.getMaxHealth();
 		}
@@ -154,14 +161,15 @@ class MonsterTest {
 		int currentMaxHealth = testMonster.getMaxHealth();
 		
 		for (int health : healthValues) {
-			testMonster.removeMaxHealth(health);
-			assertTrue(testMonster.getMaxHealth() <= currentMaxHealth);
-			assertTrue(testMonster.getMaxHealth() >= 0);
-			
-			if (health < 0) {
+			if (health <= 0) {
+				testMonster.removeMaxHealth(health);
 				assertEquals(health, testMonster.getMaxHealth() - currentMaxHealth);
+				assertTrue(testMonster.getMaxHealth() <= currentMaxHealth);
+				assertTrue(testMonster.getMaxHealth() >= 0);
 			} else {
+				NegativeValueException exception = assertThrows(NegativeValueException.class, () -> {testMonster.removeMaxHealth(health);});
 				assertEquals(currentMaxHealth, testMonster.getMaxHealth());
+				assertEquals(exception.getMessage(), "Cannot remove negative health");
 			}
 			currentMaxHealth = testMonster.getMaxHealth();
 		}
