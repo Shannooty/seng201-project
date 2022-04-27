@@ -97,8 +97,6 @@ class MonsterTest {
 		
 		//Give armor
 		testMonster.addArmor(testArmor);
-		int armorAmount = testArmor.getArmorIncrease();
-		int armorModifier = Monster.armorModifier;
 		monsterHealth = testMonster.getHealth();
 		
 		//Remove health but with armor
@@ -133,11 +131,10 @@ class MonsterTest {
 		int currentMaxHealth = testMonster.getMaxHealth();
 		
 		for (int health : healthValues) {
-			if (health <= 0) {
+			if (health >= 0) {
 				testMonster.addMaxHealth(health);
 				assertTrue(testMonster.getMaxHealth() >= currentMaxHealth);
 				assertTrue(testMonster.getMaxHealth() >= 0);
-				assertEquals(health, testMonster.getMaxHealth() - currentMaxHealth );
 			} else {
 				NegativeValueException exception = assertThrows(NegativeValueException.class, () -> {testMonster.addMaxHealth(health);});
 				assertEquals(currentMaxHealth, testMonster.getMaxHealth());
@@ -161,9 +158,8 @@ class MonsterTest {
 		int currentMaxHealth = testMonster.getMaxHealth();
 		
 		for (int health : healthValues) {
-			if (health <= 0) {
+			if (health >= 0) {
 				testMonster.removeMaxHealth(health);
-				assertEquals(health, testMonster.getMaxHealth() - currentMaxHealth);
 				assertTrue(testMonster.getMaxHealth() <= currentMaxHealth);
 				assertTrue(testMonster.getMaxHealth() >= 0);
 			} else {
@@ -189,12 +185,14 @@ class MonsterTest {
 		int currentSpeed = testMonster.getSpeed();
 		
 		for (int speed : speedValues) {
-			testMonster.addSpeed(speed);
-			assertTrue(testMonster.getSpeed() >= currentSpeed);
-			assertTrue(testMonster.getSpeed() >= 0);
-			
-			if (speed <= 0) {
+			if (speed < 0) {
+				NegativeValueException exception = assertThrows(NegativeValueException.class, () -> {testMonster.addSpeed(speed);});
+				assertEquals(exception.getMessage(),"Cannot add negative speed");
 				assertEquals(testMonster.getSpeed(), currentSpeed);
+			} else {
+				testMonster.addSpeed(speed);
+				assertTrue(testMonster.getSpeed() >= currentSpeed);
+				assertTrue(testMonster.getSpeed() >= 0);
 			}
 			currentSpeed = testMonster.getSpeed();
 		}
@@ -215,12 +213,14 @@ class MonsterTest {
 		int currentSpeed = testMonster.getSpeed();
 		
 		for (int speed : speedValues) {
-			testMonster.addSpeed(speed);
-			assertTrue(testMonster.getSpeed() <= currentSpeed);
-			assertTrue(testMonster.getSpeed() >= 0);
-			
-			if (speed <= 0) {
+			if (speed < 0) {
+				NegativeValueException exception = assertThrows(NegativeValueException.class, () -> {testMonster.removeSpeed(speed);});
+				assertEquals(exception.getMessage(),"Cannot remove negative speed");
 				assertEquals(testMonster.getSpeed(), currentSpeed);
+			} else {
+				testMonster.removeSpeed(speed);
+				assertTrue(testMonster.getSpeed() <= currentSpeed);
+				assertTrue(testMonster.getSpeed() >= 0);
 			}
 			currentSpeed = testMonster.getSpeed();
 		}
@@ -240,13 +240,14 @@ class MonsterTest {
 		int currentAttackDamage = testMonster.getAttackAmount();
 		
 		for (int attackIncrease : attackValues) {
-			testMonster.addAttackAmount(attackIncrease);
-			
-			assertTrue(testMonster.getAttackAmount() >= 0);
-			assertTrue(testMonster.getAttackAmount() >= currentAttackDamage);
-			
-			if (attackIncrease <= 0) {
+			if (attackIncrease < 0) {
+				NegativeValueException exception = assertThrows(NegativeValueException.class, () -> {testMonster.addAttackAmount(attackIncrease);});
+				assertEquals(exception.getMessage(), "Cannot add negative attack amount");
 				assertEquals(testMonster.getAttackAmount(), currentAttackDamage);
+			} else {
+				testMonster.addAttackAmount(attackIncrease);
+				assertTrue(testMonster.getAttackAmount() >= 0);
+				assertTrue(testMonster.getAttackAmount() >= currentAttackDamage);
 			}
 			currentAttackDamage = testMonster.getAttackAmount();
 		}
@@ -266,13 +267,14 @@ class MonsterTest {
 		int currentAttackDamage = testMonster.getAttackAmount();
 		
 		for (int attackDecrease : attackValues) {
-			testMonster.removeAttackAmount(attackDecrease);
-			
-			assertTrue(testMonster.getAttackAmount() >= 0);
-			assertTrue(testMonster.getAttackAmount() <= currentAttackDamage);
-			
-			if (attackDecrease <= 0) {
+			if (attackDecrease < 0) {
+				NegativeValueException exception = assertThrows(NegativeValueException.class, () -> {testMonster.removeAttackAmount(attackDecrease);});
+				assertEquals(exception.getMessage(), "Cannot remove negative attack amount");
 				assertEquals(testMonster.getAttackAmount(), currentAttackDamage);
+			} else {
+				testMonster.removeAttackAmount(attackDecrease);
+				assertTrue(testMonster.getAttackAmount() >= 0);
+				assertTrue(testMonster.getAttackAmount() <= currentAttackDamage);
 			}
 			currentAttackDamage = testMonster.getAttackAmount();
 		}
@@ -346,7 +348,7 @@ class MonsterTest {
 		expectedMaxHealth = oldMonsterMaxHealth + crown.getHealthIncrease();
 		expectedHealth = oldMonsterHealth + crown.getHealthIncrease();
 		
-		oldArmor = testMonster.addArmor(testArmor);
+		oldArmor = testMonster.addArmor(crown);
 		assertEquals(expectedArmor, testMonster.getArmorAmount());
 		assertEquals(expectedMaxHealth, testMonster.getMaxHealth());
 		assertEquals(expectedHealth, testMonster.getHealth());
@@ -358,20 +360,22 @@ class MonsterTest {
 		int baseMonsterArmor = testMonster.getArmorAmount();
 		int baseMonsterMaxHealth = testMonster.getMaxHealth();
 		int baseMonsterHealth = testMonster.getHealth();
+		
+		//Test removing armor from monster who has no armor
+		Armor oldArmor = testMonster.removeArmor();
+		assertEquals(baseMonsterArmor, testMonster.getArmorAmount());
+		assertEquals(baseMonsterMaxHealth, testMonster.getMaxHealth());
+		assertEquals(baseMonsterHealth, testMonster.getHealth());
+		assertEquals(oldArmor, null);
+		
 		testMonster.addArmor(testArmor);
 		
-		Armor oldArmor = testMonster.removeArmor();
+		oldArmor = testMonster.removeArmor();
 		assertEquals(baseMonsterArmor, testMonster.getArmorAmount());
 		assertEquals(baseMonsterMaxHealth, testMonster.getMaxHealth());
 		assertEquals(baseMonsterHealth, testMonster.getHealth());
 		assertEquals(oldArmor, testArmor);
 		
-		//Test removing armor from monster who has no armor
-		oldArmor = testMonster.removeArmor();
-		assertEquals(baseMonsterArmor, testMonster.getArmorAmount());
-		assertEquals(baseMonsterMaxHealth, testMonster.getMaxHealth());
-		assertEquals(baseMonsterHealth, testMonster.getHealth());
-		assertEquals(oldArmor, null);
 	}
 	
 	@Test
