@@ -19,7 +19,9 @@ import javax.swing.JTextArea;
 import javax.swing.JToggleButton;
 
 import gui.customElements.*;
+import player.Inventory;
 import player.Player;
+import player.Team;
 import shop.Shop;
 import purchasable.items.Item;
 import purchasable.monsters.*;
@@ -45,7 +47,7 @@ public class ShopBuy {
 	/**
 	 * Attribute txtDescription of type JTextArea. The area where the Item/Monster's description is displayed to the user.
 	 */
-	private static JTextArea txtDescription = new JTextArea("");
+	private JTextArea txtDescription = new JTextArea("");
 	
 //	/**
 //	 * Attribute gold of type double. The amount of gold the player currently has. 
@@ -67,17 +69,17 @@ public class ShopBuy {
 	 */
 	private Player player;
 	
-	private static Shop shop;
+	private Shop shop;
 	
 	/**
 	 * Attribute selectedMonster of type String. The currently selected Monster.
 	 */
-	private static Monster selectedMonster;
+	private Monster selectedMonster;
 	
 	/**
 	 * Attribute selectedItem of type Item. The currently selected Item.
 	 */
-	private static Item selectedItem;
+	private Item selectedItem;
 	
 
 	
@@ -93,7 +95,7 @@ public class ShopBuy {
 	public ShopBuy(GameEnvironment gameManager, Shop shop) {
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
-		ShopBuy.shop = shop;
+		setShop(shop);
 		initialize();
 		frmShopbuy.setVisible(true);
 	}
@@ -255,26 +257,55 @@ public class ShopBuy {
 	}
 	
 	
-	public void setTxtDescription(String description) {
-		txtDescription = new JTextArea(description);
+	public JTextArea getTxtDescription() {
+		return txtDescription;
 	}
+	
+	
+	public Monster getSelectedMonster() {
+		return selectedMonster;
+	}
+	
+	public void setSelectedMonster(Monster selectedMonster) {
+		this.selectedMonster = selectedMonster;
+	}
+	
+	
+	public Item getSelectedItem() {
+		return selectedItem;
+	}
+	
+	public void setSelectedItem(Item selectedItem) {
+		this.selectedItem = selectedItem;
+	}
+	
+	
+	public Shop getShop() {
+		return shop;
+	}
+	
+	public void setShop(Shop shop) {
+		this.shop = shop;
+	}
+
+	
 	
 	/**
 	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
 	 * @param text, type String. The description of the currently selected Item/Monster.
 	 */
-	public static void setTxtrDescriptionMonster(String text) {
+	public void setTxtrDescriptionMonster(String text) {
 		List<Monster> listOfMonsters = shop.getAvalibleMonsters().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
-		selectedMonster = listOfMonsters.get(0);
-		String monsterString = selectedMonster.getBuyDescription();
-		txtDescription.setText(monsterString);
+		setSelectedMonster(listOfMonsters.get(0));
+		String monsterString = getSelectedMonster().getBuyDescription();
+		getTxtDescription().setText(monsterString);
 	}
 	
-	public static void setTxtrDescriptionItem(String text) {
+	public void setTxtrDescriptionItem(String text) {
 		List<Item> listOfItems = shop.getAvalibleItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
-		selectedItem = listOfItems.get(0);
-		String itemString = selectedItem.getBuyDescription();
-		txtDescription.setText(itemString);
+		setSelectedItem(listOfItems.get(0));
+		String itemString = getSelectedItem().getBuyDescription();
+		getTxtDescription().setText(itemString);
 	}
 	
 }
