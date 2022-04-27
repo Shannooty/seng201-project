@@ -40,7 +40,7 @@ public class ShopSell {
 	/**
 	 * Attribute txtDescription of type JTextArea. The area where the Item/Monster's description is displayed to the user.
 	 */
-	private static JTextArea txtDescription = new JTextArea("");
+	private JTextArea txtDescription = new JTextArea("");
 	
 //	/**
 //	 * Attribute selectedPrice of type double. The price of the currently selected Item/Monster/
@@ -50,12 +50,12 @@ public class ShopSell {
 	/**
 	 * Attribute selectedMonster of type String. The currently selected Monster.
 	 */
-	private static Monster selectedMonster;
+	private Monster selectedMonster;
 	
 	/**
 	 * Attribute selectedItem of type Item. The currently selected Item.
 	 */
-	private static Item selectedItem;
+	private Item selectedItem;
 	
 	/**
 	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
@@ -65,14 +65,14 @@ public class ShopSell {
 	/**
 	 * Attribute inventory of type Inventory. The player's inventory.
 	 */
-	private static Inventory inventory;
+	private Inventory inventory;
 	
 	/**
 	 * Attribute player of type Player. The current player.
 	 */
 	private Player player;
 	
-	private static Team team;
+	private Team team;
 	
 
 	
@@ -84,8 +84,8 @@ public class ShopSell {
 	public ShopSell(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
-		inventory = player.getInventory();
-		team = inventory.getTeam();
+		setInventory(player.getInventory());
+		setTeam(inventory.getTeam());
 		initialize();
 		frmShopSell.setVisible(true);
 	}
@@ -121,7 +121,7 @@ public class ShopSell {
 		scrollPane.setBounds(52, 88, 411, 343);
 		frmShopSell.getContentPane().add(scrollPane);
 		
-		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell");
+		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell", this);
 		scrollPane.setViewportView(panel);
 		
 		
@@ -186,9 +186,13 @@ public class ShopSell {
 		buttonPanel.add(showMonsters);
 		buttonPanel.add(showItems);
 		
+
+		ShopSell type = this;
+
+		
 		showMonsters.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell");
+				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell", type);
 				  scrollPane.setViewportView(monsterPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
@@ -196,7 +200,7 @@ public class ShopSell {
 		
 		showItems.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), "ShopSell");
+				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), "ShopSell", type);
 				  scrollPane.setViewportView(itemPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
@@ -214,13 +218,13 @@ public class ShopSell {
 				if (choice == JOptionPane.YES_OPTION) {
 					if (selectedMonster != null && showMonsters.isSelected() == true) {
 						selectedMonster.sell(player);
-						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell");
+						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), "ShopSell", type);
 						scrollPane.setViewportView(monsterPanel);
 					}
 					
 					if (selectedItem != null && showItems.isSelected() == true) {
 						selectedItem.sell(player);
-						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), "ShopSell");
+						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), "ShopSell", type);
 						scrollPane.setViewportView(itemPanel);
 					}
 					
@@ -236,23 +240,64 @@ public class ShopSell {
 		
 	}
 	
+	
+	public JTextArea getTxtDescription() {
+		return txtDescription;
+	}
+	
+	
+	public Monster getSelectedMonster() {
+		return selectedMonster;
+	}
+	
+	public void setSelectedMonster(Monster selectedMonster) {
+		this.selectedMonster = selectedMonster;
+	}
+	
+	
+	public Item getSelectedItem() {
+		return selectedItem;
+	}
+	
+	public void setSelectedItem(Item selectedItem) {
+		this.selectedItem = selectedItem;
+	}
+	
+	
+	public Team getTeam() {
+		return team;
+	}
+	
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+	
+	
+	public Inventory getInventory() {
+		return inventory;
+	}
+	
+	public void setInventory(Inventory inventory) {
+		this.inventory = inventory;
+	}
+	
 	/**
 	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
 	 * @param text, type String. The description of the currently selected Item/Monster.
 	 */	
-	public static void setTxtrDescriptionMonster(String text) {
-		List<Monster> listOfMonsters = team.getTeam().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
-		selectedMonster = listOfMonsters.get(0);
-		String monsterString = selectedMonster.getSellBackDescription();
-		txtDescription.setText(monsterString);
+	public void setTxtrDescriptionMonster(String text) {
+		List<Monster> listOfMonsters = getTeam().getTeam().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		setSelectedMonster(listOfMonsters.get(0));
+		String monsterString = getSelectedMonster().getSellBackDescription();
+		getTxtDescription().setText(monsterString);
 	}
 	
 	
-	public static void setTxtrDescriptionItem(String text) {
-		List<Item> listOfItems = inventory.getItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
-		selectedItem = listOfItems.get(0);
-		String itemString = selectedItem.getSellBackDescription();
-		txtDescription.setText(itemString);
+	public void setTxtrDescriptionItem(String text) {
+		List<Item> listOfItems = getInventory().getItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+		setSelectedItem(listOfItems.get(0));
+		String itemString = getSelectedItem().getSellBackDescription();
+		getTxtDescription().setText(itemString);
 	}
 	
 	

@@ -31,6 +31,8 @@ public class ImgInventoryPanel extends JPanel {
 	
 	private String version;
 	
+	private Object gui;
+	
 	
 	/**
 	 * General constructor for the ImgInventoryPanel
@@ -38,7 +40,7 @@ public class ImgInventoryPanel extends JPanel {
 	 * @param toDisplay The ArrayList of objects. Objects must implement HasImage interface
 	 * @param version Version string for different GUI screens
 	 */
-	public ImgInventoryPanel(JScrollPane pane, ArrayList<? extends HasImage> toDisplay, String version) {
+	public ImgInventoryPanel(JScrollPane pane, ArrayList<? extends HasImage> toDisplay, String version, Object type) {
 		if (toDisplay.size() > 0) {
 			int iconWidth = toDisplay.get(0).getImg().getIconWidth();
 			int paneWidth = pane.getWidth();
@@ -50,6 +52,7 @@ public class ImgInventoryPanel extends JPanel {
 			placeObjectsInPanel(toDisplay);
 			
 			this.version = version;
+			this.gui = type;
 		}
 	}
 	
@@ -72,38 +75,35 @@ public class ImgInventoryPanel extends JPanel {
 		
 		for (HasImage item : toDisplay) {
 			
-			
 			InventoryToggleButton button = new InventoryToggleButton(item);
 			button.setName(Integer.toString(item.getID()));
-			
-			
+
 			button.addActionListener(new ActionListener() { 
 				  public void actionPerformed(ActionEvent e) { 
-
 						
-					  if (version == "ShopBuy") {
+					  if (gui instanceof ShopBuy) {
 						  if (item instanceof Item) {
-							  ShopBuy.setTxtrDescriptionItem(( (Component) e.getSource()).getName());
+							  ((ShopBuy) gui).setTxtrDescriptionItem(( (Component) e.getSource()).getName());
 						  } else if (item instanceof Monster) {
-							  ShopBuy.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
+							  ((ShopBuy) gui).setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
 						  }
 						  
-					  } else if (version == "ShopSell") {
+					  } else if (gui instanceof ShopSell) {
 						  if (item instanceof Item) {
-							  ShopSell.setTxtrDescriptionItem(( (Component) e.getSource()).getName());
+							  ((ShopSell) gui).setTxtrDescriptionItem(( (Component) e.getSource()).getName());
 						  } else if (item instanceof Monster) {
-							  ShopSell.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
+							  ((ShopSell) gui).setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
 						  }
 						  
-					  } else if (version == "Inventory") {
+					  } else if (gui instanceof InventoryScreen) {
 						  if (item instanceof Item) {
-							  InventoryScreen.setTxtrDescriptionItem(( (Component) e.getSource()).getName());
+							  ((InventoryScreen) gui).setTxtrDescriptionItem(( (Component) e.getSource()).getName());
 						  } else if (item instanceof Monster) {
-							  InventoryScreen.setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
+							  ((InventoryScreen) gui).setTxtrDescriptionMonster(( (Component) e.getSource()).getName());
 						  }
 						  
-					  } else if (version == "ChooseBattleScreen") {
-						  ChooseBattleScreen.setTxtrDescription(( (Component) e.getSource()).getName());
+					  } else if (gui instanceof ChooseBattleScreen) {
+						  ((ChooseBattleScreen) gui).setTxtrDescription(( (Component) e.getSource()).getName());
 					  }
 					  
 				  } 
@@ -114,6 +114,11 @@ public class ImgInventoryPanel extends JPanel {
 			
 		}
 		
+	}
+	
+	
+	public Object getType() {
+		return gui;
 	}
 	
 }

@@ -135,7 +135,7 @@ public class ShopBuy {
 		
 		
 		
-		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, "ShopBuy");
+		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, "ShopBuy", this);
 		scrollPane.setViewportView(monsterPanel);
 		
 		JPanel buttonPanel = new JPanel();
@@ -154,7 +154,7 @@ public class ShopBuy {
 		
 		showMonsters.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, "ShopBuy");
+				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, "ShopBuy", this);
 				  scrollPane.setViewportView(monsterPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
@@ -162,7 +162,7 @@ public class ShopBuy {
 		
 		showItems.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, itemInfo, "ShopBuy");
+				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, itemInfo, "ShopBuy", this);
 				  scrollPane.setViewportView(itemPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
@@ -215,13 +215,13 @@ public class ShopBuy {
 
 					if (selectedMonster != null && showMonsters.isSelected() == true) {
 						shop.purchase(selectedMonster, player);
-						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters(), "ShopBuy");
+						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters(), "ShopBuy", this);
 						scrollPane.setViewportView(monsterPanel);
 					} 
 					
 					if (selectedItem != null && showItems.isSelected() == true) {
 						shop.purchase(selectedItem, player);
-						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleItems(), "ShopBuy");
+						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleItems(), "ShopBuy", this);
 						scrollPane.setViewportView(itemPanel);
 					}
 					
