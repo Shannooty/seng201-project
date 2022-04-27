@@ -25,7 +25,7 @@ public class BattleScreen {
 	private JFrame frmBattlescreen;
 	private GameEnvironment gameEnvironment;
 	private Player player;
-	private static ArrayList<Monster> team;
+	private ArrayList<Monster> team;
 	private Day day;
 	private ArrayList<Monster> monstersToFight;
 	private Battle selectedBattle;
@@ -48,7 +48,7 @@ public class BattleScreen {
 		player = gameEnvironment.getPlayer();
 		this.actualTeam = player.getInventory().getTeam();
 
-		team = getCurrentTeam(actualTeam.getTeam());
+		setTeam(getCurrentTeam(actualTeam.getTeam()));
 //		System.out.println(team);
 //		team = (ArrayList<Monster>) actualTeam.getTeam().stream().filter(Monster::getStunnedStatus).collect(Collectors.toList());
 		
@@ -140,13 +140,22 @@ public class BattleScreen {
 	}
 	
 	
+	public ArrayList<Monster> getTeamBattle() {
+		return team;
+	}
+	
+	public void setTeam(ArrayList<Monster> team) {
+		this.team = team;
+	}
+	
+	
 	public void fight() {
-		if (team.size() > 0 && monstersToFight.size() > 0) {
-			Monster winner = selectedBattle.attack(team.get(0), monstersToFight.get(0));
+		if (getTeamBattle().size() > 0 && monstersToFight.size() > 0) {
+			Monster winner = selectedBattle.attack(getTeamBattle().get(0), monstersToFight.get(0));
 			updateStatus(winner.toString());
 		} else {
 			String gameWinner;
-			if (team.size() == 0 ) {
+			if (getTeamBattle().size() == 0 ) {
 				gameWinner = "game";
 			} else {
 				gameWinner = "you";	
@@ -161,7 +170,7 @@ public class BattleScreen {
 	}
 	
 	public void updateStatus(String winner) {
-		team = getCurrentTeam(actualTeam.getTeam());
+		setTeam(getCurrentTeam(actualTeam.getTeam()));
 		textPaneFight.setText("Winner: " + winner);
 		textAreaPlayer.setText(team.toString());
 		textAreaGame.setText(monstersToFight.toString());
