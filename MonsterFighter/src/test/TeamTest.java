@@ -8,6 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import exceptions.NegativeValueException;
 import exceptions.TeamFullException;
 import player.Team;
 import purchasable.monsters.*;
@@ -136,11 +137,9 @@ class TeamTest {
 		testTeam.refreshOrder();
 		assertTrue(isInOrder(testTeam));
 		
-		//Change a team monsters speed to Min_VALUE
+		//Change a team monsters speed to 0
 		Monster monsterMin = testTeam.getTeam().get(2);
 		monsterMin.removeSpeed(monsterMin.getSpeed());
-		monsterMin.addSpeed(Integer.MIN_VALUE);
-				
 		assertFalse(isInOrder(testTeam));
 		testTeam.refreshOrder();
 		assertTrue(isInOrder(testTeam));
