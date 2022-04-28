@@ -49,16 +49,16 @@ class PlayerScoreTest {
 		int currentPoints = testPlayer.getPoints();
 		
 		for (int points : testPoints) {
-			assertTrue(currentPoints >= 0);
-			
 			if (points >= 0) {
 				testPlayer.addPoints(points);
 				assertTrue(currentPoints <= testPlayer.getPoints());
+				assertTrue(currentPoints >= 0);
 			} else {
 				NegativeValueException exception = assertThrows(NegativeValueException.class, () -> {testPlayer.addPoints(points);});
 				assertEquals("Cannot add negative points to player", exception.getMessage());
 				assertEquals(currentPoints, testPlayer.getPoints());
 			}
+			currentPoints = testPlayer.getPoints();
 		}
 		
 	}
