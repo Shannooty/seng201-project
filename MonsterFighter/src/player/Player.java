@@ -111,11 +111,7 @@ public class Player {
 	 * @param points, of type integer. The number of points the player has gained.
 	 */
 	public void addPoints(int points) {
-		if (points < 0) {
-			throw new NegativeValueException("Cannot add negative points");
-		} else {
-			getScore().addPoints(points);
-		}
+		getScore().addPoints(points);
 	}
 
 	/**
