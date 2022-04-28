@@ -1,5 +1,7 @@
 package player;
 
+import exceptions.NegativeValueException;
+
 /**
  * The PlayerScore class deals with storing the points scored by the player in a way that can be used by a leaderboard
  * @author Bede Nathan, Celia Allen
@@ -32,9 +34,16 @@ public class PlayerScore implements Comparable<PlayerScore>{
 	 * Increases the number of points the player has
 	 * @param numPoints number of points to increase by
 	 */
-	public void addPoints(int numPoints) {
-		points = points + numPoints;
-		
+	public void addPoints(int numPoints) throws NegativeValueException {
+		if (numPoints < 0) {
+			throw new NegativeValueException("Cannot add negative points to player");
+		} else {
+			points = points + numPoints;
+			
+			if (points < 0) {
+				points = Integer.MAX_VALUE;
+			}
+		}
 	}
 	
 	/**
