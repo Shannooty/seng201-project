@@ -7,8 +7,8 @@ import player.Player;
 import player.Team;
 
 /**
- * 
- * @author inkic
+ * Creates a new Day, which generates the available Battles for the player to fight.
+ * @author
  *
  */
 public class Day {
