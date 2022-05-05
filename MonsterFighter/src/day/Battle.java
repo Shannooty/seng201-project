@@ -14,7 +14,7 @@ import interfaces.HasImage;
 import purchasable.monsters.*;
 
 /**
- * 
+ * Creates a battle for the player to fight. 
  * @author 
  *
  */
