@@ -21,28 +21,92 @@ import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * 
+ * @author
+ *
+ */
 public class BattleScreen {
 
+	/**
+	 * Attribute frmBattlescreen of type JFrame. The frame which is displayed to the user. Contains the UI for the BattleScreen.
+	 */
 	private JFrame frmBattlescreen;
+	
+	/**
+	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
+	 */
 	private GameEnvironment gameEnvironment;
+	
+	/**
+	 * Attribute player of type Player. The current player.
+	 */
 	private Player player;
+	
+	/**
+	 * Attribute team of type ArrayList<Monster>. An ArrayList of all the Monsters in the player's team that are not stunned.
+	 */
 	private ArrayList<Monster> team;
+	
+	/**
+	 * Attribute day of type Day. The current instance of Day.
+	 */
 	private Day day;
+	
+	/**
+	 * Attribute monstersToFight of type ArrayList<Monster>. ArrayList of the Monsters the player must fight.
+	 */
 	private ArrayList<Monster> monstersToFight;
+	
+	/**
+	 * Attribute selectedBattle of type Battle. The Battle that the player selected to fight.
+	 */
 	private Battle selectedBattle;
+	
+	/**
+	 * Attribute actualTeam of type Team. The player's actual team, which still contains stunned Monsters.
+	 */
 	private Team actualTeam;
+	
+	/**
+	 * Attribute textPaneFight of type JTextPane. A JTextPane that displays the winner of each round of the battle.
+	 */
 	private JTextPane textPaneFight = new JTextPane();
+	
+	/**
+	 * Attribute textAreaGame of type JTextPane. A JTextPane that displays the Monsters the game still has available to fight the player.
+	 */
 	private JTextPane textAreaGame = new JTextPane();
+	
+	/**
+	 * Attribute textAreaPlayer of type JTextPane. A JTextPane that displays the Monsters the player still has available to fight.
+	 */
 	private JTextPane textAreaPlayer = new JTextPane();
+	
+	/**
+	 * Attribute textPanePlayerMonster of type JTextPane. A JTextPane that displays the current Monster from the player's team that is fighting.
+	 */
 	private JTextPane textPanePlayerMonster = new JTextPane();
+	
+	/**
+	 * Attribute textPaneGameMonster of type JTextPane. A JTextPane that displays the current Monster from the game's team that is fighting.
+	 */
 	private JTextPane textPaneGameMonster = new JTextPane();
-	private JButton btnFinish = new JButton("Finish");
+	
+//	private JButton btnFinish = new JButton("Finish");
+	
+	/**
+	 * Attribute btnContinue of type JButton. A JButton that starts the next round of the battle.
+	 */
 	private JButton btnContinue = new JButton("Continue");
 	
 
 
 	/**
-	 * Create the application.
+	 * Constructor for the class BattleScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. Sets the private variables player, day, and monstersToFight, all through the GameEnvironment class. 
+	 * Sets the private variable team to the player's team, using the setTeam() method.
+	 * @param gameManager, of type GameEnvironment. The class that manages what windows are open.
+	 * @param selectedBattle, of type Battle. The current Battle being fought.
 	 */
 	public BattleScreen(GameEnvironment gameManager, Battle selectedBattle) {
 		gameEnvironment = gameManager;
@@ -140,16 +204,27 @@ public class BattleScreen {
 		
 	}
 	
-	
+	/**
+	 * Returns an ArrayList of the all the player's Monsters who are not stunned.
+	 * @return team, of type ArrayList<Monster>.
+	 */
 	public ArrayList<Monster> getTeamBattle() {
 		return team;
 	}
 	
+	/**
+	 * Sets the private variable team. Return type void.
+	 * @param team, of type ArrayList<Monster>. An ArrayList of the all the player's Monsters who are not stunned.
+	 */
 	public void setTeam(ArrayList<Monster> team) {
 		this.team = team;
 	}
 	
-	
+	/**
+	 * Calls the method Battle.attack if both the player and game have monsters to fight. If not, it checks if the result was a draw, win, or loss for the player and displays the result to the user. Awards gold and points to the user if the battle was won, or a draw. 
+	 * Removes the fought Battle from the available battles.
+	 * Calls launchMainScreen() and finishedWindow() to open the MainScreen and close the current window.
+	 */
 	public void fight() {
 		if (getTeamBattle().size() > 0 && monstersToFight.size() > 0) {
 			Monster winner = selectedBattle.attack(getTeamBattle().get(0), monstersToFight.get(0));
@@ -174,10 +249,6 @@ public class BattleScreen {
 				day.setGoldEarnedToday(selectedBattle.getGold());
 			}
 			
-			
-			
-
-			
 //			updateStatus("end, winner: " + gameWinner);
 			
 //			btnFinish.setVisible(true);
@@ -188,6 +259,11 @@ public class BattleScreen {
 		}
 	}
 	
+	/**
+	 * Updates the private attribute team to contain no stunned Monsters. Return type void.
+	 * Updates the status of the GUI, specifically the contents of textPaneFight, textAreaPlayer and textAreaGame.
+	 * @param winner, of type String. A string representation of the Monster who won the most recent round of the Battle.
+	 */
 	public void updateStatus(String winner) {
 		setTeam(getCurrentTeam(actualTeam.getTeam()));
 		textPaneFight.setText(winner);
@@ -199,6 +275,11 @@ public class BattleScreen {
 
 	}
 	
+	/**
+	 * Filters the player's actual team for the Monsters who are not stunned, and returns an ArrayList of those Monsters.
+	 * @param actualTeam, of type ArrayList<Monster>. The player's actual team, including stunned Monsters.
+	 * @return an ArrayList of type Monster. All the player's Monsters who are not stunned.
+	 */
 	public ArrayList<Monster> getCurrentTeam(ArrayList<Monster> actualTeam) {
 		return (ArrayList<Monster>) actualTeam.stream().filter(m -> m.getStunnedStatus() == false).collect(Collectors.toList());
 	}
