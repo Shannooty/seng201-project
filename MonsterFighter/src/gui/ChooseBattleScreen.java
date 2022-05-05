@@ -31,6 +31,9 @@ import javax.swing.JScrollBar;
 
 public class ChooseBattleScreen {
 
+	/**
+	 * Attribute frmChoosebattle of type JFrame. The frame which is displayed to the user. Contains the UI for the ChooseBattleScreen.
+	 */
 	private JFrame frmChoosebattle;
 	
 	/**
@@ -38,25 +41,46 @@ public class ChooseBattleScreen {
 	 */
 	private GameEnvironment gameEnvironment;
 	
+	/**
+	 * Attribute possibleBattles of type ArrayList<Battle>. An ArrayList of the possible Battles the player can choose from.
+	 */
 	private ArrayList<Battle> possibleBattles = new ArrayList<Battle>();
 	
+	/**
+	 * Attribute difficulty, of type String. The game difficulty, set by the player when setting up the game.
+	 */
 	private String difficulty;
 	
+	/**
+	 * Attribute day of type Day. The current instance of Day.
+	 */
 	private Day day;
 	
-	private ImageIcon imagesToUse[];
+
+//	private ImageIcon[] imagesToUse;
+//	private ArrayList<Monster> gameMonsters;
 	
-	private ArrayList<Monster> gameMonsters;
-	
+	/**
+	 * Attribute selectedBattle of type Battle. The Battle that the player has currently selected.
+	 */
 	private Battle selectedBattle;
 	
+	/**
+	 * Attribute txtDescription of type JTextArea. A JTextArea that displays the details of the selected Battle.
+	 */
 	private JTextArea txtDescription = new JTextArea("");
 	
+	/**
+	 * Attribute type of type Object. The current instance of the object ChooseBattleScreen. Passed to the class ImgInventoryPanel so it can pass a selected item back to the correct class.
+	 */
 	private Object type = this;
 	
 
 	/**
-	 * Create the application.
+	 * Constructor for the class ChooseBattleScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. 
+	 * Sets the private variable difficulty through the GameEnvironment class.
+	 * Sets the private variable day via the method setDay(), and the private variable possibleBattles using the private variable day.
+	 * @param gameManager
 	 */
 	public ChooseBattleScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
@@ -66,16 +90,8 @@ public class ChooseBattleScreen {
 //			Battle battle = new Battle(difficulty);
 //			possibleBattles.add(battle);
 //		}
-		setDay(gameEnvironment.getToday());
-		
-		
-		
+		setDay(gameEnvironment.getToday());	
 		possibleBattles = day.getBattles();
-		
-//		gameMonsters = possibleBattles.getGameMonsters();
-		
-//		player = gameEnvironment.getPlayer();
-//		team = player.getInventory().getTeam();
 		initialize();
 		frmChoosebattle.setVisible(true);
 	}
@@ -188,31 +204,52 @@ public class ChooseBattleScreen {
 //		System.out.println(possibleBattles);
 	}
 	
+	/**
+	 * Returns the JTextArea where the description of the currently selected battle is displayed.
+	 * @return txtDescription, of type JTextArea.
+	 */
 	public JTextArea getTxtDescription() {
 		return txtDescription;
 	}
 	
-	
+	/**
+	 * Returns the currently selected Battle.
+	 * @return selectedBattle, of type Battle.
+	 */
 	public Battle getSelectedBattle() {
 		return selectedBattle;
 	}
 	
+	/**
+	 * Sets the private attribute selectedBattle to the currently selected battle. Return type void.
+	 * @param selectedBattle, of type Battle.
+	 */
 	public void setSelectedBattle(Battle selectedBattle) {
 		this.selectedBattle = selectedBattle;
 	}
 	
-	
+	/**
+	 * Returns the current instance of Day.
+	 * @return day, of type Day.
+	 */
 	public Day getDay() {
 		return day;
 	}
 	
+	/**
+	 * Sets the private attribute day to the current day. Return type void.
+	 * @param day, of type Day.
+	 */
 	public void setDay(Day day) {
 		this.day = day;
 	}
 
-	
-	public void setTxtrDescription(String text) {
-		List<Battle> battles = getDay().getBattles().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+	/**
+	 * Sets the value of txtDescription to the currently selected battle by filtering the available Battles using the given id number. Return type void.
+	 * @param id, of type String. The currently selected Battle's id number.
+	 */
+	public void setTxtrDescription(String id) {
+		List<Battle> battles = getDay().getBattles().stream().filter(s -> id.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedBattle(battles.get(0));
 		String battleString = getSelectedBattle().toString();
 		getTxtDescription().setText(battleString);
