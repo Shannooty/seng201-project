@@ -111,7 +111,7 @@ public class Battle implements HasImage {
 
 	
 	/**
-	 * Constructor for the class Battle. Sets the private variables gameEnvironment, and uses gameEnvironment to set the private variables difficulty, dayNum and gameLength. 
+	 * Constructor for the class Battle. Sets the private variable gameEnvironment, and uses gameEnvironment to set the private variables difficulty, dayNum and gameLength. 
 	 * Creates the variable battle, and sets it to a random battle generated from the private variable possibleBattles. The private variables gold, points and numMonstersToFight are set from battle.
 	 * Creates the attribute gameProgress, of type double. Value of dayNum divided by gameLength.
 	 * Depending on the player's progress through the game, numMonstersToFight increases by 1, 2, 3, or 4. The amount of gold and points a user receives from winning a battle is adjusted according to the difficulty of the game. 
