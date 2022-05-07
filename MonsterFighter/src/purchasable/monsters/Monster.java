@@ -61,6 +61,10 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		} else {
 			health = getHealth() + healAmount;
 		}		
+		
+		if (health != 0) {
+			isStunned = false;
+		}
 	}
 	
 	/**

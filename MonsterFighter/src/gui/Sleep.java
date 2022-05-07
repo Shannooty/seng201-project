@@ -7,11 +7,13 @@ import javax.swing.JLabel;
 
 import day.Day;
 import player.Player;
+import purchasable.monsters.Monster;
 import random_event.RandomEvent;
 
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 
@@ -49,7 +51,7 @@ public class Sleep {
 		gameEnvironment = gameManager;
 		this.pointsEarnedToday = pointsEarnedToday;
 		this.goldEarnedToday = goldEarnedToday;
-		randomEvent = new RandomEvent(gameEnvironment.getPlayer().getInventory());
+		randomEvent = new RandomEvent(gameEnvironment.getPlayer().getInventory());		
 		initialize();
 		frmSleep.setVisible(true);
 	}
@@ -119,6 +121,12 @@ public class Sleep {
 		
 		JLabel lblRandomEvent = new JLabel();
 		String event = randomEvent.runRandomEvent();
+		
+		ArrayList<Monster> team = gameEnvironment.getPlayer().getInventory().getTeam().getTeam();
+		for (Monster monster : team) {
+			monster.addHealth(monster.getMaxHealth());
+		}
+				
 		lblRandomEvent.setText("Random event "+event+" occured.");
 		lblRandomEvent.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblRandomEvent.setBounds(257, 253, 328, 20);

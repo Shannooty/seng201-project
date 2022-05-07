@@ -89,7 +89,7 @@ public class GameEnvironment {
 			Double goldEarnedToday = today.getGoldEarnedToday();
 			int pointsEarnedToday = today.getPointsEarnedToday();
 			Day nextDay = new Day(this);
-			setToday(nextDay);
+			setToday(nextDay);			
 			launchSleepScreen(goldEarnedToday, pointsEarnedToday);
 		}
 		
