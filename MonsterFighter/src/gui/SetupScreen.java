@@ -249,10 +249,10 @@ public class SetupScreen {
 				    break;
 				}
 				
+				gameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()-1));
 				Player player = new Player(username.getText(), startingMonster, gameEnvironment);
 				gameEnvironment.setPlayer(player);
 				gameEnvironment.setGameLength(gameLengthSlider.getValue());				
-				gameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()-1));
 				gameEnvironment.setToday(new Day(gameEnvironment));
 				
 				gameEnvironment.launchMainScreen();

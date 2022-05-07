@@ -60,6 +60,13 @@ public class Player {
 		setName(name);
 		setInventory(new Inventory(startingMonster));
 		score = new PlayerScore(this);
+		String difficulty = gameEnvironment.getGameDifficulty();
+		
+		if (difficulty == "Easy") {
+			goldAmount += 25;
+		} else if (difficulty == "Hard") {
+			goldAmount -= 25;
+		}
 	}
 	
 	/**
