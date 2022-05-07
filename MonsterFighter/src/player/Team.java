@@ -39,7 +39,7 @@ public class Team {
 	public void add(Monster monster) {
 		if (monster != null) {
 			if (getTeam().size() == 4) {
-				throw new TeamFullException("Team cannot have more than 4 members", gameEnvironment);
+				throw new TeamFullException("Team cannot have more than 4 members.", gameEnvironment);
 			}
 			
 			if (!getTeam().contains(monster)) {
