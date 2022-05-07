@@ -3,6 +3,7 @@ package player;
 import java.util.ArrayList;
 
 import exceptions.TeamFullException;
+import gui.GameEnvironment;
 import purchasable.monsters.Monster;
 
 /**
@@ -12,6 +13,14 @@ import purchasable.monsters.Monster;
  */
 public class Team {
 	public ArrayList<Monster> team = new ArrayList<Monster>();
+	
+	public GameEnvironment gameEnvironment;
+	
+	
+	
+	public Team(GameEnvironment gameManager) {
+		gameEnvironment = gameManager;
+	}
 	
 	
 	/**
@@ -30,7 +39,7 @@ public class Team {
 	public void add(Monster monster) {
 		if (monster != null) {
 			if (getTeam().size() == 4) {
-				throw new TeamFullException("Team cannot have more than 4 members");
+				throw new TeamFullException("Team cannot have more than 4 members", gameEnvironment);
 			}
 			
 			if (!getTeam().contains(monster)) {

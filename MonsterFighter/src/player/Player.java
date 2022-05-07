@@ -58,7 +58,7 @@ public class Player {
 	public Player(String name, Monster startingMonster, GameEnvironment gameEnvironment) {
 		this.gameEnvironment = gameEnvironment;
 		setName(name);
-		setInventory(new Inventory(startingMonster));
+		setInventory(new Inventory(startingMonster, gameEnvironment));
 		score = new PlayerScore(this);
 		String difficulty = gameEnvironment.getGameDifficulty();
 		

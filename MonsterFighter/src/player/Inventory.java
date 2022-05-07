@@ -1,6 +1,7 @@
 package player;
 import java.util.ArrayList;
 
+import gui.GameEnvironment;
 import purchasable.Purchasable;
 import purchasable.items.*;
 import purchasable.items.food.Food;
@@ -22,7 +23,9 @@ public class Inventory {
 	/**
 	 * Attribute team of type Team. The players team.
 	 */
-	private Team team = new Team();
+	private Team team;
+	
+	private GameEnvironment gameEnvironment;
 	
 	
 	/**
@@ -30,6 +33,13 @@ public class Inventory {
 	 * @param startingMonster, type Monster. The user's starting monster.
 	 */
 	public Inventory(Monster startingMonster) {
+		addMonster(startingMonster);
+	}
+	
+	
+	public Inventory(Monster startingMonster, GameEnvironment gameManager) {
+		gameEnvironment = gameManager;
+		team = new Team(gameManager);
 		addMonster(startingMonster);
 	}
 	

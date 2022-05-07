@@ -72,7 +72,7 @@ public class RandomEvent {
 		String randomEvent = getRandomEvent();
 		
 //		System.out.println("randomEvent: "+randomEvent+" team size: "+playerTeam.getTeam().size());
-		while ((randomEvent == "MonsterLeaves" || randomEvent == "MonsterLevelsUp") && playerTeam.getTeam().size() == 0) {
+		while (((randomEvent == "MonsterLeaves" || randomEvent == "MonsterLevelsUp") && playerTeam.getTeam().size() == 0) || randomEvent == "NewMonsterJoins" &&  playerTeam.getTeam().size() == 4){
 			randomEvent = getRandomEvent();
 //			System.out.println("WHILE randomEvent: "+randomEvent+" team size: "+playerTeam.getTeam().size());
 		}

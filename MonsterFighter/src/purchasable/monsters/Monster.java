@@ -5,6 +5,7 @@ import java.util.Comparator;
 
 import exceptions.InsufficientGoldException;
 import exceptions.NegativeValueException;
+import exceptions.TeamFullException;
 import player.Player;
 import purchasable.Purchasable;
 import purchasable.items.armors.Armor;
@@ -406,7 +407,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	 * Lets the player purchase the monster
 	 */
 	@Override
-	public void buy(Player player) throws InsufficientGoldException {
+	public void buy(Player player) throws InsufficientGoldException, TeamFullException {
 		player.removeGold(this.getPurchasePrice());
 		player.getInventory().addMonster(this);
 	}

@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import exceptions.TeamFullException;
+import gui.GameEnvironment;
 import player.Team;
 import purchasable.monsters.*;
 
@@ -16,10 +17,11 @@ class TeamTest {
 	
 	private Team testTeam;
 	private ArrayList<Monster> testMonsters = new ArrayList<Monster>();
+	private GameEnvironment gameEnvironment = new GameEnvironment();
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		testTeam = new Team();
+		testTeam = new Team(gameEnvironment);
 		setTestMonsters();
 	}
 	

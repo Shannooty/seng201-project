@@ -25,7 +25,7 @@ public class InsufficientGoldException extends IllegalArgumentException {
 	 * @param message, of type String. The message to pass to the SuperClass constructor.
 	 */
 	public InsufficientGoldException(String message, GameEnvironment gameEnvironment) {
-		super(message);
+//		super(message);
 		gameEnvironment.getShopBuyScreen().insufficientGoldPopUp(message);
 	}
 }

@@ -1,5 +1,7 @@
 package exceptions;
 
+import gui.GameEnvironment;
+
 /**
  * 
  * @author 
@@ -21,8 +23,9 @@ public class TeamFullException extends IllegalArgumentException {
 	 * Constructor for TeamFullException. Calls the SuperClass constructor for IllegalArgumentException.
 	 * @param message, of type String. The message to pass to the SuperClass constructor.
 	 */
-	public TeamFullException(String message) {
-		super(message);
+	public TeamFullException(String message, GameEnvironment gameEnvironment) {
+//		super(message);
+		gameEnvironment.getShopBuyScreen().insufficientGoldPopUp(message);
 	}
 
 }
