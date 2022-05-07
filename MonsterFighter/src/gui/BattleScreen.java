@@ -271,10 +271,11 @@ public class BattleScreen {
 					gameWinner = "You lost.";
 				} else if (getTeamBattle().size() != 0 && monstersToFight.size() == 0) {
 					gameWinner = "You Won!";	
+					day.setPointsEarnedToday(selectedBattle.getPoints());
+					day.setGoldEarnedToday(selectedBattle.getGold());
 				} 
 				JOptionPane.showMessageDialog(frmBattlescreen, "End of game.\n"+gameWinner);
-				day.setPointsEarnedToday(selectedBattle.getPoints());
-				day.setGoldEarnedToday(selectedBattle.getGold());
+				
 			}
 			
 //			updateStatus("end, winner: " + gameWinner);

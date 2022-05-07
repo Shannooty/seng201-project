@@ -109,7 +109,15 @@ public class MainScreen {
 		frmMainscreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmMainscreen.getContentPane().setLayout(null);
 		
+		if (team.size() == 0 && player.getGoldAmount() < 60) {
+			JOptionPane.showMessageDialog(frmMainscreen, "You have no monsters, and insufficient funds to purchase any more. Game Over.");
+			gameEnvironment.launchEndScreen();
+			finishedWindow();
+		}
+		
 		imagesToUse = new ImageIcon[team.size()]; 
+		
+		
 		
 		for (int i = 0; i < team.size(); i++) {
 			
