@@ -62,6 +62,11 @@ public class BattleScreen {
 	private ArrayList<Monster> monstersToFight;
 	
 	/**
+	 * Attribute gamePlayer, of type String. The name of the player's opposition.
+	 */
+	private String gamePlayer;
+	
+	/**
 	 * Attribute selectedBattle of type Battle. The Battle that the player selected to fight.
 	 */
 	private Battle selectedBattle;
@@ -123,6 +128,7 @@ public class BattleScreen {
 		day = gameEnvironment.getToday();
 		this.selectedBattle = selectedBattle;
 		monstersToFight = selectedBattle.getGameMonsters();
+		gamePlayer = selectedBattle.getGamePlayer();
 		initialize();
 		frmBattlescreen.setVisible(true);
 	}
@@ -206,10 +212,9 @@ public class BattleScreen {
 		textPanePlayerMonster.setText("You: "+(team.get(0)).getDescription());
 		textPanePlayerMonster.setBounds(272, 38, 128, 120);
 		frmBattlescreen.getContentPane().add(textPanePlayerMonster);
+
 		
-		
-		
-		textPaneGameMonster.setText("Us: "+((monstersToFight.get(0))).getDescription());
+		textPaneGameMonster.setText("Player "+gamePlayer+": "+((monstersToFight.get(0))).getDescription());
 		textPaneGameMonster.setBounds(431, 38, 128, 120);
 		frmBattlescreen.getContentPane().add(textPaneGameMonster);
 		
@@ -223,7 +228,7 @@ public class BattleScreen {
 		lblYourTeamLabel.setBounds(34, 10, 169, 18);
 		frmBattlescreen.getContentPane().add(lblYourTeamLabel);
 		
-		JLabel lblGameTeam = new JLabel("Game team:");
+		JLabel lblGameTeam = new JLabel("Player "+gamePlayer+"\'s team:");
 		lblGameTeam.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblGameTeam.setBounds(569, 10, 169, 18);
 		frmBattlescreen.getContentPane().add(lblGameTeam);
@@ -255,8 +260,8 @@ public class BattleScreen {
 	 */
 	public void fight() {
 		if (getTeamBattle().size() > 0 && monstersToFight.size() > 0) {
-			Monster winner = selectedBattle.attack(getTeamBattle().get(0), monstersToFight.get(0));
-			updateStatus("Winner: "+winner.toString());
+			String winner = selectedBattle.attack(getTeamBattle().get(0), monstersToFight.get(0));
+			updateStatus("Winner: "+winner);
 		} else {
 			String gameWinner = "";
 			if ((getTeamBattle().size() == 0 && monstersToFight.size() == 0)) {

@@ -50,9 +50,24 @@ public class Battle implements HasImage {
 	 */
 	private ArrayList<Monster> monstersTofight = new ArrayList<Monster>();
 	
+	/**
+	 * Attribute randomPlayer, of type Random. A random generator.
+	 */
+	private Random randomPlayer = new Random();
+	
+	/**
+	 * Attribute randomPlayers, of type String[]. A list of the possible random usernames for the player's opposition.
+	 */
+	private String[] randomPlayers = {"One", "Two", "Three", "Four", "nine"};
+	
+	/**
+	 * Attribute gamePlayer, of type String. A username for the player's opposition.
+	 */
+	private String gamePlayer = randomPlayers[(randomPlayer.nextInt(randomPlayers.length))];
+	
 	
 //	private ArrayList<Monster> team = new ArrayList<Monster>();
-	
+
 	/**
 	 * Attribute numMonstersToFight, of type integer. The number of monsters associated with the created battle that the player will have to fight.
 	 */
@@ -211,7 +226,7 @@ public class Battle implements HasImage {
 	 * @param gameMonster, of type Monster. A monster from the attribute monstersToFight that is currently attacking.
 	 * @return winner, of type Monster
 	 */
-	public Monster attack(Monster playerMonster, Monster gameMonster) {
+	public String attack(Monster playerMonster, Monster gameMonster) {
 		Monster startingMonster;
 		if (playerMonster.getSpeed() >= gameMonster.getSpeed()) {
 			startingMonster = playerMonster;
@@ -256,22 +271,22 @@ public class Battle implements HasImage {
 //			}
 		}
 		
-		Monster winner;
+		String winner;
 		
 		if (playerMonster.getHealth() <= 0) {
-			winner = gameMonster;
+			winner = "Player " + gamePlayer + gameMonster.toString();
 			playerMonster.setStunnedStatus(true);
 		} 
 		if (gameMonster.getHealth() <= 0) {
-			winner = playerMonster;
+			winner = "You: " + playerMonster.toString();
 			monstersTofight.remove(gameMonster);
 		}
 		
 		
 		if (gameMonster.getHealth() > playerMonster.getHealth()) {
-			winner = gameMonster;
+			winner = "Player " + gamePlayer + gameMonster.toString();
 		} else {
-			winner = playerMonster;
+			winner = "You: " + playerMonster.toString();
 		}
 		
 		return winner;
@@ -303,6 +318,15 @@ public class Battle implements HasImage {
 		return numMonstersToFight;
 	}
 	
+	
+	/**
+	 * Returns the name of the player's opposition.
+	 * @return gamePlayer, of type String.
+	 */
+	public String getGamePlayer() {
+		return gamePlayer;
+	}
+	
 //	public void removeMonster() {
 //		
 //	}
@@ -330,7 +354,7 @@ public class Battle implements HasImage {
 		}
 		
 //		return "Gold: "+gold+"\nPoints: "+points+"\nNumMonsters: "+numMonstersToFight+"\nMonsters: ";
-		return "Gold: "+gold+"\nPoints: "+points+"\nNumber of Monsters: "+numMonstersToFight+"\n\nMonsters: "+monsters+"\n";
+		return "Player: "+gamePlayer+"\nGold: "+gold+"\nPoints: "+points+"\nNumber of Monsters: "+numMonstersToFight+"\n\nMonsters: "+monsters+"\n";
 	}
 	
 }
