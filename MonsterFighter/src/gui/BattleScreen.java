@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
 
 import player.Player;
 import player.Team;
@@ -16,6 +18,7 @@ import javax.swing.JTextArea;
 import day.Battle;
 import day.Day;
 import javax.swing.JTextPane;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
@@ -151,12 +154,22 @@ public class BattleScreen {
 		frmBattlescreen.getContentPane().setLayout(null);
 		
 //		JTextPane textAreaPlayer = new JTextPane();
-		textAreaPlayer.setText(team.toString());
+		
+//		ArrayList<ImageIcon> monsterImgs = new ArrayList<ImageIcon>();
+//		
+//		for (Monster monster: team) {	
+//			monsterImgs.add(monster.getImg());
+//		}
+		
+
+//		textAreaPlayer.setWrapStyleWord(true);
+		textAreaPlayer.setEditable(false);
+		textAreaPlayer.setText(team.toString().replaceAll("[\\[\\],]","").trim());
 		textAreaPlayer.setBounds(34, 38, 228, 426);
 		frmBattlescreen.getContentPane().add(textAreaPlayer);
-		
+
 //		JTextPane textAreaGame = new JTextPane();
-		textAreaGame.setText(monstersToFight.toString());
+		textAreaGame.setText(monstersToFight.toString().replaceAll("[\\[\\],]","").trim());
 		textAreaGame.setBounds(569, 38, 228, 426);
 		frmBattlescreen.getContentPane().add(textAreaGame);
 		
@@ -199,6 +212,21 @@ public class BattleScreen {
 		textPaneGameMonster.setText("Us: "+((monstersToFight.get(0))).getDescription());
 		textPaneGameMonster.setBounds(431, 38, 128, 120);
 		frmBattlescreen.getContentPane().add(textPaneGameMonster);
+		
+		JLabel lblVsLabel = new JLabel("Vs.");
+		lblVsLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblVsLabel.setBounds(405, 80, 23, 19);
+		frmBattlescreen.getContentPane().add(lblVsLabel);
+		
+		JLabel lblYourTeamLabel = new JLabel("Your team:");
+		lblYourTeamLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblYourTeamLabel.setBounds(34, 10, 169, 18);
+		frmBattlescreen.getContentPane().add(lblYourTeamLabel);
+		
+		JLabel lblGameTeam = new JLabel("Game team:");
+		lblGameTeam.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblGameTeam.setBounds(569, 10, 169, 18);
+		frmBattlescreen.getContentPane().add(lblGameTeam);
 		
 		
 		
@@ -267,8 +295,8 @@ public class BattleScreen {
 	public void updateStatus(String winner) {
 		setTeam(getCurrentTeam(actualTeam.getTeam()));
 		textPaneFight.setText(winner);
-		textAreaPlayer.setText(getTeamBattle().toString());
-		textAreaGame.setText(monstersToFight.toString());
+		textAreaPlayer.setText(getTeamBattle().toString().replaceAll("[\\[\\],]","").trim());
+		textAreaGame.setText(monstersToFight.toString().replaceAll("[\\[\\],]","").trim());
 		
 //		textPanePlayerMonster.setText("You: "+(team.get(0)).getDescription());
 //		textPaneGameMonster.setText("Us: "+((monstersToFight.get(0))).getDescription());
