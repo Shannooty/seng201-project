@@ -249,7 +249,7 @@ public class SetupScreen {
 				    break;
 				}
 				
-				Player player = new Player(username.getText(), startingMonster);
+				Player player = new Player(username.getText(), startingMonster, gameEnvironment);
 				gameEnvironment.setPlayer(player);
 				gameEnvironment.setGameLength(gameLengthSlider.getValue());				
 				gameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()-1));

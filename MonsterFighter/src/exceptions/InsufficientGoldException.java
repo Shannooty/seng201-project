@@ -1,5 +1,8 @@
 package exceptions;
 
+import gui.GameEnvironment;
+import gui.ShopBuy;
+
 /**
  * 
  * @author
@@ -21,7 +24,8 @@ public class InsufficientGoldException extends IllegalArgumentException {
 	 * Constructor for InsufficientGoldException. Calls the SuperClass constructor for IllegalArgumentException.
 	 * @param message, of type String. The message to pass to the SuperClass constructor.
 	 */
-	public InsufficientGoldException(String message) {
+	public InsufficientGoldException(String message, GameEnvironment gameEnvironment) {
 		super(message);
+		gameEnvironment.getShopBuyScreen().insufficientGoldPopUp(message);
 	}
 }

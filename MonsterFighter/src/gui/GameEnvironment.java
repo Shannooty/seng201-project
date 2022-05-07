@@ -17,6 +17,7 @@ public class GameEnvironment {
 	private ArrayList<Monster> startingMonsters = new ArrayList<Monster>();
 	private Day today;
 	private static Leaderboard leaderboard = new Leaderboard();
+	private ShopBuy shopBuyScreen;
 
 	
 	public GameEnvironment() {
@@ -130,11 +131,15 @@ public class GameEnvironment {
 	
 	
 	public void launchShopBuyScreen(){
-		ShopBuy shopBuyScreen = new ShopBuy(this, today.getTodaysShop());
+		shopBuyScreen = new ShopBuy(this, today.getTodaysShop());
 	}
 	
 	public void closeShopBuyScreen(ShopBuy shopBuyWindow) {
 		shopBuyWindow.closeWindow();
+	}
+	
+	public ShopBuy getShopBuyScreen() {
+		return shopBuyScreen;
 	}
 	
 	

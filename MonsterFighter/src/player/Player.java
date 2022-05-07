@@ -4,6 +4,7 @@ package player;
 
 import exceptions.InsufficientGoldException;
 import exceptions.NegativeValueException;
+import gui.GameEnvironment;
 import purchasable.monsters.Monster;
 
 /**
@@ -34,6 +35,8 @@ public class Player {
 	private Inventory inventory;
 //	private Team team;
 	
+	private GameEnvironment gameEnvironment;
+	
 	
 	/**
 	 * Constructor for the class Player. Sets the player's name using the setName() method, and adds the player's starting monster to their inventory using the setInventory() method.
@@ -41,6 +44,19 @@ public class Player {
 	 * @param startingMonster, of type Monster. The user's starting Monster.
 	 */
 	public Player(String name, Monster startingMonster) {
+		setName(name);
+		setInventory(new Inventory(startingMonster));
+		score = new PlayerScore(this);
+	}
+	
+	/**
+	 * Constructor for the class Player. Sets the player's name using the setName() method, and adds the player's starting monster to their inventory using the setInventory() method.
+	 * @param name, of type String. The player's username.
+	 * @param startingMonster, of type Monster. The user's starting Monster.
+	 * @param gameEnvironment, of type GameEnvironment. Used to access the current instance of a class.
+	 */
+	public Player(String name, Monster startingMonster, GameEnvironment gameEnvironment) {
+		this.gameEnvironment = gameEnvironment;
 		setName(name);
 		setInventory(new Inventory(startingMonster));
 		score = new PlayerScore(this);
@@ -90,7 +106,7 @@ public class Player {
 	public void removeGold(double gold) {
 		
 		if (getGoldAmount() < gold) {
-			throw new InsufficientGoldException("Insufficient Gold");
+			throw new InsufficientGoldException("Insufficient Gold", gameEnvironment);
 		} else if (gold < 0) {
 			throw new NegativeValueException("Cannot remove negative gold");
 		} else {

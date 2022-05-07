@@ -311,4 +311,8 @@ public class ShopBuy {
 		getTxtDescription().setText(itemString);
 	}
 	
+	public void insufficientGoldPopUp(String message) {
+		JOptionPane.showMessageDialog(frmShopbuy, message);
+	}
+	
 }
