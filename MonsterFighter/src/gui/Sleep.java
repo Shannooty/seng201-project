@@ -120,14 +120,21 @@ public class Sleep {
 		frmSleep.getContentPane().add(lblGainedGoldPoints);
 		
 		JLabel lblRandomEvent = new JLabel();
+		
+		
 		String event = randomEvent.runRandomEvent();
 		
 		ArrayList<Monster> team = gameEnvironment.getPlayer().getInventory().getTeam().getTeam();
 		for (Monster monster : team) {
 			monster.addHealth(monster.getMaxHealth());
 		}
-				
-		lblRandomEvent.setText("Random event "+event+" occured.");
+
+		if (event == "Nothing") {
+			lblRandomEvent.setText("No random event occurred.");
+		} else {
+			lblRandomEvent.setText("Random event "+event+" occured.");
+		}
+		
 		lblRandomEvent.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblRandomEvent.setBounds(257, 253, 328, 20);
 		frmSleep.getContentPane().add(lblRandomEvent);
