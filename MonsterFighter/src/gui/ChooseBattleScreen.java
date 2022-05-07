@@ -182,7 +182,7 @@ public class ChooseBattleScreen {
 		JButton btnStartBattle = new JButton("Start Battle");
 		btnStartBattle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int choice = JOptionPane.showConfirmDialog(frmChoosebattle, "Are you sure you want to start this battle?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
+				int choice = JOptionPane.showConfirmDialog(frmChoosebattle, "Are you sure you want to start this battle?",  "Battle Pop-Up", JOptionPane.YES_NO_OPTION);
 				if (choice == JOptionPane.YES_OPTION) {
 						gameEnvironment.launchBattleScreen(selectedBattle);
 						finishedWindow();
