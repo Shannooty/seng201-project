@@ -25,9 +25,12 @@ import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.util.Hashtable;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.event.DocumentEvent;
@@ -36,6 +39,7 @@ import javax.swing.event.DocumentListener;
 import day.Day;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 
 
@@ -77,7 +81,7 @@ public class SetupScreen {
 //	private String difficulty;
 	
 	/**
-	 * Attribute username of type JTextField. The user's username.
+	 * Attribute username of type JFormattedTextField. The user's username.
 	 */
 	private JTextField username;
 	
@@ -281,21 +285,47 @@ public class SetupScreen {
 	
 		username.getDocument().addDocumentListener(new DocumentListener() {
 		  public void changedUpdate(DocumentEvent e) {
-			 enableButton();
+			  checker();
 		  }
+		  
 		  public void removeUpdate(DocumentEvent e) {
-			  enableButton();
+			  checker();
 		  }
+		  
 		  public void insertUpdate(DocumentEvent e) {
-			  enableButton();
+			  checker();		  
 		  }
 
 		  public void enableButton() {
 		     if (btnNext.isEnabled() == false) {
 		    	 btnNext.setEnabled(true);
 		     }
-		     
 		  }
+		  
+		  public void disableButton() {
+		     if (btnNext.isEnabled() == true) {
+		    	 btnNext.setEnabled(false);
+		     }
+		  }
+		  
+		  
+		  public void checker() {
+			  Pattern p = Pattern.compile("[^A-Za-z]");
+			  Matcher m = p.matcher(username.getText());
+			  boolean b = m.find();
+			  
+			  if (b) {
+				  JOptionPane.showMessageDialog(frmSetup,
+						    "Username cannot contain numbers or special characters.",
+						    "Username Error",
+						    JOptionPane.ERROR_MESSAGE);
+				  disableButton();
+			  } else {
+				  enableButton();
+			  }	
+		  }
+		  
+		  
 		});
 	}
 }
