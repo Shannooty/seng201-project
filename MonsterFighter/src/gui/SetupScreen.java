@@ -151,11 +151,14 @@ public class SetupScreen {
 		frmSetup.getContentPane().setLayout(null);
 		
 		
-		imagesToUse = new ImageIcon[4]; 
+		imagesToUse = new ImageIcon[6]; 
 		imagesToUse[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
 		imagesToUse[1] = new ImageIcon(ImageCarousel.class.getResource("/images/slime.png"), "slime");
 		imagesToUse[2] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), "zombie");
 		imagesToUse[3] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard.png"), "undeadGuard");
+		imagesToUse[4] = new ImageIcon(ImageCarousel.class.getResource("/images/dinosaur.png"), "dinosaur");
+		imagesToUse[5] = new ImageIcon(ImageCarousel.class.getResource("/images/snake.png"), "snake");
+
 		
 		
 		ImageCarousel images = new ImageCarousel(imagesToUse, type);
@@ -247,6 +250,14 @@ public class SetupScreen {
 					startingMonster = new UndeadGuard();
 					startingMonster.setInitialID();
 				    break;
+				  case "dinosaur":
+						startingMonster = new Dinosaur();
+						startingMonster.setInitialID();
+					    break;
+				  case "snake":
+						startingMonster = new Snake();
+						startingMonster.setInitialID();
+					    break;
 				}
 				
 				gameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()-1));

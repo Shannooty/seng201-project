@@ -3,7 +3,7 @@ package generators.registries;
 import java.util.Random;
 
 public enum AvalibleMonsters {
-	SLIME, ZOMBIE, UNDEADGUARD, SKELETON;
+	SLIME, ZOMBIE, UNDEADGUARD, SKELETON, DINOSAUR, SNAKE;
 	
 	private static final AvalibleMonsters[] VALUES = AvalibleMonsters.values();
 	

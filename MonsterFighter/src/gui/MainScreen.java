@@ -121,20 +121,30 @@ public class MainScreen {
 		
 		for (int i = 0; i < team.size(); i++) {
 			
-			switch ((team.get(i)).getMonsterType()) {
-			  case "skeleton":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), Integer.toString((team.get(i)).getID()));
-			    break;
-			  case "slime":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime.png"), Integer.toString((team.get(i)).getID()));
-			    break;
-			  case "zombie":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), Integer.toString((team.get(i)).getID()));
-			    break;
-			  case "undeadGuard":
-				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard.png"), Integer.toString((team.get(i)).getID()));
-			    break;
-			}
+			String type = "/images/"+(team.get(i)).getMonsterType()+".png";			
+			imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource(type), Integer.toString((team.get(i)).getID()));
+
+			
+//			switch ((team.get(i)).getMonsterType()) {
+//			  case "skeleton":
+//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), Integer.toString((team.get(i)).getID()));
+//			    break;
+//			  case "slime":
+//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime.png"), Integer.toString((team.get(i)).getID()));
+//			    break;
+//			  case "zombie":
+//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), Integer.toString((team.get(i)).getID()));
+//			    break;
+//			  case "undeadGuard":
+//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard.png"), Integer.toString((team.get(i)).getID()));
+//			    break;
+//			  case "snake":
+//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/snake.png"), Integer.toString((team.get(i)).getID()));
+//			    break;
+//			  case "dinosaur":
+//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/dinosaur.png"), Integer.toString((team.get(i)).getID()));
+//			    break;
+//			}
 			
 		}
 		

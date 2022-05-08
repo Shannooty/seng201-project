@@ -17,6 +17,10 @@ public class MonsterGenerator extends Generator {
 			return new UndeadGuard();
 		case ZOMBIE:
 			return new Zombie();
+		case DINOSAUR:
+			return new Dinosaur();
+		case SNAKE:
+			return new Snake();
 		default:
 			return null;
 		}

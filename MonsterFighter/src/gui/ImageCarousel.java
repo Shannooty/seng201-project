@@ -61,6 +61,7 @@ public class ImageCarousel extends JPanel implements ActionListener {
 		JPanel imagePanel = new JPanel();
 
 		images = givenImages;
+		
 		imageSpace = new JLabel("",JLabel.CENTER); 
 		add(imageSpace,BorderLayout.CENTER);
 
