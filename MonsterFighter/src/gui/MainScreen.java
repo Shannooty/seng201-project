@@ -121,7 +121,14 @@ public class MainScreen {
 		
 		for (int i = 0; i < team.size(); i++) {
 			
-			String type = "/images/"+(team.get(i)).getMonsterType()+".png";			
+			String type;
+			
+			if ((team.get(i)).getMonsterType() == "undeadGuard") {
+				type = "/images/undead_guard.png";	
+			} else {
+				type = "/images/"+(team.get(i)).getMonsterType()+".png";			
+			}
+			
 			imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource(type), Integer.toString((team.get(i)).getID()));
 
 			
