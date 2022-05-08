@@ -77,28 +77,28 @@ public class EndScreen {
 		JLabel lblGameOver = new JLabel("Game Over!");
 		lblGameOver.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGameOver.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblGameOver.setBounds(248, 11, 337, 53);
+		lblGameOver.setBounds(295, 10, 244, 53);
 		frame.getContentPane().add(lblGameOver);
 		
 		String scoreMessage = "Score : " + getPlayer().getPoints();
 		
 		JLabel lblScore = new JLabel(scoreMessage);
 		lblScore.setHorizontalAlignment(SwingConstants.CENTER);
-		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblScore.setBounds(257, 61, 320, 53);
+		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblScore.setBounds(429, 88, 95, 28);
 		frame.getContentPane().add(lblScore);
 		
 		JLabel lblLeaderboard = new JLabel("Leaderboard");
 		lblLeaderboard.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblLeaderboard.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLeaderboard.setBounds(295, 115, 244, 46);
+		lblLeaderboard.setBounds(295, 151, 244, 37);
 		frame.getContentPane().add(lblLeaderboard);
 		
 		JList<String> listLeaderboard = new JList<String>(loadLeaderboard());
 		listLeaderboard.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listLeaderboard.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		listLeaderboard.setVisibleRowCount(20);
-		listLeaderboard.setBounds(295, 157, 244, 306);
+		listLeaderboard.setBounds(295, 190, 244, 273);
 		frame.getContentPane().add(listLeaderboard);
 		listLeaderboard.setSelectedIndex(getPlayerPosition());
 		listLeaderboard.addListSelectionListener(new ListSelectionListener() {
@@ -125,6 +125,24 @@ public class EndScreen {
 		});
 		btnQuit.setBounds(429, 478, 110, 28);
 		frame.getContentPane().add(btnQuit);
+		
+		JLabel lblPlayer = new JLabel("Player : "+player.getName());
+		lblPlayer.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPlayer.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		lblPlayer.setBounds(211, 88, 219, 28);
+		frame.getContentPane().add(lblPlayer);
+		
+		JLabel lblGold = new JLabel("Gold : "+ player.getGoldAmount());
+		lblGold.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGold.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblGold.setBounds(429, 113, 101, 28);
+		frame.getContentPane().add(lblGold);
+		
+		JLabel lblDuration = new JLabel("Duration : "+ gameEnvironment.getGameLength()+" days.");
+		lblDuration.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDuration.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		lblDuration.setBounds(429, 60, 156, 28);
+		frame.getContentPane().add(lblDuration);
 	}
 
 	private int getPlayerPosition() {
@@ -142,5 +160,4 @@ public class EndScreen {
 	private void setPlayer(Player player) {
 		this.player = player;
 	}
-
 }
