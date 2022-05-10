@@ -43,6 +43,7 @@ class RandomEventTest {
 		validEvents.add("MonsterLeaves");
 		validEvents.add("NewMonsterJoins");
 		validEvents.add("MonsterLevelsUp");
+		validEvents.add("Nothing");
 		
 		String outputEvent;
 		
