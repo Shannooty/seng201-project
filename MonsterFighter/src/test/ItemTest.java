@@ -47,9 +47,15 @@ class ItemTest {
 		testWeapon.use(testMonster);
 		assertTrue(testMonster.getAttackAmount() == monsterOldDamage + testWeapon.getDamage());
 		
+		//Test adding food to full health monster
 		int monsterOldHealth = testMonster.getHealth();
 		testFood.use(testMonster);
-		assertTrue(testMonster.getHealth() == monsterOldHealth + testFood.getHealAmount());
+		assertEquals(monsterOldHealth, testMonster.getHealth());
+		
+		testMonster.removeHealth(500);
+		monsterOldHealth = testMonster.getHealth();
+		testFood.use(testMonster);
+		assertEquals(testMonster.getHealth(), monsterOldHealth + testFood.getHealAmount());
 		
 		int monsterOldMaxHealth = testMonster.getMaxHealth();
 		int monsterOldArmorAmount = testMonster.getArmorAmount();
@@ -57,15 +63,5 @@ class ItemTest {
 		assertTrue(testMonster.getMaxHealth() == monsterOldMaxHealth + testArmor.getHealthIncrease());
 		assertTrue(testMonster.getArmorAmount() == monsterOldArmorAmount + testArmor.getArmorIncrease());
 	}
-
-//	@Test
-//	void testCreateDescription() {
-//		fail("Not yet implemented");
-//	}
-//
-//	@Test
-//	void testGetSellBackDescription() {
-//		fail("Not yet implemented");
-//	}
 
 }
