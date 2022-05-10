@@ -6,6 +6,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import gui.GameEnvironment;
 import player.Player;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
@@ -16,11 +17,12 @@ class ShopTest {
 	
 	private Shop testShop;
 	private Player testPlayer;
+	private GameEnvironment game = new GameEnvironment();
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		testShop = new Shop(5,5);
-		testPlayer = new Player("Crash Test Dummy", new Slime());
+		testPlayer = new Player("Crash Test Dummy", new Slime(), game);
 	}
 
 	@AfterEach
