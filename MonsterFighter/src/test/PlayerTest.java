@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import exceptions.InsufficientGoldException;
 import exceptions.NegativeValueException;
+import gui.GameEnvironment;
 import player.Inventory;
 import player.Player;
 import purchasable.monsters.Slime;
@@ -15,11 +16,12 @@ import purchasable.monsters.Slime;
 class PlayerTest {
 	
 	private Player testPlayer;
+	private GameEnvironment game = new GameEnvironment();
 	
 	@BeforeEach
 	void setUp() throws Exception {
 		Slime startingMonster = new Slime();
-		testPlayer = new Player("Test dummy", startingMonster);
+		testPlayer = new Player("Test dummy", startingMonster, game);
 	}
 
 	@AfterEach
