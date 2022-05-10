@@ -12,6 +12,7 @@ import purchasable.items.Item;
 import purchasable.items.armors.*;
 import purchasable.items.food.*;
 import purchasable.items.weapons.*;
+import purchasable.monsters.Dinosaur;
 import purchasable.monsters.Monster;
 
 class ItemTest {
@@ -27,6 +28,7 @@ class ItemTest {
 		testWeapon = new Knife();
 		testFood = new Apple();
 		testArmor = new Shield();
+		testMonster = new Dinosaur();
 	}
 
 	@AfterEach
@@ -34,6 +36,7 @@ class ItemTest {
 		testWeapon = null;
 		testFood = null;
 		testArmor = null;
+		testMonster = null;
 	}
 
 
