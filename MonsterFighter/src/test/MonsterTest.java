@@ -18,7 +18,7 @@ import purchasable.monsters.*;
 
 class MonsterTest {
 	
-	private GameEnvironment gamenEvironment = new GameEnvironment();
+	private GameEnvironment gameEnvironment = new GameEnvironment();
 	private Monster testMonster;
 	private Armor testArmor;
 	private Weapon testWeapon;
@@ -29,7 +29,7 @@ class MonsterTest {
 		testMonster = new Slime();
 		testArmor = new Chainmail();
 		testWeapon = new SledgeHammer();
-		testPlayer = new Player("Tom", new Skeleton());
+		testPlayer = new Player("Tom", new Skeleton(), gameEnvironment);
 		testPlayer.addGold(10000);
 	}
 
