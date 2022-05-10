@@ -60,5 +60,10 @@ class ItemTest {
 		assertTrue(testMonster.getMaxHealth() == monsterOldMaxHealth + testArmor.getHealthIncrease());
 		assertTrue(testMonster.getArmorAmount() == monsterOldArmorAmount + testArmor.getArmorIncrease());
 	}
+	
+	@Test
+	void testSell() {
+		
+	}
 
 }
