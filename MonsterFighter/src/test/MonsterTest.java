@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import exceptions.NegativeValueException;
+import gui.GameEnvironment;
 import player.Player;
 import player.Team;
 import purchasable.items.armors.*;
@@ -17,6 +18,7 @@ import purchasable.monsters.*;
 
 class MonsterTest {
 	
+	private GameEnvironment gamenEvironment = new GameEnvironment();
 	private Monster testMonster;
 	private Armor testArmor;
 	private Weapon testWeapon;

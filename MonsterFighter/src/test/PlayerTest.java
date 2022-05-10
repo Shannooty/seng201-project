@@ -21,6 +21,7 @@ class PlayerTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		Slime startingMonster = new Slime();
+		game.setGameDifficulty("Easy");
 		testPlayer = new Player("Test dummy", startingMonster, game);
 	}
 
