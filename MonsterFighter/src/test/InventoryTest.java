@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import gui.GameEnvironment;
 import player.Inventory;
 import purchasable.items.*;
 import purchasable.items.armors.*;
@@ -21,6 +22,7 @@ class InventoryTest {
 	private Inventory testInventory;
 	private ArrayList<Item> testItems = new ArrayList<Item>();
 	private ArrayList<Monster> testMonsters = new ArrayList<Monster>();
+	private GameEnvironment gameEnvironmanet = new GameEnvironment();
 	
 	
 	private void fillTestArrays() {
@@ -38,7 +40,7 @@ class InventoryTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		Slime startingMonster = new Slime();
-		testInventory = new Inventory(startingMonster);
+		testInventory = new Inventory(startingMonster, gameEnvironmanet);
 		fillTestArrays();
 	}
 
