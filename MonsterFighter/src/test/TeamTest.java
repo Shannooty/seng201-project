@@ -92,10 +92,10 @@ class TeamTest {
 		assertEquals(4, testTeam.getTeam().size());
 		
 		//Try adding more monsters than the limit
-		TeamFullException negativeValueException = assertThrows(TeamFullException.class, 
+		TeamFullException teamFullException = assertThrows(TeamFullException.class, 
 				() -> testTeam.add(testMonsters.get(4)));
 		
-		assertEquals("Team cannot have more than 4 members", negativeValueException.getMessage());
+		assertEquals("Team cannot have more than 4 members.", teamFullException.getMessage());
 		assertEquals(4, testTeam.getTeam().size());
 	}
 	
