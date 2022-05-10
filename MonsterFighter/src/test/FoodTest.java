@@ -10,41 +10,32 @@ import org.junit.jupiter.api.Test;
 
 import purchasable.items.Item;
 import purchasable.items.food.*;
+import purchasable.monsters.Dinosaur;
+import purchasable.monsters.Monster;
 
 class FoodTest {
 //	NOTE: NOT SURE IF THIS TEST IS NECESSARY
 
 	private Food testFood;
+	private Monster testMonster;
 
 
 	@BeforeEach
 	void setUp() throws Exception {
 		testFood = new Apple();
+		testMonster = new Dinosaur();
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		testFood = null;
+		testMonster = null;
 	}
 
 	@Test
 	void testUse() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testFood() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testGetHealAmount() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	void testSetHealAmount() {
-		fail("Not yet implemented");
+		int foodHealAmount = testFood.getHealAmount();
+		
 	}
 
 }
