@@ -62,6 +62,15 @@ class FoodTest {
 		assertEquals(290, testMonster.getHealth());
 
 		
+		testBread.use(testMonster);
+		testBread.use(testMonster);
+		testBread.use(testMonster);
+		testBread.use(testMonster);
+		testBread.use(testMonster);
+		assertEquals(800, testMonster.getHealth());
+
+		
+		
 		
 		
 
