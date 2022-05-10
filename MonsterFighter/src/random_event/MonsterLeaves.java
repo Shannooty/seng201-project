@@ -26,7 +26,6 @@ public class MonsterLeaves extends RandomEvent {
 	 * Removes the Monster from the team variable in Inventory. Returns void.
 	 */
 	public void removeMonster() {
-		//TODO FIX THIS
 		getPlayerTeam().getTeam().remove(randomItem.nextInt(getPlayerTeam().size()));
 	}
 	
