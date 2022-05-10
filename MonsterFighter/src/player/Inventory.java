@@ -23,22 +23,22 @@ public class Inventory {
 	/**
 	 * Attribute team of type Team. The players team.
 	 */
-	private Team team;
+	private Team team = new Team(new GameEnvironment());
 	
-	private GameEnvironment gameEnvironment;
 	
 	
 	/**
 	 * Constructor for the class Inventory. Calls the addMonster() method to add the given startingMonster to the player's inventory.
 	 * @param startingMonster, type Monster. The user's starting monster.
 	 */
-	public Inventory(Monster startingMonster) {
-		addMonster(startingMonster);
-	}
+//	public Inventory(Monster startingMonster) {
+//		addMonster(startingMonster);
+//		team = new Team(gameManager);
+//
+//	}
 	
 	
 	public Inventory(Monster startingMonster, GameEnvironment gameManager) {
-		gameEnvironment = gameManager;
 		team = new Team(gameManager);
 		addMonster(startingMonster);
 	}

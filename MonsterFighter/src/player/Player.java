@@ -45,7 +45,7 @@ public class Player {
 	 */
 	public Player(String name, Monster startingMonster) {
 		setName(name);
-		setInventory(new Inventory(startingMonster));
+		setInventory(new Inventory(startingMonster, gameEnvironment));
 		score = new PlayerScore(this);
 	}
 	
