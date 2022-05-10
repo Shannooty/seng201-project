@@ -18,6 +18,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JToggleButton;
 
+import exceptions.InsufficientGoldException;
 import gui.customElements.*;
 import player.Inventory;
 import player.Player;
@@ -219,13 +220,24 @@ public class ShopBuy {
 				if (choice == JOptionPane.YES_OPTION) {
 
 					if (selectedMonster != null && showMonsters.isSelected() == true) {
-						shop.purchase(selectedMonster, player);
+						try {
+							shop.purchase(selectedMonster, player);
+
+						} catch (InsufficientGoldException ex) {
+							gameEnvironment.getShopBuyScreen().insufficientGoldPopUp(ex.getMessage());
+						}
+						
 						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters(), type);
 						scrollPane.setViewportView(monsterPanel);
 					} 
 					
 					if (selectedItem != null && showItems.isSelected() == true) {
-						shop.purchase(selectedItem, player);
+						try {
+							shop.purchase(selectedItem, player);
+						} catch (InsufficientGoldException ex) {
+							gameEnvironment.getShopBuyScreen().insufficientGoldPopUp(ex.getMessage());
+						}
+						
 						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleItems(), type);
 						scrollPane.setViewportView(itemPanel);
 					}

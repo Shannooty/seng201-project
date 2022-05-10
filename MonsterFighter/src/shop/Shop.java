@@ -132,26 +132,26 @@ public class Shop {
 	 * @param player player who's purchasing
 	 */
 	public void purchase(Item purchaseItem, Player player) {
-		try {
+//		try {
 			purchaseItem.buy(player);
 			removeItem(purchaseItem);
-		}
-		catch (InsufficientGoldException e) {
-			System.out.print(e.getMessage());
-		}
+//		}
+//		catch (InsufficientGoldException e) {
+//			System.out.println(e.getMessage());
+//		}
 	}
 	/**
 	 * Purchases the monster from the store
 	 * @param purchaseMonster Monster being brought
 	 * @param player the player who's buying
 	 */
-	public void purchase(Monster purchaseMonster, Player player) {
-		try {
+	public void purchase(Monster purchaseMonster, Player player) throws InsufficientGoldException {
+//		try {
 			purchaseMonster.buy(player);
 			removeMonster(purchaseMonster);
-		}
-		catch (InsufficientGoldException e) {
-			System.out.print(e.getMessage());
-		}
+//		}
+//		catch (InsufficientGoldException e) {
+//			System.out.print("Gdgdgdg");
+//		}
 	}
 }

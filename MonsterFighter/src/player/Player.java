@@ -102,7 +102,9 @@ public class Player {
 	public void removeGold(double gold) {
 		
 		if (getGoldAmount() < gold) {
-			throw new InsufficientGoldException("Insufficient Gold", gameEnvironment);
+//			gameEnvironment.getShopBuyScreen().insufficientGoldPopUp("Insufficient Gold");
+			throw new InsufficientGoldException("Insufficient Gold");
+
 		} else if (gold < 0) {
 			throw new NegativeValueException("Cannot remove negative gold");
 		} else {

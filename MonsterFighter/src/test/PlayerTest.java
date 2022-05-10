@@ -32,7 +32,7 @@ class PlayerTest {
 
 	@Test
 	void testAddGold() {
-		testPlayer.addGold(900);
+		testPlayer.addGold(875);
 		assertEquals(1000, testPlayer.getGoldAmount());
 		
 		//Testing negative values, should be no change
@@ -49,7 +49,7 @@ class PlayerTest {
 	
 	@Test
 	void testRemoveGold() {
-		testPlayer.addGold(900);
+		testPlayer.addGold(875);
 		
 		testPlayer.removeGold(500);
 		assertEquals(500, testPlayer.getGoldAmount());
