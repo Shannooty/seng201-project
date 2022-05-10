@@ -17,12 +17,17 @@ class TeamTest {
 	
 	private Team testTeam;
 	private ArrayList<Monster> testMonsters = new ArrayList<Monster>();
-	private GameEnvironment gameEnvironment = new GameEnvironment();
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		testTeam = new Team(gameEnvironment);
+		testTeam = new Team();
 		setTestMonsters();
+	}
+	
+	@AfterEach
+	void tearDown() throws Exception {
+		testTeam = null;
+		testMonsters = null;
 	}
 	
 	private void setTestMonsters() {
@@ -59,12 +64,6 @@ class TeamTest {
 			}
 		}
 		return inOrder;
-	}
-	
-	@AfterEach
-	void tearDown() throws Exception {
-		testTeam = null;
-		testMonsters = null;
 	}
 
 	@Test

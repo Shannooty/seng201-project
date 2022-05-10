@@ -22,7 +22,7 @@ public class Player {
 	/**
 	 * Attribute goldAmount, of type double. The amount of gold the player has. Initialized to 100.
 	 */
-	private double goldAmount = 100;
+	private double goldAmount = 10000;
 	
 	/**
 	 * Attribute currentPoints, of type integer. The number of points the player has. Initialized to 0.
@@ -35,8 +35,6 @@ public class Player {
 	private Inventory inventory;
 //	private Team team;
 	
-	private GameEnvironment gameEnvironment;
-	
 	
 	/**
 	 * Constructor for the class Player. Sets the player's name using the setName() method, and adds the player's starting monster to their inventory using the setInventory() method.
@@ -45,9 +43,8 @@ public class Player {
 	 * @param gameEnvironment, of type GameEnvironment. Used to access the current instance of a class.
 	 */
 	public Player(String name, Monster startingMonster, GameEnvironment gameEnvironment) {
-		this.gameEnvironment = gameEnvironment;
 		setName(name);
-		setInventory(new Inventory(startingMonster, gameEnvironment));
+		setInventory(new Inventory(startingMonster));
 		score = new PlayerScore(this);
 		String difficulty = gameEnvironment.getGameDifficulty();
 		

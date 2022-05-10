@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 import javax.swing.JToggleButton;
 
 import exceptions.InsufficientGoldException;
+import exceptions.TeamFullException;
 import gui.customElements.*;
 import player.Inventory;
 import player.Player;
@@ -224,7 +225,9 @@ public class ShopBuy {
 							shop.purchase(selectedMonster, player);
 
 						} catch (InsufficientGoldException ex) {
-							gameEnvironment.getShopBuyScreen().insufficientGoldPopUp(ex.getMessage());
+							gameEnvironment.getShopBuyScreen().exceptionPopUp(ex.getMessage());
+						} catch (TeamFullException ex) {
+							gameEnvironment.getShopBuyScreen().exceptionPopUp(ex.getMessage());
 						}
 						
 						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters(), type);
@@ -235,7 +238,7 @@ public class ShopBuy {
 						try {
 							shop.purchase(selectedItem, player);
 						} catch (InsufficientGoldException ex) {
-							gameEnvironment.getShopBuyScreen().insufficientGoldPopUp(ex.getMessage());
+							gameEnvironment.getShopBuyScreen().exceptionPopUp(ex.getMessage());
 						}
 						
 						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleItems(), type);
@@ -323,7 +326,7 @@ public class ShopBuy {
 		getTxtDescription().setText(itemString);
 	}
 	
-	public void insufficientGoldPopUp(String message) {
+	public void exceptionPopUp(String message) {
 		JOptionPane.showMessageDialog(frmShopbuy, message);
 	}
 	

@@ -12,14 +12,11 @@ import purchasable.monsters.Monster;
  *
  */
 public class Team {
-	public ArrayList<Monster> team = new ArrayList<Monster>();
-	
-	public GameEnvironment gameEnvironment;
+	private ArrayList<Monster> team = new ArrayList<Monster>();
 	
 	
 	
-	public Team(GameEnvironment gameManager) {
-		gameEnvironment = gameManager;
+	public Team() {
 	}
 	
 	
@@ -39,7 +36,7 @@ public class Team {
 	public void add(Monster monster) {
 		if (monster != null) {
 			if (getTeam().size() == 4) {
-				throw new TeamFullException("Team cannot have more than 4 members.", gameEnvironment);
+				throw new TeamFullException("Team cannot have more than 4 members.");
 			}
 			
 			if (!getTeam().contains(monster)) {

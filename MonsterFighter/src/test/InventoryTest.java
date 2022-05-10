@@ -22,7 +22,6 @@ class InventoryTest {
 	private Inventory testInventory;
 	private ArrayList<Item> testItems = new ArrayList<Item>();
 	private ArrayList<Monster> testMonsters = new ArrayList<Monster>();
-	private GameEnvironment game = new GameEnvironment();
 	
 	
 	private void fillTestArrays() {
@@ -40,7 +39,7 @@ class InventoryTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		Slime startingMonster = new Slime();
-		testInventory = new Inventory(startingMonster, game);
+		testInventory = new Inventory(startingMonster);
 		fillTestArrays();
 	}
 
