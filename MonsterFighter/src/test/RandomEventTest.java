@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import generators.MonsterGenerator;
+import gui.GameEnvironment;
 import player.Player;
 import player.Team;
 import purchasable.monsters.Monster;
@@ -20,10 +21,11 @@ class RandomEventTest {
 	private Player testPlayer;
 	private Team playerTeam;
 	private Monster startingMonster = MonsterGenerator.newMonster();
+	private GameEnvironment game = new GameEnvironment();
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		testPlayer = new Player("Bob", startingMonster);
+		testPlayer = new Player("Bob", startingMonster, game);
 		playerTeam = testPlayer.getInventory().getTeam();
 		testEvent = new RandomEvent(testPlayer.getInventory());
 	}
