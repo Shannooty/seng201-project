@@ -86,7 +86,7 @@ class PlayerTest {
 		NegativeValueException negativeValueException = assertThrows(NegativeValueException.class, 
 				() -> testPlayer.addPoints(-200));
 		
-		assertEquals("Cannot add negative points", negativeValueException.getMessage());
+		assertEquals("Cannot add negative points to player", negativeValueException.getMessage());
 		assertEquals(1000, testPlayer.getPoints());
 	}
 	
