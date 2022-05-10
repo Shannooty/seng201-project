@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import exceptions.NegativeValueException;
+import gui.GameEnvironment;
 import player.Player;
 import player.PlayerScore;
 import purchasable.monsters.Slime;
@@ -18,10 +19,11 @@ class PlayerScoreTest {
 	private Player testPlayer;
 	private PlayerScore player1;
 	private PlayerScore player2;
+	private GameEnvironment game = new GameEnvironment();
 	
 	@BeforeEach
 	void setUp() throws Exception {
-		testPlayer = new Player("Bob", new Slime());
+		testPlayer = new Player("Bob", new Slime(), game);
 		player1 = new PlayerScore("Bede", "1000");
 		player2 = new PlayerScore("Celia", "1000");
 		testPlayer.addPoints(500);
