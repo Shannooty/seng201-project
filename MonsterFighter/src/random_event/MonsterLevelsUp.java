@@ -6,7 +6,8 @@ import purchasable.monsters.Monster;
 
 /**
  * 
- * @author 
+ * @author Bede Nathan
+ * @author Celia Allen
  *
  */
 public class MonsterLevelsUp extends RandomEvent {

@@ -11,7 +11,8 @@ import purchasable.monsters.Monster;
 
 /**
  * 
- * @author 
+ * @author Bede Nathan
+ * @author Celia Allen
  *
  */
 public class Shop {
@@ -80,7 +81,7 @@ public class Shop {
 	
 	/**
 	 * Returns an ArrayList of the available Monsters in the Shop.
-	 * @return avalibleMonsters, of type ArrayList<Monster>
+	 * @return avalibleMonsters, of type ArrayList[Monster]
 	 */
 	public ArrayList<Monster> getAvalibleMonsters(){
 		return avalibleMonsters;
@@ -88,7 +89,7 @@ public class Shop {
 	
 	/**
 	 * Returns an ArrayList of the available Items in the Shop.
-	 * @return availableItems, of type ArrayList<Item>
+	 * @return availableItems, of type ArrayList[Item]
 	 */
 	public ArrayList<Item> getAvalibleItems(){
 		return avalibleItems;

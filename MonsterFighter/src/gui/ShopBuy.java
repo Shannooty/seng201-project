@@ -34,7 +34,8 @@ import javax.swing.JPanel;
 
 /**
  * 
- * @author 
+ * @author Celia Allen
+ * @author Bede Nathan
  *
  */
 public class ShopBuy {

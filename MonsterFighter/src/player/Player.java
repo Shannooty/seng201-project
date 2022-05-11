@@ -9,7 +9,8 @@ import purchasable.monsters.Monster;
 
 /**
  * 
- * @author 
+ * @author Celia Allen
+ * @author Bede Nathan
  *
  */
 public class Player {

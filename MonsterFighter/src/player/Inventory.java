@@ -10,7 +10,8 @@ import purchasable.monsters.*;
 
 /**
  * 
- * @author 
+ * @author Bede Nathan
+ * @author Celia Allen
  *
  */
 public class Inventory {
@@ -74,7 +75,7 @@ public class Inventory {
 	
 	/**
 	 * Returns the private variable ownedItems, the Items that the player currently owns.
-	 * @return ownedItems, of type ArrayList<Item>.
+	 * @return ownedItems, of type ArrayList[Item].
 	 */
 	public ArrayList<Item> getItems(){
 		return ownedItems;
@@ -82,7 +83,7 @@ public class Inventory {
 	
 	/**
 	 * Returns the private variable team, the Monsters that the player currently owns.
-	 * @return team, or type ArrayList<Monster>
+	 * @return team, or type ArrayList[Monster]
 	 */
 	public Team getTeam(){
 		return team;

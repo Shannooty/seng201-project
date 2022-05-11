@@ -38,7 +38,7 @@ public class ImgInventoryPanel extends JPanel {
 	 * General constructor for the ImgInventoryPanel
 	 * @param pane The JScrollPane the panel will be added to
 	 * @param toDisplay The ArrayList of objects. Objects must implement HasImage interface
-	 * @param version Version string for different GUI screens
+	 * @param type, of type Object. Represents the gui screen that the constructor was called from.
 	 */
 	public ImgInventoryPanel(JScrollPane pane, ArrayList<? extends HasImage> toDisplay, Object type) {
 		if (toDisplay.size() > 0) {

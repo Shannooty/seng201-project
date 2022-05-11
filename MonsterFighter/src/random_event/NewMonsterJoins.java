@@ -10,7 +10,8 @@ import purchasable.monsters.*;
 
 /**
  * 
- * @author 
+ * @author Bede Nathan
+ * @author Celia Allen
  *
  */
 public class NewMonsterJoins extends RandomEvent {
@@ -29,7 +30,6 @@ public class NewMonsterJoins extends RandomEvent {
 	
 	/**
 	 * Creates a new Monster by calling the getNewMonster() method, and adds it to the player's team.
-	 * @param monsterType, of type AvailableMonsters. A list(????) of available monsters.
 	 */
 	public void createMonster() {
 		

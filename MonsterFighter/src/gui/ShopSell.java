@@ -27,7 +27,8 @@ import purchasable.monsters.*;
 
 /**
  * 
- * @author 
+ * @author Celia Allen
+ * @author Bede Nathan
  *
  */
 public class ShopSell {

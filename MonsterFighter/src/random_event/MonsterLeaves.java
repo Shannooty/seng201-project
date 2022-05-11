@@ -6,7 +6,8 @@ import player.Team;
 
 /**
  * 
- * @author
+ * @author Bede Nathan
+ * @author Celia Allen
  *
  */
 public class MonsterLeaves extends RandomEvent {

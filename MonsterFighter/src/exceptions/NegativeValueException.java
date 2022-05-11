@@ -2,7 +2,8 @@ package exceptions;
 
 /**
  * 
- * @author
+ * @author Bede Nathan
+ * @author Celia Allen
  *
  */
 public class NegativeValueException extends IllegalArgumentException {

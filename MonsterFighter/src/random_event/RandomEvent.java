@@ -13,7 +13,8 @@ import purchasable.monsters.Monster;
 
 /**
  * 
- * @author 
+ * @author Bede Nathan
+ * @author Celia Allen
  *
  */
 public class RandomEvent {
@@ -117,7 +118,7 @@ public class RandomEvent {
 
 	/**
 	 * Returns the player's team.
-	 * @return playerTeam, of type ArrayList<Monster>
+	 * @return playerTeam, of type ArrayList[Monster]
 	 */
 	public Team getPlayerTeam() {
 		return playerTeam;
@@ -125,7 +126,7 @@ public class RandomEvent {
 
 	/**
 	 * Sets the private variable playerTeam to the value of the playerTeam given to it. Return type void.
-	 * @param playerTeam, of type ArrayList<Monster>. The player's team.
+	 * @param playerTeam, of type ArrayList[Monster]. The player's team.
 	 */
 	public void setPlayerTeam(Team playerTeam) {
 		this.playerTeam = playerTeam;

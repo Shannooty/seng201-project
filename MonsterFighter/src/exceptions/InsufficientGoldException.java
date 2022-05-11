@@ -2,8 +2,8 @@ package exceptions;
 
 /**
  * 
- * @author
- *
+ * @author Bede Nathan
+ * @author Celia Allen
  */
 public class InsufficientGoldException extends IllegalArgumentException {
 

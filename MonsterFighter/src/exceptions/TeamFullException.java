@@ -4,7 +4,8 @@ import gui.GameEnvironment;
 
 /**
  * 
- * @author 
+ * @author Bede Nathan
+ * @author Celia Allen
  *
  */
 public class TeamFullException extends IllegalArgumentException {

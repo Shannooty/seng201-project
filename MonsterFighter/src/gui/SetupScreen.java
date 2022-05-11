@@ -45,7 +45,8 @@ import javax.swing.JSpinner;
 
 /**
  * 
- * @author 
+ * @author Celia Allen
+ * @author Bede Nathan
  *
  */
 public class SetupScreen {

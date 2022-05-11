@@ -15,7 +15,8 @@ import purchasable.monsters.*;
 
 /**
  * Creates a battle for the player to fight. 
- * @author 
+ * @author Celia Allen
+ * @author Bede Nathan
  *
  */
 public class Battle implements HasImage {
@@ -183,7 +184,7 @@ public class Battle implements HasImage {
 	
 	/**
 	 * Returns the monsters the player would have to fight.
-	 * @return monstersTofight, of type ArrayList<Monster>
+	 * @return monstersTofight, of type ArrayList[Monster]
 	 */
 	public ArrayList<Monster> getGameMonsters() {
 		return monstersTofight;

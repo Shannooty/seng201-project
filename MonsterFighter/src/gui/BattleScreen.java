@@ -26,7 +26,8 @@ import java.awt.event.ActionEvent;
 
 /**
  * 
- * @author
+ * @author Celia Allen
+ * @author Bede Nathan
  *
  */
 public class BattleScreen {
@@ -239,7 +240,7 @@ public class BattleScreen {
 	
 	/**
 	 * Returns an ArrayList of the all the player's Monsters who are not stunned.
-	 * @return team, of type ArrayList<Monster>.
+	 * @return team, of type ArrayList[Monster].
 	 */
 	public ArrayList<Monster> getTeamBattle() {
 		return team;
@@ -247,7 +248,7 @@ public class BattleScreen {
 	
 	/**
 	 * Sets the private variable team. Return type void.
-	 * @param team, of type ArrayList<Monster>. An ArrayList of the all the player's Monsters who are not stunned.
+	 * @param team, of type ArrayList[Monster]. An ArrayList of the all the player's Monsters who are not stunned.
 	 */
 	public void setTeam(ArrayList<Monster> team) {
 		this.team = team;
@@ -311,7 +312,7 @@ public class BattleScreen {
 	
 	/**
 	 * Filters the player's actual team for the Monsters who are not stunned, and returns an ArrayList of those Monsters.
-	 * @param actualTeam, of type ArrayList<Monster>. The player's actual team, including stunned Monsters.
+	 * @param actualTeam, of type ArrayList[Monster]. The player's actual team, including stunned Monsters.
 	 * @return an ArrayList of type Monster. All the player's Monsters who are not stunned.
 	 */
 	public ArrayList<Monster> getCurrentTeam(ArrayList<Monster> actualTeam) {

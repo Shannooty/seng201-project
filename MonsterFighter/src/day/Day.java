@@ -8,7 +8,8 @@ import player.Team;
 
 /**
  * Creates a new Day, which generates the available Battles for the player to fight.
- * @author
+ * @author Celia Allen
+ * @author Bede Nathan
  *
  */
 public class Day {
@@ -62,7 +63,7 @@ public class Day {
 	 * Constructor for the class Day. Sets the private variable gameEnvironment, and uses gameEnvironment to set the private variables player, team and difficulty. 
 	 * Sets the private attribute dayNumber using the setter setDayNumber() and gameEnvironment.
 	 * Instantiates a new Shop, and calls the method createDailyBattles().
-	 * @param gameEnvironment
+	 * @param gameEnvironment, of type GameEnvironment. Present so the Day class can call on methods in the GameEnvironment class.
 	 */
 	public Day(GameEnvironment gameEnvironment) {
 		this.gameEnvironment = gameEnvironment;
@@ -96,7 +97,7 @@ public class Day {
 	
 	/**
 	 * Returns the Battles that are available for the current day.
-	 * @return todaysBattles, of type ArrayList<Battle>.
+	 * @return todaysBattles, of type ArrayList[Battle].
 	 */
 	public ArrayList<Battle> getBattles(){
 		return todaysBattles;

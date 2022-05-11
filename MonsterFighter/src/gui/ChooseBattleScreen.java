@@ -80,7 +80,7 @@ public class ChooseBattleScreen {
 	 * Constructor for the class ChooseBattleScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. 
 	 * Sets the private variable difficulty through the GameEnvironment class.
 	 * Sets the private variable day via the method setDay(), and the private variable possibleBattles using the private variable day.
-	 * @param gameManager
+	 * @param gameManager, of type GameEnvironment.
 	 */
 	public ChooseBattleScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;

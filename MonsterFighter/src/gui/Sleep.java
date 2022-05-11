@@ -19,7 +19,8 @@ import java.awt.event.ActionEvent;
 
 /**
  * 
- * @author 
+ * @author Celia Allen
+ * @author Bede Nathan
  *
  */
 public class Sleep {

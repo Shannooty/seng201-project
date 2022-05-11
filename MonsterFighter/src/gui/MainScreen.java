@@ -29,7 +29,8 @@ import javax.swing.JEditorPane;
 
 /**
  * 
- * @author 
+ * @author Celia Allen
+ * @author Bede Nathan
  *
  */
 public class MainScreen {

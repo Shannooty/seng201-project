@@ -70,7 +70,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Removes health from the monster when damaged
-	 * @param damage damage dealt to the monster
+	 * @param rawDamage, of type int. Damage dealt to the monster
 	 */
 	public void removeHealth(int rawDamage) {
 		int damage = rawDamage - (getArmorAmount() / Monster.armorModifier);
@@ -275,7 +275,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Sets the stunned status for the monster
-	 * @param status
+	 * @param status, of type boolean. The current status of the Monster
 	 */
 	public void setStunnedStatus(boolean status) {
 		isStunned = status;
