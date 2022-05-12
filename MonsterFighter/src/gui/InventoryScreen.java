@@ -329,8 +329,8 @@ public class InventoryScreen {
 	 * Sets the text of the JTextArea txtDescriptionItem to the description of the currently selected Item. Filter's the player's inventory for the Item whose id matches the id given as a parameter.
 	 * @param id, of type String. The currently selected Item's unique id.
 	 */
-	public void setTxtrDescriptionItem(String text) {
-		List<Item> listOfItems = getInventory().getItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+	public void setTxtrDescriptionItem(String id) {
+		List<Item> listOfItems = getInventory().getItems().stream().filter(s -> id.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedItem(listOfItems.get(0));
 		String itemString = getSelectedItem().getSellBackDescription();
 		getTxtDescriptionItems().setText(itemString);
