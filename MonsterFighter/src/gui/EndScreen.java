@@ -78,7 +78,7 @@ public class EndScreen {
 	 * Returns a list of all the player's on the leaderboard and their score.
 	 * @return model, of type DefaultListModel[String]. 
 	 */
-	public DefaultListModel<String> loadLeaderboard() {
+	private DefaultListModel<String> loadLeaderboard() {
 		int position = 0;
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		
