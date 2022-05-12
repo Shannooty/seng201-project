@@ -10,7 +10,7 @@ import purchasable.items.Item;
 import purchasable.monsters.Monster;
 
 /**
- * 
+ * The shop that the player can buy/sell items/monsters from.
  * @author Bede Nathan
  * @author Celia Allen
  *
@@ -18,12 +18,12 @@ import purchasable.monsters.Monster;
 public class Shop {
 	
 	/**
-	 * Attribute availableMonster, of type ArrayList<Monster>. An ArrayList of the Monsters that are available to buy.
+	 * Attribute availableMonster, of type ArrayList[Monster]. An ArrayList of the Monsters that are available to buy.
 	 */
 	private ArrayList<Monster> avalibleMonsters = new ArrayList<Monster>();
 	
 	/**
-	 * Attribute availableItems, of type ArrayList<Item>. An ArrayList of Items that are available to buy.
+	 * Attribute availableItems, of type ArrayList[Item]. An ArrayList of Items that are available to buy.
 	 */
 	private ArrayList<Item> avalibleItems = new ArrayList<Item>();
 	
@@ -133,26 +133,16 @@ public class Shop {
 	 * @param player player who's purchasing
 	 */
 	public void purchase(Item purchaseItem, Player player) {
-//		try {
-			purchaseItem.buy(player);
-			removeItem(purchaseItem);
-//		}
-//		catch (InsufficientGoldException e) {
-//			System.out.println(e.getMessage());
-//		}
-	}
+		purchaseItem.buy(player);
+		removeItem(purchaseItem);
+}
 	/**
 	 * Purchases the monster from the store
 	 * @param purchaseMonster Monster being brought
 	 * @param player the player who's buying
 	 */
 	public void purchase(Monster purchaseMonster, Player player) throws InsufficientGoldException {
-//		try {
-			purchaseMonster.buy(player);
-			removeMonster(purchaseMonster);
-//		}
-//		catch (InsufficientGoldException e) {
-//			System.out.print("Gdgdgdg");
-//		}
+		purchaseMonster.buy(player);
+		removeMonster(purchaseMonster);
 	}
 }
