@@ -137,9 +137,45 @@ public class Battle implements HasImage {
 		points = Integer.parseInt(battle[1]);
 		numMonstersToFight = Integer.parseInt(battle[2]);
 		
+		setGameProgress();
+		setRewardValues();
+		setMonsterTeam();
+		
+		setImgPath("/images/battle.png");
+		setImg();
+	}
+	
+	/**
+	 * Sets the reward values based on game difficulty
+	 */
+	private void setRewardValues() {
+		if (difficulty == "Hard") {
+			gold -= 20;
+			points += 100;
+
+		} else if (difficulty == "Medium") {
+			gold -= 10;
+			points += 50;
+		}
+	}
+	
+	/**
+	 * Creates the Monster team to fight
+	 */
+	private void setMonsterTeam() {
+		for (int i = 0; i < numMonstersToFight; i++) {
+			Monster newMonster = MonsterGenerator.newMonster();
+			newMonster.setPurchasePrice(0);
+			monstersTofight.add(newMonster);
+		}
+	}
+	
+	/**
+	 * Sets the games progress to determine how many monsters there should be to fight
+	 */
+	private void setGameProgress() {
 		double gameProgress = (Double.valueOf(dayNum)/Double.valueOf(gameLength));
 
-		
 		if (gameProgress > 0.2 && gameProgress < 0.4) {
 			numMonstersToFight += 1;
 		} else if (gameProgress > 0.4 && gameProgress < 0.6) {
@@ -149,27 +185,7 @@ public class Battle implements HasImage {
 		} else if (gameProgress > 0.8) {
 			numMonstersToFight += 4;
 		}
-		
-		
-		if (difficulty == "Hard") {
-			gold -= 20;
-			points += 100;
-
-		} else if (difficulty == "Medium") {
-			gold -= 10;
-			points += 50;
-		}
-		
-		for (int i = 0; i < numMonstersToFight; i++) {
-			Monster newMonster = MonsterGenerator.newMonster();
-			newMonster.setPurchasePrice(0);
-			monstersTofight.add(newMonster);
-		}
-		
-		setImgPath("/images/battle.png");
-		setImg();
 	}
-
 	
 	/**
 	 * Returns the monsters the player would have to fight.
