@@ -18,7 +18,7 @@ import java.awt.event.ActionEvent;
 
 
 /**
- * 
+ * The screen that displays the amount of gold and points the user earned in the past day, as well as the random event that might or might not have occurred.
  * @author Celia Allen
  * @author Bede Nathan
  *
@@ -41,12 +41,21 @@ public class Sleep {
 	 */
 	private RandomEvent randomEvent;
 	
+	/**
+	 * Attribute pointsEarnedToday, of type Integer. The amount of gold that the player earned in the past day.
+	 */
 	private int pointsEarnedToday;
+	
+	/**
+	 * Attribute goldEarnedToday, of type double. The amount of points that the player earned in the past day.
+	 */
 	private double goldEarnedToday;
 	
 	/**
-	 * Constructor for the class Sleep. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
-	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
+	 * Constructor for the class Sleep. Sets the private attribute gameEnvironment to the gameManager given, and sets the private attributes pointsEarnedToday, goldEarnedToday and randomEvent. Calls the initialize() method, and sets the frame to visible.
+	 * @param gameManager, of type GameEnvironment. The game manager.
+	 * @param goldEarnedToday, of type double. The amount of gold the player earned in the past day.
+	 * @param pointsEarnedToday, of type integer. The amount of points the player earned in the past day.
 	 */
 	public Sleep(GameEnvironment gameManager, Double goldEarnedToday, int pointsEarnedToday) {
 		gameEnvironment = gameManager;
@@ -121,8 +130,6 @@ public class Sleep {
 		frmSleep.getContentPane().add(lblGainedGoldPoints);
 		
 		JLabel lblRandomEvent = new JLabel();
-		
-		
 		String event = randomEvent.runRandomEvent();
 		
 		ArrayList<Monster> team = gameEnvironment.getPlayer().getInventory().getTeam().getTeam();

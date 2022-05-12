@@ -33,7 +33,7 @@ import javax.swing.JPanel;
 
 
 /**
- * 
+ * The screen that displays the items/monsters the player can buy.
  * @author Celia Allen
  * @author Bede Nathan
  *
@@ -44,24 +44,12 @@ public class ShopBuy {
 	 * Attribute frmShopbuy of type JFrame. The frame which is displayed to the user. Contains the UI for ShopBuy.
 	 */
 	private JFrame frmShopbuy;
-	
-//	private ArrayList<String> monsters;
-	
+		
 	/**
 	 * Attribute txtDescription of type JTextArea. The area where the Item/Monster's description is displayed to the user.
 	 */
 	private JTextArea txtDescription = new JTextArea("");
-	
-//	/**
-//	 * Attribute gold of type double. The amount of gold the player currently has. 
-//	 */
-//	private double gold;
-	
-//	/**
-//	 * Attribute selectedCost of type double. The cost of the currently selected Item/Monster.
-//	 */
-//	private static double selectedCost;
-	
+
 	/**
 	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
 	 */
@@ -72,6 +60,9 @@ public class ShopBuy {
 	 */
 	private Player player;
 	
+	/**
+	 * Attribute shop of type Shop. The current shop.
+	 */
 	private Shop shop;
 	
 	/**
@@ -84,19 +75,16 @@ public class ShopBuy {
 	 */
 	private Item selectedItem;
 	
-	
+	/**
+	 * Attribute type of type Object. The current instance of ShopBuy.
+	 */
 	private Object type = this;
 	
 
-	
-	
-	JButton btnShowMonsters, btnShowItems;
-
-	
-
 	/**
-	 * Constructor for the class ShopBuy. Creates an instance of the class Shop, ShopBuy's parent. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
-	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
+	 * Constructor for the class ShopBuy. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
+	 * @param gameManager type GameEnvironment. The game manager.
+	 * @param shop, of type Shop. The current instance of Shop.
 	 */
 	public ShopBuy(GameEnvironment gameManager, Shop shop) {
 		gameEnvironment = gameManager;
@@ -133,16 +121,12 @@ public class ShopBuy {
 		frmShopbuy.getContentPane().setLayout(null);
 		ArrayList<Monster> monsterInfo = shop.getAvalibleMonsters();
 		ArrayList<Item> itemInfo = shop.getAvalibleItems();
-		
-		
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
 		scrollPane.setBounds(52, 88, 411, 343);
 		frmShopbuy.getContentPane().add(scrollPane);
-		
-		
-		
+
 		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, type);
 		scrollPane.setViewportView(monsterPanel);
 		
@@ -176,9 +160,7 @@ public class ShopBuy {
 			  }
 			} );
 		
-		
-		
-		
+
 		JLabel lblGoldAmount = new JLabel();
 		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -193,9 +175,7 @@ public class ShopBuy {
 		txtDescription.setEditable(false);
 		txtDescription.setBounds(473, 88, 302, 233);
 		frmShopbuy.getContentPane().add(txtDescription);
-		
 
-	
 		JButton btnShopSell = new JButton("Sell");
 		btnShopSell.addActionListener(new ActionListener() {
 			/**
@@ -215,7 +195,7 @@ public class ShopBuy {
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/**
-				 * Creates a pop-up window that asks the user if they are sure they want to buy the selected Item/Monster. Once the user confirms their choice, removes the gold using Player.removeGold(). Monster is added to the player's inventory.
+				 * Creates a pop-up window that asks the user if they are sure they want to buy the selected Item/Monster. Once the user confirms their choice, calls the method shop.purchase(selectedMonster, player) to take the player's gold, and add the Monster from the player's inventory if no exceptions are thrown.
 				 * @param e the action that was performed, type ActionEvent.
 				 */
 				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);			
@@ -271,38 +251,60 @@ public class ShopBuy {
 		btnReturnHome.setBounds(684, 35, 142, 25);
 		frmShopbuy.getContentPane().add(btnReturnHome);
 
-
-		
 	}
 	
-	
+	/**
+	 * Returns the JTextArea that displays the description of the currently selected Monster/Item.
+	 * @return txtDescription, of type JTextArea. 
+	 */
 	public JTextArea getTxtDescription() {
 		return txtDescription;
 	}
 	
-	
+	/**
+	 * Returns the currently selected Monster.
+	 * @return selectedMonster, of type Monster.
+	 */
 	public Monster getSelectedMonster() {
 		return selectedMonster;
 	}
 	
+	/**
+	 * Sets the attribute selectedMonster to the currently selected Monster. Return type void.
+	 * @param selectedMonster, of type Monster.
+	 */
 	public void setSelectedMonster(Monster selectedMonster) {
 		this.selectedMonster = selectedMonster;
 	}
 	
-	
+	/**
+	 * Returns the currently selected Item.
+	 * @return selectedItem, of type Item.
+	 */
 	public Item getSelectedItem() {
 		return selectedItem;
 	}
 	
+	/**
+	 * Sets the attribute selectedItem to the currently selected Item. Return type void.
+	 * @param selectedItem, of type Item.
+	 */
 	public void setSelectedItem(Item selectedItem) {
 		this.selectedItem = selectedItem;
 	}
 	
-	
+	/**
+	 * Returns the current instance of the class Shop.
+	 * @return shop, of type Shop.
+	 */
 	public Shop getShop() {
 		return shop;
 	}
 	
+	/**
+	 * Sets the private attribute shop to the given parameter shop. Return type void.
+	 * @param shop, of type Shop. The current instance of Shop.
+	 */
 	public void setShop(Shop shop) {
 		this.shop = shop;
 	}
@@ -310,23 +312,31 @@ public class ShopBuy {
 	
 	
 	/**
-	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
-	 * @param text, type String. The description of the currently selected Item/Monster.
+	 * Sets the text of the JTextArea txtDescriptionMonster to the description of the currently selected Monster. Filter's the player's team for the Monster whose id matches the id given as a parameter.
+	 * @param id, of type String. The currently selected Monster's unique id.
 	 */
-	public void setTxtrDescriptionMonster(String text) {
-		List<Monster> listOfMonsters = getShop().getAvalibleMonsters().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+	public void setTxtrDescriptionMonster(String id) {
+		List<Monster> listOfMonsters = getShop().getAvalibleMonsters().stream().filter(s -> id.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedMonster(listOfMonsters.get(0));
 		String monsterString = getSelectedMonster().getBuyDescription();
 		getTxtDescription().setText(monsterString);
 	}
 	
-	public void setTxtrDescriptionItem(String text) {
-		List<Item> listOfItems = getShop().getAvalibleItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+	/**
+	 * Sets the text of the JTextArea txtDescriptionItem to the description of the currently selected Item. Filter's the player's inventory for the Item whose id matches the id given as a parameter.
+	 * @param id, of type String. The currently selected Item's unique id.
+	 */
+	public void setTxtrDescriptionItem(String id) {
+		List<Item> listOfItems = getShop().getAvalibleItems().stream().filter(s -> id.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedItem(listOfItems.get(0));
 		String itemString = getSelectedItem().getBuyDescription();
 		getTxtDescription().setText(itemString);
 	}
 	
+	/**
+	 * Sends a pop-up to the user, with the text of the parameter message.
+	 * @param message, of type String. The exception that the player caused.
+	 */
 	public void exceptionPopUp(String message) {
 		JOptionPane.showMessageDialog(frmShopbuy, message);
 	}

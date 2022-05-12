@@ -28,7 +28,7 @@ import javax.swing.JEditorPane;
 
 
 /**
- * 
+ * The main screen of the game.
  * @author Celia Allen
  * @author Bede Nathan
  *
@@ -60,21 +60,31 @@ public class MainScreen {
 	 */
 	private Player player;
 	
+	/**
+	 * Attribute btnChangeMonsterName of type JButton. A button that triggers a pop-up allowing the user to change a Monster's name.
+	 */
 	private JButton btnChangeMonsterName = new JButton("Change Monster Name");
 
-	
+	/**
+	 * Attribute textAreaMonsterDescription of type JTextArea. A JTextArea that displays the description of the currently displayed Monster.
+	 */
 	private JTextArea textAreaMonsterDescription = new JTextArea("");
 
+	/**
+	 * Attribute selectedMonster of type Monster. The currently displayed Monster.
+	 */
 	private Monster selectedMonster;
 
+	/**
+	 * Attribute type, of type Object. The current instance of MainScreen.
+	 */
 	private Object type = this;
 	
-//	private JLabel lblMonsterTotal;
 
 	
 	/**
 	 * Constructor for the class MainScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. Sets the private variable player to the player, accessed through the GameEnvironment class. Sets the private variable team to the player's team, accessed via the private player variable, then the Inventory class.
-	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
+	 * @param gameManager type GameEnvironment. The game manager.
 	 */
 	public MainScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
@@ -119,41 +129,15 @@ public class MainScreen {
 		imagesToUse = new ImageIcon[team.size()]; 
 		
 		
-		
 		for (int i = 0; i < team.size(); i++) {
 			
 			String type;
-			
 			if ((team.get(i)).getMonsterType() == "undeadGuard") {
 				type = "/images/undead_guard.png";	
 			} else {
 				type = "/images/"+(team.get(i)).getMonsterType()+".png";			
 			}
-			
-			imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource(type), Integer.toString((team.get(i)).getID()));
-
-			
-//			switch ((team.get(i)).getMonsterType()) {
-//			  case "skeleton":
-//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), Integer.toString((team.get(i)).getID()));
-//			    break;
-//			  case "slime":
-//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/slime.png"), Integer.toString((team.get(i)).getID()));
-//			    break;
-//			  case "zombie":
-//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), Integer.toString((team.get(i)).getID()));
-//			    break;
-//			  case "undeadGuard":
-//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard.png"), Integer.toString((team.get(i)).getID()));
-//			    break;
-//			  case "snake":
-//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/snake.png"), Integer.toString((team.get(i)).getID()));
-//			    break;
-//			  case "dinosaur":
-//				imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource("/images/dinosaur.png"), Integer.toString((team.get(i)).getID()));
-//			    break;
-//			}
-			
+			imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource(type), Integer.toString((team.get(i)).getID()));			
 		}
 		
 		ImageCarousel images = new ImageCarousel(imagesToUse, type);
@@ -192,8 +176,6 @@ public class MainScreen {
 				} else {
 					JOptionPane.showMessageDialog(frmMainscreen, "You have no non-stunned monsters. Please heal at least one before you battle.");
 				}
-				
-				
 			}
 		});
 		btnBattleSelect.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -222,10 +204,8 @@ public class MainScreen {
 		btnShop.setBounds(741, 65, 85, 25);
 		frmMainscreen.getContentPane().add(btnShop);
 		
-//		JTextPane textPaneMonsterDescription = new JTextPane();
 		textAreaMonsterDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		textAreaMonsterDescription.setMargin(new Insets(0,7,0,7));
-//		textAreaMonsterDescription.setText("Monster Description:\r\n\r\n\r\nName:\r\n\r\nHealth:\r\n\r\nDamage:\r\n\r\nItem(s):");
 		if (team.size() > 0) {
 			setTxtrDescription(Integer.toString(team.get(0).getID()));
 			btnChangeMonsterName.setVisible(true);
@@ -237,7 +217,6 @@ public class MainScreen {
 		textAreaMonsterDescription.setBounds(480, 148, 281, 271);
 		textAreaMonsterDescription.setLineWrap(true);
 		textAreaMonsterDescription.setEditable(false);
-//		frmMainscreen.getContentPane().add(textAreaMonsterDescription);
 		
         JScrollPane scrollableTextArea = new JScrollPane(textAreaMonsterDescription);  
         scrollableTextArea.setBounds(480, 148, 281, 271);
@@ -269,9 +248,6 @@ public class MainScreen {
 		lblWelcomeUser.setBounds(10, 10, 180, 20);
 		frmMainscreen.getContentPane().add(lblWelcomeUser);
 		
-		
-		
-//		JButton btnChangeMonsterName = new JButton("Change Monster Name");
 		btnChangeMonsterName.addActionListener(new ActionListener() {
 			/**
 			 * Creates a pop-up window that prompts the user for a new name for the monster selected. Once the user confirms their choice, calls the setName() method on the Monster selected.
@@ -290,32 +266,52 @@ public class MainScreen {
 		
 	}
 	
-	
+	/**
+	 * Returns the JTextArea that displays the description of the currently selected Monster.
+	 * @return textAreaMonsterDescription, of type JTextArea.
+	 */
 	public JTextArea getTextAreaMonsterDescription() {
 		return textAreaMonsterDescription;
 	}
 	
-	
+	/**
+	 * Returns the currently selected Monster.
+	 * @return selectedMonster, of type Monster.
+	 */
 	public Monster getSelectedMonster() {
 		return selectedMonster;
 	}
 	
+	/**
+	 * Sets the private attribute selectedMonster to the Monster that is currently selected. Return type void.
+	 * @param selectedMonster, of type Monster. The currently selected Monster.
+	 */
 	public void setSelectedMonster(Monster selectedMonster) {
 		this.selectedMonster = selectedMonster;
 	}
 	
-	
+	/**
+	 * Returns the player's current team.
+	 * @return team, of type ArrayList[Monster]
+	 */
 	public ArrayList<Monster> getTeam() {
 		return team;
 	}
 	
+	/**
+	 * Sets the private attribute team to the given ArrayList, the player's team.
+	 * @param team, of type ArrayList[Monster]
+	 */
 	public void setTeam(ArrayList<Monster> team) {
 		this.team = team;
 	}
 	
-	
-	public void setTxtrDescription(String text) {
-		List<Monster> streamedTeam = getTeam().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+	/**
+	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Monster. Filter's the player's team for the Monster whose id matches the id given as a parameter.
+	 * @param id, of type String. The currently selected Monsters's unique id.
+	 */
+	public void setTxtrDescription(String id) {
+		List<Monster> streamedTeam = getTeam().stream().filter(s -> id.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedMonster(streamedTeam.get(0));
 		String itemString = getSelectedMonster().getSellBackDescription();
 		getTextAreaMonsterDescription().setText(itemString);

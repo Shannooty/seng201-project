@@ -25,7 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * 
+ * The screen that contains the battle.
  * @author Celia Allen
  * @author Bede Nathan
  *
@@ -101,9 +101,7 @@ public class BattleScreen {
 	 * Attribute textPaneGameMonster of type JTextPane. A JTextPane that displays the current Monster from the game's team that is fighting.
 	 */
 	private JTextPane textPaneGameMonster = new JTextPane();
-	
-//	private JButton btnFinish = new JButton("Finish");
-	
+		
 	/**
 	 * Attribute btnContinue of type JButton. A JButton that starts the next round of the battle.
 	 */
@@ -114,18 +112,14 @@ public class BattleScreen {
 	/**
 	 * Constructor for the class BattleScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. Sets the private variables player, day, and monstersToFight, all through the GameEnvironment class. 
 	 * Sets the private variable team to the player's team, using the setTeam() method.
-	 * @param gameManager, of type GameEnvironment. The class that manages what windows are open.
+	 * @param gameManager, of type GameEnvironment. The game manager.
 	 * @param selectedBattle, of type Battle. The current Battle being fought.
 	 */
 	public BattleScreen(GameEnvironment gameManager, Battle selectedBattle) {
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
 		this.actualTeam = player.getInventory().getTeam();
-
 		setTeam(getCurrentTeam(actualTeam.getTeam()));
-//		System.out.println(team);
-//		team = (ArrayList<Monster>) actualTeam.getTeam().stream().filter(Monster::getStunnedStatus).collect(Collectors.toList());
-		
 		day = gameEnvironment.getToday();
 		this.selectedBattle = selectedBattle;
 		monstersToFight = selectedBattle.getGameMonsters();
@@ -160,28 +154,15 @@ public class BattleScreen {
 		frmBattlescreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmBattlescreen.getContentPane().setLayout(null);
 		
-//		JTextPane textAreaPlayer = new JTextPane();
-		
-//		ArrayList<ImageIcon> monsterImgs = new ArrayList<ImageIcon>();
-//		
-//		for (Monster monster: team) {	
-//			monsterImgs.add(monster.getImg());
-//		}
-		
-
-//		textAreaPlayer.setWrapStyleWord(true);
 		textAreaPlayer.setEditable(false);
 		textAreaPlayer.setText(team.toString().replaceAll("[\\[\\],]","").trim());
 		textAreaPlayer.setBounds(34, 38, 228, 426);
 		frmBattlescreen.getContentPane().add(textAreaPlayer);
 
-//		JTextPane textAreaGame = new JTextPane();
 		textAreaGame.setText(monstersToFight.toString().replaceAll("[\\[\\],]","").trim());
 		textAreaGame.setBounds(569, 38, 228, 426);
 		frmBattlescreen.getContentPane().add(textAreaGame);
 		
-//		JTextPane textPaneFight = new JTextPane();
-//		textPaneFight.setText();
 		textPaneFight.setBounds(320, 344, 197, 120);
 		frmBattlescreen.getContentPane().add(textPaneFight);
 		
@@ -195,26 +176,10 @@ public class BattleScreen {
 		btnContinue.setBounds(350, 297, 128, 25);
 		frmBattlescreen.getContentPane().add(btnContinue);
 		
-		
-		
-//		btnFinish.setVisible(false);
-//		btnFinish.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				day.removeBattle(selectedBattle);
-//				gameEnvironment.launchMainScreen();
-//				finishedWindow();
-//			}
-//		});
-//		btnFinish.setFont(new Font("Tahoma", Font.PLAIN, 15));
-//		btnFinish.setBounds(350, 277, 128, 25);
-//		frmBattlescreen.getContentPane().add(btnFinish);
-		
-		
 		textPanePlayerMonster.setText("You: "+(team.get(0)).getDescription());
 		textPanePlayerMonster.setBounds(272, 38, 128, 120);
 		frmBattlescreen.getContentPane().add(textPanePlayerMonster);
 
-		
 		textPaneGameMonster.setText("Player "+gamePlayer+": "+((monstersToFight.get(0))).getDescription());
 		textPaneGameMonster.setBounds(431, 38, 128, 120);
 		frmBattlescreen.getContentPane().add(textPaneGameMonster);
@@ -233,8 +198,6 @@ public class BattleScreen {
 		lblGameTeam.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblGameTeam.setBounds(569, 10, 169, 18);
 		frmBattlescreen.getContentPane().add(lblGameTeam);
-		
-		
 		
 	}
 	
@@ -281,12 +244,8 @@ public class BattleScreen {
 					day.setGoldEarnedToday(selectedBattle.getGold());
 				} 
 				JOptionPane.showMessageDialog(frmBattlescreen, "End of game.\n"+gameWinner);
-				
 			}
-			
-//			updateStatus("end, winner: " + gameWinner);
-			
-//			btnFinish.setVisible(true);
+
 			btnContinue.setVisible(false);			
 			day.removeBattle(selectedBattle);
 			gameEnvironment.launchMainScreen();
@@ -304,10 +263,6 @@ public class BattleScreen {
 		textPaneFight.setText(winner);
 		textAreaPlayer.setText(getTeamBattle().toString().replaceAll("[\\[\\],]","").trim());
 		textAreaGame.setText(monstersToFight.toString().replaceAll("[\\[\\],]","").trim());
-		
-//		textPanePlayerMonster.setText("You: "+(team.get(0)).getDescription());
-//		textPaneGameMonster.setText("Us: "+((monstersToFight.get(0))).getDescription());
-
 	}
 	
 	/**

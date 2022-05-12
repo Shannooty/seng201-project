@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 
 import player.Player;
@@ -10,8 +8,6 @@ import player.PlayerScore;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
-
-import leaderboard.Leaderboard;
 
 import javax.swing.JList;
 import javax.swing.DefaultListModel;
@@ -22,34 +18,66 @@ import javax.swing.event.ListSelectionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
+/**
+ * The screen that is shown to the player when the game ends.
+ * @author Bede Nathan
+ * @author Celia Allen
+ *
+ */
 public class EndScreen {
 
-	private JFrame frame;
-	private GameEnvironment gameEnvironment;
-	private Player player;
-	private int playerPosition;
+	/**
+	 * Attribute frmEndscreen, of type JFrame. The frame which is displayed to the user. Contains the UI for the EndScreen.
+	 */
+	private JFrame frmEndscreen;
 	
 	/**
-	 * Create the application.
+	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
+	 */
+	private GameEnvironment gameEnvironment;
+	
+	/**
+	 * Attribute player of type Player. The current player.
+	 */
+	private Player player;
+	
+	/**
+	 * Attribute playerPosition of type Integer. The position of the player on the leaderboard.
+	 */
+	private int playerPosition;
+	
+	
+	
+	/**
+	 * COnstructor for the class EndScreen. Sets the private attributes gameEnvironment and player, calls the initialize() method, and sets the frame to visible. 
+	 * @param manager, of type GameEnvironment. The game manager.
 	 */
 	public EndScreen(GameEnvironment manager) {
 		gameEnvironment = manager;
 		setPlayer(manager.getPlayer());
-		
 		initialize();
-		frame.setVisible(true);
-		
+		frmEndscreen.setVisible(true);
 	}
 	
+	/**
+	 * Closes the frame frmEndscreen.
+	 */
 	public void closeWindow() {
-		frame.dispose();
+		frmEndscreen.dispose();
 	}
 	
-	
+	/**
+	 * Calls the GameEnvironment method closeEndScreen, passing the EndScreen object as a parameter.
+	 */
 	public void finishedWindow() {
 		gameEnvironment.closeEndScreen(this);
 	}
 	
+	/**
+	 * Returns a list of all the player's on the leaderboard and their score.
+	 * @return model, of type DefaultListModel[String]. 
+	 */
 	private DefaultListModel<String> loadLeaderboard() {
 		int position = 0;
 		DefaultListModel<String> model = new DefaultListModel<String>();
@@ -69,16 +97,16 @@ public class EndScreen {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 850, 570);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+		frmEndscreen = new JFrame();
+		frmEndscreen.setBounds(100, 100, 850, 570);
+		frmEndscreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmEndscreen.getContentPane().setLayout(null);
 		
 		JLabel lblGameOver = new JLabel("Game Over!");
 		lblGameOver.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGameOver.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblGameOver.setBounds(295, 10, 244, 53);
-		frame.getContentPane().add(lblGameOver);
+		frmEndscreen.getContentPane().add(lblGameOver);
 		
 		String scoreMessage = "Score : " + getPlayer().getPoints();
 		
@@ -86,20 +114,20 @@ public class EndScreen {
 		lblScore.setHorizontalAlignment(SwingConstants.CENTER);
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblScore.setBounds(429, 88, 95, 28);
-		frame.getContentPane().add(lblScore);
+		frmEndscreen.getContentPane().add(lblScore);
 		
 		JLabel lblLeaderboard = new JLabel("Leaderboard");
 		lblLeaderboard.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblLeaderboard.setHorizontalAlignment(SwingConstants.CENTER);
 		lblLeaderboard.setBounds(295, 151, 244, 37);
-		frame.getContentPane().add(lblLeaderboard);
+		frmEndscreen.getContentPane().add(lblLeaderboard);
 		
 		JList<String> listLeaderboard = new JList<String>(loadLeaderboard());
 		listLeaderboard.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listLeaderboard.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		listLeaderboard.setVisibleRowCount(20);
 		listLeaderboard.setBounds(295, 190, 244, 273);
-		frame.getContentPane().add(listLeaderboard);
+		frmEndscreen.getContentPane().add(listLeaderboard);
 		listLeaderboard.setSelectedIndex(getPlayerPosition());
 		listLeaderboard.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
@@ -115,7 +143,7 @@ public class EndScreen {
 			}
 		});
 		btnPlayAgain.setBounds(295, 478, 110, 28);
-		frame.getContentPane().add(btnPlayAgain);
+		frmEndscreen.getContentPane().add(btnPlayAgain);
 		
 		JButton btnQuit = new JButton("Quit");
 		btnQuit.addActionListener(new ActionListener() {
@@ -124,39 +152,55 @@ public class EndScreen {
 			}
 		});
 		btnQuit.setBounds(429, 478, 110, 28);
-		frame.getContentPane().add(btnQuit);
+		frmEndscreen.getContentPane().add(btnQuit);
 		
 		JLabel lblPlayer = new JLabel("Player : "+player.getName());
 		lblPlayer.setHorizontalAlignment(SwingConstants.CENTER);
 		lblPlayer.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblPlayer.setBounds(211, 88, 219, 28);
-		frame.getContentPane().add(lblPlayer);
+		frmEndscreen.getContentPane().add(lblPlayer);
 		
 		JLabel lblGold = new JLabel("Gold : "+ player.getGoldAmount());
 		lblGold.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGold.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblGold.setBounds(429, 113, 101, 28);
-		frame.getContentPane().add(lblGold);
+		frmEndscreen.getContentPane().add(lblGold);
 		
 		JLabel lblDuration = new JLabel("Duration : "+ gameEnvironment.getGameLength()+" days.");
 		lblDuration.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDuration.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblDuration.setBounds(429, 60, 156, 28);
-		frame.getContentPane().add(lblDuration);
+		frmEndscreen.getContentPane().add(lblDuration);
 	}
 
+	/**
+	 * Returns the position of the player on the leaderboard.
+	 * @return playerPosition, of type integer.
+	 */
 	private int getPlayerPosition() {
 		return playerPosition;
 	}
 
+	/**
+	 * Returns the current instance of GameEnvironment.
+	 * @return gameEnvironment, of type GameEnvironment.
+	 */
 	public GameEnvironment getGameEnvironment() {
 		return gameEnvironment;
 	}
 
+	/**
+	 * Returns the current player
+	 * @return player, of type Player.
+	 */
 	private Player getPlayer() {
 		return player;
 	}
 
+	/**
+	 * Sets the private attribute player to the Player passed to it.
+	 * @param player, of type Player. The current player.
+	 */
 	private void setPlayer(Player player) {
 		this.player = player;
 	}
