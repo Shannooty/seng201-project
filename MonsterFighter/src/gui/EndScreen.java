@@ -51,7 +51,7 @@ public class EndScreen {
 	
 	/**
 	 * COnstructor for the class EndScreen. Sets the private attributes gameEnvironment and player, calls the initialize() method, and sets the frame to visible. 
-	 * @param manager, of type GameEnvironment. Used to access logic in the class GameEnvironment.
+	 * @param manager, of type GameEnvironment. The game manager.
 	 */
 	public EndScreen(GameEnvironment manager) {
 		gameEnvironment = manager;

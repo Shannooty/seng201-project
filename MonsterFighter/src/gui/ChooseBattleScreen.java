@@ -19,6 +19,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+/**
+ * The screen where the player can choose the battle they want to fight.
+ * @author Celia Allen
+ * @author Bede Nathan
+ *
+ */
 public class ChooseBattleScreen {
 
 	/**
@@ -61,7 +67,7 @@ public class ChooseBattleScreen {
 	 * Constructor for the class ChooseBattleScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. 
 	 * Sets the private variable difficulty through the GameEnvironment class.
 	 * Sets the private variable day via the method setDay(), and the private variable possibleBattles using the private variable day.
-	 * @param gameManager, of type GameEnvironment.
+	 * @param gameManager, of type GameEnvironment. The game manager.
 	 */
 	public ChooseBattleScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;

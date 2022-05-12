@@ -25,7 +25,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 /**
- * 
+ * The screen that contains the battle.
  * @author Celia Allen
  * @author Bede Nathan
  *
@@ -112,7 +112,7 @@ public class BattleScreen {
 	/**
 	 * Constructor for the class BattleScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. Sets the private variables player, day, and monstersToFight, all through the GameEnvironment class. 
 	 * Sets the private variable team to the player's team, using the setTeam() method.
-	 * @param gameManager, of type GameEnvironment. The class that manages what windows are open.
+	 * @param gameManager, of type GameEnvironment. The game manager.
 	 * @param selectedBattle, of type Battle. The current Battle being fought.
 	 */
 	public BattleScreen(GameEnvironment gameManager, Battle selectedBattle) {

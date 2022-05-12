@@ -23,6 +23,12 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+/**
+ * The screen that shows the player their inventory.
+ * @author Celia Allen
+ * @author Bede Nathan
+ *
+ */
 public class InventoryScreen {
 
 	private JFrame frmInventoryscreen;
@@ -32,10 +38,19 @@ public class InventoryScreen {
 	 */
 	private GameEnvironment gameEnvironment;
 	
+	/**
+	 * Attribute player of type Player. The current player.
+	 */
 	private Player player;
 	
+	/**
+	 * Attribute inventory of type Inventory. The current inventory.
+	 */
 	private Inventory inventory;
 	
+	/**
+	 * Attribute team of type ArrayList[Monster]. The player's current team of monsters.
+	 */
 	private ArrayList<Monster> team;
 	
 	/**
@@ -58,18 +73,20 @@ public class InventoryScreen {
 	 */
 	private JTextArea txtDescriptionItems = new JTextArea("Nothing selected.");
 	
-	
+	/**
+	 * Attribute type of type Object. The current instance of InventoryScreen.
+	 */
 	private Object type = this;
 	
 	
 	/**
-	 * Create the application.
+	 * Constructor for the class InventoryScreen. Sets the private attributes gameEnvironment, player, inventory and team. Calls the initialize() method, and sets the frame to visible. 
+	 * @param gameManager, of type GameEnvironment. The game manager.
 	 */
 	public InventoryScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
 		setInventory(player.getInventory());
-//		team = player.getInventory().getTeam();
 		setTeam(inventory.getTeam().getTeam());
 		initialize();
 		frmInventoryscreen.setVisible(true);
@@ -117,15 +134,10 @@ public class InventoryScreen {
 		
 		ImgInventoryPanel itemPanel = new ImgInventoryPanel(itemScrollPane, inventory.getItems(), type);
 		itemScrollPane.setViewportView(itemPanel);
-		
 
-//
-//		txtDescriptionItems.setText("Nothing selected.");
-//		txtDescriptionMonsters.setText("Nothing selected.");
 		
 		txtDescriptionItems.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		txtDescriptionItems.setMargin(new Insets(0,7,0,7));
-//		txtDescriptionItems.setBounds(530, 68, 267, 190);
 		txtDescriptionItems.setLineWrap(true);
 		txtDescriptionItems.setEditable(false);
 		frmInventoryscreen.getContentPane().add(txtDescriptionItems);
@@ -138,11 +150,8 @@ public class InventoryScreen {
 		
 		txtDescriptionMonsters.setFont(new Font("Monospaced", Font.PLAIN, 15));		
 		txtDescriptionMonsters.setMargin(new Insets(0,7,0,7));
-//		txtDescriptionMonsters.setBounds(530, 316, 267, 190);
 		txtDescriptionMonsters.setLineWrap(true);
 		txtDescriptionMonsters.setEditable(false);
-//		frmInventoryscreen.getContentPane().add(txtDescriptionMonsters);
-		
 		
         JScrollPane scrollableTextAreaMonsters = new JScrollPane(txtDescriptionMonsters);  
         scrollableTextAreaMonsters.setBounds(530, 316, 267, 190);
@@ -198,14 +207,9 @@ public class InventoryScreen {
 
 				if (selection != null) {
 					String selectedID = selection.substring(selection.length() - 1);
-//					System.out.println("InventoryScreen, selection "+selection);
 					List<Monster> listOfMonsters = team.stream().filter(s -> selectedID.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 					Monster monsterToEquip = listOfMonsters.get(0);
-//					System.out.println("selectedItem "+selectedItem+" "+selectedItem.toString());
-//					System.out.println("monsterToEquip "+monsterToEquip+" "+monsterToEquip.toString());
 					inventory.useItem(selectedItem, monsterToEquip);
-					
-//					selectedItem.setEquipped(true);
 					txtDescriptionItems.setText("Nothing selected.");
 					txtDescriptionMonsters.setText("Nothing selected.");
 					ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, type);
@@ -220,74 +224,111 @@ public class InventoryScreen {
 		btnEquipItem.setBounds(642, 268, 155, 25);
 		frmInventoryscreen.getContentPane().add(btnEquipItem);
 		
-		
 		if (inventory.getItems().size() == 0) {
 			btnEquipItem.setEnabled(false);
 		}
 		
-
 	}
 	
 	
-	
+	/**
+	 * Returns the JTextArea that displays the description of the currently selected Monster.
+	 * @return txtDescriptionMonsters, of type JTextArea. 
+	 */
 	public JTextArea getTxtDescriptionMonsters() {
 		return txtDescriptionMonsters;
 	}
 	
+	/**
+	 * Returns the JTextArea that displays the description of the currently selected Item.
+	 * @return txtDescriptionItems, of type JTextArea. 
+	 */
 	public JTextArea getTxtDescriptionItems() {
 		return txtDescriptionItems;
 	}
 	
-	
-	
+	/**
+	 * Returns the currently selected Monster.
+	 * @return selectedMonster, of type Monster.
+	 */
 	public Monster getSelectedMonster() {
 		return selectedMonster;
 	}
 	
+	/**
+	 * Sets the attribute selectedMonster to the currently selected Monster. Return type void.
+	 * @param selectedMonster, of type Monster.
+	 */
 	public void setSelectedMonster(Monster selectedMonster) {
 		this.selectedMonster = selectedMonster;
 	}
 	
-	
+	/**
+	 * Returns the currently selected Item.
+	 * @return selectedItem, of type Item.
+	 */
 	public Item getSelectedItem() {
 		return selectedItem;
 	}
 	
+	/**
+	 * Sets the attribute selectedItem to the currently selected Item. Return type void.
+	 * @param selectedItem, of type Item.
+	 */
 	public void setSelectedItem(Item selectedItem) {
 		this.selectedItem = selectedItem;
 	}
 	
-	
+	/**
+	 * Returns the player's team.
+	 * @return team, of type ArrayList[Monster].
+	 */
 	public ArrayList<Monster> getTeam() {
 		return team;
 	}
 	
+	/**
+	 * Sets the private attribute team to the given parameter team.
+	 * @param team, of type ArrayList[Monster].
+	 */
 	public void setTeam(ArrayList<Monster> team) {
 		this.team = team;
 	}
 	
-	
+	/**
+	 * Returns the player's inventory.
+	 * @return inventory, of type Inventory.
+	 */
 	public Inventory getInventory() {
 		return inventory;
 	}
 	
+	/**
+	 * Sets the private attribute inventory to the given parameter inventory.
+	 * @param inventory, of type Inventory.
+	 */
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
 
 	
-	
-	
-	public void setTxtrDescriptionMonster(String text) {
-		List<Monster> listOfMonsters = getTeam().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+
+	/**
+	 * Sets the text of the JTextArea txtDescriptionMonster to the description of the currently selected Monster. Filter's the player's team for the Monster whose id matches the id given as a parameter.
+	 * @param id, of type String. The currently selected Monster's unique id.
+	 */
+	public void setTxtrDescriptionMonster(String id) {
+		List<Monster> listOfMonsters = getTeam().stream().filter(s -> id.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedMonster(listOfMonsters.get(0));
 		String monsterString = getSelectedMonster().getSellBackDescription();
 		getTxtDescriptionMonsters().setText(monsterString);
 		getTxtDescriptionMonsters().setCaretPosition(0);
-		
 	}
 	
-	
+	/**
+	 * Sets the text of the JTextArea txtDescriptionItem to the description of the currently selected Item. Filter's the player's inventory for the Item whose id matches the id given as a parameter.
+	 * @param id, of type String. The currently selected Item's unique id.
+	 */
 	public void setTxtrDescriptionItem(String text) {
 		List<Item> listOfItems = getInventory().getItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedItem(listOfItems.get(0));
