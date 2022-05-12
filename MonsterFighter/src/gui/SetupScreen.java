@@ -44,7 +44,7 @@ import javax.swing.JSpinner;
 
 
 /**
- * 
+ * The screen that prompts the user for their chosen username, game difficulty, game length and starting monster.
  * @author Celia Allen
  * @author Bede Nathan
  *
@@ -71,16 +71,6 @@ public class SetupScreen {
 	 */
 	private Player player;
 	
-//	/**
-//	 * Attribute gameLength of type integer. The length of the game (how many days the game lasts.)
-//	 */
-//	private int gameLength;
-//	
-//	/**
-//	 * Attribute difficulty of type String. The difficulty of the game.
-//	 */
-//	private String difficulty;
-	
 	/**
 	 * Attribute username of type JFormattedTextField. The user's username.
 	 */
@@ -96,31 +86,16 @@ public class SetupScreen {
 	 */
 	private List<String> stringDifficulty = Arrays.asList("Easy", "Medium", "Hard");
 	
+	/**
+	 * Attribute type of type Object. The current instance of SetupScreen.
+	 */
 	private Object type = this;
-	
-	
-	/**
-	 * Returns the instance of class Player representing the current player.
-	 * @return type Player, the current player.
-	 */
-	public Player getPlayer() {
-		return player;
-	}
-	
-	/**
-	 * Sets the private variable player equal to the player passed to it.
-	 * @param player type Player, the current player.
-	 */
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
 
-	
 	
 	
 	/**
 	 * Constructor for the class SetupScreen. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
-	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
+	 * @param gameManager type GameEnvironment. The game manager.
 	 */
 	public SetupScreen(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
@@ -163,8 +138,6 @@ public class SetupScreen {
 		imagesToUse[3] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard.png"), "undeadGuard");
 		imagesToUse[4] = new ImageIcon(ImageCarousel.class.getResource("/images/dinosaur.png"), "dinosaur");
 		imagesToUse[5] = new ImageIcon(ImageCarousel.class.getResource("/images/snake.png"), "snake");
-
-		
 		
 		ImageCarousel images = new ImageCarousel(imagesToUse, type);
 		images.setSize(290, 195);
@@ -216,17 +189,11 @@ public class SetupScreen {
 		difficultyLabels.put(2, new JLabel("Medium"));
 		difficultyLabels.put(3, new JLabel("Hard"));
         gameDifficultySlider.setLabelTable(difficultyLabels);
-		
-        
-        
-        
 		gameDifficultySlider.setPaintLabels(true);
 		gameDifficultySlider.setMinorTickSpacing(1);
 		gameDifficultySlider.setMajorTickSpacing(1);
 		gameDifficultySlider.setBounds(307, 452, 200, 43);
 		frmSetup.getContentPane().add(gameDifficultySlider);
-
-		
 
 		JButton btnNext = new JButton("Next");
 		btnNext.setFont(new Font("Tahoma", Font.BOLD, 14));
@@ -236,7 +203,6 @@ public class SetupScreen {
 			 * @param arg0 the action that was performed, type ActionEvent.
 			 */
 			public void actionPerformed(ActionEvent arg0) {
-				
 				
 				switch (images.getImg()) {
 				  case "skeleton":
@@ -270,11 +236,8 @@ public class SetupScreen {
 				gameEnvironment.setPlayer(player);
 				gameEnvironment.setGameLength(gameLengthSlider.getValue());				
 				gameEnvironment.setToday(new Day(gameEnvironment));
-				
 				gameEnvironment.launchMainScreen();
 				finishedWindow();
-				
-				
 			}
 		});
 		
@@ -286,57 +249,94 @@ public class SetupScreen {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		lblNewLabel.setBounds(119, 31, 596, 43);
 		frmSetup.getContentPane().add(lblNewLabel);
-		 
-//	}
-	
+		
 		username.getDocument().addDocumentListener(new DocumentListener() {
-		  public void changedUpdate(DocumentEvent e) {
-			  checker();
-		  }
+			/**
+			 * Calls the method checker() if the JTextField username changes. Return type void.
+			 * @param e, of type DocumentEvent.
+			 */
+			public void changedUpdate(DocumentEvent e) {
+				checker();
+			}
 		  
-		  public void removeUpdate(DocumentEvent e) {
-			  checker();
-		  }
+			/**
+			 * Calls the method checker() if the JTextField username changes. Return type void.
+			 * @param e, of type DocumentEvent.
+			 */
+		    public void removeUpdate(DocumentEvent e) {
+			    checker();
+		    }
 		  
-		  public void insertUpdate(DocumentEvent e) {
-			  checker();	
-		  }
+			/**
+			 * Calls the method checker() if the JTextField username changes. Return type void.
+			 * @param e, of type DocumentEvent.
+			 */
+		    public void insertUpdate(DocumentEvent e) {
+			    checker();	
+		    }
 
-		  public void enableButton() {
-		     if (btnNext.isEnabled() == false) {
-		    	 btnNext.setEnabled(true);
-		     }
-		  }
+		    /**
+		     * Sets the JButton btnNext to enabled if it is not already. Return type void.
+		     */
+		    public void enableButton() {
+		       if (btnNext.isEnabled() == false) {
+		    	   btnNext.setEnabled(true);
+		       }
+		    }
 		  
-		  public void disableButton() {
-		     if (btnNext.isEnabled() == true) {
-		    	 btnNext.setEnabled(false);
-		     }
-		  }
+		    /**
+		     * Sets the JButton btnNext to disabled if it is not already. Return type void.
+		     */
+		    public void disableButton() {
+		       if (btnNext.isEnabled() == true) {
+		    	   btnNext.setEnabled(false);
+		       }
+		    }
 		  
 		  
-		  public void checker() {
-			  Pattern p = Pattern.compile("[^A-Za-z]");
-			  Matcher m = p.matcher(username.getText());
-			  boolean b = m.find();
+		    /**
+		     * Checks if the username the player inputs contains special characters or numbers. If so, a pop-up is given to the user saying that special characters and number are not allowed, and the JButton btnNext is disabled.
+		     * Also checks if the username the player inputs is less than 3 or more than 15 characters long. If so, the JButton btnNext is disabled.
+		     */
+		    public void checker() {
+			    Pattern pattern = Pattern.compile("[^A-Za-z]");
+			    Matcher match = pattern.matcher(username.getText());
+			    boolean bool = match.find();
 			  
-			  if (b) {
-				  JOptionPane.showMessageDialog(frmSetup,
-						    "Username cannot contain numbers or special characters.",
+			    if (bool) {
+				    JOptionPane.showMessageDialog(frmSetup,
+					  	    "Username cannot contain numbers or special characters.",
 						    "Username Error",
 						    JOptionPane.ERROR_MESSAGE);
-				  disableButton();
-			  } else {
-				  if (username.getText().length() >= 3 && username.getText().length() <= 15) {
-					  enableButton();
-				  } else {
-					  disableButton();
-				  }
-			  }	
-		  }
+				    disableButton();
+			    } else {
+				    if (username.getText().length() >= 3 && username.getText().length() <= 15) {
+					    enableButton();
+				    } else {
+					    disableButton();
+				    }
+			    }	
+		    }
 		  
 		  
 		});
+	}
+	
+	
+	/**
+	 * Returns the instance of class Player representing the current player.
+	 * @return type Player, the current player.
+	 */
+	public Player getPlayer() {
+		return player;
+	}
+	
+	/**
+	 * Sets the private variable player equal to the player passed to it.
+	 * @param player type Player, the current player.
+	 */
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 }
 
