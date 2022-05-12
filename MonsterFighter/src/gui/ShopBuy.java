@@ -121,16 +121,12 @@ public class ShopBuy {
 		frmShopbuy.getContentPane().setLayout(null);
 		ArrayList<Monster> monsterInfo = shop.getAvalibleMonsters();
 		ArrayList<Item> itemInfo = shop.getAvalibleItems();
-		
-		
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
 		scrollPane.setBounds(52, 88, 411, 343);
 		frmShopbuy.getContentPane().add(scrollPane);
-		
-		
-		
+
 		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, type);
 		scrollPane.setViewportView(monsterPanel);
 		
@@ -164,9 +160,7 @@ public class ShopBuy {
 			  }
 			} );
 		
-		
-		
-		
+
 		JLabel lblGoldAmount = new JLabel();
 		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -181,9 +175,7 @@ public class ShopBuy {
 		txtDescription.setEditable(false);
 		txtDescription.setBounds(473, 88, 302, 233);
 		frmShopbuy.getContentPane().add(txtDescription);
-		
 
-	
 		JButton btnShopSell = new JButton("Sell");
 		btnShopSell.addActionListener(new ActionListener() {
 			/**
@@ -259,38 +251,60 @@ public class ShopBuy {
 		btnReturnHome.setBounds(684, 35, 142, 25);
 		frmShopbuy.getContentPane().add(btnReturnHome);
 
-
-		
 	}
 	
-	
+	/**
+	 * Returns the JTextArea that displays the description of the currently selected Monster/Item.
+	 * @return txtDescription, of type JTextArea. 
+	 */
 	public JTextArea getTxtDescription() {
 		return txtDescription;
 	}
 	
-	
+	/**
+	 * Returns the currently selected Monster.
+	 * @return selectedMonster, of type Monster.
+	 */
 	public Monster getSelectedMonster() {
 		return selectedMonster;
 	}
 	
+	/**
+	 * Sets the attribute selectedMonster to the currently selected Monster. Return type void.
+	 * @param selectedMonster, of type Monster.
+	 */
 	public void setSelectedMonster(Monster selectedMonster) {
 		this.selectedMonster = selectedMonster;
 	}
 	
-	
+	/**
+	 * Returns the currently selected Item.
+	 * @return selectedItem, of type Item.
+	 */
 	public Item getSelectedItem() {
 		return selectedItem;
 	}
 	
+	/**
+	 * Sets the attribute selectedItem to the currently selected Item. Return type void.
+	 * @param selectedItem, of type Item.
+	 */
 	public void setSelectedItem(Item selectedItem) {
 		this.selectedItem = selectedItem;
 	}
 	
-	
+	/**
+	 * Returns the current instance of the class Shop.
+	 * @return shop, of type Shop.
+	 */
 	public Shop getShop() {
 		return shop;
 	}
 	
+	/**
+	 * Sets the private attribute shop to the given parameter shop. Return type void.
+	 * @param shop, of type Shop. The current instance of Shop.
+	 */
 	public void setShop(Shop shop) {
 		this.shop = shop;
 	}
@@ -298,23 +312,31 @@ public class ShopBuy {
 	
 	
 	/**
-	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
-	 * @param text, type String. The description of the currently selected Item/Monster.
+	 * Sets the text of the JTextArea txtDescriptionMonster to the description of the currently selected Monster. Filter's the player's team for the Monster whose id matches the id given as a parameter.
+	 * @param id, of type String. The currently selected Monster's unique id.
 	 */
-	public void setTxtrDescriptionMonster(String text) {
-		List<Monster> listOfMonsters = getShop().getAvalibleMonsters().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+	public void setTxtrDescriptionMonster(String id) {
+		List<Monster> listOfMonsters = getShop().getAvalibleMonsters().stream().filter(s -> id.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedMonster(listOfMonsters.get(0));
 		String monsterString = getSelectedMonster().getBuyDescription();
 		getTxtDescription().setText(monsterString);
 	}
 	
-	public void setTxtrDescriptionItem(String text) {
-		List<Item> listOfItems = getShop().getAvalibleItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+	/**
+	 * Sets the text of the JTextArea txtDescriptionItem to the description of the currently selected Item. Filter's the player's inventory for the Item whose id matches the id given as a parameter.
+	 * @param id, of type String. The currently selected Item's unique id.
+	 */
+	public void setTxtrDescriptionItem(String id) {
+		List<Item> listOfItems = getShop().getAvalibleItems().stream().filter(s -> id.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedItem(listOfItems.get(0));
 		String itemString = getSelectedItem().getBuyDescription();
 		getTxtDescription().setText(itemString);
 	}
 	
+	/**
+	 * Sends a pop-up to the user, with the text of the parameter message.
+	 * @param message, of type String. The exception that the player caused.
+	 */
 	public void exceptionPopUp(String message) {
 		JOptionPane.showMessageDialog(frmShopbuy, message);
 	}
