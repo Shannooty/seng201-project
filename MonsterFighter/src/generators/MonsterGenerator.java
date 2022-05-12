@@ -3,8 +3,18 @@ package generators;
 import generators.registries.AvalibleMonsters;
 import purchasable.monsters.*;
 
+/**
+ * MonsterGenerator class that provides the ability to create a random Monster object
+ * @author Bede Nathan
+ * @author Celia Allen
+ *
+ */
 public class MonsterGenerator extends Generator {
 	
+	/**
+	 * Returns a new Monster object of a random type
+	 * @return The Monster object
+	 */
 	public static Monster newMonster() {
 		AvalibleMonsters monsterType = AvalibleMonsters.randomMonster();
 		
