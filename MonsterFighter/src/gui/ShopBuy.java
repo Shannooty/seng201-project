@@ -82,7 +82,7 @@ public class ShopBuy {
 	
 
 	/**
-	 * Constructor for the class ShopBuy. Creates an instance of the class Shop, ShopBuy's parent. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
+	 * Constructor for the class ShopBuy. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
 	 * @param gameManager type GameEnvironment. The game manager.
 	 * @param shop, of type Shop. The current instance of Shop.
 	 */
@@ -195,7 +195,7 @@ public class ShopBuy {
 		btnBuy.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				/**
-				 * Creates a pop-up window that asks the user if they are sure they want to buy the selected Item/Monster. Once the user confirms their choice, removes the gold using Player.removeGold(). Monster is added to the player's inventory.
+				 * Creates a pop-up window that asks the user if they are sure they want to buy the selected Item/Monster. Once the user confirms their choice, calls the method shop.purchase(selectedMonster, player) to take the player's gold, and add the Monster from the player's inventory if no exceptions are thrown.
 				 * @param e the action that was performed, type ActionEvent.
 				 */
 				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);			

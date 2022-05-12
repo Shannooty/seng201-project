@@ -26,7 +26,7 @@ import purchasable.monsters.*;
 
 
 /**
- * 
+ * The screen that displays the items/monsters the player owns, and can sell.
  * @author Celia Allen
  * @author Bede Nathan
  *
@@ -42,11 +42,6 @@ public class ShopSell {
 	 * Attribute txtDescription of type JTextArea. The area where the Item/Monster's description is displayed to the user.
 	 */
 	private JTextArea txtDescription = new JTextArea("");
-	
-//	/**
-//	 * Attribute selectedPrice of type double. The price of the currently selected Item/Monster/
-//	 */
-//	private static double selectedPrice;
 	
 	/**
 	 * Attribute selectedMonster of type String. The currently selected Monster.
@@ -73,15 +68,21 @@ public class ShopSell {
 	 */
 	private Player player;
 	
+	/**
+	 * Attribute team of type Team. The player's current team.
+	 */
 	private Team team;
 	
+	/**
+	 * Attribute type of type Object. The current instance of ShopBuy.
+	 */
 	private Object type = this;
 
 	
 
 	/**
-	 * Constructor for the class ShopSell. Creates an instance of the class Shop, ShopSell's parent. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. Sets the private variable player through the GameEnvironment class, and sets the private variable via the variable player.
-	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
+	 * Constructor for the class ShopSell. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible. Sets the private variable player through the GameEnvironment class, and sets the private variables inventory and team.
+	 * @param gameManager type GameEnvironment. The game manager.
 	 */
 	public ShopSell(GameEnvironment gameManager) {
 		gameEnvironment = gameManager;
@@ -116,8 +117,7 @@ public class ShopSell {
 		frmShopSell.setBounds(100, 100, 850, 570);
 		frmShopSell.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmShopSell.getContentPane().setLayout(null);
-		
-		
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
 		scrollPane.setBounds(52, 88, 411, 343);
@@ -125,15 +125,13 @@ public class ShopSell {
 		
 		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, team.getTeam(), type);
 		scrollPane.setViewportView(panel);
-		
-		
+
 		JLabel lblGoldAmount = new JLabel();
 		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblGoldAmount.setBounds(10, 10, 219, 20);
 		frmShopSell.getContentPane().add(lblGoldAmount);
-		
-		
+
 		JButton btnShopBuy = new JButton("Buy");
 		btnShopBuy.addActionListener(new ActionListener() {
 			/**
@@ -163,9 +161,7 @@ public class ShopSell {
 		btnReturnHome.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnReturnHome.setBounds(684, 41, 142, 25);
 		frmShopSell.getContentPane().add(btnReturnHome);
-		
-		
-		
+
 		txtDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		txtDescription.setMargin(new Insets(0,7,0,7));
 		txtDescription.setText("Nothing selected.");
@@ -173,8 +169,7 @@ public class ShopSell {
 		txtDescription.setEditable(false);
 		txtDescription.setBounds(473, 88, 302, 233);
 		frmShopSell.getContentPane().add(txtDescription);
-		
-		
+
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBounds(52, 40, 327, 34);
 		frmShopSell.getContentPane().add(buttonPanel);
@@ -187,10 +182,6 @@ public class ShopSell {
 		buttons.add(showItems);
 		buttonPanel.add(showMonsters);
 		buttonPanel.add(showItems);
-		
-
-		ShopSell type = this;
-
 		
 		showMonsters.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
@@ -212,7 +203,7 @@ public class ShopSell {
 		JButton btnSell = new JButton("Sell");
 		btnSell.addActionListener(new ActionListener() {
 			/**
-			 * Creates a pop-up window that asks the user if they are sure they want to sell the selected Item/Monster. Once the user confirms their choice, adds the gold using Player.addGold(). Monster is removed from the player's inventory.
+			 * Creates a pop-up window that asks the user if they are sure they want to sell the selected Item/Monster. Once the user confirms their choice, calls the method selectedMonster.sell(player) to give the player the gold, and remove the Monster from the player's inventory.
 			 * @param e the action that was performed, type ActionEvent.
 			 */
 			public void actionPerformed(ActionEvent e) {
@@ -230,7 +221,6 @@ public class ShopSell {
 						scrollPane.setViewportView(itemPanel);
 					}
 					
-					
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
 					txtDescription.setText("Nothing selected.");
 				}
@@ -242,92 +232,98 @@ public class ShopSell {
 		
 	}
 	
-	
+	/**
+	 * Returns the JTextArea that displays the description of the currently selected Monster/Item.
+	 * @return txtDescription, of type JTextArea. 
+	 */
 	public JTextArea getTxtDescription() {
 		return txtDescription;
 	}
 	
-	
+	/**
+	 * Returns the currently selected Monster.
+	 * @return selectedMonster, of type Monster.
+	 */
 	public Monster getSelectedMonster() {
 		return selectedMonster;
 	}
 	
+	/**
+	 * Sets the attribute selectedMonster to the currently selected Monster. Return type void.
+	 * @param selectedMonster, of type Monster.
+	 */
 	public void setSelectedMonster(Monster selectedMonster) {
 		this.selectedMonster = selectedMonster;
 	}
 	
-	
+	/**
+	 * Returns the currently selected Item.
+	 * @return selectedItem, of type Item.
+	 */
 	public Item getSelectedItem() {
 		return selectedItem;
 	}
 	
+	/**
+	 * Sets the attribute selectedItem to the currently selected Item. Return type void.
+	 * @param selectedItem, of type Item.
+	 */
 	public void setSelectedItem(Item selectedItem) {
 		this.selectedItem = selectedItem;
 	}
 	
-	
+	/**
+	 * Returns the player's current team.
+	 * @return team, of type Team.
+	 */
 	public Team getTeam() {
 		return team;
 	}
 	
+	/**
+	 * Sets the private attribute team to the given parameter team. Return type void.
+	 * @param team, of type Team. The player's current team.
+	 */
 	public void setTeam(Team team) {
 		this.team = team;
 	}
 	
-	
+	/**
+	 * Returns the player's current inventory.
+	 * @return inventory, of type Inventory.
+	 */
 	public Inventory getInventory() {
 		return inventory;
 	}
 	
+	/**
+	 * Sets the private attribute inventory to the given parameter inventory. Return type void.
+	 * @param inventory, of type Inventory. The player's current inventory.
+	 */
 	public void setInventory(Inventory inventory) {
 		this.inventory = inventory;
 	}
 	
 	/**
-	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Item/Monster.
-	 * @param text, type String. The description of the currently selected Item/Monster.
-	 */	
-	public void setTxtrDescriptionMonster(String text) {
-		List<Monster> listOfMonsters = getTeam().getTeam().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+	 * Sets the text of the JTextArea txtDescriptionMonster to the description of the currently selected Monster. Filter's the player's team for the Monster whose id matches the id given as a parameter.
+	 * @param id, of type String. The currently selected Monster's unique id.
+	 */
+	public void setTxtrDescriptionMonster(String id) {
+		List<Monster> listOfMonsters = getTeam().getTeam().stream().filter(s -> id.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedMonster(listOfMonsters.get(0));
 		String monsterString = getSelectedMonster().getSellBackDescription();
 		getTxtDescription().setText(monsterString);
 	}
 	
-	
-	public void setTxtrDescriptionItem(String text) {
-		List<Item> listOfItems = getInventory().getItems().stream().filter(s -> text.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+	/**
+	 * Sets the text of the JTextArea txtDescriptionItem to the description of the currently selected Item. Filter's the player's inventory for the Item whose id matches the id given as a parameter.
+	 * @param id, of type String. The currently selected Item's unique id.
+	 */
+	public void setTxtrDescriptionItem(String id) {
+		List<Item> listOfItems = getInventory().getItems().stream().filter(s -> id.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedItem(listOfItems.get(0));
 		String itemString = getSelectedItem().getSellBackDescription();
 		getTxtDescription().setText(itemString);
 	}
 	
-	
-	
-//	/**
-//	 * Sets the private variable selectedPrice to the value of cost.
-//	 * @param cost, of type double. The cost of the currently selected Item/Monster.
-//	 */
-//	public static void setSelectedPrice(double cost) {
-//		selectedPrice = cost;
-//	}
-//	
-//	
-//	/**
-//	 * Sets the private variable selectedMonster to the value of the Monster at index monster in team.
-//	 * @param monster, of type integer. The index of the currently selected monster.
-//	 */
-//	public static void setSelectedMonster(int monster) {
-//		selectedMonster = team.getTeam().get(monster);
-////		System.out.println("selectedMonster: " + selectedMonster.getDescription() + selectedMonster.getClass());
-//	}
-//	
-//	
-//	/**
-//	 * Sets the private variable selectedItem to the value of item.
-//	 * @param item, of type Item. The currently selected item.
-//	 */
-//	public static void setSelectedItem(Item item) {
-//		selectedItem = item;
-//	}
 }
