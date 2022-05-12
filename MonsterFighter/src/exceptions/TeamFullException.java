@@ -3,7 +3,7 @@ package exceptions;
 import gui.GameEnvironment;
 
 /**
- * 
+ * A custom exception for when the player tries to purchase a new monster, but they already have a team size of 4.
  * @author Bede Nathan
  * @author Celia Allen
  *

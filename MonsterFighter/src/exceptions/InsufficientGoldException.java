@@ -1,7 +1,7 @@
 package exceptions;
 
 /**
- * 
+ * A custom exception for when the player has insufficient gold for the purchase they wish to complete.
  * @author Bede Nathan
  * @author Celia Allen
  */
