@@ -1,9 +1,7 @@
 package exceptions;
 
-import gui.GameEnvironment;
-
 /**
- * 
+ * TeamFullException is thrown when the players team if already full and a new Monster is attempted to be added
  * @author Bede Nathan
  * @author Celia Allen
  *
