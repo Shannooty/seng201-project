@@ -9,13 +9,20 @@ import interfaces.HasImage;
 
 /**
  * Custom toggle button for storing a object reference to be used in the ImgInventoryPanel. Objects must extend HasImage interface.
- * @author Bede Nathan, Celia Allen
+ * @author Bede Nathan
+ * @author Celia Allen
  *
  */
 public class InventoryToggleButton extends JToggleButton {
 
+	/**
+	 * Attribute serialVersionUID, of type static final long. A serialVersion.
+	 */
 	private static final long serialVersionUID = -5449563501811900529L;
 	
+	/**
+	 * Attribute buttonObject, of type HasImage. A button that has an image associated with it.
+	 */
 	private HasImage buttonObject;
 	
 	/**

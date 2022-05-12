@@ -22,15 +22,24 @@ import interfaces.HasImage;
 
 /**
  * Custom panel for displaying Objects which implement HasImage interface
- * @author Bede Nathan, Celia Allen
+ * @author Bede Nathan
+ * @author Celia Allen
  */
 public class ImgInventoryPanel extends JPanel {
 
+	/**
+	 * Attribute serialVersionUID, of type static final long. A serialVersion.
+	 */
 	private static final long serialVersionUID = -3684204445436872689L;
+	
+	/**
+	 * Attribute InventoryButtonGroup, of type final buttonGroup. A group of buttons.
+	 */
 	private final InventoryButtonGroup buttonGroup = new InventoryButtonGroup();
 	
-//	private String version;
-	
+	/**
+	 * Attribute gui, of type Object. An instance of the class that called the ImgInventoryPanel constructor.
+	 */
 	private Object gui;
 	
 	
@@ -38,9 +47,9 @@ public class ImgInventoryPanel extends JPanel {
 	 * General constructor for the ImgInventoryPanel
 	 * @param pane The JScrollPane the panel will be added to
 	 * @param toDisplay The ArrayList of objects. Objects must implement HasImage interface
-	 * @param type, of type Object. Represents the gui screen that the constructor was called from.
+	 * @param gui, of type Object. Represents the gui screen that the constructor was called from.
 	 */
-	public ImgInventoryPanel(JScrollPane pane, ArrayList<? extends HasImage> toDisplay, Object type) {
+	public ImgInventoryPanel(JScrollPane pane, ArrayList<? extends HasImage> toDisplay, Object gui) {
 		if (toDisplay.size() > 0) {
 			int iconWidth = toDisplay.get(0).getImg().getIconWidth();
 			int paneWidth = pane.getWidth();
@@ -50,9 +59,7 @@ public class ImgInventoryPanel extends JPanel {
 			
 			pane.setViewportView(this);
 			placeObjectsInPanel(toDisplay);
-			
-//			this.version = version;
-			this.gui = type;
+			this.gui = gui;
 		}
 	}
 	
@@ -63,9 +70,7 @@ public class ImgInventoryPanel extends JPanel {
 	private InventoryButtonGroup getButtonGroup() {
 		return buttonGroup;
 	}
-	
-	
-	
+
 	
 	/**
 	 * Places all the objects into the panel
@@ -115,7 +120,10 @@ public class ImgInventoryPanel extends JPanel {
 		
 	}
 	
-	
+	/**
+	 * Returns the Object gui that called the ImgInventoryPanel constructor.
+	 * @return gui, of type Object
+	 */
 	public Object getType() {
 		return gui;
 	}
