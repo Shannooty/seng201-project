@@ -1,9 +1,7 @@
 package exceptions;
 
-import gui.GameEnvironment;
-
 /**
- * A custom exception for when the player tries to purchase a new monster, but they already have a team size of 4.
+ * TeamFullException is thrown when the players team if already full and a new Monster is attempted to be added
  * @author Bede Nathan
  * @author Celia Allen
  *

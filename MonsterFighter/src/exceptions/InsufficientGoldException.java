@@ -1,7 +1,7 @@
 package exceptions;
 
 /**
- * A custom exception for when the player has insufficient gold for the purchase they wish to complete.
+ * Exception to be thrown when the player has insufficient gold to purchase an item
  * @author Bede Nathan
  * @author Celia Allen
  */
@@ -15,7 +15,7 @@ public class InsufficientGoldException extends IllegalArgumentException {
 	/**
 	 * Constructor for InsufficientGoldException. Accepts no parameters. Returns nothing.
 	 */
-//	public InsufficientGoldException() {}
+	public InsufficientGoldException() {}
 	
 	/**
 	 * Constructor for InsufficientGoldException. Calls the SuperClass constructor for IllegalArgumentException.

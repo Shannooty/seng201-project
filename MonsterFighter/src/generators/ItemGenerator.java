@@ -9,8 +9,18 @@ import purchasable.items.armors.*;
 import purchasable.items.weapons.*;
 import purchasable.items.food.*;
 
+/**
+ * ItemGenerator class that provides the ability to create a random Item object of random type or specific type
+ * @author Bede Nathan
+ * @author Celia Allen
+ *
+ */
 public class ItemGenerator extends Generator {
 	
+	/**
+	 * Will return a new random item of any type
+	 * @return The new Item object
+	 */
 	public static Item newItem() {
 		AvalibleItemTypes itemType = AvalibleItemTypes.randomItemType();
 		
@@ -28,6 +38,10 @@ public class ItemGenerator extends Generator {
 		}
 	}
 	
+	/**
+	 * Method for creating a random Armor from the available armor types
+	 * @return The new Armor object
+	 */
 	public static Armor newArmor() {
 		AvalibleArmors armorType = AvalibleArmors.randomArmor();
 		
@@ -44,6 +58,10 @@ public class ItemGenerator extends Generator {
 		}
 	}
 	
+	/**
+	 * Method for creating a random Food from the available food types
+	 * @return The new Food object
+	 */
 	public static Food newFood() {
 		AvalibleFoods foodType = AvalibleFoods.randomFood();
 		
@@ -59,7 +77,10 @@ public class ItemGenerator extends Generator {
 		
 		}
 	}
-	
+	/**
+	 * Method for creating a random Weapon from the available weapon types
+	 * @return The new Weapon object
+	 */
 	public static Weapon newWeapon() {
 		AvalibleWeapons weaponType = AvalibleWeapons.randomWeapon();
 		
@@ -76,6 +97,10 @@ public class ItemGenerator extends Generator {
 		}
 	}
 	
+	/**
+	 * Returns a new SpeedPotion item
+	 * @return the SpeedPotion object
+	 */
 	public static SpeedPotion newPotion() {
 		return new SpeedPotion();
 	}

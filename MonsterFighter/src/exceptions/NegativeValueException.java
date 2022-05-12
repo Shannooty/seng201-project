@@ -1,7 +1,7 @@
 package exceptions;
 
 /**
- * A custom exception for when a negative value is given to a function that cannot handle it.
+ * Negative value exception to be thrown when negative values are passed through to methods where negative values don't make sense.
  * @author Bede Nathan
  * @author Celia Allen
  *
