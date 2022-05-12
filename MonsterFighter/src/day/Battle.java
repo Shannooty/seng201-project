@@ -1,15 +1,12 @@
 package day;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 
 import javax.swing.ImageIcon;
 
 import generators.MonsterGenerator;
 import gui.GameEnvironment;
-import gui.ImageCarousel;
 import interfaces.HasImage;
 import purchasable.monsters.*;
 
@@ -59,7 +56,7 @@ public class Battle implements HasImage {
 	/**
 	 * Attribute randomPlayers, of type String[]. A list of the possible random usernames for the player's opposition.
 	 */
-	private String[] randomPlayers = {"One", "Two", "Three", "Four", "nine"};
+	private String[] randomPlayers = {"One", "Two", "Three", "Four", "Nine"};
 	
 	/**
 	 * Attribute gamePlayer, of type String. A username for the player's opposition.
@@ -98,11 +95,6 @@ public class Battle implements HasImage {
 	 * Attribute instanceId, of type Integer. A unique id for each instance of Battle. Created by adding one to the current value of the attribute id.
 	 */
     private int instanceId = ++id;
-    
-	/**
-	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
-	 */
-	private GameEnvironment gameEnvironment;
 	
 	/**
 	 * Attribute startingMonster of type Monster. The Monster that attacks first for each round of a battle.
@@ -136,8 +128,6 @@ public class Battle implements HasImage {
 	 * @param gameEnvironment, of type GameEnvironment. A class that has associated variables that are required for Battle.
 	 */
 	public Battle(GameEnvironment gameEnvironment) {
-		this.gameEnvironment = gameEnvironment;
-//		team = gameEnvironment.getPlayer().getInventory().getTeam().getTeam();
 		difficulty = gameEnvironment.getGameDifficulty();
 		dayNum = gameEnvironment.getDayNumber();
 		gameLength = gameEnvironment.getGameLength();
@@ -164,11 +154,10 @@ public class Battle implements HasImage {
 		if (difficulty == "Hard") {
 			gold -= 20;
 			points += 100;
-//			numMonstersToFight += 2;
+
 		} else if (difficulty == "Medium") {
 			gold -= 10;
 			points += 50;
-//			numMonstersToFight += 1;
 		}
 		
 		for (int i = 0; i < numMonstersToFight; i++) {
@@ -256,20 +245,10 @@ public class Battle implements HasImage {
 			for (long i = 0; i < starterFrequency; i++) {
 				secondMonster.removeHealth(startingMonster.getAttackAmount());
 			}
-			
-			
-			
-			//Player attacks
-//			gameMonster.removeHealth(playerMonster.getAttackAmount());
-			
-//			if (secondMonster.getHealth() > 0) {
-				//Game attacks
-//				playerMonster.removeHealth(gameMonster.getAttackAmount());
 				
 			for (long i = 0; i < secondFrequency; i++) {
 				startingMonster.removeHealth(secondMonster.getAttackAmount());
 			}
-//			}
 		}
 		
 		String winner;
@@ -328,15 +307,6 @@ public class Battle implements HasImage {
 		return gamePlayer;
 	}
 	
-//	public void removeMonster() {
-//		
-//	}
-//	
-//
-//	
-//	public void startBattle() {
-//		
-//	}
 	
 	/**
 	 * Returns a string representation of the current instance of the class Battle.
@@ -349,12 +319,9 @@ public class Battle implements HasImage {
 		
 		
 		for (Monster monster : monstersTofight.subList(1, monstersTofight.size())) {
-//			monsters += "\n";
 			monsters += monster.toString();
 			
 		}
-		
-//		return "Gold: "+gold+"\nPoints: "+points+"\nNumMonsters: "+numMonstersToFight+"\nMonsters: ";
 		return "Player: "+gamePlayer+"\nGold: "+gold+"\nPoints: "+points+"\nNumber of Monsters: "+numMonstersToFight+"\n\nMonsters: "+monsters+"\n";
 	}
 	
