@@ -12,7 +12,7 @@ import java.awt.event.*;
 public class ImageCarousel extends JPanel implements ActionListener {
 	
 	/**
-	 * 
+	 * Attribute serialVersionUID, of type static final long. A serialVersion.
 	 */
 	private static final long serialVersionUID = 566482839682183554L;
 
@@ -46,6 +46,9 @@ public class ImageCarousel extends JPanel implements ActionListener {
 	 */
 	private String currDescription;
 	
+	/**
+	 * Attribute gui, of type Object. An instance of the class that called the ImageCarousel constructor.
+	 */
 	private Object gui;
 	
 	
@@ -53,24 +56,19 @@ public class ImageCarousel extends JPanel implements ActionListener {
 	/**
 	 * Constructor for the class ImageCarousel. Creates a slide show of images that the user can click through. 
 	 * @param givenImages type ImageIcon[], the list of images that the constructor displays to the user. Private variable images is set to the value of givenImages. 
+	 * @param gui, of type Object. An instance of the class that called the ImageCarouse constructor.
 	 */
-	public ImageCarousel(ImageIcon[] givenImages, Object type) {
+	public ImageCarousel(ImageIcon[] givenImages, Object gui) {
 		
-		this.gui = type;
-		
-//		givenImages[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
+		this.gui = gui;
 		JPanel imagePanel = new JPanel();
-
 		images = givenImages;
-		
 		imageSpace = new JLabel("",JLabel.CENTER); 
 		add(imageSpace,BorderLayout.CENTER);
 
 		if (givenImages.length > 0) {
 		  
-		   
 		   ImageIcon imageIcon = scaleImage(images[0]);
-
 		   imageSpace.setIcon(imageIcon);
 		   currDescription = images[0].getDescription();
 		   
@@ -83,11 +81,11 @@ public class ImageCarousel extends JPanel implements ActionListener {
 			   backwards.setEnabled(false);
 			   forwards.setEnabled(false);
 		   }
-		   
 		   add(imagePanel,BorderLayout.SOUTH);
 		   backwards.addActionListener(this);
 		   forwards.addActionListener(this);
 		   setVisible(true);
+		   
 	   } else {
 		   ImageIcon imageIcon = scaleImage(new ImageIcon(ImageCarousel.class.getResource("/images/NA.png"), "N/A"));
 		   imageSpace.setIcon(imageIcon);
@@ -122,7 +120,6 @@ public class ImageCarousel extends JPanel implements ActionListener {
 	       }
 	   }
 	   currDescription = images[index].getDescription();
-//	   System.out.println(currDescription);
 	   if (gui instanceof MainScreen) {
 		   ((MainScreen) gui).setTxtrDescription(currDescription);
 	   }
@@ -137,7 +134,6 @@ public class ImageCarousel extends JPanel implements ActionListener {
 	 * Returns the string description of the currently displayed image.
 	 * @return type String, the description of the currently displayed image.
 	 */
-	
 	public String getImg() {
 		return currDescription;
 	}
@@ -155,6 +151,5 @@ public class ImageCarousel extends JPanel implements ActionListener {
 	}
 
 
-	
 
 }
