@@ -29,12 +29,12 @@ public class ImageCarousel extends JPanel implements ActionListener {
 	/**
 	 * Attribute backwards of type JButton. A button that the user can click to display the previous image in the slide show.
 	 */
-	static JButton backwards;
+	private JButton backwards;
 	
 	/**
 	 * Attribute forwards of type JButton. A button that the user can click to display the next image in the slide show.
 	 */
-	static JButton forwards;
+	private JButton forwards;
 	
 	/**
 	 * Attribute index of type integer. An integer from 0 - (length of images - 1). The index of the currently displayed image in the list images.

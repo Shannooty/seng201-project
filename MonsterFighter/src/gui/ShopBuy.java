@@ -33,7 +33,7 @@ import javax.swing.JPanel;
 
 
 /**
- * 
+ * The screen that displays the items/monsters the player can buy.
  * @author Celia Allen
  * @author Bede Nathan
  *
@@ -44,24 +44,12 @@ public class ShopBuy {
 	 * Attribute frmShopbuy of type JFrame. The frame which is displayed to the user. Contains the UI for ShopBuy.
 	 */
 	private JFrame frmShopbuy;
-	
-//	private ArrayList<String> monsters;
-	
+		
 	/**
 	 * Attribute txtDescription of type JTextArea. The area where the Item/Monster's description is displayed to the user.
 	 */
 	private JTextArea txtDescription = new JTextArea("");
-	
-//	/**
-//	 * Attribute gold of type double. The amount of gold the player currently has. 
-//	 */
-//	private double gold;
-	
-//	/**
-//	 * Attribute selectedCost of type double. The cost of the currently selected Item/Monster.
-//	 */
-//	private static double selectedCost;
-	
+
 	/**
 	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
 	 */
@@ -72,6 +60,9 @@ public class ShopBuy {
 	 */
 	private Player player;
 	
+	/**
+	 * Attribute shop of type Shop. The current shop.
+	 */
 	private Shop shop;
 	
 	/**
@@ -84,19 +75,16 @@ public class ShopBuy {
 	 */
 	private Item selectedItem;
 	
-	
+	/**
+	 * Attribute type of type Object. The current instance of ShopBuy.
+	 */
 	private Object type = this;
-	
-
-	
-	
-	JButton btnShowMonsters, btnShowItems;
-
 	
 
 	/**
 	 * Constructor for the class ShopBuy. Creates an instance of the class Shop, ShopBuy's parent. Sets the private variable gameEnvironment to the gameManager given, calls the initialize() method, and sets the frame to visible.
-	 * @param gameManager type GameEnvironment. The class that manages what windows are open.
+	 * @param gameManager type GameEnvironment. The game manager.
+	 * @param shop, of type Shop. The current instance of Shop.
 	 */
 	public ShopBuy(GameEnvironment gameManager, Shop shop) {
 		gameEnvironment = gameManager;
