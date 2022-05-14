@@ -32,11 +32,6 @@ public abstract class Purchasable implements HasImage {
 	 */
 	private double sellPrice = 0;
 	
-//	/**
-//	 * Attribute description, of type String. The name of the purchasable Item/Monster.
-//	 */
-//	private String description = "";
-	
 	/**
 	 * Attribute imgPath, of type String. The path to the image of the Item/Monster.
 	 */
@@ -48,7 +43,7 @@ public abstract class Purchasable implements HasImage {
 	private ImageIcon img;
 	
 	/**
-	 * Attribute id, of type static Integer. The current id number, shared across all instances of the interface Purchasable. Used to create a unique instanceId for each instance of a class implementing Purchasable.
+	 * Attribute id, of type static Integer. The current id number, shared across all instances of Purchasable. Used to create a unique instanceId for each instance of a class implementing Purchasable.
 	 */
 	private static int id = 0;
 	
