@@ -5,7 +5,7 @@ import player.Inventory;
 import purchasable.monsters.Monster;
 
 /**
- * 
+ * Extends RandomEvent. A random event that can occur overnight.
  * @author Bede Nathan
  * @author Celia Allen
  *

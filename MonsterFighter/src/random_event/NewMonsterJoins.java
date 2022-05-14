@@ -9,7 +9,7 @@ import purchasable.monsters.*;
 
 
 /**
- * 
+ * Extends RandomEvent. A random event that can occur overnight.
  * @author Bede Nathan
  * @author Celia Allen
  *
@@ -18,7 +18,7 @@ public class NewMonsterJoins extends RandomEvent {
 
 	
 	/**
-	 * Constructor for class NewMonsterJoins. ______???? and calls the method createMonster().
+	 * Constructor for class NewMonsterJoins. Calls the superclass constructor, and calls the method createMonster().
 	 */
 	public NewMonsterJoins(Inventory inventory) {
 		super(inventory);

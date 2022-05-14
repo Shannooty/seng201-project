@@ -12,44 +12,37 @@ import player.Team;
 import purchasable.monsters.Monster;
 
 /**
- * 
+ * Creates an instance of a random event to occur overnight.
  * @author Bede Nathan
  * @author Celia Allen
  *
  */
 public class RandomEvent {
 	
-	
-//	private ArrayList<String> randomEvents;
-	
+		
 	/**
 	 * Attribute randomEvents, of type String[]. A list of the possible random events, {"MonsterLeaves", "NewMonsterJoins", "MonsterLevelsUp"}.
 	 */
-//	private String[] randomEvents = {"MonsterLeaves", "NewMonsterJoins", "MonsterLevelsUp"};
-	
 	
 	/**
 	 * Attribute randomEventsInt, of type List<Integer>. A list of integers in the range 1 to 20. Used to change the chance of each RandomEvent occurring.
 	 */
 	private List<Integer> randomEventsInt = IntStream.rangeClosed(1, 20).boxed().collect(Collectors.toList());
 	
-	
 	/**
 	 * Attribute randomItem, of type Random. A random generator.
 	 */
 	protected Random randomItem = new Random();
 	
-	
-//	private static Random randomItem;
-	
+	/**
+	 * Attribute inventory, of type Inventory. The player's inventory.
+	 */
 	protected Inventory inventory;
 	
 	/**
 	 * Attribute playerTeam, of type ArrayList<Monster>. Calls the method getTeam() in class Inventory to get the player's team.
 	 */
 	private Team playerTeam;
-	
-	
 	
 	/**
 	 * Constructor for the class RandomEvent. Does not require any parameters, returns nothing, and does nothing. Created so RandomEvent's subclasses don't have to try and create an Inventory they don't have.
@@ -74,21 +67,17 @@ public class RandomEvent {
 	 */
 	public String getRandomEvent() {	
 		int randomInt = randomEventsInt.get(randomItem.nextInt(randomEventsInt.size()));
-		
 		String event;
-		
 		if (randomInt >= 1 && randomInt <= 3) {
 			event = "MonsterLeaves";
-		} else if (randomInt >= 4 && randomInt <= 5) {
+		} else if (randomInt >= 4 && randomInt <= 6) {
 			event = "NewMonsterJoins";
-		} else if (randomInt >= 6 && randomInt <= 11) {
+		} else if (randomInt >= 7 && randomInt <= 12) {
 			event = "MonsterLevelsUp";
 		} else {
 			event = "Nothing";
 		}
-		
 		return event;
-//		return randomEvents[(randomItem.nextInt(randomEvents.length))];
 	}
 
 	/**
@@ -96,13 +85,9 @@ public class RandomEvent {
 	 */
 	public String runRandomEvent() {
 		String randomEvent = getRandomEvent();
-		
-		
-		
-//		System.out.println("randomEvent: "+randomEvent+" team size: "+playerTeam.getTeam().size());
+
 		while (((randomEvent == "MonsterLeaves" || randomEvent == "MonsterLevelsUp") && playerTeam.getTeam().size() == 0) || randomEvent == "NewMonsterJoins" &&  playerTeam.getTeam().size() == 4){
 			randomEvent = getRandomEvent();
-//			System.out.println("WHILE randomEvent: "+randomEvent+" team size: "+playerTeam.getTeam().size());
 		}
 		
 		if (randomEvent == "MonsterLeaves") {
@@ -132,7 +117,10 @@ public class RandomEvent {
 		this.playerTeam = playerTeam;
 	}
 	
-	
+	/**
+	 * Returns the player's inventory.
+	 * @return inventory, of type Inventory.
+	 */
 	public Inventory getInventory() {
 		return inventory;
 	}
