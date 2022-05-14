@@ -51,10 +51,12 @@ public class ImgInventoryPanel extends JPanel {
 	public ImgInventoryPanel(JScrollPane pane, ArrayList<? extends HasImage> toDisplay, Object gui) {
 		if (toDisplay.size() > 0) {
 			int iconWidth = toDisplay.get(0).getImg().getIconWidth();
+			int iconHeight = toDisplay.get(0).getImg().getIconHeight();
 			int paneWidth = pane.getWidth();
 			int numItems = paneWidth / iconWidth;
-			String rowColContraints = "["+ iconWidth + "!]";
-			this.setLayout(new MigLayout("wrap " + numItems, rowColContraints, rowColContraints));
+			String colContraints = "["+ iconWidth + "!]";
+			String rowContraints = "["+ iconHeight + "!]";
+			this.setLayout(new MigLayout("wrap " + numItems, colContraints, rowContraints));
 			
 			pane.setViewportView(this);
 			placeObjectsInPanel(toDisplay);
