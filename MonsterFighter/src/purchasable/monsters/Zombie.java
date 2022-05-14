@@ -6,7 +6,7 @@ public class Zombie extends Monster {
 		super("SENG-201 Student", 1000, 200, 30);
 		setImgPath("/images/zombie.png");
 		setImg();
-		setHealAmount(300);
+		setHealAmount(1000);
 		setMonsterType("zombie");
 		setPurchasePrice(75);
 		setSellPrice(75);

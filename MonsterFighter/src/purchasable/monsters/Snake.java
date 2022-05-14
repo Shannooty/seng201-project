@@ -6,7 +6,7 @@ public class Snake extends Monster {
 		super("Snek", 700, 320, 18);
 		setImgPath("/images/snake.png");
 		setImg();
-		setHealAmount(320);
+		setHealAmount(700);
 		setMonsterType("snake");
 		setPurchasePrice(65);
 		setSellPrice(65);

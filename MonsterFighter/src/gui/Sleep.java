@@ -132,10 +132,6 @@ public class Sleep {
 		JLabel lblRandomEvent = new JLabel();
 		String event = randomEvent.runRandomEvent();
 		
-		ArrayList<Monster> team = gameEnvironment.getPlayer().getInventory().getTeam().getTeam();
-		for (Monster monster : team) {
-			monster.addHealth(monster.getMaxHealth());
-		}
 
 		if (event == "Nothing") {
 			lblRandomEvent.setText("No random event occurred.");

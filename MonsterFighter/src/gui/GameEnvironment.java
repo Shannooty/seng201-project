@@ -181,6 +181,11 @@ public class GameEnvironment {
 			Double goldEarnedToday = today.getGoldEarnedToday();
 			int pointsEarnedToday = today.getPointsEarnedToday();
 			Day nextDay = new Day(this);
+			ArrayList<Monster> team = getPlayer().getInventory().getTeam().getTeam();
+			for (Monster monster : team) {
+				monster.sleep();
+			}
+
 			setToday(nextDay);			
 			launchSleepScreen(goldEarnedToday, pointsEarnedToday);
 		}

@@ -6,7 +6,7 @@ public class UndeadGuard extends Monster {
 		super("Royal Guard #7", 1200, 100, 15);
 		setImgPath("/images/undead_guard.png");
 		setImg();
-		setHealAmount(400);
+		setHealAmount(1200);
 		addArmorAmount(100);
 		setMonsterType("undeadGuard");
 		setPurchasePrice(70);

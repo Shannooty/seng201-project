@@ -6,7 +6,7 @@ public class Slime extends Monster {
 		super("Slimey Boy", 750, 300, 20);
 		setImgPath("/images/slime.png");
 		setImg();
-		setHealAmount(300);
+		setHealAmount(750);
 		setMonsterType("slime");
 		setPurchasePrice(65);
 		setSellPrice(65);
