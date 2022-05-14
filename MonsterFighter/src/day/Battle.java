@@ -94,19 +94,10 @@ public class Battle implements HasImage {
     private int instanceId = ++id;
 	
 	/**
-	 * Attribute startingMonster of type Monster. The Monster that attacks first for each round of a battle.
-	 */
-	private Monster startingMonster;
-	
-	/**
 	 * Attribute startingMonsterString of type String. A String representation of the Monster that attacks first for each round of a battle.
 	 */
 	private String startingMonsterString;
 	
-	/**
-	 * Attribute secondMonster of type Monster. The Monster that attacks second for each round of a battle.
-	 */
-	private Monster secondMonster;
 	
 	/**
 	 * Attribute secondMonsterString of type String. A String representation of the Monster that attacks second for each round of a battle.
@@ -231,6 +222,7 @@ public class Battle implements HasImage {
 	 */
 	public String attack(Monster playerMonster, Monster gameMonster) {
 		Monster startingMonster;
+		Monster secondMonster;
 		if (playerMonster.getSpeed() >= gameMonster.getSpeed()) {
 			startingMonster = playerMonster;
 			secondMonster = gameMonster;
@@ -253,28 +245,32 @@ public class Battle implements HasImage {
 			secondFrequency = 1;
 		}
 		
-		while (playerMonster.getHealth() > 0 && gameMonster.getHealth() > 0) {
+		boolean fightDone = false;
+		
+		while (!fightDone) {
 			
 			for (long i = 0; i < starterFrequency; i++) {
-				secondMonster.removeHealth(startingMonster.getAttackAmount());
+				if (playerMonster.getHealth() > 0 && gameMonster.getHealth() > 0) {
+					secondMonster.removeHealth(startingMonster.getAttackAmount());
+				}else {
+					fightDone = true;
+				}
 			}
 				
 			for (long i = 0; i < secondFrequency; i++) {
-				startingMonster.removeHealth(secondMonster.getAttackAmount());
+				if (playerMonster.getHealth() > 0 && gameMonster.getHealth() > 0) {
+					startingMonster.removeHealth(secondMonster.getAttackAmount());
+				}else {
+					fightDone = true;
+				}
 			}
 		}
 		
 		String winner;
 		
-		if (playerMonster.getHealth() <= 0) {
-			winner = "Player " + gamePlayer + gameMonster.toString();
-			playerMonster.setStunnedStatus(true);
-		} 
 		if (gameMonster.getHealth() <= 0) {
-			winner = "You: " + playerMonster.toString();
 			monstersTofight.remove(gameMonster);
 		}
-		
 		
 		if (gameMonster.getHealth() > playerMonster.getHealth()) {
 			winner = "Player " + gamePlayer + gameMonster.toString();
