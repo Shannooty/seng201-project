@@ -10,6 +10,7 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.ListSelectionModel;
@@ -119,7 +120,7 @@ public class EndScreen {
 		JLabel lblLeaderboard = new JLabel("Leaderboard");
 		lblLeaderboard.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblLeaderboard.setHorizontalAlignment(SwingConstants.CENTER);
-		lblLeaderboard.setBounds(295, 151, 244, 37);
+		lblLeaderboard.setBounds(295, 152, 244, 37);
 		frmEndscreen.getContentPane().add(lblLeaderboard);
 		
 		JList<String> listLeaderboard = new JList<String>(loadLeaderboard());
@@ -171,6 +172,18 @@ public class EndScreen {
 		lblDuration.setFont(new Font("Tahoma", Font.PLAIN, 17));
 		lblDuration.setBounds(429, 60, 156, 28);
 		frmEndscreen.getContentPane().add(lblDuration);
+		
+		JButton btnReset = new JButton("Reset");
+		btnReset.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int choice = JOptionPane.showConfirmDialog(frmEndscreen, "Are you sure you want to reset the leaderboard?",  "Leaderboard Pop-Up", JOptionPane.YES_NO_OPTION);
+				if (choice == JOptionPane.YES_OPTION) {
+					GameEnvironment.getLeaderboard().clear();
+				}
+			}
+		});
+		btnReset.setBounds(549, 440, 61, 23);
+		frmEndscreen.getContentPane().add(btnReset);
 	}
 
 	/**
