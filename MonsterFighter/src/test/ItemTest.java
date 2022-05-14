@@ -6,11 +6,14 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import gui.GameEnvironment;
+import player.Player;
 import purchasable.items.armors.*;
 import purchasable.items.food.*;
 import purchasable.items.weapons.*;
 import purchasable.monsters.Dinosaur;
 import purchasable.monsters.Monster;
+import purchasable.monsters.Slime;
 
 class ItemTest {
 
@@ -18,6 +21,7 @@ class ItemTest {
 	private Weapon testWeapon;
 	private Food testFood;
 	private Armor testArmor;
+	private Player testPlayer;
 
 
 	@BeforeEach
@@ -26,6 +30,7 @@ class ItemTest {
 		testFood = new Apple();
 		testArmor = new Shield();
 		testMonster = new Dinosaur();
+		testPlayer = new Player("Bob", new Slime(), new GameEnvironment());
 	}
 
 	@AfterEach
@@ -62,8 +67,22 @@ class ItemTest {
 	}
 	
 	@Test
-	void testSell() {
+	void testBuy() {
+		double expectedGold = testPlayer.getGoldAmount() - testWeapon.getPurchasePrice();
 		
+		testWeapon.buy(testPlayer);
+		assertEquals(expectedGold, testPlayer.getGoldAmount());
+		assertTrue(testPlayer.getInventory().getItems().contains(testWeapon));
+	}
+	
+	@Test
+	void testSell() {
+		testFood.buy(testPlayer);
+		double expectedGold = testPlayer.getGoldAmount() + testFood.getSellPrice();
+		
+		testFood.sell(testPlayer);
+		assertEquals(expectedGold, testPlayer.getGoldAmount());
+		assertFalse(testPlayer.getInventory().getItems().contains(testFood));
 	}
 
 }
