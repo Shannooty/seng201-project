@@ -58,7 +58,7 @@ class PlayerTest {
 		InsufficientGoldException insufficientGoldException = assertThrows(InsufficientGoldException.class,
 				() -> testPlayer.removeGold(1000));
 		
-		assertEquals("Insufficient Gold", insufficientGoldException.getMessage());
+		assertEquals("Insufficient gold", insufficientGoldException.getMessage());
 		assertEquals(500, testPlayer.getGoldAmount());
 		
 		//Testing removing negative gold

@@ -8,21 +8,20 @@ import purchasable.monsters.Monster;
 
 /**
  * Class that implements the Team functionality for the Player and sorts the Team by their speed attribute
- * @author Bede Nathan, Celia Allen
+ * @author Bede Nathan
+ * @author Celia Allen
  *
  */
 public class Team {
+	
+	/**
+	 * Attribute team, of type ArrayList[Monster]. The player's team of Monsters.
+	 */
 	private ArrayList<Monster> team = new ArrayList<Monster>();
-	
-	
-	
-	public Team() {
-	}
-	
 	
 	/**
 	 * To access the Team Monster array
-	 * @return ArrayList of the Team Monsters
+	 * @return team, of type ArrayList. The team of Monsters
 	 */
 	public ArrayList<Monster> getTeam() {
 		return team;
@@ -30,7 +29,7 @@ public class Team {
 	
 	/**
 	 * Adds a monster to the Team unless the Team is full, in which case will throw a TeamFullException
-	 * @param monster Monster to be added
+	 * @param monster, of type Monster. The Monster to be added
 	 */
 	
 	public void add(Monster monster) {
@@ -48,7 +47,7 @@ public class Team {
 	
 	/**
 	 * Removes a specific Monster from the Team
-	 * @param monster Monster to be removed
+	 * @param monster, of type Monster. The Monster to be removed
 	 */
 	public void remove(Monster monster) {
 		getTeam().remove(monster);
@@ -72,7 +71,7 @@ public class Team {
 	
 	/**
 	 * Does the sorting for the team
-	 * @param list
+	 * @param list, of type ArrayList[Monster]
 	 */
 	private void sort(ArrayList<Monster> list)
     {
