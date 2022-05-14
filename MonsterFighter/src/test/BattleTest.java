@@ -81,7 +81,7 @@ class BattleTest {
 		playerMonster.sleep();
 		enemyMonster.sleep();
 		
-		enemyMonster.setStunnedStatus(true);
+		enemyMonster.removeHealth(10000000);
 		winner = testBattle.attack(playerMonster, enemyMonster);
 		assertTrue(winner.contains("You:"));
 		assertTrue(playerMonster.getHealth() == playerMonster.getMaxHealth());
