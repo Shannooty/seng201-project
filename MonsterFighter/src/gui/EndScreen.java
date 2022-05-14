@@ -112,9 +112,9 @@ public class EndScreen {
 		String scoreMessage = "Score : " + getPlayer().getPoints();
 		
 		JLabel lblScore = new JLabel(scoreMessage);
-		lblScore.setHorizontalAlignment(SwingConstants.CENTER);
+		lblScore.setHorizontalAlignment(SwingConstants.LEFT);
 		lblScore.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblScore.setBounds(429, 88, 95, 28);
+		lblScore.setBounds(449, 88, 156, 28);
 		frmEndscreen.getContentPane().add(lblScore);
 		
 		JLabel lblLeaderboard = new JLabel("Leaderboard");
@@ -162,15 +162,15 @@ public class EndScreen {
 		frmEndscreen.getContentPane().add(lblPlayer);
 		
 		JLabel lblGold = new JLabel("Gold : "+ player.getGoldAmount());
-		lblGold.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGold.setHorizontalAlignment(SwingConstants.LEFT);
 		lblGold.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblGold.setBounds(429, 113, 101, 28);
+		lblGold.setBounds(449, 113, 156, 28);
 		frmEndscreen.getContentPane().add(lblGold);
 		
 		JLabel lblDuration = new JLabel("Duration : "+ gameEnvironment.getGameLength()+" days.");
-		lblDuration.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDuration.setHorizontalAlignment(SwingConstants.LEFT);
 		lblDuration.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		lblDuration.setBounds(429, 60, 156, 28);
+		lblDuration.setBounds(449, 60, 187, 28);
 		frmEndscreen.getContentPane().add(lblDuration);
 		
 		JButton btnReset = new JButton("Reset");
@@ -182,7 +182,7 @@ public class EndScreen {
 				}
 			}
 		});
-		btnReset.setBounds(549, 440, 61, 23);
+		btnReset.setBounds(387, 508, 61, 23);
 		frmEndscreen.getContentPane().add(btnReset);
 	}
 
