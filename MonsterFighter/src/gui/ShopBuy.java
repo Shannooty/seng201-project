@@ -122,7 +122,7 @@ public class ShopBuy {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		scrollPane.setBounds(52, 88, 411, 343);
+		scrollPane.setBounds(50, 88, 460, 343);
 		frmShopbuy.getContentPane().add(scrollPane);
 
 		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, type);
@@ -171,7 +171,7 @@ public class ShopBuy {
 		txtDescription.setText("Nothing selected.");
 		txtDescription.setLineWrap(true);
 		txtDescription.setEditable(false);
-		txtDescription.setBounds(473, 88, 302, 233);
+		txtDescription.setBounds(522, 88, 302, 233);
 		frmShopbuy.getContentPane().add(txtDescription);
 
 		JButton btnShopSell = new JButton("Sell");
@@ -231,7 +231,7 @@ public class ShopBuy {
 			}
 		});
 		btnBuy.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnBuy.setBounds(633, 331, 142, 25);
+		btnBuy.setBounds(682, 331, 142, 25);
 		frmShopbuy.getContentPane().add(btnBuy);
 //		
 		JButton btnReturnHome = new JButton("Return Home");
