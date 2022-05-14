@@ -1,27 +1,18 @@
 package gui;
-import java.awt.EventQueue;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Dictionary;
 
 import player.*;
 import purchasable.monsters.*;
 
 import javax.swing.JFrame;
-import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
 import javax.swing.JTextField;
-import javax.swing.JScrollBar;
 import javax.swing.JSlider;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,9 +29,7 @@ import javax.swing.event.DocumentListener;
 
 import day.Day;
 
-import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.JSpinner;
 
 
 /**

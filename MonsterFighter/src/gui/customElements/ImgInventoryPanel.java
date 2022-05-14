@@ -11,7 +11,6 @@ import javax.swing.JScrollPane;
 
 import net.miginfocom.swing.MigLayout;
 import purchasable.items.Item;
-import purchasable.items.weapons.Weapon;
 import purchasable.monsters.Monster;
 import gui.ChooseBattleScreen;
 import gui.InventoryScreen;

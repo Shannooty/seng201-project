@@ -6,10 +6,8 @@ import javax.swing.JScrollPane;
 import gui.customElements.ImgInventoryPanel;
 import player.Inventory;
 import player.Player;
-import player.Team;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
-import shop.Shop;
 
 import java.util.ArrayList;
 import java.util.List;

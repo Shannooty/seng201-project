@@ -196,7 +196,7 @@ public class GameEnvironment {
 	 * Creates a new instance of the class SetupScreen, passing the GameEnvironment object as a parameter.
 	 */
 	public void launchSetupScreen(){
-		SetupScreen setupScreen = new SetupScreen(this);
+		new SetupScreen(this);
 	}
 	
 	/**
@@ -211,7 +211,7 @@ public class GameEnvironment {
 	 * Creates a new instance of the class MainScreen, passing the GameEnvironment object as a parameter.
 	 */
 	public void launchMainScreen(){
-		MainScreen mainScreen = new MainScreen(this);
+		new MainScreen(this);
 	}
 	
 	/**
@@ -228,7 +228,7 @@ public class GameEnvironment {
 	 * @param pointsEarnedToday, of type integer. The amount of gold the player earned in the current day.
 	 */
 	public void launchSleepScreen(Double goldEarnedToday, int pointsEarnedToday){
-		Sleep sleepScreen = new Sleep(this, goldEarnedToday, pointsEarnedToday);
+		new Sleep(this, goldEarnedToday, pointsEarnedToday);
 	}
 	
 	/**
@@ -243,7 +243,7 @@ public class GameEnvironment {
 	 * Creates a new instance of the class InventoryScreen, passing the GameEnvironment object as a parameter.
 	 */
 	public void launchInventoryScreen(){
-		InventoryScreen inventoryScreen = new InventoryScreen(this);
+		new InventoryScreen(this);
 	}
 	
 	/**
@@ -281,7 +281,7 @@ public class GameEnvironment {
 	 * Creates a new instance of the class ShopSell, passing the GameEnvironment object as a parameter.
 	 */
 	public void launchShopSellScreen(){
-		ShopSell shopSellScreen = new ShopSell(this);
+		new ShopSell(this);
 	}
 	
 	/**
@@ -296,7 +296,7 @@ public class GameEnvironment {
 	 * Creates a new instance of the class ChooseBattleScreen, passing the GameEnvironment object as a parameter.
 	 */
 	public void launchChooseBattleScreen(){
-		ChooseBattleScreen chooseBattleScreen = new ChooseBattleScreen(this);
+		new ChooseBattleScreen(this);
 	}
 	
 	/**
@@ -312,7 +312,7 @@ public class GameEnvironment {
 	 * @param selectedBattle, of type Battle. The Battle that the player selected.
 	 */
 	public void launchBattleScreen(Battle selectedBattle){
-		BattleScreen battleScreen = new BattleScreen(this, selectedBattle);
+		new BattleScreen(this, selectedBattle);
 	}
 	
 	/**
@@ -327,7 +327,7 @@ public class GameEnvironment {
 	 * Creates a new instance of the class EndScreen, passing the GameEnvironment object as a parameter.
 	 */
 	public void launchEndScreen() {
-		EndScreen endScreen = new EndScreen(this);
+		new EndScreen(this);
 	}
 	
 	/**

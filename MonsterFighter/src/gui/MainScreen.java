@@ -1,7 +1,5 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -20,12 +18,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import player.*;
-import purchasable.items.Item;
 import purchasable.monsters.*;
-import shop.Shop;
-
-import javax.swing.JEditorPane;
-
 
 /**
  * The main screen of the game.
