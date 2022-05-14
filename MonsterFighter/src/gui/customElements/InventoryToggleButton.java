@@ -1,8 +1,12 @@
 package gui.customElements;
 
-import javax.swing.ImageIcon;
+import java.awt.Color;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
+
 import javax.swing.JLabel;
 import javax.swing.JToggleButton;
+import javax.swing.border.LineBorder;
 
 import day.Battle;
 import interfaces.HasImage;
@@ -33,8 +37,18 @@ public class InventoryToggleButton extends JToggleButton {
 	public <T extends HasImage> InventoryToggleButton(T item) {
 		setButtonObject(item);
 		this.setIcon(item.getImg());
-		this.setBorder(null);
-		this.setSelectedIcon(new ImageIcon(InventoryToggleButton.class.getResource("/images/index1.png")));
+		this.setBorder(new LineBorder(new Color(0,0,0,1)));
+		
+		this.addFocusListener(new FocusAdapter() {
+			@Override
+			public void focusGained(FocusEvent e) {
+				setBorder(new LineBorder(Color.BLACK));
+			}
+			@Override
+			public void focusLost(FocusEvent e) {
+				setBorder(new LineBorder(new Color(0,0,0,1)));
+			}
+		});
 		
 		if (item instanceof Battle) {
 			setBattleInfo();
