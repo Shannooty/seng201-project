@@ -12,6 +12,7 @@ import day.Battle;
 import day.Day;
 import gui.GameEnvironment;
 import player.Player;
+import purchasable.items.*;
 import purchasable.monsters.*;
 
 class BattleTest {
@@ -26,11 +27,13 @@ class BattleTest {
 		game = new GameEnvironment();
 		game.setGameLength(10);
 		game.setGameDifficulty("Hard");
-		game.setToday(new Day(game));
 		
 		testPlayer = new Player("Murr", new Dinosaur(), game);
 		
 		game.setPlayer(testPlayer);
+		game.setToday(new Day(game));
+		
+		testMonsters = new ArrayList<Monster>();
 		
 		createTestMonsters();
 		
@@ -50,11 +53,33 @@ class BattleTest {
 	void tearDown() throws Exception {
 		testBattle = null;
 		game = null;
+		testMonsters = null;
 	}
 
 	@Test
 	void testAttack() {
-		fail("Not yet implemented");
+		//Test equal Monster fighting, player should win
+		Monster playerMonster = testPlayer.getInventory().getTeam().getTeam().get(0);
+		Monster enemyMonster = testMonsters.get(0);
+		
+		String winner = testBattle.attack(playerMonster, enemyMonster);
+		System.out.println(playerMonster);
+		System.out.println(testMonsters.get(0));
+		assertTrue(winner.contains("You:"));
+		assertTrue(playerMonster.getHealth() > enemyMonster.getHealth());
+		
+		playerMonster.sleep();
+		enemyMonster.sleep();
+		
+		//Test same Monster again but enemy has higher speed
+		Item potion = new SpeedPotion();
+		potion.use(enemyMonster);
+		
+		winner = testBattle.attack(playerMonster, enemyMonster);
+		System.out.println(playerMonster);
+		System.out.println(testMonsters.get(0));
+		assertTrue(winner.contains("Player:"));
+		assertTrue(playerMonster.getHealth() < enemyMonster.getHealth());
 	}
 
 }
