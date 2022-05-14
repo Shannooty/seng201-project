@@ -9,7 +9,7 @@ import purchasable.monsters.*;
 
 
 /**
- * 
+ * The player's inventory of currently owned Monsters and Items
  * @author Bede Nathan
  * @author Celia Allen
  *
@@ -29,7 +29,7 @@ public class Inventory {
 	
 	
 	/**
-	 * Constructor for the class Inventory. Calls the addMonster() method to add the given startingMonster to the player's inventory.
+	 * Constructor for the class Inventory. Calls the Team() constructor to initialize the creation of the player's team of Monster, and the addMonster() method to add the given startingMonster to the player's team.
 	 * @param startingMonster, type Monster. The user's starting monster.
 	 */
 	public Inventory(Monster startingMonster) {
@@ -83,16 +83,16 @@ public class Inventory {
 	
 	/**
 	 * Returns the private variable team, the Monsters that the player currently owns.
-	 * @return team, or type ArrayList[Monster]
+	 * @return team, of type ArrayList[Monster]
 	 */
 	public Team getTeam(){
 		return team;
 	}
 	
 	/**
-	 * Lets the inventory use an item on a monster
-	 * @param item the item to be used
-	 * @param monster the monster for the item to be used on
+	 * Lets the inventory use an item on a monster. Return type void.
+	 * @param item, of type Item. The item to be used.
+	 * @param monster, of type Monster. The monster for the item to be used on.
 	 */
 	public void useItem(Item item, Monster monster) {
 		if (item instanceof Food) {
@@ -106,6 +106,9 @@ public class Inventory {
 		removeItem(item);
 	}
 	
+	/**
+	 * Custom toString method for the inventory. Returns a string of all the player's items, each on their own line.
+	 */
 	public String toString() {
 		String output = "";
 		
