@@ -8,7 +8,7 @@ import gui.GameEnvironment;
 import purchasable.monsters.Monster;
 
 /**
- * 
+ * The player class, containing the player's inventory, username and score.
  * @author Celia Allen
  * @author Bede Nathan
  *
@@ -34,14 +34,13 @@ public class Player {
 	 * Attribute inventory, of type Inventory. The player's inventory.
 	 */
 	private Inventory inventory;
-//	private Team team;
 	
 	
 	/**
-	 * Constructor for the class Player. Sets the player's name using the setName() method, and adds the player's starting monster to their inventory using the setInventory() method.
+	 * Constructor for the class Player. Sets the player's name using the setName() method, and adds the player's starting monster to their inventory using the setInventory() method. Sets the private attributes difficulty and inventory, and changes the initial amount of gold a player is given based on the game difficulty.
 	 * @param name, of type String. The player's username.
 	 * @param startingMonster, of type Monster. The user's starting Monster.
-	 * @param gameEnvironment, of type GameEnvironment. Used to access the current instance of a class.
+	 * @param gameEnvironment, of type GameEnvironment. The game manager.
 	 */
 	public Player(String name, Monster startingMonster, GameEnvironment gameEnvironment) {
 		setName(name);
@@ -100,9 +99,7 @@ public class Player {
 	public void removeGold(double gold) {
 		
 		if (getGoldAmount() < gold) {
-//			gameEnvironment.getShopBuyScreen().insufficientGoldPopUp("Insufficient Gold");
-			throw new InsufficientGoldException("Insufficient Gold");
-
+			throw new InsufficientGoldException("Insufficient gold");
 		} else if (gold < 0) {
 			throw new NegativeValueException("Cannot remove negative gold");
 		} else {
@@ -142,6 +139,10 @@ public class Player {
 		this.inventory = inventory;
 	}
 
+	/**
+	 * Return's the player's score.
+	 * @return score, of type PlayerScore.
+	 */
 	public PlayerScore getScore() {
 		return score;
 	}
