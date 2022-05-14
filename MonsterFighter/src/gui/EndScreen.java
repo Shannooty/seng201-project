@@ -179,10 +179,11 @@ public class EndScreen {
 				int choice = JOptionPane.showConfirmDialog(frmEndscreen, "Are you sure you want to reset the leaderboard?",  "Leaderboard Pop-Up", JOptionPane.YES_NO_OPTION);
 				if (choice == JOptionPane.YES_OPTION) {
 					GameEnvironment.getLeaderboard().clear();
+					listLeaderboard.setModel(loadLeaderboard());
 				}
 			}
 		});
-		btnReset.setBounds(387, 508, 61, 23);
+		btnReset.setBounds(382, 508, 71, 23);
 		frmEndscreen.getContentPane().add(btnReset);
 	}
 
