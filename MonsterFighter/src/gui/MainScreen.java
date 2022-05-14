@@ -212,7 +212,7 @@ public class MainScreen {
 		textAreaMonsterDescription.setEditable(false);
 		
         JScrollPane scrollableTextArea = new JScrollPane(textAreaMonsterDescription);  
-        scrollableTextArea.setBounds(480, 148, 281, 271);
+        scrollableTextArea.setBounds(480, 120, 281, 299);
         scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
         scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
         frmMainscreen.getContentPane().add(scrollableTextArea); 
