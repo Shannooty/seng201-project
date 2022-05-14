@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import shop.Shop;
 import gui.GameEnvironment;
 import player.Player;
-import player.Team;
 
 /**
  * Creates a new Day, which generates the available Battles for the player to fight.
@@ -30,19 +29,9 @@ public class Day {
 	private ArrayList<Battle> todaysBattles = new ArrayList<Battle>();
 	
 	/**
-	 * Attribute difficulty, of type String. The game difficulty, set by the player when setting up the game.
-	 */
-	private String difficulty;
-	
-	/**
 	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
 	 */
 	private GameEnvironment gameEnvironment;
-	
-	/**
-	 * Attribute team, of type Team. The payer's team of Monsters.
-	 */
-	private Team team;
 	
 	/**
 	 * Attribute pointsEarnedToday, of type integer. The amount of points the player earned in the current day.
@@ -67,9 +56,7 @@ public class Day {
 	 */
 	public Day(GameEnvironment gameEnvironment) {
 		this.gameEnvironment = gameEnvironment;
-		player = gameEnvironment.getPlayer();
-		team = player.getInventory().getTeam();
-		difficulty = gameEnvironment.getGameDifficulty();		
+		player = gameEnvironment.getPlayer();	
 		setDayNumber(gameEnvironment.getDayNumber());
 		
 		
