@@ -12,47 +12,92 @@ import purchasable.items.armors.Armor;
 import purchasable.items.weapons.Weapon;
 
 /**
- * 
- * @author Bede Nathan, Celia Allen
- * 
- * <p>An abstract Monster class that contains all the attributes and methods for all Monster types.
+ * An abstract Monster class that contains all the attributes and methods for all Monster types.
+ * @author Bede Nathan
+ * @author Celia Allen
  */
 
 public abstract class Monster extends Purchasable implements Comparator<Monster> {
 	
+	/**
+	 * Attribute health, of type integer. The monster's health amount.
+	 */
 	private int health;
+	
+	/**
+	 * Attribute maxHealth, of type integer. The monster's maximum health amount.
+	 */
 	private int maxHealth;
+	
+	/**
+	 * Attribute armorAmount, of type integer. The amount of armor a monster has. Default set to 0.
+	 */
 	private int armorAmount = 0;
+	
+	/**
+	 * Attribute healAmount, of type integer. The amount by which a monster can heal.
+	 */
 	private int healAmount;
+	
+	/**
+	 * Attribute attackAmount, of type integer. The amount that the monster can attack another monster.
+	 */
 	private int attackAmount;
+	
+	/**
+	 * Attribute speed, of type integer. The monster's speed.
+	 */
 	private int speed;
+	
+	/**
+	 * Attribute isStunned, of type boolean. True/false whether the monster is currently stunned.
+	 */
 	private boolean isStunned = false;
+	
+	/**
+	 * Attribute weaponSlot, of type Weapon. The weapon that the monster is currently holding. Default set to null.
+	 */
 	private Weapon weaponSlot = null;
+	
+	/**
+	 * Attribute armorSlot, of type Armor. The armor that the monster is currently wearing. Default set to null.
+	 */
 	private Armor armorSlot = null;
+	
+	/**
+	 * Attribute monsterType, of type String. The monster's type.
+	 */
 	private String monsterType;
+	
+	/**
+	 * Attribute equipped, of type ArrayList[String]. An ArrayList of the items the monster currently has equipped.
+	 */
 	private ArrayList<String> equipped = new ArrayList<String>();
+	
+	/**
+	 * Attribute armorModifier, of type static integer. Modifies the amount of damage dealt to a monster when wearing armor.
+	 */
 	public static int armorModifier = 4;
 	
 	/**
 	 * Main constructor for the abstract superclass of Monster
 	 * 
-	 * @param name Sets the name
-	 * @param maxHealth Sets the maximum health
-	 * @param attackAmount Sets the base attack damage
-	 * @param speed Sets the base speed (determines attack order)
+	 * @param name, of type String. Sets the name
+	 * @param maxHealth, of type integer. Sets the maximum health
+	 * @param attackAmount, of type integer. Sets the base attack damage
+	 * @param speed, of type integer. Sets the base speed (determines attack order)
 	 */
 	public Monster(String name, int maxHealth, int attackAmount, int speed) {
 		super(name);
 		this.attackAmount = attackAmount;
 		this.maxHealth = maxHealth;
 		health = maxHealth;
-		this.speed = speed;
-		
+		this.speed = speed;		
 	}
 	
 	/**
 	 * Heals the unit by the inputed healAmount
-	 * @param healAmount amount of health the monster will be healed by
+	 * @param healAmount, of type integer. The amount of health the monster will be healed by
 	 */
 	public void addHealth(int healAmount) {
 		if(healAmount < 0) {
@@ -70,7 +115,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Removes health from the monster when damaged
-	 * @param rawDamage, of type int. Damage dealt to the monster
+	 * @param rawDamage, of type integer. Damage dealt to the monster
 	 */
 	public void removeHealth(int rawDamage) {
 		int damage = rawDamage - (getArmorAmount() / Monster.armorModifier);
@@ -91,7 +136,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Returns the monsters current health
-	 * @return health
+	 * @return health, of type integer.
 	 */
 	public int getHealth() {
 		return health;
@@ -99,7 +144,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Increases the monsters maximum health limit
-	 * @param healthIncrease the value to increase the monsters max health by
+	 * @param healthIncrease, of type integer. The value to increase the monsters max health by.
 	 */
 	public void addMaxHealth(int healthIncrease) {
 		if (healthIncrease < 0) {
@@ -115,7 +160,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Decreases the monsters maximum health limit
-	 * @param healthDecrease the value to decrease maxHealth by
+	 * @param healthDecrease, of type integer. The value to decrease maxHealth by.
 	 */
 	public void removeMaxHealth(int healthDecrease) {
 		if (healthDecrease < 0) {
@@ -131,7 +176,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Returns the maximum health value
-	 * @return maxHealth
+	 * @return maxHealth, of type integer.
 	 */
 	public int getMaxHealth() {
 		return maxHealth;
@@ -139,7 +184,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Sets the amount a monster heals by while sleeping
-	 * @param healAmount amount to heal by
+	 * @param healAmount, of type integer. The amount to heal by.
 	 */
 	public void setHealAmount(int healAmount) {
 		this.healAmount = healAmount; 
@@ -147,31 +192,31 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Returns the heal amount for a monster
-	 * @return healAmount
+	 * @return healAmount, of type integer.
 	 */
 	public int getHealAmount() {
 		return healAmount;
 	}
 	
 	/**
-	 * Adds armor stat to the monster
-	 * @param armourIncrease the amount to increase armor by
+	 * Adds armor to the monster
+	 * @param armourIncrease, of type integer. The amount to increase armor by
 	 */
 	public void addArmorAmount(int armourIncrease) {
 		armorAmount = getArmorAmount() + armourIncrease;
 	}
 	
 	/**
-	 * Removes armor stat for the monster
-	 * @param armourDecrease amount to remove by
+	 * Removes armor from the monster
+	 * @param armourDecrease, of type integer. The amount of armor to remove.
 	 */
 	public void removeArmorAmount(int armourDecrease) {
 		armorAmount = getArmorAmount() - armourDecrease;
 	}
 	
 	/**
-	 * Gets the armor amount for the monster
-	 * @return current armor amount
+	 * Gets the current armor amount for the monster
+	 * @return current armor amount, of type integer.
 	 */
 	public int getArmorAmount() {
 		return armorAmount;
@@ -179,7 +224,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Adds speed to the monster
-	 * @param speedIncrease amount to increase speed by
+	 * @param speedIncrease, of type integer. The amount to increase speed by.
 	 */
 	public void addSpeed(int speedIncrease) {
 		if (speedIncrease < 0) {
@@ -195,7 +240,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Removes speed from the monster
-	 * @param speedDecrease amount to decrease speed by
+	 * @param speedDecrease, of type integer. The amount to decrease speed by.
 	 */
 	public void removeSpeed(int speedDecrease) {
 		if (speedDecrease < 0) {
@@ -217,17 +262,25 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		return speed;
 	}
 	
+	/**
+	 * Sets the private attribute monsterType.
+	 * @param type, of type String. The monster's type.
+	 */
 	public void setMonsterType(String type) {
 		monsterType = type;
 	}
 	
+	/**
+	 * Returns the type of the monster.
+	 * @return monsterType, of type String.
+	 */
 	public String getMonsterType() {
 		return monsterType;
 	}
 	
 	/**
 	 * Increases the monsters attack damage
-	 * @param attackIncrease the amount to increase
+	 * @param attackIncrease, of type integer. The amount to increase the monster's attack amount by.
 	 */
 	public void addAttackAmount(int attackIncrease) {
 		if (attackIncrease < 0) {
@@ -242,8 +295,8 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	}
 	
 	/**
-	 * Removes attack damage from the monster
-	 * @param attackDecrease The amount to decrease by
+	 * Removes attack damage from the monster.
+	 * @param attackDecrease, of type integer. The amount to decrease the monsters's attack amount by.
 	 */
 	public void removeAttackAmount(int attackDecrease) {
 		if (attackDecrease < 0) {
@@ -258,8 +311,8 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	}
 	
 	/**
-	 * Gets the attack damage attribute
-	 * @return attack damage
+	 * Gets the attack damage attribute.
+	 * @return attackAmount, of type integer.
 	 */
 	public int getAttackAmount() {
 		return attackAmount;
@@ -281,13 +334,15 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		isStunned = status;
 	}
 	
-	
+    /**
+     * Sets the initialID for the object
+     */
     public void setInitialID() {
     	super.instanceId = 0;
     }
 	
     /**
-     * Makes the monster sleep and reset any stunned status it may have
+     * Makes the monster sleep, heals the monster to maximum health, and resets any stunned status it may have.
      */
 	public void sleep() {
 		addHealth(getHealAmount());
@@ -296,8 +351,8 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Gives a monster a weapon to use, if one is already equipped the old weapon will be returned
-	 * @param weapon The weapon to equip
-	 * @return The old weapon or null if none equipped already
+	 * @param weapon, of type Weapon. The weapon to equip
+	 * @return oldWeapon, of type Weapon. The old weapon or null if none equipped already
 	 */
 	public Weapon addWeapon(Weapon weapon) {
 		Weapon oldWeapon = removeWeapon();
@@ -309,7 +364,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Removes and returns the equipped weapon from the monster. Returns null if no weapon is equipped
-	 * @return The old weapon
+	 * @return weapon, of type Weapon. The old weapon
 	 */
 	public Weapon removeWeapon() {
 		Weapon weapon = weaponSlot;
@@ -323,8 +378,8 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	
 	/**
 	 * Adds Armor to the monster and returns the already equipped armor, returns null if none is already equipped
-	 * @param armor The Armor to equip
-	 * @return The already equipped armor
+	 * @param armor, of type Armor. The Armor to equip
+	 * @return oldArmor, of type Armor. The already equipped armor
 	 */
 	public Armor addArmor(Armor armor) {
 		Armor oldArmor = removeArmor();
@@ -332,13 +387,14 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		addMaxHealth(armor.getHealthIncrease());
 		addHealth(armor.getHealthIncrease());
 		addArmorAmount(armor.getArmorIncrease());
+		setHealAmount(getMaxHealth());
 		equipped.add(armor.getClass().getSimpleName());
 		return oldArmor;
 	}
 	
 	/**
 	 * Removes the currently equipped armor, returns null if nothing is equipped
-	 * @return The equipped armor
+	 * @return armor, of type Armor. The equipped armor
 	 */
 	public Armor removeArmor() {
 		Armor armor = armorSlot;
@@ -354,23 +410,32 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	}
 	
 	
-	
+	/**
+	 * Custom toString method for the class Monster. Returns a string of the monster's type, health, attack amount and speed, each on a new line.
+	 */
 	public String toString() {
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
 		return "\n\nType: "+type+"\nHealth: "+getHealth() +"\nAttack Amount: "+getAttackAmount()+"\nSpeed: "+getSpeed();
 	}
 	
+	/**
+	 * Returns the monster's type, name and id number.
+	 * @return a String, the monster description.
+	 */
 	public String getDescription() {
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
 		return type+": "+getName()+" "+getID();
 	}
 	
+	/**
+	 * 
+	 * @return
+	 */
 	public String getSellBackDescription() {
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
-		
 		String stunnedStatus = "";
 		
 		if (isStunned == true) {
@@ -378,7 +443,6 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		} else {
 			stunnedStatus = "Okay. Monster can battle.";
 		}
-		
 		
 		String equippedString = "N/A";
 		
@@ -391,12 +455,13 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 				equippedString += equipped.get(i);
 			}
 		}
-		
-		
-		
 		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+ getHealth() + " / " + getMaxHealth() +"\nStatus: "+stunnedStatus+"\n\nAttack Amount: "+getAttackAmount()+"\nArmor Amount: "+getArmorAmount()+"\nEquipped: "+equippedString+"\nSpeed: "+getSpeed()+"\n\nSell-back Price: "+getPurchasePrice();
 	}
 	
+	/**
+	 * Returns a String description of the monster, specifically for when the user does not own the monster.
+	 * @return a String, the description.
+	 */
 	public String getBuyDescription() {
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");
 		type = type.substring(0, 1).toUpperCase() + type.substring(1);
@@ -421,7 +486,9 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		player.getInventory().removeMonster(this);
 	}
 	
-	
+	/**
+	 * Compares two monsters based on their speed attribute.
+	 */
 	@Override
 	public int compare(Monster monster1, Monster monster2) {
 		int monsterSpeed1 = monster1.getSpeed();
