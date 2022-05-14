@@ -108,7 +108,7 @@ public class ChooseBattleScreen {
 		txtDescription.setEditable(false);
 
         JScrollPane scrollableTextArea = new JScrollPane(txtDescription);  
-        scrollableTextArea.setBounds(473, 88, 302, 233);
+        scrollableTextArea.setBounds(520, 88, 302, 233);
         scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
         scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
         frmChoosebattle.getContentPane().add(scrollableTextArea); 
@@ -116,7 +116,7 @@ public class ChooseBattleScreen {
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		scrollPane.setBounds(52, 88, 411, 343);
+		scrollPane.setBounds(50, 88, 460, 343);
 		frmChoosebattle.getContentPane().add(scrollPane);
 
 		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, possibleBattles, type);
@@ -146,7 +146,7 @@ public class ChooseBattleScreen {
 			}
 		});
 		btnStartBattle.setFont(new Font("Tahoma", Font.BOLD, 15));
-		btnStartBattle.setBounds(631, 342, 145, 25);
+		btnStartBattle.setBounds(678, 342, 145, 25);
 		frmChoosebattle.getContentPane().add(btnStartBattle);
 	}
 	

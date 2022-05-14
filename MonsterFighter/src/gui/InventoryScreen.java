@@ -119,12 +119,12 @@ public class InventoryScreen {
 		
 		JScrollPane monsterScrollPane = new JScrollPane();
 		monsterScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		monsterScrollPane.setBounds(31, 316, 411, 207);
+		monsterScrollPane.setBounds(30, 316, 460, 207);
 		frmInventoryscreen.getContentPane().add(monsterScrollPane);
 		
 		JScrollPane itemScrollPane = new JScrollPane();
 		itemScrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		itemScrollPane.setBounds(31, 68, 409, 205);
+		itemScrollPane.setBounds(30, 68, 460, 205);
 		frmInventoryscreen.getContentPane().add(itemScrollPane);
 		
 		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(monsterScrollPane, team, type);

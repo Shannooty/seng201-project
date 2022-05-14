@@ -120,7 +120,7 @@ public class ShopSell {
 
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		scrollPane.setBounds(52, 88, 411, 343);
+		scrollPane.setBounds(50, 88, 460, 343);
 		frmShopSell.getContentPane().add(scrollPane);
 		
 		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, team.getTeam(), type);
@@ -167,7 +167,7 @@ public class ShopSell {
 		txtDescription.setText("Nothing selected.");
 		txtDescription.setLineWrap(true);
 		txtDescription.setEditable(false);
-		txtDescription.setBounds(473, 88, 302, 233);
+		txtDescription.setBounds(524, 88, 302, 233);
 		frmShopSell.getContentPane().add(txtDescription);
 
 		JPanel buttonPanel = new JPanel();
@@ -227,7 +227,7 @@ public class ShopSell {
 			}
 		});
 		btnSell.setFont(new Font("Tahoma", Font.BOLD, 16));
-		btnSell.setBounds(617, 331, 142, 25);
+		btnSell.setBounds(668, 331, 142, 25);
 		frmShopSell.getContentPane().add(btnSell);
 		
 	}
