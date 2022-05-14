@@ -1,24 +1,19 @@
 package gui;
 
-import java.awt.EventQueue;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
 
 import player.Player;
 import player.Team;
 import purchasable.monsters.Monster;
 
-import javax.swing.JTextArea;
-
 import day.Battle;
 import day.Day;
 import javax.swing.JTextPane;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
