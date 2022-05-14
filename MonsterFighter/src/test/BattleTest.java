@@ -63,8 +63,6 @@ class BattleTest {
 		Monster enemyMonster = testMonsters.get(0);
 		
 		String winner = testBattle.attack(playerMonster, enemyMonster);
-		System.out.println(playerMonster);
-		System.out.println(testMonsters.get(0));
 		assertTrue(winner.contains("You:"));
 		assertTrue(playerMonster.getHealth() > enemyMonster.getHealth());
 		
@@ -76,10 +74,17 @@ class BattleTest {
 		potion.use(enemyMonster);
 		
 		winner = testBattle.attack(playerMonster, enemyMonster);
-		System.out.println(playerMonster);
-		System.out.println(testMonsters.get(0));
-		assertTrue(winner.contains("Player:"));
+		assertTrue(winner.contains("Player"));
 		assertTrue(playerMonster.getHealth() < enemyMonster.getHealth());
+		
+		//Fighting with a stunned Monster
+		playerMonster.sleep();
+		enemyMonster.sleep();
+		
+		enemyMonster.setStunnedStatus(true);
+		winner = testBattle.attack(playerMonster, enemyMonster);
+		assertTrue(winner.contains("You:"));
+		assertTrue(playerMonster.getHealth() == playerMonster.getMaxHealth());
 	}
 
 }
