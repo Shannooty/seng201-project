@@ -63,9 +63,6 @@ public class Battle implements HasImage {
 	 */
 	private String gamePlayer = randomPlayers[(randomPlayer.nextInt(randomPlayers.length))];
 	
-	
-//	private ArrayList<Monster> team = new ArrayList<Monster>();
-
 	/**
 	 * Attribute numMonstersToFight, of type integer. The number of monsters associated with the created battle that the player will have to fight.
 	 */
