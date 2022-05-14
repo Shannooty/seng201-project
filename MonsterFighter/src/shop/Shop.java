@@ -60,10 +60,18 @@ public class Shop {
 		}
 	}
 	
+	/**
+	 * Removes a monster from the shop.
+	 * @param monster, of type Monster. The monster to remove.
+	 */
 	private void removeMonster(Monster monster) {
 		getAvalibleMonsters().remove(monster);
 	}
 	
+	/**
+	 * Removes an item from the shop.
+	 * @param item, of type Item. The item to remove.
+	 */
 	private void removeItem(Item item) {
 		getAvalibleItems().remove(item);
 	}
