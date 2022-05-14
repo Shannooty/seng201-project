@@ -59,20 +59,18 @@ class RandomEventTest {
 	void runNewMonsterJoins() {
 		assertEquals(1, playerTeam.size());
 		
-		NewMonsterJoins monsterJoinsEvent;
-		
 		//Should fill up the team with new monsters
 		for (int i = 2; i < 5; i++) {
-			monsterJoinsEvent = new NewMonsterJoins(testPlayer.getInventory());
+			new NewMonsterJoins(testPlayer.getInventory());
 			assertEquals(i, playerTeam.size());
 		}
 		
 		//One more NewMonsterJoins shouldn't do anything
-		monsterJoinsEvent = new NewMonsterJoins(testPlayer.getInventory());
+		new NewMonsterJoins(testPlayer.getInventory());
 		assertEquals(4, playerTeam.size());
 		
 		//One more NewMonsterJoins shouldn't do anything
-		monsterJoinsEvent = new NewMonsterJoins(testPlayer.getInventory());
+		new NewMonsterJoins(testPlayer.getInventory());
 		assertEquals(4, playerTeam.size());
 	}
 	
@@ -86,7 +84,7 @@ class RandomEventTest {
 		
 		assertFalse(monsterMaxHealth == currentHealth);
 		
-		MonsterLevelsUp levelUpEvent = new MonsterLevelsUp(testPlayer.getInventory());
+		new MonsterLevelsUp(testPlayer.getInventory());
 		
 		assertTrue(monsterMaxHealth < playerMonster.getMaxHealth());
 		assertTrue(currentHealth == playerMonster.getHealth());
@@ -96,11 +94,11 @@ class RandomEventTest {
 	void runMonsterLeaves() {
 		assertEquals(1, playerTeam.size());
 		
-		MonsterLeaves monsterLeavesEvent = new MonsterLeaves(testPlayer.getInventory());
+		new MonsterLeaves(testPlayer.getInventory());
 		assertEquals(0, playerTeam.size());
 		
 		//Remove monster from empty team, no change should occur
-		monsterLeavesEvent = new MonsterLeaves(testPlayer.getInventory());
+		new MonsterLeaves(testPlayer.getInventory());
 		assertEquals(0, playerTeam.size());
 		
 	}

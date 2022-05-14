@@ -1,8 +1,6 @@
 package player;
 import java.util.ArrayList;
 
-import gui.GameEnvironment;
-import purchasable.Purchasable;
 import purchasable.items.*;
 import purchasable.items.food.Food;
 import purchasable.monsters.*;

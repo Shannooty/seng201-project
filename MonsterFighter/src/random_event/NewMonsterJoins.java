@@ -1,8 +1,6 @@
 package random_event;
-import java.util.Random;
 
 import generators.MonsterGenerator;
-import generators.registries.AvalibleMonsters;
 import player.Inventory;
 import purchasable.monsters.*;
 

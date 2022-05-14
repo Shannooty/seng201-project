@@ -9,7 +9,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import exceptions.TeamFullException;
-import gui.GameEnvironment;
 import player.Team;
 import purchasable.monsters.*;
 

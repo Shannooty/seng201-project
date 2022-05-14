@@ -1,7 +1,5 @@
 package random_event;
 
-import java.lang.reflect.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
@@ -9,7 +7,6 @@ import java.util.stream.IntStream;
 
 import player.Inventory;
 import player.Team;
-import purchasable.monsters.Monster;
 
 /**
  * Creates an instance of a random event to occur overnight.
@@ -91,11 +88,11 @@ public class RandomEvent {
 		}
 		
 		if (randomEvent == "MonsterLeaves") {
-			MonsterLeaves leaves = new MonsterLeaves(getInventory());
+			new MonsterLeaves(getInventory());
 		} else if (randomEvent == "NewMonsterJoins") {
-			NewMonsterJoins joins = new NewMonsterJoins(getInventory());
+			new NewMonsterJoins(getInventory());
 		} else if (randomEvent == "MonsterLevelsUp") {
-			MonsterLevelsUp levelsUp = new MonsterLevelsUp(getInventory());
+			new MonsterLevelsUp(getInventory());
 		}
 		
 		return randomEvent;

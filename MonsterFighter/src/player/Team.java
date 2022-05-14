@@ -3,7 +3,6 @@ package player;
 import java.util.ArrayList;
 
 import exceptions.TeamFullException;
-import gui.GameEnvironment;
 import purchasable.monsters.Monster;
 
 /**
