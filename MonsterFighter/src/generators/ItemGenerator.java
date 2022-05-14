@@ -15,7 +15,7 @@ import purchasable.items.food.*;
  * @author Celia Allen
  *
  */
-public class ItemGenerator extends Generator {
+public class ItemGenerator {
 	
 	/**
 	 * Will return a new random item of any type

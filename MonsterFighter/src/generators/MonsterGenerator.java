@@ -9,7 +9,7 @@ import purchasable.monsters.*;
  * @author Celia Allen
  *
  */
-public class MonsterGenerator extends Generator {
+public class MonsterGenerator {
 	
 	/**
 	 * Returns a new Monster object of a random type
