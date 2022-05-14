@@ -1,20 +1,15 @@
 package gui;
 
-import java.awt.EventQueue;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import day.Day;
-import player.Player;
-import purchasable.monsters.Monster;
 import random_event.RandomEvent;
 
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.SwingConstants;
 
 
 /**
@@ -96,7 +91,7 @@ public class Sleep {
 		JLabel lblDaysRemaining = new JLabel();
 		lblDaysRemaining.setText("There are "+(gameEnvironment.getGameLength() - gameEnvironment.getDayNumber())+" days remaining.");	
 		lblDaysRemaining.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblDaysRemaining.setBounds(302, 340, 222, 20);
+		lblDaysRemaining.setBounds(307, 340, 240, 20);
 		frmSleep.getContentPane().add(lblDaysRemaining);
 		
 		JButton btnContinue = new JButton("Continue");
@@ -116,20 +111,22 @@ public class Sleep {
 		
 		JLabel lblShopUpdated = new JLabel("The shop has been updated.");
 		lblShopUpdated.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblShopUpdated.setBounds(288, 83, 208, 20);
+		lblShopUpdated.setBounds(307, 83, 208, 20);
 		frmSleep.getContentPane().add(lblShopUpdated);
 		
 		JLabel lblBattlesUpdated = new JLabel("Battles have been updated.");
 		lblBattlesUpdated.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblBattlesUpdated.setBounds(292, 127, 203, 20);
+		lblBattlesUpdated.setBounds(314, 127, 195, 20);
 		frmSleep.getContentPane().add(lblBattlesUpdated);
 		
 		JLabel lblGainedGoldPoints = new JLabel("You gained "+goldEarnedToday+" gold and "+pointsEarnedToday+" points today.");
+		lblGainedGoldPoints.setHorizontalAlignment(SwingConstants.CENTER);
 		lblGainedGoldPoints.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblGainedGoldPoints.setBounds(236, 173, 374, 20);
+		lblGainedGoldPoints.setBounds(224, 173, 374, 20);
 		frmSleep.getContentPane().add(lblGainedGoldPoints);
 		
 		JLabel lblRandomEvent = new JLabel();
+		lblRandomEvent.setHorizontalAlignment(SwingConstants.CENTER);
 		String event = randomEvent.runRandomEvent();
 		
 
@@ -140,7 +137,7 @@ public class Sleep {
 		}
 		
 		lblRandomEvent.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblRandomEvent.setBounds(257, 253, 328, 20);
+		lblRandomEvent.setBounds(181, 253, 460, 20);
 		frmSleep.getContentPane().add(lblRandomEvent);
 	}
 }
