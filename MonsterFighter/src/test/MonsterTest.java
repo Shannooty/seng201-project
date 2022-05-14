@@ -285,7 +285,7 @@ class MonsterTest {
 	@Test
 	void testSleep() {
 		testMonster.removeHealth(500);
-		int expectedHealth = testMonster.getHealth() + testMonster.getHealAmount();
+		int expectedHealth = testMonster.getMaxHealth();
 		
 		testMonster.sleep();
 		assertEquals(expectedHealth, testMonster.getHealth());
