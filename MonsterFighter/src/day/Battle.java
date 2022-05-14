@@ -94,19 +94,6 @@ public class Battle implements HasImage {
     private int instanceId = ++id;
 	
 	/**
-	 * Attribute startingMonsterString of type String. A String representation of the Monster that attacks first for each round of a battle.
-	 */
-	private String startingMonsterString;
-	
-	
-	/**
-	 * Attribute secondMonsterString of type String. A String representation of the Monster that attacks second for each round of a battle.
-	 */
-	private String secondMonsterString;
-
-
-	
-	/**
 	 * Constructor for the class Battle. Sets the private variable gameEnvironment, and uses gameEnvironment to set the private variables difficulty, dayNum and gameLength. 
 	 * Creates the variable battle, and sets it to a random battle generated from the private variable possibleBattles. The private variables gold, points and numMonstersToFight are set from battle.
 	 * Creates the attribute gameProgress, of type double. Value of dayNum divided by gameLength.
@@ -226,45 +213,12 @@ public class Battle implements HasImage {
 		if (playerMonster.getSpeed() >= gameMonster.getSpeed()) {
 			startingMonster = playerMonster;
 			secondMonster = gameMonster;
-			startingMonsterString = "Player";
-			secondMonsterString = "Game";
 		} else {
 			startingMonster = gameMonster;
 			secondMonster = playerMonster;
-			startingMonsterString = "Game";
-			secondMonsterString = "Player";
 		}
 		
-		long starterFrequency = Math.round(Double.valueOf(startingMonster.getSpeed())/Double.valueOf(secondMonster.getSpeed()));
-		long secondFrequency = Math.round(Double.valueOf(secondMonster.getSpeed())/Double.valueOf(startingMonster.getSpeed()));
-		
-		if (starterFrequency == 0) {
-			starterFrequency = 1;
-		}
-		if (secondFrequency == 0) {
-			secondFrequency = 1;
-		}
-		
-		boolean fightDone = false;
-		
-		while (!fightDone) {
-			
-			for (long i = 0; i < starterFrequency; i++) {
-				if (playerMonster.getHealth() > 0 && gameMonster.getHealth() > 0) {
-					secondMonster.removeHealth(startingMonster.getAttackAmount());
-				}else {
-					fightDone = true;
-				}
-			}
-				
-			for (long i = 0; i < secondFrequency; i++) {
-				if (playerMonster.getHealth() > 0 && gameMonster.getHealth() > 0) {
-					startingMonster.removeHealth(secondMonster.getAttackAmount());
-				}else {
-					fightDone = true;
-				}
-			}
-		}
+		battleLoop(startingMonster, secondMonster);
 		
 		String winner;
 		
@@ -280,6 +234,44 @@ public class Battle implements HasImage {
 		
 		return winner;
 		
+	}
+	
+	/**
+	 * Main loop to deal with monsters fighting
+	 * @param startingMonster Monster that attacks first
+	 * @param secondMonster Monster that attacks second
+	 */
+	private void battleLoop(Monster startingMonster, Monster secondMonster) {
+		long starterFrequency = Math.round(Double.valueOf(startingMonster.getSpeed())/Double.valueOf(secondMonster.getSpeed()));
+		long secondFrequency = Math.round(Double.valueOf(secondMonster.getSpeed())/Double.valueOf(startingMonster.getSpeed()));
+		
+		if (starterFrequency == 0) {
+			starterFrequency = 1;
+		}
+		if (secondFrequency == 0) {
+			secondFrequency = 1;
+		}
+		
+		boolean fightDone = false;
+		
+		while (!fightDone) {
+			
+			for (long i = 0; i < starterFrequency; i++) {
+				if (startingMonster.getHealth() > 0 && secondMonster.getHealth() > 0) {
+					secondMonster.removeHealth(startingMonster.getAttackAmount());
+				}else {
+					fightDone = true;
+				}
+			}
+				
+			for (long i = 0; i < secondFrequency; i++) {
+				if (startingMonster.getHealth() > 0 && secondMonster.getHealth() > 0) {
+					startingMonster.removeHealth(secondMonster.getAttackAmount());
+				}else {
+					fightDone = true;
+				}
+			}
+		}
 	}
 	
 	
