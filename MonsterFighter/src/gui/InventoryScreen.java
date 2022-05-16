@@ -204,8 +204,10 @@ public class InventoryScreen {
 				                    team.get(0).getDescription());
 
 				if (selection != null) {
-					String selectedID = selection.substring(selection.length() - 1);
+					String[] split_selection = selection.split(" ");
+				    String selectedID = split_selection[split_selection.length - 1];
 					List<Monster> listOfMonsters = team.stream().filter(s -> selectedID.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
+
 					Monster monsterToEquip = listOfMonsters.get(0);
 					inventory.useItem(selectedItem, monsterToEquip);
 					txtDescriptionItems.setText("Nothing selected.");
