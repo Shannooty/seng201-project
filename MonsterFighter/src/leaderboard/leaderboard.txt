@@ -1,12 +1,13 @@
 Leaderboard:
 Celia:1000
-sdfdsf:500
 dadsadad:500
+sdfdsf:500
 Bede:400
 Celia:200
-Celia:100
 Bede:100
+Celia:100
+hellothere:0
+panini:0
 :0
 hello:0
 :0
-panini:0
