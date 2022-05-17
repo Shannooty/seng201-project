@@ -16,10 +16,6 @@ import player.Team;
  */
 public class RandomEvent {
 	
-		
-	/**
-	 * Attribute randomEvents, of type String[]. A list of the possible random events, {"MonsterLeaves", "NewMonsterJoins", "MonsterLevelsUp"}.
-	 */
 	
 	/**
 	 * Attribute randomEventsInt, of type List<Integer>. A list of integers in the range 1 to 20. Used to change the chance of each RandomEvent occurring.

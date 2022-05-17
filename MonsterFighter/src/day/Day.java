@@ -114,10 +114,6 @@ public class Day {
 		return dayNumber;
 	}
 	
-//	public void battle() {
-////		create instance of Battle
-//	}
-	
 	/**
 	 * Removes the given Battle from todaysBattles, so the user cannot fight the same Battle twice. Return type void.
 	 * @param battle, of type Battle. The Battle to be removed from todaysBattles.
