@@ -116,7 +116,7 @@ public class Sleep {
 		
 		JLabel lblBattlesUpdated = new JLabel("Battles have been updated.");
 		lblBattlesUpdated.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblBattlesUpdated.setBounds(314, 127, 195, 20);
+		lblBattlesUpdated.setBounds(316, 127, 220, 20);
 		frmSleep.getContentPane().add(lblBattlesUpdated);
 		
 		JLabel lblGainedGoldPoints = new JLabel("You gained "+goldEarnedToday+" gold and "+pointsEarnedToday+" points today.");

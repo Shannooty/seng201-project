@@ -99,6 +99,7 @@ public class EndScreen {
 	 */
 	private void initialize() {
 		frmEndscreen = new JFrame();
+		frmEndscreen.setTitle("End Screen");
 		frmEndscreen.setBounds(100, 100, 850, 570);
 		frmEndscreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmEndscreen.getContentPane().setLayout(null);
