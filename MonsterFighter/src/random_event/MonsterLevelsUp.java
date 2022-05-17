@@ -14,7 +14,7 @@ public class MonsterLevelsUp extends RandomEvent {
 	/**
 	 * Attribute healthIncrease, of type integer[]. A list of the possible increases in health a monster can have, {10, 5, 8, 15, 30}.
 	 */
-	private int[] healthIncrease = {10, 5, 8, 15, 30};
+	private int[] healthIncrease = {200, 500, 100, 150, 300};
 	
 	/**
 	 * Constructor for the MonsterLevelsUp class. Calls the levelUpSetUp() method.
