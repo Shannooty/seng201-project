@@ -13,7 +13,7 @@ public class SledgeHammer extends Weapon {
 	 *  Sets the purchase price, sell-back price, image path and image for the SledgeHammer.
 	 */
 	public SledgeHammer() {
-		super("Sedgehammer", 100);
+		super("Sledgehammer", 100);
 		setPurchasePrice(22);
 		setSellPrice(22);
 		setImgPath("/images/sledgehammer.png");
