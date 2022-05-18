@@ -9,7 +9,30 @@ import java.util.Random;
  *
  */
 public enum AvalibleMonsters {
-	SLIME, ZOMBIE, UNDEADGUARD, SKELETON, DINOSAUR, SNAKE;
+	/**
+	 * Slime Monster
+	 */
+	SLIME, 
+	/**
+	 * Zombie Monster
+	 */
+	ZOMBIE, 
+	/**
+	 * UndeadGuard Monster
+	 */
+	UNDEADGUARD, 
+	/**
+	 * Skeleton Monster
+	 */
+	SKELETON, 
+	/**
+	 * Dinosaur Monster
+	 */
+	DINOSAUR, 
+	/**
+	 * Snake Monster
+	 */
+	SNAKE;
 	
 	private static final AvalibleMonsters[] VALUES = AvalibleMonsters.values();
 	

@@ -9,7 +9,18 @@ import java.util.Random;
  *
  */
 public enum AvalibleArmors {
-	FLOWERCROWN, SHIELD, CHAINMAIL;
+	/**
+	 * FlowerCrown Armor
+	 */
+	FLOWERCROWN, 
+	/**
+	 * Shield Armor
+	 */
+	SHIELD, 
+	/**
+	 * Chainmail Armor
+	 */
+	CHAINMAIL;
 	
 	private static final AvalibleArmors[] VALUES = AvalibleArmors.values();
 	

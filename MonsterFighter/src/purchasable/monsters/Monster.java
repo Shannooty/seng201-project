@@ -430,8 +430,8 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	}
 	
 	/**
-	 * 
-	 * @return
+	 * Getter for the sell back description for use in the GUI
+	 * @return The description String
 	 */
 	public String getSellBackDescription() {
 		String type = getMonsterType().replaceAll("([A-Z])", " $1");

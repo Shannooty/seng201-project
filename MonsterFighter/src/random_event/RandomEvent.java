@@ -75,6 +75,7 @@ public class RandomEvent {
 
 	/**
 	 * Calls the method getRandomEvent(), and creates an instance of the class depending on the random event the call to getRandomEvent() returns. Return type string.
+	 * @return String representation of the RandomEvent that was run
 	 */
 	public String runRandomEvent() {
 		String randomEvent = getRandomEvent();

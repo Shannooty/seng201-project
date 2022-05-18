@@ -9,7 +9,18 @@ import java.util.Random;
  *
  */
 public enum AvalibleFoods {
-	APPLE, BREAD, MUSHROOM;
+	/**
+	 * Apple Food
+	 */
+	APPLE, 
+	/**
+	 * Bread Food
+	 */
+	BREAD, 
+	/**
+	 * Mushroom Food
+	 */
+	MUSHROOM;
 	
 	private static final AvalibleFoods[] VALUES = AvalibleFoods.values();
 	

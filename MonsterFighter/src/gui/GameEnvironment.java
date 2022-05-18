@@ -340,7 +340,7 @@ public class GameEnvironment {
 	
 	/**
 	 * Main method for GameEnvironment. Creates an instance of GameEnvironment, and calls the launchSetupScreen() method.
-	 * @param args
+	 * @param args optional arguments
 	 */
 	public static void main(String[] args) {
 		GameEnvironment game = new GameEnvironment();

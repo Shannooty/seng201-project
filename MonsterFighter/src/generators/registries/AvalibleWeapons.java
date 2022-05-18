@@ -9,7 +9,18 @@ import java.util.Random;
  *
  */
 public enum AvalibleWeapons {
-	SHARPSTICK, SLEDGEHAMMER, KNIFE;
+	/**
+	 * SharpStick Weapon
+	 */
+	SHARPSTICK, 
+	/**
+	 * Sledgehammer Weapon
+	 */
+	SLEDGEHAMMER, 
+	/**
+	 * Knife Weapon
+	 */
+	KNIFE;
 	
 	private static final AvalibleWeapons[] VALUES = AvalibleWeapons.values();
 	

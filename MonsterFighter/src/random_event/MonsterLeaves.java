@@ -12,6 +12,7 @@ public class MonsterLeaves extends RandomEvent {
 
 	/**
 	 * Constructor for the class MonsterLeaves. Calls the method removeMonster().
+	 * @param inventory The player Inventory to remove a random Monster
 	 */
 	public MonsterLeaves(Inventory inventory) {
 		super(inventory);
