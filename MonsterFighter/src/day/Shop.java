@@ -1,4 +1,4 @@
-package shop;
+package day;
 
 import java.util.ArrayList;
 

@@ -6,12 +6,12 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import day.Shop;
 import gui.GameEnvironment;
 import player.Player;
 import purchasable.items.Item;
 import purchasable.monsters.Monster;
 import purchasable.monsters.Slime;
-import shop.Shop;
 
 class ShopTest {
 	

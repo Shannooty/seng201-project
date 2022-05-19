@@ -1,7 +1,6 @@
 package day;
 import java.util.ArrayList;
 
-import shop.Shop;
 import gui.GameEnvironment;
 import player.Player;
 
