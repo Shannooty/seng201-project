@@ -1,13 +1,1 @@
 Leaderboard:
-Celia:1000
-dadsadad:500
-sdfdsf:500
-Bede:400
-Celia:200
-Bede:100
-Celia:100
-hellothere:0
-panini:0
-:0
-hello:0
-:0
