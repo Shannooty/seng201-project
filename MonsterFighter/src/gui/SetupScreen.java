@@ -28,6 +28,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import day.Day;
+import gui.customElements.ImageCarousel;
 
 import javax.swing.JOptionPane;
 

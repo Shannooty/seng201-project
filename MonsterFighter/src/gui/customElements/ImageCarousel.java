@@ -1,7 +1,10 @@
-package gui;
+package gui.customElements;
 
 import java.awt.*;
 import javax.swing.*;
+
+import gui.MainScreen;
+
 import java.awt.event.*;
 
 /**

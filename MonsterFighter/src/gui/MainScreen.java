@@ -6,6 +6,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import gui.customElements.ImageCarousel;
+
 import java.awt.Font;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
