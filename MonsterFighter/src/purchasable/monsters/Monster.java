@@ -387,7 +387,6 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		addMaxHealth(armor.getHealthIncrease());
 		addHealth(armor.getHealthIncrease());
 		addArmorAmount(armor.getArmorIncrease());
-		setHealAmount(getMaxHealth());
 		equipped.add(armor.getClass().getSimpleName());
 		return oldArmor;
 	}
