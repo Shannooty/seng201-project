@@ -314,7 +314,6 @@ public class SetupScreen {
 		  
 		});
 		frmSetup.getRootPane().setDefaultButton(btnNext);
-
 	}
 
 	
