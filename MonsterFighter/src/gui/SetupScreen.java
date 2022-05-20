@@ -127,10 +127,10 @@ public class SetupScreen {
 		imagesToUse[2] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), "zombie");
 		imagesToUse[3] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard.png"), "undeadGuard");
 		
-		ImageCarousel images = new ImageCarousel(imagesToUse, type);
-		images.setSize(290, 195);
-		images.setLocation(279, 218);
-		frmSetup.getContentPane().add(images);
+		ImageCarousel monsterImages = new ImageCarousel(imagesToUse, type);
+		monsterImages.setSize(290, 195);
+		monsterImages.setLocation(279, 218);
+		frmSetup.getContentPane().add(monsterImages);
 		
 		JLabel lblUsername = new JLabel("Please choose a username:");
 		lblUsername.setHorizontalAlignment(SwingConstants.CENTER);
@@ -150,7 +150,6 @@ public class SetupScreen {
 		lblHowManyDays.setBounds(266, 115, 315, 15);
 		frmSetup.getContentPane().add(lblHowManyDays);
 		
-		
 		JSlider gameLengthSlider = new JSlider(JSlider.HORIZONTAL, 5, 15, 10);
 		gameLengthSlider.setBounds(324, 140, 200, 43);
 		gameLengthSlider.setMajorTickSpacing(2);
@@ -159,8 +158,6 @@ public class SetupScreen {
 		gameLengthSlider.setPaintLabels(true);
 		frmSetup.getContentPane().add(gameLengthSlider);
 
-
-		
 		JLabel lblSelectMonster = new JLabel("Please select a monster:");
 		lblSelectMonster.setHorizontalAlignment(SwingConstants.CENTER);
 		lblSelectMonster.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -196,7 +193,7 @@ public class SetupScreen {
 			 */
 			public void actionPerformed(ActionEvent arg0) {
 				
-				switch (images.getImg()) {
+				switch (monsterImages.getImg()) {
 				  case "skeleton":
 					startingMonster = new Skeleton();
 					startingMonster.setInitialID();
@@ -213,14 +210,6 @@ public class SetupScreen {
 					startingMonster = new UndeadGuard();
 					startingMonster.setInitialID();
 				    break;
-				  case "dinosaur":
-						startingMonster = new Dinosaur();
-						startingMonster.setInitialID();
-					    break;
-				  case "snake":
-						startingMonster = new Snake();
-						startingMonster.setInitialID();
-					    break;
 				}
 				
 				gameEnvironment.setGameDifficulty(stringDifficulty.get(gameDifficultySlider.getValue()-1));
@@ -316,23 +305,6 @@ public class SetupScreen {
 		frmSetup.getRootPane().setDefaultButton(btnNext);
 	}
 
-	
-	
-	/**
-	 * Returns the instance of class Player representing the current player.
-	 * @return type Player, the current player.
-	 */
-	public Player getPlayer() {
-		return player;
-	}
-	
-	/**
-	 * Sets the private variable player equal to the player passed to it.
-	 * @param player type Player, the current player.
-	 */
-	public void setPlayer(Player player) {
-		this.player = player;
-	}
 }
 
 

@@ -30,7 +30,7 @@ public class Sleep {
 	private GameEnvironment gameEnvironment;
 	
 	/**
-	 * String representation of the random event
+	 * Attribute randomEventString, of type String. String representation of the random event.
 	 */
 	private String randomEventString;
 	
@@ -54,7 +54,7 @@ public class Sleep {
 		gameEnvironment = gameManager;
 		this.pointsEarnedToday = pointsEarnedToday;
 		this.goldEarnedToday = goldEarnedToday;
-		randomEventString = randomEvent;	
+		randomEventString = randomEvent.replaceAll("(.)([A-Z])", "$1 $2");
 		initialize();
 		frmSleep.setVisible(true);
 	}
@@ -75,7 +75,6 @@ public class Sleep {
 	}
 
 
-	
 	/**
 	 * Initialize the contents of the frame.
 	 */

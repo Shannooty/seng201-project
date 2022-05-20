@@ -120,40 +120,40 @@ public class ShopBuy {
 		ArrayList<Monster> monsterInfo = shop.getAvalibleMonsters();
 		ArrayList<Item> itemInfo = shop.getAvalibleItems();
 
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		scrollPane.setBounds(50, 88, 460, 343);
-		frmShopbuy.getContentPane().add(scrollPane);
+		JScrollPane scrollPaneShopDisplay = new JScrollPane();
+		scrollPaneShopDisplay.getVerticalScrollBar().setUnitIncrement(15);
+		scrollPaneShopDisplay.setBounds(50, 88, 460, 343);
+		frmShopbuy.getContentPane().add(scrollPaneShopDisplay);
 
-		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, type);
-		scrollPane.setViewportView(monsterPanel);
+		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPaneShopDisplay, monsterInfo, type);
+		scrollPaneShopDisplay.setViewportView(monsterPanel);
 		
 		JPanel buttonPanel = new JPanel();
 		buttonPanel.setBounds(52, 40, 327, 34);
 		frmShopbuy.getContentPane().add(buttonPanel);
 		
 		
-		ButtonGroup buttons = new ButtonGroup();
-		JToggleButton showMonsters = new JToggleButton("Show Monsters");
-		showMonsters.setSelected(true);
-		JToggleButton showItems = new JToggleButton("Show Items");
-		buttons.add(showMonsters);
-		buttons.add(showItems);
-		buttonPanel.add(showMonsters);
-		buttonPanel.add(showItems);
+		ButtonGroup shopButtons = new ButtonGroup();
+		JToggleButton showMonstersBtn = new JToggleButton("Show Monsters");
+		showMonstersBtn.setSelected(true);
+		JToggleButton showItemsBtn = new JToggleButton("Show Items");
+		shopButtons.add(showMonstersBtn);
+		shopButtons.add(showItemsBtn);
+		buttonPanel.add(showMonstersBtn);
+		buttonPanel.add(showItemsBtn);
 		
-		showMonsters.addActionListener(new ActionListener() { 
+		showMonstersBtn.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, monsterInfo, type);
-				  scrollPane.setViewportView(monsterPanel);
+				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPaneShopDisplay, monsterInfo, type);
+				  scrollPaneShopDisplay.setViewportView(monsterPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
 			} );
 		
-		showItems.addActionListener(new ActionListener() { 
+		showItemsBtn.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, itemInfo, type);
-				  scrollPane.setViewportView(itemPanel);
+				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPaneShopDisplay, itemInfo, type);
+				  scrollPaneShopDisplay.setViewportView(itemPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
 			} );
@@ -199,7 +199,7 @@ public class ShopBuy {
 				int choice = JOptionPane.showConfirmDialog(frmShopbuy, "Are you sure you want to buy this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);			
 				if (choice == JOptionPane.YES_OPTION) {
 
-					if (selectedMonster != null && showMonsters.isSelected() == true) {
+					if (selectedMonster != null && showMonstersBtn.isSelected() == true) {
 						try {
 							shop.purchase(selectedMonster, player);
 
@@ -209,19 +209,19 @@ public class ShopBuy {
 							gameEnvironment.getShopBuyScreen().exceptionPopUp(ex.getMessage());
 						}
 						
-						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters(), type);
-						scrollPane.setViewportView(monsterPanel);
+						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPaneShopDisplay, shop.getAvalibleMonsters(), type);
+						scrollPaneShopDisplay.setViewportView(monsterPanel);
 					} 
 					
-					if (selectedItem != null && showItems.isSelected() == true) {
+					if (selectedItem != null && showItemsBtn.isSelected() == true) {
 						try {
 							shop.purchase(selectedItem, player);
 						} catch (InsufficientGoldException ex) {
 							gameEnvironment.getShopBuyScreen().exceptionPopUp(ex.getMessage());
 						}
 						
-						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleItems(), type);
-						scrollPane.setViewportView(itemPanel);
+						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPaneShopDisplay, shop.getAvalibleItems(), type);
+						scrollPaneShopDisplay.setViewportView(itemPanel);
 					}
 					
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());				
@@ -235,7 +235,7 @@ public class ShopBuy {
 		btnBuy.setFont(new Font("Tahoma", Font.BOLD, 16));
 		btnBuy.setBounds(682, 331, 142, 25);
 		frmShopbuy.getContentPane().add(btnBuy);
-//		
+		
 		JButton btnReturnHome = new JButton("Return Home");
 		btnReturnHome.addActionListener(new ActionListener() {
 			/**
