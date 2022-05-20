@@ -15,6 +15,8 @@ import gui.customElements.ImgInventoryPanel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -61,6 +63,12 @@ public class ChooseBattleScreen {
 	 * Attribute type of type Object. The current instance of the object ChooseBattleScreen. Passed to the class ImgInventoryPanel so it can pass a selected item back to the correct class.
 	 */
 	private Object type = this;
+	
+	/**
+	 * Attribute btnStartBattle, of type JButton. A button that allows the user to start the selected battle. Disabled until a battle is selected.
+	 */
+	private JButton btnStartBattle = new JButton("Start Battle");
+
 	
 
 	/**
@@ -135,7 +143,7 @@ public class ChooseBattleScreen {
 		btnReturnHome.setBounds(672, 10, 154, 25);
 		frmChoosebattle.getContentPane().add(btnReturnHome);
 		
-		JButton btnStartBattle = new JButton("Start Battle");
+ 	   btnStartBattle.setEnabled(false);
 		btnStartBattle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int choice = JOptionPane.showConfirmDialog(frmChoosebattle, "Are you sure you want to start this battle?",  "Battle Pop-Up", JOptionPane.YES_NO_OPTION);
@@ -148,6 +156,9 @@ public class ChooseBattleScreen {
 		btnStartBattle.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnStartBattle.setBounds(678, 342, 145, 25);
 		frmChoosebattle.getContentPane().add(btnStartBattle);
+		
+		frmChoosebattle.getRootPane().setDefaultButton(btnStartBattle);
+		
 	}
 	
 	
@@ -173,6 +184,9 @@ public class ChooseBattleScreen {
 	 */
 	public void setSelectedBattle(Battle selectedBattle) {
 		this.selectedBattle = selectedBattle;
+       if (btnStartBattle.isEnabled() == false) {
+    	   btnStartBattle.setEnabled(true);
+       }
 	}
 	
 	/**
@@ -202,4 +216,5 @@ public class ChooseBattleScreen {
 		getTxtDescription().setText(battleString);
 		getTxtDescription().setCaretPosition(0);
 	}
+	
 }

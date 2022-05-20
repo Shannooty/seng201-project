@@ -139,5 +139,8 @@ public class Sleep {
 		lblRandomEvent.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblRandomEvent.setBounds(194, 253, 460, 20);
 		frmSleep.getContentPane().add(lblRandomEvent);
+		
+		frmSleep.getRootPane().setDefaultButton(btnContinue);
+
 	}
 }
