@@ -115,7 +115,7 @@ public class BattleScreen {
 		gameEnvironment = gameManager;
 		player = gameEnvironment.getPlayer();
 		this.actualTeam = player.getInventory().getTeam();
-		setTeam(getCurrentTeam(getTeamBattle()));
+		setTeam(getTeamBattle());
 		day = gameEnvironment.getToday();
 		this.selectedBattle = selectedBattle;
 		monstersToFight = selectedBattle.getGameMonsters();
@@ -180,11 +180,11 @@ public class BattleScreen {
 		textPaneGameMonster.setBounds(431, 38, 128, 120);
 		frmBattlescreen.getContentPane().add(textPaneGameMonster);
 		
-		JLabel lblVsLabel = new JLabel("Vs.");
-		lblVsLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblVsLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblVsLabel.setBounds(403, 81, 27, 19);
-		frmBattlescreen.getContentPane().add(lblVsLabel);
+		JLabel lblVs = new JLabel("Vs.");
+		lblVs.setHorizontalAlignment(SwingConstants.CENTER);
+		lblVs.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblVs.setBounds(403, 81, 27, 19);
+		frmBattlescreen.getContentPane().add(lblVs);
 		
 		JLabel lblYourTeamLabel = new JLabel("Your team:");
 		lblYourTeamLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -262,12 +262,7 @@ public class BattleScreen {
 		textAreaGame.setText(monstersToFight.toString().replaceAll("[\\[\\],]","").trim());
 	}
 	
-	/**
-	 * Filters the player's actual team for the Monsters who are not stunned, and returns an ArrayList of those Monsters.
-	 * @param actualTeam, of type ArrayList[Monster]. The player's actual team, including stunned Monsters.
-	 * @return an ArrayList of type Monster. All the player's Monsters who are not stunned.
-	 */
-	public ArrayList<Monster> getCurrentTeam(ArrayList<Monster> actualTeam) {
-		return (ArrayList<Monster>) actualTeam.stream().filter(m -> m.getStunnedStatus() == false).collect(Collectors.toList());
-	}
+	
 }
+
+
