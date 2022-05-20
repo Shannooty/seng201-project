@@ -18,7 +18,7 @@ public class Skeleton extends Monster {
 		setImg();
 		setHealAmount(400);
 		setPurchasePrice(70);
-		setSellPrice(70);
+		setSellPrice(60);
 		setMonsterType("skeleton");
 	}
 	

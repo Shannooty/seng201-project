@@ -15,7 +15,7 @@ public class Chainmail extends Armor {
 	public Chainmail() {
 		super("Chainmail", 250, 300);
 		setPurchasePrice(60);
-		setSellPrice(60);
+		setSellPrice(50);
 		setImgPath("/images/chainmail.png");
 		setImg();
 	}

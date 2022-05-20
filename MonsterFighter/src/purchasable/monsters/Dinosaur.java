@@ -19,6 +19,6 @@ public class Dinosaur extends Monster {
 		setHealAmount(600);
 		setMonsterType("dinosaur");
 		setPurchasePrice(75);
-		setSellPrice(75);
+		setSellPrice(65);
 	}
 }

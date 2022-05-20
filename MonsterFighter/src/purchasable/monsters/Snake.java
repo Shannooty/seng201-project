@@ -19,6 +19,6 @@ public class Snake extends Monster {
 		setHealAmount(550);
 		setMonsterType("snake");
 		setPurchasePrice(65);
-		setSellPrice(65);
+		setSellPrice(55);
 	}
 }

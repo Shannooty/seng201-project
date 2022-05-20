@@ -15,7 +15,7 @@ public class FlowerCrown extends Armor {
 	public FlowerCrown() {
 		super("Flower Crown", 300, 0);
 		setPurchasePrice(10);
-		setSellPrice(10);
+		setSellPrice(8);
 		setImgPath("/images/flowerCrown.png");
 		setImg();
 	}

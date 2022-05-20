@@ -20,7 +20,7 @@ public class SpeedPotion extends Item {
 	public SpeedPotion() {
 		super("Speed Potion");
 		setPurchasePrice(13);
-		setSellPrice(13);
+		setSellPrice(0);
 		setImgPath("/images/speedPotion.png");
 		setImg();
 	}
