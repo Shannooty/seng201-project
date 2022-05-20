@@ -81,17 +81,17 @@ public class EndScreen {
 	 */
 	private DefaultListModel<String> loadLeaderboard() {
 		int position = 0;
-		DefaultListModel<String> model = new DefaultListModel<String>();
+		DefaultListModel<String> leaderboardModel = new DefaultListModel<String>();
 		
 		for (PlayerScore score : GameEnvironment.getLeaderboard().getLeaderboard()) {
 			String displayMessage = ++position + " " + score;
-			model.addElement(displayMessage);
+			leaderboardModel.addElement(displayMessage);
 			
 			if (score == getPlayer().getScore()) {
 				playerPosition = position - 1;
 			}
 		}
-		return model;
+		return leaderboardModel;
 	}
 
 	/**

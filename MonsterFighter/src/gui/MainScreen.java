@@ -77,7 +77,7 @@ public class MainScreen {
 	private Object type = this;
 	
 	/**
-	 * A string to display what attack position the selected Monster is in
+	 * Attribute lblAttackPosition, of type JLabel. A string to display what attack position the selected Monster is in
 	 */
 	private JLabel lblAttackPosition;
 
@@ -133,13 +133,7 @@ public class MainScreen {
 		
 		
 		for (int i = 0; i < team.size(); i++) {
-			
-			String type;
-			if ((team.get(i)).getMonsterType() == "undeadGuard") {
-				type = "/images/undead_guard.png";	
-			} else {
-				type = "/images/"+(team.get(i)).getMonsterType()+".png";			
-			}
+			String type = "/images/"+(team.get(i)).getMonsterType()+".png";			
 			imagesToUse[i] = new ImageIcon(ImageCarousel.class.getResource(type), Integer.toString((team.get(i)).getID()));			
 		}
 		
@@ -214,7 +208,7 @@ public class MainScreen {
 		textAreaMonsterDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		textAreaMonsterDescription.setMargin(new Insets(0,7,0,7));
 		if (team.size() > 0) {
-			setTxtrDescription(Integer.toString(team.get(0).getID()));
+			setTxtDescription(Integer.toString(team.get(0).getID()));
 			btnChangeMonsterName.setVisible(true);
 		} else {
 			textAreaMonsterDescription.setText("Nothing to display.");
@@ -225,11 +219,11 @@ public class MainScreen {
 		textAreaMonsterDescription.setLineWrap(true);
 		textAreaMonsterDescription.setEditable(false);
 		
-        JScrollPane scrollableTextArea = new JScrollPane(textAreaMonsterDescription);  
-        scrollableTextArea.setBounds(480, 120, 270, 299);
-        scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
-        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
-        frmMainscreen.getContentPane().add(scrollableTextArea); 
+        JScrollPane scrollableMonsterTextArea = new JScrollPane(textAreaMonsterDescription);  
+        scrollableMonsterTextArea.setBounds(480, 120, 270, 299);
+        scrollableMonsterTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
+        scrollableMonsterTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+        frmMainscreen.getContentPane().add(scrollableMonsterTextArea); 
 		
 		
 		JButton btnSleep = new JButton("Sleep");
@@ -264,7 +258,7 @@ public class MainScreen {
 				String newMonsterName = JOptionPane.showInputDialog(frmMainscreen,"Enter a new name:", null);
 				if (newMonsterName != null) {
 					selectedMonster.setName(newMonsterName);
-					setTxtrDescription(Integer.toString(selectedMonster.getID()));
+					setTxtDescription(Integer.toString(selectedMonster.getID()));
 					
 				}
 			}
@@ -330,7 +324,7 @@ public class MainScreen {
 	 * Also updates position of selected Monster.
 	 * @param id, of type String. The currently selected Monsters's unique id.
 	 */
-	public void setTxtrDescription(String id) {
+	public void setTxtDescription(String id) {
 		List<Monster> streamedTeam = getTeam().stream().filter(s -> id.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 		setSelectedMonster(streamedTeam.get(0));
 		String itemString = getSelectedMonster().getSellBackDescription();

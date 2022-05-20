@@ -29,6 +29,9 @@ import javax.swing.JOptionPane;
  */
 public class InventoryScreen {
 
+	/**
+	 * Attribute frmInventoryscreen of type JFrame. The frame which is displayed to the user. Contains the UI for the InventoryScreen.
+	 */
 	private JFrame frmInventoryscreen;
 
 	/**
@@ -106,7 +109,6 @@ public class InventoryScreen {
 	}
 	
 	
-
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -168,47 +170,47 @@ public class InventoryScreen {
 		btnHome.setBounds(663, 10, 163, 25);
 		frmInventoryscreen.getContentPane().add(btnHome);
 		
-		JLabel lblNewLabel = new JLabel();
-		lblNewLabel.setText("Welcome to the inventory, " + player.getName());
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblNewLabel.setBounds(52, 10, 347, 19);
-		frmInventoryscreen.getContentPane().add(lblNewLabel);
+		JLabel lblWelcomeLabel = new JLabel();
+		lblWelcomeLabel.setText("Welcome to the inventory, " + player.getName());
+		lblWelcomeLabel.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblWelcomeLabel.setBounds(52, 10, 347, 19);
+		frmInventoryscreen.getContentPane().add(lblWelcomeLabel);
 		
 		JLabel lblYourTeam = new JLabel("Your Team:");
 		lblYourTeam.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblYourTeam.setBounds(31, 286, 99, 20);
 		frmInventoryscreen.getContentPane().add(lblYourTeam);
 		
-		JLabel lblNewLabel_1 = new JLabel("Items you own:");
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel_1.setBounds(31, 39, 140, 19);
-		frmInventoryscreen.getContentPane().add(lblNewLabel_1);
+		JLabel lblYourItems = new JLabel("Items you own:");
+		lblYourItems.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblYourItems.setBounds(31, 39, 140, 19);
+		frmInventoryscreen.getContentPane().add(lblYourItems);
 		
 		
 		JButton btnEquipItem = new JButton("Equip Item");
 		btnEquipItem.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnEquipItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String[] choices = new String[team.size()];
+				String[] monsterChoices = new String[team.size()];
 				for (int i = 0; i < team.size(); i++) {
-					choices[i] = team.get(i).getDescription();
+					monsterChoices[i] = team.get(i).getDescription();
 				}
-				String selection = null;
+				String toEquipMonster = null;
 				
 				if(getSelectedItem() != null) {
-					selection = (String) JOptionPane.showInputDialog(
+					toEquipMonster = (String) JOptionPane.showInputDialog(
 							frmInventoryscreen,
 				                    "Which monster do you wish to use this item on?",
 				                    "Inventory pop-up",
 				                    JOptionPane.PLAIN_MESSAGE,
 				                    null,
-				                    choices,
+				                    monsterChoices,
 				                    team.get(0).getDescription());
 				}
 
-				if (selection != null) {
-					String[] split_selection = selection.split(" ");
-				    String selectedID = split_selection[split_selection.length - 1];
+				if (toEquipMonster != null) {
+					String[] toEquipMonsterSplit = toEquipMonster.split(" ");
+				    String selectedID = toEquipMonsterSplit[toEquipMonsterSplit.length - 1];
 					List<Monster> listOfMonsters = team.stream().filter(s -> selectedID.equals(Integer.toString(s.getID()))).collect(Collectors.toList());
 
 					Monster monsterToEquip = listOfMonsters.get(0);
