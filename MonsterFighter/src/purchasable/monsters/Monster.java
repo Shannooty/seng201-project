@@ -387,7 +387,6 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		addMaxHealth(armor.getHealthIncrease());
 		addHealth(armor.getHealthIncrease());
 		addArmorAmount(armor.getArmorIncrease());
-		setHealAmount(getMaxHealth());
 		equipped.add(armor.getClass().getSimpleName());
 		return oldArmor;
 	}
@@ -455,7 +454,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 				equippedString += equipped.get(i);
 			}
 		}
-		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+ getHealth() + " / " + getMaxHealth() +"\nStatus: "+stunnedStatus+"\n\nAttack Amount: "+getAttackAmount()+"\nArmor Amount: "+getArmorAmount()+"\nEquipped: "+equippedString+"\nSpeed: "+getSpeed()+"\n\nSell-back Price: "+getPurchasePrice();
+		return "Type: "+type+"\nName: "+getName()+"\n\nHealth: "+ getHealth() + " / " + getMaxHealth() +"\nHeal Amount: "+ getHealAmount() + "\nStatus: "+stunnedStatus+"\n\nAttack Amount: "+getAttackAmount()+"\nArmor Amount: "+getArmorAmount()+"\nEquipped: "+equippedString+"\nSpeed: "+getSpeed()+"\n\nSell-back Price: "+getPurchasePrice();
 	}
 	
 	/**

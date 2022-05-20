@@ -16,7 +16,7 @@ public class Dinosaur extends Monster {
 		super("Rexter", 800, 400, 12);
 		setImgPath("/images/dinosaur.png");
 		setImg();
-		setHealAmount(800);
+		setHealAmount(600);
 		setMonsterType("dinosaur");
 		setPurchasePrice(75);
 		setSellPrice(75);

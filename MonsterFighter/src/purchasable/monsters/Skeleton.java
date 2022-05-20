@@ -16,7 +16,7 @@ public class Skeleton extends Monster {
 		super("Bare Bones", 600, 350, 35);
 		setImgPath("/images/skeleton.png");
 		setImg();
-		setHealAmount(600);
+		setHealAmount(400);
 		setPurchasePrice(70);
 		setSellPrice(70);
 		setMonsterType("skeleton");
