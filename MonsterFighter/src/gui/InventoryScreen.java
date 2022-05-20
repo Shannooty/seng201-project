@@ -138,7 +138,6 @@ public class InventoryScreen {
 		txtDescriptionItems.setMargin(new Insets(0,7,0,7));
 		txtDescriptionItems.setLineWrap(true);
 		txtDescriptionItems.setEditable(false);
-		frmInventoryscreen.getContentPane().add(txtDescriptionItems);
 		
         JScrollPane scrollableTextAreaItems = new JScrollPane(txtDescriptionItems);  
         scrollableTextAreaItems.setBounds(530, 68, 267, 190);
