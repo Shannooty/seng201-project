@@ -74,6 +74,6 @@ public class Team {
 	 */
 	private void sort(ArrayList<Monster> list)
     {
-        list.sort((o1, o2) -> Integer.compare(o1.getSpeed(), o2.getSpeed()));
+        list.sort((o2, o1) -> Integer.compare(o1.getSpeed(), o2.getSpeed()));
     }
 }

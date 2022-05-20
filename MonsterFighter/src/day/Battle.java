@@ -143,6 +143,7 @@ public class Battle implements HasImage {
 			newMonster.setPurchasePrice(0);
 			monstersTofight.add(newMonster);
 		}
+		monstersTofight.sort((o2, o1) -> Integer.compare(o1.getSpeed(), o2.getSpeed()));
 	}
 	
 	/**
