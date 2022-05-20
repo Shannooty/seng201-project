@@ -54,7 +54,7 @@ public class RandomEvent {
 		int teamSize = playerTeam.size();
 		int randomInt = new Random().nextInt(1, 13 + teamSize);
 		String event;
-		if (randomInt >= 1 && randomInt <= 20) {
+		if (randomInt >= 1 && randomInt <= 3) {
 			event = "MonsterLeaves";
 		} else if (randomInt >= 4 && randomInt <= 9) {
 			event = "MonsterLevelsUp";
