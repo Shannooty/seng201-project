@@ -4,7 +4,8 @@ import purchasable.monsters.Monster;
 
 /**
  * Extends Item. An item that the player can buy in the Shop.
- * @author inkic
+ * @author Bede Nathan
+ * @author Celia Allen
  *
  */
 public class SpeedPotion extends Item {
