@@ -268,22 +268,6 @@ public class Battle implements HasImage {
 				fightDone = true;
 			}
 				
-			
-//			for (long i = 0; i < starterFrequency; i++) {
-//				if (startingMonster.getHealth() > 0 && secondMonster.getHealth() > 0) {
-//					secondMonster.removeHealth(startingMonster.getAttackAmount());
-//				}else {
-//					fightDone = true;
-//				}
-//			}
-//				
-//			for (long i = 0; i < secondFrequency; i++) {
-//				if (startingMonster.getHealth() > 0 && secondMonster.getHealth() > 0) {
-//					startingMonster.removeHealth(secondMonster.getAttackAmount());
-//				}else {
-//					fightDone = true;
-//				}
-//			}
 		}
 	}
 	
