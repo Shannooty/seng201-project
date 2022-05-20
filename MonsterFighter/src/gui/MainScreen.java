@@ -277,9 +277,10 @@ public class MainScreen {
 		lblDaysRemaining.setBounds(10, 67, 203, 20);
 		frmMainscreen.getContentPane().add(lblDaysRemaining);
 		
-		JLabel lblNewLabel = new JLabel("Monsters fight in order of fastest to slowest.");
+		JLabel lblNewLabel = new JLabel("Monsters fight in order of fastest to slowest");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblNewLabel.setBounds(72, 397, 308, 25);
+		lblNewLabel.setBounds(53, 397, 327, 25);
 		frmMainscreen.getContentPane().add(lblNewLabel);
 		
 	}
