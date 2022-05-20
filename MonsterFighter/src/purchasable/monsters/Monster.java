@@ -126,7 +126,7 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		
 		if(rawDamage < 0) {
 			throw new NegativeValueException("Cannot remove negative health");
-		} else if ((health - damage) < 0) {
+		} else if ((health - damage) <= 0) {
 			health = 0;
 			isStunned = true;
 		} else {
