@@ -35,7 +35,7 @@ public class MonsterLeaves extends RandomEvent {
 		monsters.addAll(getPlayerTeam().getTeam());
 		if (gameManager.getStunned() != null) {
 			monsters.addAll(gameManager.getStunned());
-
+			monsters.addAll(gameManager.getStunned());
 		}
 		getPlayerTeam().getTeam().remove(monsters.get(randomItem.nextInt(monsters.size())));
 	}

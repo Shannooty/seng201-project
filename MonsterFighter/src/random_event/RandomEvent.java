@@ -34,12 +34,6 @@ public class RandomEvent {
 	 */
 	private GameEnvironment gameEnvironment;
 	
-	/**
-	 * Constructor for the class RandomEvent. Does not require any parameters, returns nothing, and does nothing. Created so RandomEvent's subclasses don't have to try and create an Inventory they don't have.
-	 */
-	public RandomEvent() {
-		
-	}
 	
 	/**
 	 * Constructor for the class RandomEvent. Sets the private variable inventory to the give inventory, and sets the private variable playerTeam to the player's current team.
@@ -60,7 +54,7 @@ public class RandomEvent {
 		int teamSize = playerTeam.size();
 		int randomInt = new Random().nextInt(1, 13 + teamSize);
 		String event;
-		if (randomInt >= 1 && randomInt <= 3) {
+		if (randomInt >= 1 && randomInt <= 20) {
 			event = "MonsterLeaves";
 		} else if (randomInt >= 4 && randomInt <= 9) {
 			event = "MonsterLevelsUp";
