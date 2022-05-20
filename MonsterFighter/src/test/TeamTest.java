@@ -53,15 +53,18 @@ class TeamTest {
 	private boolean isInOrder(Team team) {
 		//Team should be in increasing order
 		boolean inOrder = true;
-		int lastSpeed = Integer.MIN_VALUE;
-		
+		int lastSpeed = Integer.MAX_VALUE;
+
 		for (Monster monster : team.getTeam()) {
-			if (monster.getSpeed() < lastSpeed) {
+
+			if (monster.getSpeed() > lastSpeed) {
 				inOrder = false;
 			} else {
 				lastSpeed = monster.getSpeed();
 			}
 		}
+		
+
 		return inOrder;
 	}
 
@@ -121,7 +124,7 @@ class TeamTest {
 		fillTeam();
 		
 		//Change the speed of the last monster
-		testTeam.getTeam().get(3).removeSpeed(100);
+		testTeam.getTeam().get(3).addSpeed(100);
 		
 		assertFalse(isInOrder(testTeam));
 		testTeam.refreshOrder();
