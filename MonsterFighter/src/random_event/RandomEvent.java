@@ -71,7 +71,7 @@ public class RandomEvent {
 	public String getRandomEvent() {	
 		int randomInt = randomEventsInt.get(randomItem.nextInt(randomEventsInt.size()));
 		String event;
-		if (randomInt >= 1 && randomInt <= 20) {
+		if (randomInt >= 1 && randomInt <= 3) {
 			event = "MonsterLeaves";
 		} else if (randomInt >= 4 && randomInt <= 6) {
 			event = "NewMonsterJoins";
