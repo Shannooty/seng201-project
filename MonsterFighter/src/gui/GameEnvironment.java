@@ -8,6 +8,7 @@ import day.Day;
 import leaderboard.Leaderboard;
 import player.Player;
 import purchasable.monsters.*;
+import random_event.RandomEvent;
 
 /**
  * The environment that the game is built in and run off.
@@ -201,9 +202,12 @@ public class GameEnvironment {
 			for (Monster monster : team) {
 				monster.sleep();
 			}
-
+			
+			RandomEvent event = new RandomEvent(getPlayer().getInventory(), this);		
+			String eventString = event.runRandomEvent();
+			
 			setToday(nextDay);			
-			launchSleepScreen(goldEarnedToday, pointsEarnedToday);
+			launchSleepScreen(goldEarnedToday, pointsEarnedToday, eventString);
 		}
 		
 	}
@@ -248,11 +252,12 @@ public class GameEnvironment {
 	
 	/**
 	 * Creates a new instance of the class SleepScreen, passing the GameEnvironment object as a parameter.
+	 * @param eventString 
 	 * @param goldEarnedToday, of type double. The amount of gold the player earned in the current day.
 	 * @param pointsEarnedToday, of type integer. The amount of gold the player earned in the current day.
 	 */
-	public void launchSleepScreen(Double goldEarnedToday, int pointsEarnedToday){
-		new Sleep(this, goldEarnedToday, pointsEarnedToday);
+	public void launchSleepScreen(Double goldEarnedToday, int pointsEarnedToday, String eventString){
+		new Sleep(this, goldEarnedToday, pointsEarnedToday, eventString);
 	}
 	
 	/**
