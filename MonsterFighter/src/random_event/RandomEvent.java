@@ -1,12 +1,15 @@
 package random_event;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import gui.GameEnvironment;
 import player.Inventory;
 import player.Team;
+import purchasable.monsters.Monster;
 
 /**
  * Creates an instance of a random event to occur overnight.
@@ -38,6 +41,11 @@ public class RandomEvent {
 	private Team playerTeam;
 	
 	/**
+	 * Attribute gameEnvironment of type GameEnvironment. Instance of the class GameEnvironment.
+	 */
+	private GameEnvironment gameEnvironment;
+	
+	/**
 	 * Constructor for the class RandomEvent. Does not require any parameters, returns nothing, and does nothing. Created so RandomEvent's subclasses don't have to try and create an Inventory they don't have.
 	 */
 	public RandomEvent() {
@@ -46,10 +54,12 @@ public class RandomEvent {
 	
 	/**
 	 * Constructor for the class RandomEvent. Sets the private variable inventory to the give inventory, and sets the private variable playerTeam to the player's current team.
+	 * @param gameManager 
 	 * @param inventory, of type Inventory. The player's inventory.
 	 */
-	public RandomEvent(Inventory inventory) {
+	public RandomEvent(Inventory inventory, GameEnvironment gameManager) {
 		this.inventory = inventory;
+		gameEnvironment = gameManager;
 		playerTeam = inventory.getTeam();
 	}
 	
@@ -61,7 +71,7 @@ public class RandomEvent {
 	public String getRandomEvent() {	
 		int randomInt = randomEventsInt.get(randomItem.nextInt(randomEventsInt.size()));
 		String event;
-		if (randomInt >= 1 && randomInt <= 3) {
+		if (randomInt >= 1 && randomInt <= 20) {
 			event = "MonsterLeaves";
 		} else if (randomInt >= 4 && randomInt <= 6) {
 			event = "NewMonsterJoins";
@@ -85,11 +95,11 @@ public class RandomEvent {
 		}
 		
 		if (randomEvent == "MonsterLeaves") {
-			new MonsterLeaves(getInventory());
+			new MonsterLeaves(getInventory(), gameEnvironment);
 		} else if (randomEvent == "NewMonsterJoins") {
-			new NewMonsterJoins(getInventory());
+			new NewMonsterJoins(getInventory(), gameEnvironment);
 		} else if (randomEvent == "MonsterLevelsUp") {
-			new MonsterLevelsUp(getInventory());
+			new MonsterLevelsUp(getInventory(), gameEnvironment);
 		}
 		
 		return randomEvent;

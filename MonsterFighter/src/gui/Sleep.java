@@ -8,8 +8,11 @@ import random_event.RandomEvent;
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
+
+import purchasable.monsters.Monster;
 
 
 /**
@@ -56,7 +59,7 @@ public class Sleep {
 		gameEnvironment = gameManager;
 		this.pointsEarnedToday = pointsEarnedToday;
 		this.goldEarnedToday = goldEarnedToday;
-		randomEvent = new RandomEvent(gameEnvironment.getPlayer().getInventory());		
+		randomEvent = new RandomEvent(gameEnvironment.getPlayer().getInventory(), gameManager);		
 		initialize();
 		frmSleep.setVisible(true);
 	}

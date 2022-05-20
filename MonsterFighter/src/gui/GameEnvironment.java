@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import day.Battle;
 import day.Day;
@@ -55,6 +56,14 @@ public class GameEnvironment {
 	 * Attribute shopBuyScreen of type ShopBuy. Instance of the class ShopBuy.
 	 */
 	private ShopBuy shopBuyScreen;
+	
+	/**
+
+
+	/**
+	 * Attribute stunned of type ArrayList[Monster]. A list of the monsters which were stunned in the current day. Used to raise the probability of them leaving if the random even MonsterLeaves is called.
+	 */
+	private ArrayList<Monster> stunned;
 
 	/**
 	 * Constructor for the class GameEnvironment. Calls the method setStartingMonsters().
@@ -157,6 +166,16 @@ public class GameEnvironment {
 	public ArrayList<Monster> getStartingMonsters(){
 		return startingMonsters;
 	}
+
+	
+	/**
+	 * Returns an ArrayList of the Monsters which were stunned in the current day.
+	 * @return stunned, of type ArrayList[Monster].
+	 */
+	public ArrayList<Monster> getStunned() {
+		return stunned;
+	}
+	
 	
 	/**
 	 * Sets the contents of the private attribute startingMonsters. Return type void. Take no parametres.
@@ -182,6 +201,8 @@ public class GameEnvironment {
 			int pointsEarnedToday = today.getPointsEarnedToday();
 			Day nextDay = new Day(this);
 			ArrayList<Monster> team = getPlayer().getInventory().getTeam().getTeam();
+			stunned = (ArrayList<Monster>) team.stream().filter(m -> m.getStunnedStatus() == true).collect(Collectors.toList());
+
 			for (Monster monster : team) {
 				monster.sleep();
 			}

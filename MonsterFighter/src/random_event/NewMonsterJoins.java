@@ -1,6 +1,9 @@
 package random_event;
 
+import java.util.ArrayList;
+
 import generators.MonsterGenerator;
+import gui.GameEnvironment;
 import player.Inventory;
 import purchasable.monsters.*;
 
@@ -18,9 +21,10 @@ public class NewMonsterJoins extends RandomEvent {
 	/**
 	 * Constructor for class NewMonsterJoins. Calls the superclass constructor, and calls the method createMonster().
 	 * @param inventory The players Inventory for the new Monster to be passed into
+	 * @param stunned 
 	 */
-	public NewMonsterJoins(Inventory inventory) {
-		super(inventory);
+	public NewMonsterJoins(Inventory inventory, GameEnvironment gameManager) {
+		super(inventory, gameManager);
 		
 		if (getPlayerTeam().size() < 4) {
 			createMonster();

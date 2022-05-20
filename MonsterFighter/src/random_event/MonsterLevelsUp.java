@@ -1,5 +1,8 @@
 package random_event;
 
+import java.util.ArrayList;
+
+import gui.GameEnvironment;
 import player.Inventory;
 import purchasable.monsters.Monster;
 
@@ -19,9 +22,10 @@ public class MonsterLevelsUp extends RandomEvent {
 	/**
 	 * Constructor for the MonsterLevelsUp class. Calls the levelUpSetUp() method.
 	 * @param inventory The players Inventory to level up a random Monster
+	 * @param stunned 
 	 */
-	public MonsterLevelsUp(Inventory inventory) {
-		super(inventory);
+	public MonsterLevelsUp(Inventory inventory, GameEnvironment gameManager) {
+		super(inventory, gameManager);
 		levelUpSetUp();
 	}
 	
