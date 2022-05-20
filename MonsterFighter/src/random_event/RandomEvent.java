@@ -51,14 +51,14 @@ public class RandomEvent {
 	 * @return an item of randomEvents, of type String. A possible event that can occur overnight in the game.
 	 */
 	public String getRandomEvent() {
-		int teamSize = playerTeam.size() * 3;
-		int randomInt = new Random().nextInt(1, 22);
+		int teamSize = playerTeam.size() * 2;
+		int randomInt = new Random().nextInt(1, 30);
 		String event;
 		if (randomInt >= 1 && randomInt <= 3) {
 			event = "MonsterLeaves";
 		} else if (randomInt >= 4 && randomInt <= 9) {
 			event = "MonsterLevelsUp";
-		} else if (randomInt >= 10 && randomInt <= (23 - teamSize)) {
+		} else if (randomInt >= 10 && randomInt <= (18 - teamSize)) {
 			event = "NewMonsterJoins";
 		} else {
 			event = "Nothing";
