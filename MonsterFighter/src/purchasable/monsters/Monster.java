@@ -1,7 +1,6 @@
 package purchasable.monsters;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 
 import exceptions.InsufficientGoldException;
 import exceptions.NegativeValueException;
@@ -17,7 +16,7 @@ import purchasable.items.weapons.Weapon;
  * @author Celia Allen
  */
 
-public abstract class Monster extends Purchasable implements Comparator<Monster> {
+public abstract class Monster extends Purchasable{
 	
 	/**
 	 * Attribute health, of type integer. The monster's health amount.
@@ -493,21 +492,5 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 		player.getInventory().removeMonster(this);
 	}
 	
-	/**
-	 * Compares two monsters based on their speed attribute.
-	 */
-	@Override
-	public int compare(Monster monster1, Monster monster2) {
-		int monsterSpeed1 = monster1.getSpeed();
-		int monsterSpeed2 = monster2.getSpeed();
-		
-		if (monsterSpeed1 > monsterSpeed2) {
-			return 1;
-		} else if (monsterSpeed1 < monsterSpeed2) {
-			return -1;
-		} else {
-			return 0;
-		}
-	}
 	
 }

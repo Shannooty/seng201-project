@@ -42,6 +42,7 @@ public class MonsterLevelsUp extends RandomEvent {
 	 */
 	public void heal(int health, Monster monster) {
 		monster.addMaxHealth(health);
+		monster.addHealth(health);
 	}
 
 }
