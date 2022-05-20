@@ -1,6 +1,7 @@
 package gui.customElements;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
@@ -69,6 +70,7 @@ public class InventoryToggleButton extends JToggleButton {
 	public void setBattleInfo() {
 		Battle battle = (Battle) getButtonObject();
 		this.setText("Number of monsters to fight: "+Integer.toString(battle.getNumMonsters()));
+		this.setFont(new Font("Tahoma", Font.BOLD, 11));
 		this.setHorizontalTextPosition(JLabel.CENTER);
 		this.setVerticalTextPosition(JLabel.CENTER);
 	}
