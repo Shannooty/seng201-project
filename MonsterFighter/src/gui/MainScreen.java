@@ -123,9 +123,9 @@ public class MainScreen {
 		frmMainscreen = new JFrame();
 		
 		lblAttackPosition = new JLabel("Attack Position: 1");
-		lblAttackPosition.setFont(new Font("Dialog", Font.BOLD, 16));
+		lblAttackPosition.setFont(new Font("Tahoma", Font.BOLD, 16));
 		lblAttackPosition.setHorizontalAlignment(SwingConstants.CENTER);
-		lblAttackPosition.setBounds(72, 136, 290, 25);
+		lblAttackPosition.setBounds(72, 118, 290, 25);
 		frmMainscreen.getContentPane().add(lblAttackPosition);
 		
 		
@@ -145,7 +145,7 @@ public class MainScreen {
 		
 		ImageCarousel images = new ImageCarousel(imagesToUse, type);
 		images.setSize(290, 195);
-		images.setLocation(72, 166);
+		images.setLocation(72, 153);
 		frmMainscreen.getContentPane().add(images);
 		
 		frmMainscreen.setTitle("MainScreen");
@@ -156,14 +156,14 @@ public class MainScreen {
 		JLabel lblGoldAmount = new JLabel("Amount of gold:");
 		lblGoldAmount.setText("Amount of gold: " + Double.toString(player.getGoldAmount()));
 		lblGoldAmount.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblGoldAmount.setBounds(10, 38, 203, 20);
+		lblGoldAmount.setBounds(10, 12, 203, 20);
 		frmMainscreen.getContentPane().add(lblGoldAmount);
 		
 		
 		JLabel lblDayNumber = new JLabel();
 		lblDayNumber.setText("Day Number: " + Integer.toString(gameEnvironment.getDayNumber()));
 		lblDayNumber.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblDayNumber.setBounds(10, 68, 152, 20);
+		lblDayNumber.setBounds(10, 37, 152, 20);
 		frmMainscreen.getContentPane().add(lblDayNumber);
 		
 		JButton btnBattleSelect = new JButton("Select Battle");
@@ -251,8 +251,8 @@ public class MainScreen {
 		
 		JLabel lblWelcomeUser = new JLabel();
 		lblWelcomeUser.setText("Welcome, " + player.getName());
-		lblWelcomeUser.setFont(new Font("Tahoma", Font.BOLD, 16));
-		lblWelcomeUser.setBounds(10, 10, 180, 20);
+		lblWelcomeUser.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lblWelcomeUser.setBounds(300, 35, 281, 20);
 		frmMainscreen.getContentPane().add(lblWelcomeUser);
 		
 		btnChangeMonsterName.addActionListener(new ActionListener() {
@@ -269,13 +269,18 @@ public class MainScreen {
 				}
 			}
 		});
-		btnChangeMonsterName.setBounds(106, 390, 222, 29);
+		btnChangeMonsterName.setBounds(105, 358, 222, 29);
 		frmMainscreen.getContentPane().add(btnChangeMonsterName);
 		
 		JLabel lblDaysRemaining = new JLabel("Days Remaining: " + (gameEnvironment.getGameLength() + 1 - gameEnvironment.getDayNumber()));
-		lblDaysRemaining.setFont(new Font("Dialog", Font.BOLD, 16));
-		lblDaysRemaining.setBounds(10, 100, 203, 20);
+		lblDaysRemaining.setFont(new Font("Tahoma", Font.BOLD, 16));
+		lblDaysRemaining.setBounds(10, 67, 203, 20);
 		frmMainscreen.getContentPane().add(lblDaysRemaining);
+		
+		JLabel lblNewLabel = new JLabel("Monsters fight in order of fastest to slowest.");
+		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNewLabel.setBounds(72, 397, 308, 25);
+		frmMainscreen.getContentPane().add(lblNewLabel);
 		
 	}
 	
