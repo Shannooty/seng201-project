@@ -118,13 +118,13 @@ public class ShopSell {
 		frmShopSell.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmShopSell.getContentPane().setLayout(null);
 
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		scrollPane.setBounds(50, 88, 460, 343);
-		frmShopSell.getContentPane().add(scrollPane);
+		JScrollPane scrollPaneShopDisplay = new JScrollPane();
+		scrollPaneShopDisplay.getVerticalScrollBar().setUnitIncrement(15);
+		scrollPaneShopDisplay.setBounds(50, 88, 460, 343);
+		frmShopSell.getContentPane().add(scrollPaneShopDisplay);
 		
-		ImgInventoryPanel panel = new ImgInventoryPanel(scrollPane, team.getTeam(), type);
-		scrollPane.setViewportView(panel);
+		ImgInventoryPanel displayPanel = new ImgInventoryPanel(scrollPaneShopDisplay, team.getTeam(), type);
+		scrollPaneShopDisplay.setViewportView(displayPanel);
 
 		JLabel lblGoldAmount = new JLabel();
 		lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
@@ -174,27 +174,27 @@ public class ShopSell {
 		buttonPanel.setBounds(52, 40, 327, 34);
 		frmShopSell.getContentPane().add(buttonPanel);
 		
-		ButtonGroup buttons = new ButtonGroup();
-		JToggleButton showMonsters = new JToggleButton("Show Monsters");
-		showMonsters.setSelected(true);
-		JToggleButton showItems = new JToggleButton("Show Items");
-		buttons.add(showMonsters);
-		buttons.add(showItems);
-		buttonPanel.add(showMonsters);
-		buttonPanel.add(showItems);
+		ButtonGroup shopButtons = new ButtonGroup();
+		JToggleButton showMonstersBtn = new JToggleButton("Show Monsters");
+		showMonstersBtn.setSelected(true);
+		JToggleButton showItemsBtn = new JToggleButton("Show Items");
+		shopButtons.add(showMonstersBtn);
+		shopButtons.add(showItemsBtn);
+		buttonPanel.add(showMonstersBtn);
+		buttonPanel.add(showItemsBtn);
 		
-		showMonsters.addActionListener(new ActionListener() { 
+		showMonstersBtn.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), type);
-				  scrollPane.setViewportView(monsterPanel);
+				  ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPaneShopDisplay, team.getTeam(), type);
+				  scrollPaneShopDisplay.setViewportView(monsterPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
 			} );
 		
-		showItems.addActionListener(new ActionListener() { 
+		showItemsBtn.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), type);
-				  scrollPane.setViewportView(itemPanel);
+				  ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPaneShopDisplay, inventory.getItems(), type);
+				  scrollPaneShopDisplay.setViewportView(itemPanel);
 				  txtDescription.setText("Nothing selected.");
 			  }
 			} );	
@@ -209,16 +209,16 @@ public class ShopSell {
 			public void actionPerformed(ActionEvent e) {
 				int choice = JOptionPane.showConfirmDialog(frmShopSell, "Are you sure you want to sell this item/monster?",  "Shop Pop-Up", JOptionPane.YES_NO_OPTION);
 				if (choice == JOptionPane.YES_OPTION) {
-					if (selectedMonster != null && showMonsters.isSelected() == true) {
+					if (selectedMonster != null && showMonstersBtn.isSelected() == true) {
 						selectedMonster.sell(player);
-						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, team.getTeam(), type);
-						scrollPane.setViewportView(monsterPanel);
+						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPaneShopDisplay, team.getTeam(), type);
+						scrollPaneShopDisplay.setViewportView(monsterPanel);
 					}
 					
-					if (selectedItem != null && showItems.isSelected() == true) {
+					if (selectedItem != null && showItemsBtn.isSelected() == true) {
 						selectedItem.sell(player);
-						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, inventory.getItems(), type);
-						scrollPane.setViewportView(itemPanel);
+						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPaneShopDisplay, inventory.getItems(), type);
+						scrollPaneShopDisplay.setViewportView(itemPanel);
 					}
 					
 					lblGoldAmount.setText("Amount of gold: "+player.getGoldAmount());
