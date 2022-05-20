@@ -57,11 +57,6 @@ public class SetupScreen {
 	private GameEnvironment gameEnvironment;
 	
 	/**
-	 * Attribute player of type Player. The current player.
-	 */
-	private Player player;
-	
-	/**
 	 * Attribute username of type JFormattedTextField. The user's username.
 	 */
 	private JTextField username;
