@@ -3,8 +3,6 @@ package gui;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import random_event.RandomEvent;
-
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -32,9 +30,9 @@ public class Sleep {
 	private GameEnvironment gameEnvironment;
 	
 	/**
-	 * Attribute randomEvent, of type RandomEvent. A new RandomEvent.
+	 * String representation of the random event
 	 */
-	private RandomEvent randomEvent;
+	private String randomEventString;
 	
 	/**
 	 * Attribute pointsEarnedToday, of type Integer. The amount of gold that the player earned in the past day.
@@ -52,11 +50,11 @@ public class Sleep {
 	 * @param goldEarnedToday, of type double. The amount of gold the player earned in the past day.
 	 * @param pointsEarnedToday, of type integer. The amount of points the player earned in the past day.
 	 */
-	public Sleep(GameEnvironment gameManager, Double goldEarnedToday, int pointsEarnedToday) {
+	public Sleep(GameEnvironment gameManager, Double goldEarnedToday, int pointsEarnedToday, String randomEvent) {
 		gameEnvironment = gameManager;
 		this.pointsEarnedToday = pointsEarnedToday;
 		this.goldEarnedToday = goldEarnedToday;
-		randomEvent = new RandomEvent(gameEnvironment.getPlayer().getInventory(), gameManager);		
+		randomEventString = randomEvent;	
 		initialize();
 		frmSleep.setVisible(true);
 	}
@@ -130,13 +128,12 @@ public class Sleep {
 		
 		JLabel lblRandomEvent = new JLabel();
 		lblRandomEvent.setHorizontalAlignment(SwingConstants.CENTER);
-		String event = randomEvent.runRandomEvent();
 		
 
-		if (event == "Nothing") {
+		if (randomEventString == "Nothing") {
 			lblRandomEvent.setText("No random event occurred.");
 		} else {
-			lblRandomEvent.setText("Random event "+event+" occured.");
+			lblRandomEvent.setText("Random event "+randomEventString+" occured.");
 		}
 		
 		lblRandomEvent.setFont(new Font("Tahoma", Font.PLAIN, 16));
