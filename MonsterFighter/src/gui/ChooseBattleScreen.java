@@ -143,7 +143,7 @@ public class ChooseBattleScreen {
 		btnReturnHome.setBounds(672, 10, 154, 25);
 		frmChoosebattle.getContentPane().add(btnReturnHome);
 		
- 	   btnStartBattle.setEnabled(false);
+ 	    btnStartBattle.setEnabled(false);
 		btnStartBattle.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int choice = JOptionPane.showConfirmDialog(frmChoosebattle, "Are you sure you want to start this battle?",  "Battle Pop-Up", JOptionPane.YES_NO_OPTION);
@@ -184,9 +184,9 @@ public class ChooseBattleScreen {
 	 */
 	public void setSelectedBattle(Battle selectedBattle) {
 		this.selectedBattle = selectedBattle;
-       if (btnStartBattle.isEnabled() == false) {
-    	   btnStartBattle.setEnabled(true);
-       }
+        if (btnStartBattle.isEnabled() == false) {
+    	    btnStartBattle.setEnabled(true);
+        }
 	}
 	
 	/**
