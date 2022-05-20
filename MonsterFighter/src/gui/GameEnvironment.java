@@ -52,11 +52,6 @@ public class GameEnvironment {
 	 * Attribute leaderboard of type static Leaderboard. The leaderboard for all games.
 	 */
 	private static Leaderboard leaderboard = new Leaderboard();
-	
-	/**
-	 * Attribute shopBuyScreen of type ShopBuy. Instance of the class ShopBuy.
-	 */
-	private ShopBuy shopBuyScreen;
 
 	/**
 	 * Attribute stunned of type ArrayList[Monster]. A list of the monsters which were stunned in the current day. Used to raise the probability of them leaving if the random even MonsterLeaves is called.
@@ -287,7 +282,7 @@ public class GameEnvironment {
 	 * Sets the private attribute shopBuyScreen to a new instance of the class ShopBuy, passing the GameEnvironment object and the current instance of Shop as parameters.
 	 */
 	public void launchShopBuyScreen(){
-		shopBuyScreen = new ShopBuy(this, today.getTodaysShop());
+		new ShopBuy(this, today.getTodaysShop());
 	}
 	
 	/**
@@ -296,14 +291,6 @@ public class GameEnvironment {
 	 */
 	public void closeShopBuyScreen(ShopBuy shopBuyWindow) {
 		shopBuyWindow.closeWindow();
-	}
-	
-	/**
-	 * Returns shopBuyScreen, an instance of ShopBuy. Used to access methods in ShopBuy.
-	 * @return shopBuyScreen, of type ShopBuy.
-	 */
-	public ShopBuy getShopBuyScreen() {
-		return shopBuyScreen;
 	}
 	
 	/**
