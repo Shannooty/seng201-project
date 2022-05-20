@@ -56,8 +56,6 @@ public abstract class Item extends Purchasable {
 	 * @return description, of type String.
 	 */
 	public String createDescription() {
-		String type = (String.valueOf(getClass()).split("\\."))[2];
-		String typeEdited = (type.substring(0, 1).toUpperCase() + type.substring(1, type.length())).replaceAll("s", "");
 		String effect = "";
 		
 		if (this instanceof Food) {
@@ -71,7 +69,7 @@ public abstract class Item extends Purchasable {
 			effect = "Increase speed: "+Integer.toString(((SpeedPotion) this).getSpeedIncrease());
 		}
 					
-		return "Type: "+typeEdited+"\nName: " + getName()+"\n\n"+effect;
+		return "Name: " + getName()+"\n\n"+effect;
 	}
 	
 	/**
