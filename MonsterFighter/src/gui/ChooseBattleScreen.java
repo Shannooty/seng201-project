@@ -113,20 +113,20 @@ public class ChooseBattleScreen {
 		txtDescription.setLineWrap(true);
 		txtDescription.setEditable(false);
 
-        JScrollPane scrollableTextArea = new JScrollPane(txtDescription);  
-        scrollableTextArea.setBounds(520, 88, 302, 233);
-        scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
-        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
-        frmChoosebattle.getContentPane().add(scrollableTextArea); 
+        JScrollPane battleDescriptionPane = new JScrollPane(txtDescription);  
+        battleDescriptionPane.setBounds(520, 88, 302, 233);
+        battleDescriptionPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);  
+        battleDescriptionPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);  
+        frmChoosebattle.getContentPane().add(battleDescriptionPane); 
 		
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.getVerticalScrollBar().setUnitIncrement(15);
-		scrollPane.setBounds(50, 88, 460, 343);
-		frmChoosebattle.getContentPane().add(scrollPane);
+		JScrollPane battleDisplay = new JScrollPane();
+		battleDisplay.getVerticalScrollBar().setUnitIncrement(15);
+		battleDisplay.setBounds(50, 88, 460, 343);
+		frmChoosebattle.getContentPane().add(battleDisplay);
 
-		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, possibleBattles, type);
-		scrollPane.setViewportView(monsterPanel);
+		ImgInventoryPanel monsterPanel = new ImgInventoryPanel(battleDisplay, possibleBattles, type);
+		battleDisplay.setViewportView(monsterPanel);
 		
 
 		
