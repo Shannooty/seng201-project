@@ -204,9 +204,9 @@ public class ShopBuy {
 							shop.purchase(selectedMonster, player);
 
 						} catch (InsufficientGoldException ex) {
-							gameEnvironment.getShopBuyScreen().exceptionPopUp(ex.getMessage());
+							exceptionPopUp(ex.getMessage());
 						} catch (TeamFullException ex) {
-							gameEnvironment.getShopBuyScreen().exceptionPopUp(ex.getMessage());
+							exceptionPopUp(ex.getMessage());
 						}
 						
 						ImgInventoryPanel monsterPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleMonsters(), type);
@@ -217,7 +217,7 @@ public class ShopBuy {
 						try {
 							shop.purchase(selectedItem, player);
 						} catch (InsufficientGoldException ex) {
-							gameEnvironment.getShopBuyScreen().exceptionPopUp(ex.getMessage());
+							exceptionPopUp(ex.getMessage());
 						}
 						
 						ImgInventoryPanel itemPanel = new ImgInventoryPanel(scrollPane, shop.getAvalibleItems(), type);
