@@ -120,7 +120,7 @@ public class SetupScreen {
 		imagesToUse[0] = new ImageIcon(ImageCarousel.class.getResource("/images/skeleton.png"), "skeleton");
 		imagesToUse[1] = new ImageIcon(ImageCarousel.class.getResource("/images/slime.png"), "slime");
 		imagesToUse[2] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), "zombie");
-		imagesToUse[3] = new ImageIcon(ImageCarousel.class.getResource("/images/undead_guard.png"), "undeadGuard");
+		imagesToUse[3] = new ImageIcon(ImageCarousel.class.getResource("/images/undeadGuard.png"), "undeadGuard");
 		
 		ImageCarousel monsterImages = new ImageCarousel(imagesToUse, type);
 		monsterImages.setSize(290, 195);

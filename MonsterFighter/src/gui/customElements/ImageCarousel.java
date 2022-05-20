@@ -124,7 +124,7 @@ public class ImageCarousel extends JPanel implements ActionListener {
 	   }
 	   currDescription = images[index].getDescription();
 	   if (gui instanceof MainScreen) {
-		   ((MainScreen) gui).setTxtrDescription(currDescription);
+		   ((MainScreen) gui).setTxtDescription(currDescription);
 	   }
 	   
 	   ImageIcon imageIcon = scaleImage(images[index]);
