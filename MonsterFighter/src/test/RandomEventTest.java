@@ -87,7 +87,7 @@ class RandomEventTest {
 		new MonsterLevelsUp(testPlayer.getInventory(), game);
 		
 		assertTrue(monsterMaxHealth < playerMonster.getMaxHealth());
-		assertTrue(currentHealth == playerMonster.getHealth());
+		assertTrue(currentHealth <= playerMonster.getHealth());
 	}
 	
 	@Test
