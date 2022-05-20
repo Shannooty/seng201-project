@@ -477,10 +477,18 @@ public abstract class Monster extends Purchasable implements Comparator<Monster>
 	}
 	
 	/**
-	 * Lets the player sell the Monster
+	 * Lets the player sell the Monster, returns equipped items back to player
 	 */
 	@Override
 	public void sell(Player player) {
+		if(armorSlot != null) {
+			Armor oldArmor = removeArmor();
+			player.getInventory().addItem(oldArmor);
+		}
+		if(weaponSlot != null) {
+			Weapon oldWeapon = removeWeapon();
+			player.getInventory().addItem(oldWeapon);
+		}
 		player.addGold(getSellPrice());
 		player.getInventory().removeMonster(this);
 	}
