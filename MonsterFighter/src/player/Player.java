@@ -1,6 +1,5 @@
 package player;
 
-//one instance
 
 import exceptions.InsufficientGoldException;
 import exceptions.NegativeValueException;
