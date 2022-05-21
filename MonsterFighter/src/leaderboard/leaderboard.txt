@@ -1,1 +1,3 @@
 Leaderboard:
+Bede:8500
+Celia:50
