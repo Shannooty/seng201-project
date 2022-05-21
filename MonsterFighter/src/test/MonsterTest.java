@@ -395,7 +395,7 @@ class MonsterTest {
 	void testSell() {
 		Team playerTeam = testPlayer.getInventory().getTeam();
 		testMonster.buy(testPlayer);
-		double expectedGold = testPlayer.getGoldAmount() + testMonster.getPurchasePrice();
+		double expectedGold = testPlayer.getGoldAmount() + testMonster.getSellPrice();
 		
 		testMonster.sell(testPlayer);
 		assertFalse(playerTeam.getTeam().contains(testMonster));

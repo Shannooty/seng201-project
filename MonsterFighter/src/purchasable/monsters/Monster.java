@@ -357,6 +357,9 @@ public abstract class Monster extends Purchasable{
 		Weapon oldWeapon = removeWeapon();
 		weaponSlot = weapon;
 		addAttackAmount(weapon.getDamage());
+		if (oldWeapon != null) {
+			equipped.remove(oldWeapon.getClass().getSimpleName());
+		}
 		equipped.add(weapon.getClass().getSimpleName());
 		return oldWeapon;
 	}
@@ -386,6 +389,9 @@ public abstract class Monster extends Purchasable{
 		addMaxHealth(armor.getHealthIncrease());
 		addHealth(armor.getHealthIncrease());
 		addArmorAmount(armor.getArmorIncrease());
+		if (oldArmor != null) {
+			equipped.remove(oldArmor.getClass().getSimpleName());
+		}
 		equipped.add(armor.getClass().getSimpleName());
 		return oldArmor;
 	}

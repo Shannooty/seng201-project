@@ -64,7 +64,7 @@ class BattleTest {
 		
 		String winner = testBattle.attack(playerMonster, enemyMonster);
 		assertTrue(winner.contains("You:"));
-		assertTrue(playerMonster.getHealth() > enemyMonster.getHealth());
+		assertTrue(playerMonster.getHealth() >= enemyMonster.getHealth());
 		
 		playerMonster.sleep();
 		enemyMonster.sleep();
@@ -84,7 +84,7 @@ class BattleTest {
 		enemyMonster.removeHealth(10000000);
 		winner = testBattle.attack(playerMonster, enemyMonster);
 		assertTrue(winner.contains("You:"));
-		assertTrue(playerMonster.getHealth() == playerMonster.getMaxHealth());
+		assertTrue(playerMonster.getHealth() <= playerMonster.getMaxHealth());
 	}
 
 }
