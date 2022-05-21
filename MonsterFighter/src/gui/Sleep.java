@@ -49,6 +49,7 @@ public class Sleep {
 	 * @param gameManager, of type GameEnvironment. The game manager.
 	 * @param goldEarnedToday, of type double. The amount of gold the player earned in the past day.
 	 * @param pointsEarnedToday, of type integer. The amount of points the player earned in the past day.
+	 * @param randomEvent, String of the event type.
 	 */
 	public Sleep(GameEnvironment gameManager, Double goldEarnedToday, int pointsEarnedToday, String randomEvent) {
 		gameEnvironment = gameManager;

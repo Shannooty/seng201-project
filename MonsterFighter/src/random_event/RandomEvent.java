@@ -38,6 +38,7 @@ public class RandomEvent {
 	/**
 	 * Constructor for the class RandomEvent. Sets the private variable inventory to the give inventory, and sets the private variable playerTeam to the player's current team.
 	 * @param inventory, of type Inventory. The player's inventory.
+	 * @param gameManager The GameEnvironment running the application
 	 */
 	public RandomEvent(Inventory inventory, GameEnvironment gameManager) {
 		this.inventory = inventory;

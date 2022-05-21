@@ -247,9 +247,9 @@ public class GameEnvironment {
 	
 	/**
 	 * Creates a new instance of the class SleepScreen, passing the GameEnvironment object as a parameter.
-	 * @param eventString 
 	 * @param goldEarnedToday, of type double. The amount of gold the player earned in the current day.
 	 * @param pointsEarnedToday, of type integer. The amount of gold the player earned in the current day.
+	 * @param eventString, String of the random event type.
 	 */
 	public void launchSleepScreen(Double goldEarnedToday, int pointsEarnedToday, String eventString){
 		new Sleep(this, goldEarnedToday, pointsEarnedToday, eventString);

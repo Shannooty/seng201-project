@@ -19,6 +19,7 @@ public class NewMonsterJoins extends RandomEvent {
 	/**
 	 * Constructor for class NewMonsterJoins. Calls the superclass constructor, and calls the method createMonster().
 	 * @param inventory The players Inventory for the new Monster to be passed into
+	 * @param gameManager The GameEnvironment running the application
 	 */
 	public NewMonsterJoins(Inventory inventory, GameEnvironment gameManager) {
 		super(inventory, gameManager);

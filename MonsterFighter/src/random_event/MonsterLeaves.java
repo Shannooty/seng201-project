@@ -17,6 +17,7 @@ public class MonsterLeaves extends RandomEvent {
 	/**
 	 * Constructor for the class MonsterLeaves. Calls the method removeMonster().
 	 * @param inventory The player Inventory to remove a random Monster
+	 * @param gameManager The GameEnvironment running the application
 	 */
 	public MonsterLeaves(Inventory inventory, GameEnvironment gameManager) {
 		super(inventory, gameManager);
@@ -28,6 +29,7 @@ public class MonsterLeaves extends RandomEvent {
 	
 	/**
 	 * Removes the Monster from the team variable in Inventory. Returns void.
+	 * @param gameManager The GameEnvironment running the application
 	 */
 	public void removeMonster(GameEnvironment gameManager) {
 
