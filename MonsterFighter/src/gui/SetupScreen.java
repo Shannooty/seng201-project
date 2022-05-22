@@ -129,19 +129,19 @@ public class SetupScreen {
 		imagesToUse[2] = new ImageIcon(ImageCarousel.class.getResource("/images/zombie.png"), "zombie");
 		imagesToUse[3] = new ImageIcon(ImageCarousel.class.getResource("/images/undeadGuard.png"), "undeadGuard");
 		
-		ImageCarousel monsterImages = new ImageCarousel(imagesToUse, type);
-		monsterImages.setSize(290, 195);
-		monsterImages.setLocation(122, 218);
-		frmSetup.getContentPane().add(monsterImages);
-		
 		
 //		JTextArea textAreaMonsterDescription = new JTextArea("");
 		textAreaMonsterDescription.setMargin(new Insets(0, 7, 0, 7));
 		textAreaMonsterDescription.setLineWrap(true);
 		textAreaMonsterDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
 		textAreaMonsterDescription.setEditable(false);
-		textAreaMonsterDescription.setBounds(422, 218, 290, 195);
+		textAreaMonsterDescription.setBounds(444, 223, 210, 150);
 		frmSetup.getContentPane().add(textAreaMonsterDescription);
+		
+		ImageCarousel monsterImages = new ImageCarousel(imagesToUse, type);
+		monsterImages.setSize(290, 195);
+		monsterImages.setLocation(168, 216);
+		frmSetup.getContentPane().add(monsterImages);
 		
 		JLabel lblUsername = new JLabel("Please choose a username:");
 		lblUsername.setHorizontalAlignment(SwingConstants.CENTER);
