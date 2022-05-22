@@ -76,8 +76,8 @@ public class ImageCarousel extends JPanel implements ActionListener {
 		   imageSpace.setIcon(imageIcon);
 		   currDescription = images[0].getDescription();
 		   
-		   backwards=new JButton("<<");
-		   forwards=new JButton(">>");
+		   backwards = new JButton("<<");
+		   forwards = new JButton(">>");
 		   imagePanel.add(backwards);
 		   imagePanel.add(forwards);
 		   
