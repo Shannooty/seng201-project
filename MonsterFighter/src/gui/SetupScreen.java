@@ -31,6 +31,8 @@ import day.Day;
 import gui.customElements.ImageCarousel;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTextArea;
+import java.awt.Insets;
 
 
 /**
@@ -71,6 +73,11 @@ public class SetupScreen {
 	 */
 	private List<String> stringDifficulty = Arrays.asList("Easy", "Medium", "Hard");
 	
+	/**
+	 * Attribute textAreaMonsterDescription of type JTextArea. A JTextArea that displays the description of the currently displayed Monster. Default is a description of a Skeleton.
+	 */
+	private JTextArea textAreaMonsterDescription = new JTextArea("\nType: Skeleton\n\nHealth: 600\nHeal Amount: 400\nAttack Amount: 350\nSpeed: 35");
+
 	/**
 	 * Attribute type of type Object. The current instance of SetupScreen.
 	 */
@@ -124,8 +131,17 @@ public class SetupScreen {
 		
 		ImageCarousel monsterImages = new ImageCarousel(imagesToUse, type);
 		monsterImages.setSize(290, 195);
-		monsterImages.setLocation(279, 218);
+		monsterImages.setLocation(122, 218);
 		frmSetup.getContentPane().add(monsterImages);
+		
+		
+//		JTextArea textAreaMonsterDescription = new JTextArea("");
+		textAreaMonsterDescription.setMargin(new Insets(0, 7, 0, 7));
+		textAreaMonsterDescription.setLineWrap(true);
+		textAreaMonsterDescription.setFont(new Font("Monospaced", Font.PLAIN, 15));
+		textAreaMonsterDescription.setEditable(false);
+		textAreaMonsterDescription.setBounds(422, 218, 290, 195);
+		frmSetup.getContentPane().add(textAreaMonsterDescription);
 		
 		JLabel lblUsername = new JLabel("Please choose a username:");
 		lblUsername.setHorizontalAlignment(SwingConstants.CENTER);
@@ -298,8 +314,42 @@ public class SetupScreen {
 		  
 		});
 		frmSetup.getRootPane().setDefaultButton(btnNext);
-	}
+		
 
+	}
+	
+	
+	/**
+	 * Returns the JTextArea that displays the description of the currently selected Monster.
+	 * @return textAreaMonsterDescription, of type JTextArea.
+	 */
+	public JTextArea getTextAreaMonsterDescription() {
+		return textAreaMonsterDescription;
+	}
+	
+	/**
+	 * Sets the text of the JTextArea txtDescription to the description of the currently selected Monster type. 
+	 * @param type, of type String. The currently selected Monsters's type.
+	 */
+	public void setTxtDescription(String type) {
+		String itemString = "";
+		switch (type) {
+		  case "skeleton":
+			itemString = "\nType: Skeleton\n\nHealth: 600\nHeal Amount: 400\nAttack Amount: 350\nSpeed: 35";
+		    break;
+		  case "slime":
+			itemString = "\nType: Slime\n\nHealth: 750\nHeal Amount: 500\nAttack Amount: 300\nSpeed: 20";
+		    break;
+		  case "zombie":
+			itemString = "\nType: Zombie\n\nHealth: 1000\nHeal Amount: 600\nAttack Amount: 200\nSpeed: 30";
+		    break;
+		  case "undeadGuard":
+			itemString = "\nType: Undead Guard\n\nHealth: 1200\nHeal Amount: 800\nAttack Amount: 100\nSpeed: 15";
+		    break;
+		}
+		getTextAreaMonsterDescription().setText(itemString);
+		getTextAreaMonsterDescription().setCaretPosition(0);
+	}
 }
 
 

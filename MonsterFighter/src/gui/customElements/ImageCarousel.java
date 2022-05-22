@@ -4,6 +4,7 @@ import java.awt.*;
 import javax.swing.*;
 
 import gui.MainScreen;
+import gui.SetupScreen;
 
 import java.awt.event.*;
 
@@ -125,7 +126,10 @@ public class ImageCarousel extends JPanel implements ActionListener {
 	   currDescription = images[index].getDescription();
 	   if (gui instanceof MainScreen) {
 		   ((MainScreen) gui).setTxtDescription(currDescription);
+	   } else if (gui instanceof SetupScreen) {
+		   ((SetupScreen) gui).setTxtDescription(currDescription);
 	   }
+	   
 	   
 	   ImageIcon imageIcon = scaleImage(images[index]);
 	   imageSpace.setIcon(imageIcon);
